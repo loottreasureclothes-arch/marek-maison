@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Joyería de plata .925 hecha en Guadalajara. Cadenas, esclavas y pulseras de plata .925 con envío a todo México."><meta name="robots" content="noindex"><meta property="og:title" content="Montaris · Plata .925"><meta property="og:image" content="img/poster-d.webp"><link rel="icon" href="img/favicon.png">
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Joyería de plata .925 hecha en Guadalajara. Cadenas, esclavas y pulseras de plata .925 con envío a todo México."><meta name="robots" content="noindex"><meta property="og:title" content="Montaris · Plata .925"><meta property="og:image" content="img/prod/50_L-07_cadena-barbada-70cm/2.jpg"><link rel="icon" href="img/favicon.png">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
 <style>
@@ -38,7 +38,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .bar li::after{content:"•";margin-left:40px;color:#777}
 @keyframes corre{to{transform:translateX(-50%)}}
 
-/* 2. header: transparente sobre el video, blanco al bajar */
+/* 2. header: transparente sobre la portada, oscuro al bajar */
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#fff;color:var(--ink);transition:background .3s var(--ease),color .3s var(--ease),box-shadow .3s}
 .home .hdr{position:fixed;left:0;right:0;top:0;background:transparent;color:#fff}
 .home .hdr.solid{background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
@@ -50,7 +50,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ib .n i{font-style:normal;color:#fff}
 .home .hdr .ib .n i{color:#111}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
-.brand img{height:36px;width:auto}
+.brand img{height:28px;width:auto}
 .brand b{display:none;font:600 18px/1 var(--f-logo);letter-spacing:.28em}
 .buscar{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;background:#f1f1ef;border:1px solid #e3e3e0;color:#111}
 .home .hdr .buscar{background:rgba(255,255,255,.92);border-color:transparent}
@@ -61,65 +61,101 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{flex:none;padding-bottom:6px;border-bottom:2px solid transparent}
 .tabs a.on{border-color:currentColor}
-@media (min-width:900px){.brand b{display:block}.brand img{height:44px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
+@media (min-width:900px){.brand b{display:block}.brand img{height:34px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
 
 .wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;background:var(--wa);color:var(--wa-ink);font:800 14px var(--f-txt);border-radius:4px}
 .wa-btn svg{width:20px;height:20px;fill:var(--wa-ink);flex:none}
-/* menú (copiado del de Boxroom) */
-.drawer{position:fixed;inset:0;z-index:60;visibility:hidden}
-.drawer.open{visibility:visible}
-.drawer .veil{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity .3s var(--ease)}
-.drawer.open .veil{opacity:1}
-.panel{position:absolute;inset:0 auto 0 0;width:min(92vw,440px);background:#fff;color:#111;transform:translateX(-100%);transition:transform .35s var(--ease);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
+/* menú (copiado del de Boxroom: rieles a la izquierda, cuadritos a la derecha) */
+.drawer{position:fixed;inset:0;z-index:60;visibility:hidden;transition:visibility 0s .45s}
+.drawer.open{visibility:visible;transition:none}
+.drawer .veil{position:absolute;inset:0;background:#000;opacity:0;transition:opacity .5s ease-in-out}
+.drawer.open .veil{opacity:.3}
+.panel{position:absolute;inset:0 auto 0 0;width:min(92vw,420px);background:#fff;color:#1a1a1a;transform:translateX(-100%);transition:transform .4s var(--ease);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px)}
 .drawer.open .panel{transform:none}
-.m-top{display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 6px 0 18px;border-bottom:1px solid #eee}
-.m-top b{font:800 17px var(--f-txt)}
-.m-body{flex:1;display:grid;grid-template-columns:104px 1fr;min-height:0}
-.m-tabs{background:#f4f3f1;display:flex;flex-direction:column;gap:9px;padding:12px 8px;overflow:auto}
-.m-tabs button{min-height:46px;border:1px solid #e3e1dc;border-radius:12px;background:#fff;font:700 14.5px var(--f-txt);color:#111;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.m-tabs button.on{background:#111;color:#fff;border-color:#111}
-.m-right{overflow:auto;padding:16px 14px calc(20px + env(safe-area-inset-bottom,0px))}
-.m-pan h3{font:800 16px var(--f-txt);margin:0 0 6px}
-.m-pan h3::after{content:"";display:block;width:26px;height:3px;background:#111;margin-top:8px}
-.m-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 10px;margin-top:14px}
-.mt{display:grid;gap:6px;text-align:center}
-.mt span{aspect-ratio:1;border-radius:14px;overflow:hidden;background:#efefec;display:grid;place-items:center;border:1px solid #e6e4df}
-.mt span img{width:100%;height:100%;object-fit:cover}
-.mt span.k{background:#111;border-color:#111}
-.mt span.k svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8}
-.mt span.l{font:700 20px var(--f-txt);color:#b6b3ad;background:#f0efeb}
-.mt b{font:700 12.5px/1.2 var(--f-txt)}
+.m-top{flex:none;display:flex;justify-content:space-between;align-items:center;height:60px;padding:0 12px 0 18px;border-bottom:1px solid #edebe6}
+.m-top b{font:800 15.5px var(--f-txt);letter-spacing:.01em;color:#111}
+.m-x{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#f4f1ea;border:0;cursor:pointer}
+.m-x svg{width:12px;height:12px;stroke:#111;stroke-width:2;fill:none}
+.m-body{flex:1;display:flex;min-height:0}
+.m-tabs{flex:0 0 102px;overflow-y:auto;overscroll-behavior:contain;background:#f6f5f3;border-right:1px solid #edebe6;display:flex;flex-direction:column;padding-bottom:28px;scrollbar-width:none}
+.m-tabs::-webkit-scrollbar{display:none}
+.m-tabs button{margin:2px 6px;padding:10px 4px;border:0;border-radius:10px;background:transparent;font:700 14px/1.15 var(--f-txt);color:#2a2a2a;text-align:center;cursor:pointer;transition:background-color .18s,color .18s,box-shadow .18s,transform .12s}
+.m-tabs button:first-child{margin-top:10px}
+.m-tabs button:active{transform:scale(.97)}
+.m-tabs button.on{font-weight:800;background:#111;color:#fff;box-shadow:0 4px 10px rgba(17,17,17,.18)}
+.m-tabs button.sop{background:#fff;border:1px solid #e3ded4}
+.m-tabs button.sop.on{background:#111;border-color:#111}
+.m-sello{display:block;width:50px;height:50px;margin:14px auto 6px;flex:none;animation:mWave 3.4s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes mWave{0%,70%,100%{transform:rotate(0)}76%{transform:rotate(-6deg)}84%{transform:rotate(5deg)}92%{transform:rotate(-2deg)}}
+.m-right{flex:1;min-width:0;overflow-y:auto;overscroll-behavior:contain;background:#fff;padding-bottom:env(safe-area-inset-bottom,0px)}
+.m-pan{padding:0 12px 28px}
+.m-pan[hidden]{display:none}
+.m-pan h3{position:sticky;top:0;z-index:2;margin:0 0 12px;padding:14px 2px 9px;background:#fff;font:800 15px var(--f-txt);letter-spacing:.01em;color:#111}
+.m-pan h3::after{content:"";display:block;width:22px;height:3px;border-radius:2px;background:#111;margin-top:7px}
+.m-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px 9px}
+.mt{display:block;text-align:center;animation:mIn .26s ease both;transition:transform .12s}
+.mt:nth-child(n+4){animation-delay:.05s}.mt:nth-child(n+7){animation-delay:.08s}
+@keyframes mIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.mt:active{transform:scale(.96)}
+.mt>span{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/5;overflow:hidden;position:relative;border-radius:12px;background:#f4f2ee;box-shadow:inset 0 0 0 1px rgba(17,17,17,.06)}
+.mt>span img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.mt>span.k{background:#111;box-shadow:none}
+.mt>span.k svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round}
+.mt b{display:block;margin-top:6px;font:650 12.5px/1.22 var(--f-txt);color:#201f1d;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.m-solo .mt:first-child{grid-column:span 3}
+.m-solo .mt:first-child>span{aspect-ratio:4/3;border-radius:14px}
+.m-solo .mt:first-child>span::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.72))}
+.m-solo .mt:first-child b{display:none}
+.mt .cap{position:absolute;left:12px;bottom:10px;z-index:1;color:#fff;font:800 18px var(--f-txt);font-style:normal}
+.mt .cap em{font-style:normal}
+.m-mayo{grid-column:span 3;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:#f4f1ea;color:#141414;font:800 13.5px/1.25 var(--f-txt)}
+.m-mayo svg{width:52px;height:52px;flex:none}
+.m-mayo small{display:block;margin-top:3px;font:600 12.5px var(--f-txt);color:#6d685f}
 .m-txt{display:grid;gap:12px}
-.m-txt b{font:800 16px var(--f-txt)}
-.m-txt p{margin:0;color:var(--ink-3)}
 .m-link{display:flex;align-items:center;min-height:44px;border-bottom:1px solid #eee;font:600 14px var(--f-txt)}
 
-/* 3. portada de lujo: video + anillo 3D */
-.hero{position:relative;height:min(92svh,860px);min-height:560px;background:#0c0c0d;overflow:hidden;color:#fff}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 28%,rgba(0,0,0,.25) 48%,rgba(0,0,0,.9) 100%)}
-#joya{position:absolute;z-index:2;right:-2%;top:13%;width:min(76vw,560px);aspect-ratio:1;pointer-events:none;opacity:var(--jo,1);transform:translateY(var(--jy,0px))}
-.hero-in{position:absolute;z-index:3;left:0;right:0;bottom:0;padding-bottom:22px}
+/* 3. portada: slider de banners con fotos reales sobre fondo oscuro */
+.hero{position:relative;height:min(88svh,800px);min-height:580px;background:#0b0b0b;overflow:hidden;color:#fff}
+.hs{position:absolute;inset:0}
+.hs-s{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.1s var(--ease)}
+.hs-s.on{opacity:1}
+.hs-s img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;transform:scale(1.06);transition:transform 6.5s linear}
+.hs-s.on img{transform:none}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.08) 24%,rgba(0,0,0,.12) 38%,rgba(0,0,0,.82) 66%,#0b0b0b 100%)}
+.hero-in{position:absolute;z-index:3;left:0;right:0;bottom:0;padding-bottom:18px}
 .chip{display:inline-block;font:800 11px var(--f-txt);letter-spacing:.14em;text-transform:uppercase;background:#fff;color:#111;padding:6px 10px;border-radius:4px}
-.hero h1{margin:12px 0 8px;font:800 clamp(38px,11vw,96px)/.92 var(--f-disp);font-stretch:125%;text-transform:uppercase;max-width:11ch}
+.hero h1{margin:12px 0 12px;font:800 clamp(28px,7.8vw,68px)/.98 var(--f-disp);font-stretch:125%;text-transform:uppercase;max-width:14ch}
 .hero h1 span{display:block;color:#c9cbd0}
-.hero p{margin:0 0 16px;max-width:34ch;color:#e8e6e1}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;font:800 12.5px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;border-radius:999px;border:1px solid currentColor;cursor:pointer;transition:transform .12s,background .2s}
+.msi{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#111;border-radius:999px;padding:5px 14px 5px 8px;margin-bottom:12px}
+.msi img{height:22px;width:auto}
+.msi b{font:800 13px var(--f-txt);letter-spacing:.04em}
+.hero p.hl{margin:0 0 16px;font:700 11.5px/1.75 var(--f-txt);letter-spacing:.14em;text-transform:uppercase;color:#e4e2dd;max-width:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;font:800 12.5px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;border-radius:999px;border:1px solid currentColor;background:none;cursor:pointer}
 .btn:active{transform:scale(.97)}
 .btn.w{background:#fff;color:#111;border-color:#fff}
 .btn.k{background:#111;color:#fff;border-color:#111}
 .btn.o{background:none;color:#111;border-color:#111}
-.mini{display:grid;grid-auto-flow:column;grid-auto-columns:min(72%,300px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:18px}
-.mini::-webkit-scrollbar{display:none}
-.mini a{scroll-snap-align:start;display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:center;background:#fff;color:#111;border-radius:12px;padding:8px}
-.mini img{width:76px;height:76px;object-fit:cover;border-radius:8px}
-.mini b{display:block;font:700 13px/1.25 var(--f-txt)}
-.mini span{font:800 15px var(--f-txt)}
-.mini small{display:block;color:var(--ink-3);font-size:11px}
-.dots{display:flex;gap:6px;margin-top:12px}
-.dots i{width:18px;height:3px;background:rgba(255,255,255,.4)}.dots i:first-child{background:#fff;width:28px}
-.video-tag{position:absolute;z-index:3;left:16px;top:calc(140px + env(safe-area-inset-top,0px))}
-@media (min-width:900px){.video-tag{top:150px}}
+.hs-ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.hs-cap{font:600 12px var(--f-txt);color:#c9cbd0;min-height:32px;display:inline-flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.hs-dots{display:flex;gap:4px;flex:none}
+.hs-dots button{width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.hs-dots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:rgba(255,255,255,.4);transition:background .3s,width .3s,margin .3s;}
+.hs-dots button.on::before{background:#fff;width:20px;margin-left:-10px;border-radius:4px}
+@media (min-width:900px){
+ .hero{height:min(86vh,760px)}
+ .hs{left:auto;width:56%}
+ .hero::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.55) 56%,rgba(11,11,11,0) 72%),linear-gradient(180deg,rgba(0,0,0,.6) 0%,transparent 24%,transparent 78%,rgba(0,0,0,.6) 100%)}
+ .hero-in{top:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:130px;padding-bottom:32px}
+ .hero h1{font-size:clamp(40px,4.6vw,66px);max-width:12ch}
+ .hs-ft{width:100%;max-width:520px}
+}
+
+/* 3b. top 10 */
+.top10{padding-bottom:12px}
+.t10{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(150px,42vw,240px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.t10::-webkit-scrollbar{display:none}
+.t10 .p{scroll-snap-align:start}
+.p .rk{position:absolute;z-index:2;left:8px;bottom:8px;min-width:28px;height:28px;padding:0 6px;border-radius:14px;background:#111;color:#fff;font:700 13px/28px var(--f-txt);text-align:center}
 
 /* 4. franja de confianza (copiada de Boxroom) */
 .sct{background:#fff;border-top:1px solid #e4e1da;border-bottom:1px solid #e4e1da}
@@ -135,28 +171,21 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .sct-s{font-size:10px;color:#6f6a61;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (min-width:750px){.sct-txt{flex-direction:row;align-items:baseline;gap:7px}.sct-t{font-size:12px}.sct-s{font-size:11.5px}}
 
-/* 5. cuadritos (como las marcas de Boxroom) */
-.cuadros{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:clamp(86px,23vw,140px);gap:14px 12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+/* 6. por tipo de cadena: una fila de cuadritos */
+.cuadros{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(92px,26vw,150px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .cuadros::-webkit-scrollbar{display:none}
 .cuadro{scroll-snap-align:start;display:grid;gap:7px;text-align:center}
 .cuadro figure{margin:0;aspect-ratio:1;border:2px solid #111;border-radius:20px;overflow:hidden;background:var(--bg-2)}
 .cuadro img{width:100%;height:100%;object-fit:cover}
 .cuadro b{font:600 12.5px var(--f-txt)}
-@media (min-width:1000px){.cuadros{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(10,1fr)}}
+@media (min-width:900px){.cuadros{grid-auto-flow:row;grid-template-columns:repeat(6,1fr)}}
 
-/* 6. chips */
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:16px}
-.chips::-webkit-scrollbar{display:none}
-.chips a{flex:none;display:inline-flex;align-items:center;height:40px;padding:0 16px;border:1px solid var(--line);border-radius:10px;background:var(--bg-2);font:700 13px var(--f-txt)}
-
-/* 7. categorías con foto */
-.cats{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-auto-columns:clamp(110px,30vw,180px);gap:8px;overflow-x:auto;scrollbar-width:none}
-.cats::-webkit-scrollbar{display:none}
-.cat{position:relative;aspect-ratio:1;overflow:hidden;border-radius:6px;background:var(--bg-3)}
+/* 5. categorías con foto */
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cat{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:10px;background:var(--bg-3)}
 .cat img{width:100%;height:100%;object-fit:cover}
-.cat::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.65))}
-.cat b{position:absolute;z-index:2;left:10px;bottom:8px;color:#fff;font:800 14px var(--f-txt)}
-@media (min-width:1000px){.cats{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(8,1fr)}}
+.cat b{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:8px 6px;background:rgba(17,17,17,.62);color:#fff;font:700 14px var(--f-txt);text-align:center}
+@media (min-width:900px){.cats{grid-template-columns:repeat(6,1fr);gap:14px}}
 
 /* 8. pestañas de productos (estilo de la captura) */
 .sel{display:flex;overflow-x:auto;scrollbar-width:none;margin-bottom:16px;gap:8px}
@@ -183,10 +212,10 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .more a{min-width:220px}
 
 /* 9. bloques por categoría */
-.blk-banner{position:relative;display:block;height:min(64vw,520px);min-height:260px;overflow:hidden;border-radius:8px;margin-bottom:16px;color:#fff}
+.blk-banner{position:relative;display:block;height:min(32vw,260px);min-height:140px;overflow:hidden;border-radius:8px;margin-bottom:16px;color:#fff}
 .blk-banner img{width:100%;height:100%;object-fit:cover}
 .blk-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.78)),linear-gradient(90deg,rgba(0,0,0,.45),transparent 65%)}
-.blk-banner div{position:absolute;z-index:2;left:18px;bottom:18px}
+.blk-banner div{position:absolute;z-index:2;left:16px;bottom:14px}
 .blk-banner h2{font:800 clamp(32px,9vw,64px)/.95 var(--f-disp);font-stretch:125%;text-transform:uppercase;margin-bottom:10px}
 .blk-banner .btn{min-height:40px;padding:0 18px;font-size:11px;background:transparent;color:#fff;border-color:#fff}
 .blk-banner .ilus{right:10px;top:10px}
@@ -210,53 +239,71 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .res .ver{font:700 11px var(--f-txt);color:#1f8a4c}
 
 /* 11. comparativa (como Boxroom) */
-.cmp-card{border:1.5px solid #dcdcd6;border-radius:18px;padding:22px 12px 16px;text-align:center}
-.cmp-eb{font:700 11px var(--f-txt);letter-spacing:.22em;color:#5c8f7d}
-.cmp-card h2{font:700 22px/1.2 var(--f-txt);margin:10px 0 6px}
+.cmp-card{border:1.5px solid #e2e0da;border-radius:22px;padding:22px 10px 18px;text-align:center;background:#fff}
+.cmp-sello{display:block;width:46px;height:46px;margin:0 auto 6px}
+.cmp-eb{margin:0;font:700 11px var(--f-txt);letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3)}
+.cmp-card h2{margin:6px 0 6px}
 .cmp-sub{margin:0 0 16px;color:var(--ink-3);font-size:13.5px}
-.cmp-tbl{text-align:left}
-.cmp-hd,.cmp-r{display:grid;grid-template-columns:1.45fr .95fr .9fr .9fr;align-items:center}
-.cmp-hd span{font:600 10.5px var(--f-txt);color:var(--ink-3);text-align:center;padding:10px 2px}
-.cmp-hd .mm{background:#1f1f20;color:#fff;font:800 11px var(--f-txt);letter-spacing:.1em;border-radius:12px 12px 0 0;padding:34px 4px 12px}
-.cmp-r{border-top:1px solid #ecece8}
-.cmp-r span{font:500 12.5px/1.3 var(--f-txt);padding:12px 6px 12px 4px}
-.cmp-r i{font-style:normal;text-align:center;font-size:15px}
-.cmp-r i.mm{background:#1f1f20;align-self:stretch;display:grid;place-items:center}
-.cmp-r:last-child i.mm{border-radius:0 0 12px 12px}
-.cmp-r i.mm b{width:24px;height:24px;border-radius:50%;background:#4f9a72;color:#fff;font-size:13px;display:grid;place-items:center}
-.cmp-r i.ok{color:#8a8a8a}.cmp-r i.x{color:#d6453d}
-.cmp-ft{display:flex;justify-content:center;align-items:center;gap:6px;margin:16px 0 0;font-size:12.5px;color:var(--ink-2)}
-.cmp-ft svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2}
-@media (min-width:900px){.cmp-card{max-width:760px;margin:0 auto;padding:30px 28px}}
+.cmp-t{width:100%;border-collapse:collapse;table-layout:fixed;text-align:left}
+.cmp-t td{padding:0}
+.cmp-t td.fe{width:42%;border-top:1px solid #ecebe7}
+.cmp-t tr:first-child td{border-top:0}
+.cmp-t td.fe span{display:flex;align-items:center;gap:8px;padding:12px 6px 12px 6px;font:500 12.5px/1.3 var(--f-txt);color:#222}
+.cmp-t td.fe svg{width:16px;height:16px;flex:none;fill:none;stroke:#111;stroke-width:1.7;stroke-linejoin:round}
+.cmp-t td.hc{width:24%;background:#1f1f20;text-align:center;vertical-align:middle;border-top:1px solid #333}
+.cmp-t td.hc.hd{border-radius:14px 14px 0 0;border-top:0;padding:16px 4px 12px;color:#fff;font:600 10.5px var(--f-serif);letter-spacing:.12em}
+.cmp-t td.hc.hd img{height:18px;width:auto;margin:0 auto 6px}
+.cmp-t td.hc.last{border-radius:0 0 14px 14px}
+.cmp-t td.c{text-align:center;vertical-align:middle;border-top:1px solid #ecebe7}
+.cmp-t td.c.h{font:600 10.5px/1.25 var(--f-txt);color:var(--ink-3);padding:10px 2px;vertical-align:bottom;border-top:0}
+.cmp-t .yh{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.12)}
+.cmp-t .yh svg{width:15px;height:15px;fill:none;stroke:#111;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.cmp-t .ok svg{width:18px;height:18px;fill:none;stroke:#8a8a8a;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cmp-t .no{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#f3f1ed}
+.cmp-t .no svg{width:12px;height:12px;fill:none;stroke:#a5a29b;stroke-width:2.4;stroke-linecap:round}
+.cmp-t .half{display:inline-block;width:14px;height:2px;background:#bbb}
+.cmp-ft{display:flex;justify-content:center;align-items:center;gap:6px;margin:16px 0 0;font:700 12.5px var(--f-txt);color:#222}
+.cmp-ft svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2}
+@media (min-width:900px){.cmp-card{max-width:760px;margin:0 auto;padding:30px 28px}.cmp-t td.fe span{font-size:14px}}
 
-/* 12. quiénes somos: recuadros con slide (como Boxroom) */
-.qs{background:#f6f6f4}
-.qs-hd{text-align:center;display:grid;gap:8px;justify-items:center}
-.qs-hd small{font:700 11px var(--f-txt);letter-spacing:.24em;color:var(--ink-3)}
+/* 12. quiénes somos: recuadros encimados con flechas y puntitos (como Boxroom) */
+.qs{background:#f6f6f4;overflow:hidden}
+.qs-hd{text-align:center;display:grid;gap:10px;justify-items:center}
+.qs-eb{display:inline-flex;align-items:center;gap:10px}
+.qs-eb>svg{width:40px;height:40px}
+.qs-eb>span{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;border-radius:999px;padding:8px 16px;font:800 11px var(--f-txt);letter-spacing:.22em;text-transform:uppercase}
+.qs-eb>span svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2}
 .qs-hd h2{font:700 26px/1.15 var(--f-txt)}
-.qs-hd p{margin:0;color:var(--ink-3);max-width:44ch;font-size:15px}
-.qs-sl{display:grid;grid-auto-flow:column;grid-auto-columns:76vw;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:22px 12% 10px;scroll-padding:0 12%}
-.qs-sl::-webkit-scrollbar{display:none}
-.qs-c{scroll-snap-align:center;border-radius:14px;overflow:hidden;background:#1f1f20;color:#fff;transform:scale(.9);opacity:.55;transition:transform .45s var(--ease),opacity .45s}
-.qs-c.on{transform:none;opacity:1}
-.qs-c .ph{position:relative;aspect-ratio:4/4.3}
-.qs-c .ph img{width:100%;height:100%;object-fit:cover}
-.qs-c .ph .ilus{left:8px;top:8px}
-.qs-c .tx{padding:16px 18px 20px;display:grid;gap:8px}
-.qs-c .tx i{width:36px;height:2px;background:#5c8f7d}
-.qs-c .tx b{font:700 17px var(--f-txt)}
-.qs-c .tx span{font-size:13.5px;color:#bdbdbd}
-@media (min-width:900px){.qs-sl{grid-auto-columns:min(30vw,420px);padding-inline:calc(50vw - min(15vw,210px));scroll-padding:0 calc(50vw - min(15vw,210px))}}
+.qs-hd p{margin:0;color:var(--ink-2);max-width:40ch;font-size:15px;line-height:1.65}
+.qs .st{position:relative;margin-top:26px}
+.qs .cd{position:absolute;top:0;left:50%;width:min(72vw,340px);border-radius:16px;overflow:hidden;background:#1f1f20;color:#fff;transition:transform .55s var(--ease),opacity .55s;box-shadow:0 18px 40px rgba(0,0,0,.16)}
+.qs .im{aspect-ratio:3/4;background:#111}
+.qs .im img{width:100%;height:100%;object-fit:cover}
+.qs .bd{padding:18px 18px 22px}
+.qs .ln{width:34px;height:3px;background:#c9cbd0;margin-bottom:12px}
+.qs .bd h3{font:600 18px var(--f-serif);letter-spacing:.03em;margin-bottom:6px}
+.qs .bd p{margin:0;font-size:14px;color:#c9c9c9;line-height:1.55}
+.qs .nv{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:18px}
+.qs .nb{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid #d6d2ca;background:#fff;cursor:pointer}
+.qs .nb svg{width:18px;height:18px;fill:none;stroke:#111;stroke-width:2}
+.qs .dt{display:flex;gap:2px}
+.qs .dt button{width:24px;height:24px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.qs .dt button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#cfcac0;transition:all .3s}
+.qs .dt button[aria-current="true"]::before{background:#111;width:20px;margin-left:-10px;border-radius:4px}
 
-/* 13. mayoreo */
-.may{background:#111;color:#fff;border-radius:10px;padding:26px 20px;display:grid;gap:14px}
-.may small{font:800 11px var(--f-txt);letter-spacing:.2em;color:#aaa}
-.may h2{font:800 clamp(26px,7vw,44px)/1 var(--f-disp);font-stretch:125%;text-transform:uppercase}
-.may p{margin:0;color:#cfcfcf;max-width:52ch}
-.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-.tiers div{border:1px solid #333;border-radius:6px;padding:10px 6px;text-align:center}
-.tiers b{display:block;font:800 16px var(--f-txt)}
+/* 13. mayoreo (franja oscura, centrado, un botón, como Boxroom) */
+.may{background:#1f1f1f;color:#fff;text-align:center;padding:40px 0 44px}
+.may-in{max-width:560px;margin:0 auto;padding-inline:16px;display:grid;gap:12px;justify-items:center}
+.may-sello{width:80px;height:80px;border-radius:50%;box-shadow:0 0 0 1px #3d3d3d}
+.may .eb{font:600 11.5px var(--f-txt);letter-spacing:.28em;text-transform:uppercase;color:#b9b9b9}
+.may h2{font:600 clamp(24px,6vw,38px)/1.15 var(--f-serif);letter-spacing:.04em}
+.may p{margin:0;color:#d0d0d0;font-size:15px;line-height:1.65}
+.tiers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;width:100%;margin-top:4px}
+.tiers div{border:1px solid #3a3a3a;border-radius:8px;padding:10px 4px}
+.tiers b{display:block;font:600 17px var(--f-serif)}
 .tiers span{font-size:10.5px;color:#aaa}
+.may .cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;margin-top:10px;border-radius:12px;background:#fff;color:#111;font:800 16px var(--f-txt)}
+.may .cta svg{width:24px;height:24px;fill:var(--wa)}
 
 /* preguntas */
 .faq details{border-bottom:1px solid var(--line);padding:16px 0}
@@ -266,10 +313,6 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .faq summary::after{content:"+";font:400 22px/1 var(--f-txt);color:var(--ink-3)}
 .faq details[open] summary::after{content:"−"}
 .faq p{margin:8px 0 0;color:var(--ink-2)}
-.may-bt{display:grid;gap:10px}
-.btn-grupo{display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;border:1px solid #fff;border-radius:4px;color:#fff;font:800 14px var(--f-txt)}
-.btn-grupo svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.8}
-@media (min-width:700px){.may-bt{grid-template-columns:1fr 1fr}}
 /* 14. club */
 .club{background:var(--crema)}
 .club-in{display:grid;gap:18px}
@@ -291,7 +334,6 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 .ft ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .pagos{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .pagos img{height:30px;width:auto;border-radius:4px;background:#fff}
-.pago.mp{color:#009ee3}.pago.ox{background:#ffd23f;color:#d4001a}
 .redes{display:flex;gap:10px;margin-top:18px}
 .redes a{display:grid;place-items:center;width:42px;height:42px;border:1px solid #333;border-radius:50%}
 .redes svg{width:19px;height:19px;fill:#fff}
@@ -307,27 +349,18 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 @media (prefers-reduced-motion:reduce){.bar ul{animation:none}*{transition:none!important}}
 
 /* ===== ultra mejoras (revisión Fable) ===== */
-.hero h1{max-width:13ch}
-@media (min-width:900px){.hero h1{max-width:none;font-size:clamp(38px,7.2vw,84px)}}
 :root{--f-serif:"Cinzel",Georgia,serif;--vino:#111}
-/* 2 portada: separar anillo del video */
-.hero::after{background:radial-gradient(circle at 50% 30%,rgba(0,0,0,.6) 0,rgba(0,0,0,.25) 22%,transparent 46%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 28%,rgba(0,0,0,.25) 48%,rgba(0,0,0,.9) 100%)}
-@media (min-width:900px){.hero::after{background:radial-gradient(circle at 72% 34%,rgba(0,0,0,.6) 0,rgba(0,0,0,.25) 22%,transparent 46%),linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 28%,rgba(0,0,0,.25) 48%,rgba(0,0,0,.9) 100%)}}
-.hero video,.hero .poster{filter:brightness(.72) contrast(1.05)}
-#joya{top:9%;width:min(66vw,560px);right:0}
-@media (min-width:900px){#joya{right:4%;top:14%}}
+/* 2 portada */
 /* 3 títulos de sección con patines */
 .ttl h2{font:600 20px/1.1 var(--f-serif);letter-spacing:.08em;text-transform:uppercase}
 @media (min-width:900px){.ttl h2{font-size:24px}}
 .rev-top h2,.qs-hd h2,.cmp-card h2{font:600 22px/1.15 var(--f-serif);letter-spacing:.04em}
-.blk-banner h2{font:600 clamp(28px,7vw,52px)/1 var(--f-serif);letter-spacing:.1em;font-stretch:normal}
-.may h2,.club h2{font:600 clamp(24px,6vw,40px)/1.05 var(--f-serif);letter-spacing:.06em;font-stretch:normal}
+.blk-banner h2{font:600 clamp(22px,6vw,44px)/1 var(--f-serif);letter-spacing:.08em;font-stretch:normal;margin-bottom:8px}
+.blk-banner .btn{min-height:34px;padding:0 14px}
+.club h2{font:600 clamp(24px,6vw,40px)/1.05 var(--f-serif);letter-spacing:.06em;font-stretch:normal}
 /* 4 una sola paleta */
 .res .ver{color:#444}
 .cmp-eb{color:var(--ink-3)}
-.cmp-r i.mm b{background:#fff;color:#111}
-.qs-c .tx i{background:#c9cbd0}
-.cmp-r i.x{color:#b9b9b4;font-size:13px}
 .stars{color:#c9a24d}
 /* 5 tarjetas de producto tipo vitrina */
 .p{gap:3px}
@@ -340,32 +373,24 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 .p .plus.ok{background:#111;color:#fff;border-color:#111}
 @media (hover:hover) and (pointer:fine) and (min-width:900px){.p .plus{opacity:0;transform:translateY(6px)}.p:hover .plus{opacity:1;transform:none}.p:hover .ph{box-shadow:0 14px 34px rgba(0,0,0,.10)}.p:hover .ph img{transform:scale(1.03);transition-duration:.7s}}
 .p .badge{font:600 10px var(--f-txt);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:2px}
-/* 6 mini tarjetas de vidrio */
-.mini a{background:rgba(255,255,255,.10);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:10px}
-.mini small{color:#c9cbd0}.mini b{font-weight:600}.mini span{font-weight:600;font-size:15px}.mini img{border-radius:6px}
-.dots i{height:2px;background:rgba(255,255,255,.3)}
 /* 7 ritmo */
 .sec{padding-block:40px}
 @media (min-width:900px){.sec{padding-block:72px}.ttl{margin-bottom:28px}}
 .ttl{margin-bottom:20px}
-#cats{padding-top:24px}
+#cats{padding-top:24px;padding-bottom:8px}#tipos{padding-top:16px;padding-bottom:8px}
 #vendidos{padding-top:48px}
 .blk-banner{margin-bottom:24px;border-radius:4px}
 .more{margin-top:32px}
 #resenas,#comparativa{border-top:1px solid var(--line)}
 /* 8 portada: entrada y botones */
 @keyframes up{to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:no-preference){.hero-in>*{opacity:0;transform:translateY(14px);animation:up .7s var(--ease) forwards}.hero-in>.chip{animation-delay:.1s}.hero-in>h1{animation-delay:.2s}.hero-in>p{animation-delay:.3s}.hero-in>.btn{animation-delay:.4s}.hero-in>.mini,.hero-in>.dots{animation-delay:.55s}}
+@media (prefers-reduced-motion:no-preference){.hero-in>*{opacity:0;transform:translateY(14px);animation:up .7s var(--ease) forwards}.hero-in>.chip{animation-delay:.1s}.hero-in>.msi{animation-delay:.25s}.hero-in>.hl{animation-delay:.3s}.hero-in>h1{animation-delay:.2s}.hero-in>p{animation-delay:.3s}.hero-in>.btn{animation-delay:.4s}.hero-in>.mini,.hero-in>.dots{animation-delay:.55s}}
 .btn{font-weight:700;letter-spacing:.14em;min-height:50px;padding:0 28px;transition:transform .12s,background .25s,color .25s}
 @media (hover:hover){.btn.w:hover{background:#ececea}.btn.o:hover{background:#111;color:#fff}}
-.hero p{font-size:16px;color:#dedcd7;max-width:30ch}
 /* 9 cuadritos, categorías, chips */
 .cuadro figure{border:1px solid #111;border-radius:16px;transition:border-color .25s,transform .25s var(--ease)}
 @media (hover:hover){.cuadro:hover figure{border-color:#999;transform:translateY(-2px)}}
 .cuadro b{font:600 12px var(--f-txt);letter-spacing:.02em}
-.cat{border-radius:2px}
-.cat b{font:600 12.5px var(--f-txt);letter-spacing:.1em;text-transform:uppercase;left:12px;bottom:12px}
-.cat::after{background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.55))}
 .chips a{height:38px;border-radius:999px;background:#fff;border-color:#d8d8d5;font-weight:600}
 .sel button{border-radius:999px}
 /* 10 franja y barra */
@@ -376,14 +401,7 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 .rev-top .score{font:600 28px var(--f-serif)}
 @media (min-width:900px){.resenas{grid-auto-columns:min(74vw,300px);gap:16px}}
 /* 12 comparativa */
-.cmp-card{border:1px solid var(--line);border-radius:6px}
-.cmp-hd .mm{background:#111;border-radius:6px 6px 0 0;font:600 11px var(--f-serif);letter-spacing:.14em}
-.cmp-r i.mm{background:#111}.cmp-r:last-child i.mm{border-radius:0 0 6px 6px}
-.cmp-r span{font-size:13px;color:#222;padding:13px 6px 13px 4px}
 /* 13 quiénes somos y mayoreo */
-.qs-c{border-radius:6px}.qs-c .tx b{font:600 16px var(--f-serif);letter-spacing:.03em}.qs-c .tx span{color:#c9c9c9}
-.may{border-radius:6px;padding:32px 22px}.tiers div{border-color:#2a2a2a;border-radius:4px}.tiers b{font:600 18px var(--f-serif)}
-.btn-grupo{border-color:rgba(255,255,255,.5)}
 /* 14 club y pie */
 .reg input,.reg select{border-radius:4px;border-color:#d6d2ca}.reg button{font-weight:700;letter-spacing:.14em}.club p{font-size:15px;color:#4a443c}
 footer{padding-block:48px calc(96px + env(safe-area-inset-bottom,0px))}.ft ul{gap:11px}.ft ul a{display:inline-block;padding-block:4px}.ft h4{font:600 11px var(--f-serif);letter-spacing:.2em}
@@ -396,9 +414,8 @@ footer{padding-block:48px calc(96px + env(safe-area-inset-bottom,0px))}.ft ul{ga
 .home .hdr.solid{box-shadow:0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(0,0,0,.25)}
 .toast{border-radius:4px;font-weight:600}
 @media (scripting:enabled) and (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}.rv.in{opacity:1;transform:none}}
-.panel{transition:transform .4s var(--ease)}.m-tabs button{border-radius:8px;font-weight:600}
+
 /* colecciones v8 */
-@media (min-width:1000px){.cuadros{grid-template-columns:repeat(8,1fr)}.cats{grid-template-columns:repeat(8,1fr)}}
 .precios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:900px){.precios{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}}
 .pz{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:2px;background:var(--bg-3);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
@@ -408,7 +425,6 @@ footer{padding-block:48px calc(96px + env(safe-area-inset-bottom,0px))}.ft ul{ga
 .pz span{font:600 11px var(--f-txt);letter-spacing:.16em;text-transform:uppercase;opacity:.85}
 .pz b{font:600 clamp(26px,6.5vw,38px)/1 var(--f-serif);letter-spacing:.04em;margin-top:4px}
 @media (hover:hover){.pz:hover img{transform:scale(1.04)}}
-.cat b{right:10px;line-height:1.15}
 .tabs a{padding-top:8px;padding-bottom:10px}
 .ttl a{padding:10px 0;margin:-10px 0}
 .chips a{height:40px}
@@ -421,7 +437,6 @@ button.btn{cursor:pointer;font-family:inherit}
 .p .ph{aspect-ratio:1/1;background:#F2F2F2}
 .p h3 a{color:inherit}
 .p .pr.pc{font:600 13px var(--f-txt);color:#555}
-.mini span.pc{font:600 12px var(--f-txt);color:#e9e9ec}
 .vacio{grid-column:1/-1;color:#666;padding:24px 0}
 .sel button.extra{background:#111;color:#fff;border-color:#111}
 .fx{position:fixed;inset:0;z-index:70;background:#fff;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
@@ -479,57 +494,45 @@ button.btn{cursor:pointer;font-family:inherit}
   <div class="wrap">
     <div class="row">
       <button class="ib" id="abrir" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
-      <a class="brand" href="#top" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="79" height="36"><b>MONTARIS</b></a>
+      <a class="brand" href="#top" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="62" height="28"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
       <a class="ib" href="#ayuda" aria-label="Ayuda"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg></a>
       <button class="ib" type="button" id="cart" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
-    <nav class="tabs" aria-label="Categorías"><a class="on" href="#top">Inicio</a><a href="#b-nuevo">Novedades</a><a href="#vendidos" data-col="hombre">Hombre</a><a href="#b-ella">Mujer</a><a href="#b-cadenas">Cadenas</a><a href="#b-esclavas">Esclavas</a><a href="#b-pulseras">Pulseras</a><a href="#b-regalos">Regalos</a><a href="#mayoreo">Mayoreo</a><a href="#ayuda">Ayuda</a></nav>
+    <nav class="tabs" aria-label="Categorías"><a class="on" href="#top">Inicio</a><a href="#vendidos" data-col="nuevo">Novedades</a><a href="#vendidos" data-col="hombre">Hombre</a><a href="#b-ella">Mujer</a><a href="#b-cadenas">Cadenas</a><a href="#vendidos" data-col="esclavas">Esclavas</a><a href="#vendidos" data-col="pulseras">Pulseras</a><a href="#vendidos" data-col="regalo">Para regalo</a><a href="#mayoreo">Mayoreo</a><a href="#ayuda">Ayuda</a></nav>
   </div>
 </header>
 
 <div class="drawer" id="drawer" aria-hidden="true">
   <div class="veil" data-cerrar></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Menú">
-    <div class="m-top"><b>Categorías</b><button class="ib" data-cerrar aria-label="Cerrar menú"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="m-top"><b>Categorías</b><button class="m-x" type="button" data-cerrar aria-label="Cerrar menú"><svg viewBox="0 0 14 14"><path d="M13 13L1 1M13 1L1 13"/></svg></button></div>
     <div class="m-body">
-      <nav class="m-tabs" aria-label="Secciones del menú"><button class="on" data-t="todo">Todo</button><button data-t="nuevo">Novedades</button><button data-t="hombre">Hombre</button><button data-t="mujer">Mujer</button><button data-t="cadenas">Cadenas</button><button data-t="esclavas">Esclavas</button><button data-t="pulseras">Pulseras</button><button data-t="regalos">Regalos</button><button data-t="mayoreo">Mayoreo</button><button data-t="ayuda">Ayuda</button></nav>
-      <div class="m-right">
-        <div class="m-pan" data-p="todo"><h3>Comprar por categoría</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="todo"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><rect x="14" y="14" width="6" height="6" rx="1.5"/></svg></span><b>Ver todo</b></a><a class="mt" href="#b-nuevo"><span><img src="img/prod/45_L-25_torzal-figaro-70cm/c.jpg" alt="" loading="lazy"></span><b>Novedades</b></a><a class="mt" href="#vendidos" data-col="hombre"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Hombre</b></a><a class="mt" href="#b-ella"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Mujer</b></a><a class="mt" href="#b-cadenas"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas</b></a><a class="mt" href="#b-esclavas"><span><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></span><b>Esclavas</b></a><a class="mt" href="#b-pulseras"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Pulseras</b></a><a class="mt" href="#b-regalos"><span><img src="img/prod/16_sin-codigo_esclava-con-placa-sin-nombre-19cm/c.jpg" alt="" loading="lazy"></span><b>Regalos</b></a></div></div>
-        <div class="m-pan" data-p="nuevo" hidden><h3>Novedades</h3><div class="m-grid"><a class="mt" href="#b-nuevo"><span><img src="img/prod/45_L-25_torzal-figaro-70cm/c.jpg" alt="" loading="lazy"></span><b>Ver novedades</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/43_L-25_torzal-figaro-55cm/c.jpg" alt="" loading="lazy"></span><b>Torzal fígaro</b></a><a class="mt" href="#vendidos" data-col="cadenas/marinera"><span><img src="img/prod/46_L-06_cadena-marinera-70cm/c.jpg" alt="" loading="lazy"></span><b>Marinera</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cartier 8 mm</b></a><a class="mt" href="#vendidos" data-col="cadenas/barbada"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Barbada 9 mm</b></a><a class="mt" href="#vendidos" data-col="cadenas/planchada"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Planchada</b></a></div></div>
-        <div class="m-pan" data-p="hombre" hidden><h3>Hombre</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="hombre"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Ver todo</b></a><a class="mt" href="#b-cadenas"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas</b></a><a class="mt" href="#b-esclavas"><span><img src="img/prod/36_L-07_esclava-cartier-22cm/c.jpg" alt="" loading="lazy"></span><b>Esclavas</b></a><a class="mt" href="#b-pulseras"><span><img src="img/prod/31_L-12_pulso-de-petatillo-21cm/c.jpg" alt="" loading="lazy"></span><b>Pulseras</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="" loading="lazy"></span><b>Torzal</b></a><a class="mt" href="#vendidos" data-col="esclavas/placa"><span><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></span><b>Con placa</b></a></div></div>
-        <div class="m-pan" data-p="mujer" hidden><h3>Mujer</h3><div class="m-grid"><a class="mt" href="#b-ella"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Ver todo</b></a><a class="mt" href="#vendidos" data-col="cadenas/delgadas"><span><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas delgadas</b></a><a class="mt" href="#vendidos" data-col="pulseras/cubana"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Cubana con zirconias</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/11_L-06_cadena-cartier-60cm/c.jpg" alt="" loading="lazy"></span><b>Cartier fina</b></a></div></div>
-        <div class="m-pan" data-p="cadenas" hidden><h3>Cadenas</h3><div class="m-grid"><a class="mt" href="#b-cadenas"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cartier</b></a><a class="mt" href="#vendidos" data-col="cadenas/barbada"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Barbada</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="" loading="lazy"></span><b>Torzal</b></a><a class="mt" href="#vendidos" data-col="cadenas/marinera"><span><img src="img/prod/46_L-06_cadena-marinera-70cm/c.jpg" alt="" loading="lazy"></span><b>Marinera</b></a><a class="mt" href="#vendidos" data-col="cadenas/planchada"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Planchada</b></a><a class="mt" href="#vendidos" data-col="cadenas/delgadas"><span><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></span><b>Delgadas</b></a></div></div>
-        <div class="m-pan" data-p="esclavas" hidden><h3>Esclavas</h3><div class="m-grid"><a class="mt" href="#b-esclavas"><span><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="esclavas/placa"><span><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></span><b>Con placa</b></a><a class="mt" href="#vendidos" data-col="esclavas/petatillo"><span><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></span><b>Petatillo</b></a><a class="mt" href="#vendidos" data-col="esclavas/rolex"><span><img src="img/prod/30_L-11_esclava-tipo-rolex-lisa-22cm/c.jpg" alt="" loading="lazy"></span><b>Tipo Rolex</b></a><a class="mt" href="#vendidos" data-col="esclavas/barbada"><span><img src="img/prod/35_L-07_esclava-barbada-20cm/c.jpg" alt="" loading="lazy"></span><b>Barbada</b></a><a class="mt" href="#vendidos" data-col="esclavas/cartier"><span><img src="img/prod/36_L-07_esclava-cartier-22cm/c.jpg" alt="" loading="lazy"></span><b>Cartier</b></a></div></div>
-        <div class="m-pan" data-p="pulseras" hidden><h3>Pulseras</h3><div class="m-grid"><a class="mt" href="#b-pulseras"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="pulseras/diseno"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Pulsos de diseño</b></a><a class="mt" href="#vendidos" data-col="pulseras/cubana"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Cubana con zirconias</b></a><a class="mt" href="#vendidos" data-col="pulseras/pulsos"><span><img src="img/prod/31_L-12_pulso-de-petatillo-21cm/c.jpg" alt="" loading="lazy"></span><b>Pulsos</b></a></div></div>
-        <div class="m-pan" data-p="regalos" hidden><h3>Regalos</h3><div class="m-grid"><a class="mt" href="#b-regalos"><span><img src="img/prod/16_sin-codigo_esclava-con-placa-sin-nombre-19cm/c.jpg" alt="" loading="lazy"></span><b>Ver regalos</b></a><a class="mt" href="#vendidos" data-col="esclavas/placa"><span><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></span><b>Esclavas con placa</b></a><a class="mt" href="#vendidos" data-col="pulseras/diseno"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Pulsos de diseño</b></a><a class="mt" href="#vendidos" data-col="cadenas/delgadas"><span><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas delgadas</b></a></div></div>
-        <div class="m-pan" data-p="mayoreo" hidden><div class="m-txt"><b>Mayoreo</b><p>Precios por escalón desde $5,000.</p><a class="wa-btn" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Pedir lista de mayoreo</a><a class="m-link" href="#mayoreo">Ver escalones ›</a></div></div>
-        <div class="m-pan" data-p="ayuda" hidden><div class="m-txt"><b>¿En qué te ayudamos?</b><a class="wa-btn" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Escríbenos por WhatsApp</a><a class="m-link" href="#faq">Preguntas frecuentes ›</a><a class="m-link" href="#ayuda">Envíos ›</a><a class="m-link" href="#ayuda">Cambios y devoluciones ›</a><a class="m-link" href="#ayuda">Guía de tallas ›</a><a class="m-link" href="#ayuda">Cuidado de la plata ›</a></div></div>
-      </div>
+      <nav class="m-tabs" aria-label="Grupos"><button type="button" class="on" data-t="top">Lo más pedido</button><button type="button" data-t="todo">Todo</button><button type="button" data-t="hombre">Hombre</button><button type="button" data-t="mujer">Mujer</button><button type="button" data-t="cadenas">Cadenas</button><button type="button" data-t="esclavas">Esclavas</button><button type="button" data-t="pulseras">Pulseras</button><button type="button" data-t="mayoreo">Mayoreo</button><svg class="m-sello" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg><button type="button" class="sop" data-t="ayuda">Ayuda</button></nav>
+      <div class="m-right"><div class="m-pan m-solo" data-p="top"><h3>Lo más pedido</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="top"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Lo más pedido" loading="lazy"><i class="cap">Lo más pedido <em aria-hidden="true">›</em></i></span><b>Ver todo</b></a><a class="mt" href="#vendidos" data-col="cadenas/barbada"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Barbada</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cartier</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="" loading="lazy"></span><b>Torzal</b></a></div></div><div class="m-pan" data-p="todo" hidden><h3>Comprar por categoría</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="todo"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todo</b></a><a class="mt" href="#vendidos" data-col="nuevo"><span><img src="img/prod/45_L-25_torzal-figaro-70cm/c.jpg" alt="" loading="lazy"></span><b>Novedades</b></a><a class="mt" href="#vendidos" data-col="hombre"><span><img src="img/prod/51_L-07_cadena-barbada-60cm/c.jpg" alt="" loading="lazy"></span><b>Hombre</b></a><a class="mt" href="#vendidos" data-col="mujer"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Mujer</b></a><a class="mt" href="#vendidos" data-col="cadenas"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas</b></a><a class="mt" href="#vendidos" data-col="esclavas"><span><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></span><b>Esclavas</b></a><a class="mt" href="#vendidos" data-col="pulseras"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Pulseras</b></a><a class="mt" href="#vendidos" data-col="cubanas"><span><img src="img/prod/35_L-07_esclava-barbada-20cm/c.jpg" alt="" loading="lazy"></span><b>Cubanas</b></a><a class="mt" href="#vendidos" data-col="regalo"><span><img src="img/prod/16_sin-codigo_esclava-con-placa-sin-nombre-19cm/c.jpg" alt="" loading="lazy"></span><b>Para regalo</b></a></div></div><div class="m-pan" data-p="hombre" hidden><h3>Hombre</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="hombre"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todo</b></a><a class="mt" href="#vendidos" data-col="cadenas"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas</b></a><a class="mt" href="#vendidos" data-col="esclavas"><span><img src="img/prod/36_L-07_esclava-cartier-22cm/c.jpg" alt="" loading="lazy"></span><b>Esclavas</b></a><a class="mt" href="#vendidos" data-col="pulseras"><span><img src="img/prod/31_L-12_pulso-de-petatillo-21cm/c.jpg" alt="" loading="lazy"></span><b>Pulseras</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="" loading="lazy"></span><b>Torzal</b></a><a class="mt" href="#vendidos" data-col="esclavas/placa"><span><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></span><b>Con placa</b></a></div></div><div class="m-pan" data-p="mujer" hidden><h3>Mujer</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="mujer"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todo</b></a><a class="mt" href="#vendidos" data-col="cadenas/delgadas"><span><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></span><b>Cadenas delgadas</b></a><a class="mt" href="#vendidos" data-col="pulseras/cubana"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Cubana con zirconias</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/11_L-06_cadena-cartier-60cm/c.jpg" alt="" loading="lazy"></span><b>Cartier fina</b></a></div></div><div class="m-pan" data-p="cadenas" hidden><h3>Cadenas</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="cadenas"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="cadenas/cartier"><span><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></span><b>Cartier</b></a><a class="mt" href="#vendidos" data-col="cadenas/barbada"><span><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></span><b>Barbada</b></a><a class="mt" href="#vendidos" data-col="cadenas/torzal"><span><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="" loading="lazy"></span><b>Torzal</b></a><a class="mt" href="#vendidos" data-col="cadenas/marinera"><span><img src="img/prod/46_L-06_cadena-marinera-70cm/c.jpg" alt="" loading="lazy"></span><b>Marinera</b></a><a class="mt" href="#vendidos" data-col="cadenas/planchada"><span><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></span><b>Planchada</b></a><a class="mt" href="#vendidos" data-col="cadenas/delgadas"><span><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></span><b>Delgadas</b></a></div></div><div class="m-pan" data-p="esclavas" hidden><h3>Esclavas</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="esclavas"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="esclavas/placa"><span><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></span><b>Con placa</b></a><a class="mt" href="#vendidos" data-col="esclavas/petatillo"><span><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></span><b>Petatillo</b></a><a class="mt" href="#vendidos" data-col="esclavas/rolex"><span><img src="img/prod/30_L-11_esclava-tipo-rolex-lisa-22cm/c.jpg" alt="" loading="lazy"></span><b>Tipo Rolex</b></a><a class="mt" href="#vendidos" data-col="esclavas/barbada"><span><img src="img/prod/35_L-07_esclava-barbada-20cm/c.jpg" alt="" loading="lazy"></span><b>Barbada</b></a><a class="mt" href="#vendidos" data-col="esclavas/cartier"><span><img src="img/prod/36_L-07_esclava-cartier-22cm/c.jpg" alt="" loading="lazy"></span><b>Cartier</b></a></div></div><div class="m-pan" data-p="pulseras" hidden><h3>Pulseras</h3><div class="m-grid"><a class="mt" href="#vendidos" data-col="pulseras"><span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>Ver todas</b></a><a class="mt" href="#vendidos" data-col="pulseras/diseno"><span><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></span><b>Pulsos de diseño</b></a><a class="mt" href="#vendidos" data-col="pulseras/cubana"><span><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></span><b>Cubana con zirconias</b></a><a class="mt" href="#vendidos" data-col="pulseras/pulsos"><span><img src="img/prod/31_L-12_pulso-de-petatillo-21cm/c.jpg" alt="" loading="lazy"></span><b>Pulsos</b></a></div></div><div class="m-pan m-solo" data-p="mayoreo" hidden><h3>Mayoreo</h3><div class="m-grid"><a class="mt" href="#mayoreo"><span><img src="img/prod/51_L-07_cadena-barbada-60cm/1.jpg" alt="Mayoreo" loading="lazy"><i class="cap">Mayoreo <em aria-hidden="true">›</em></i></span><b>Ver todo</b></a><a class="m-mayo" href="#mayoreo"><svg class="" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg><span>Gana revendiendo plata .925<small>Precios por escalón desde $5,000</small></span></a></div></div><div class="m-pan" data-p="ayuda" hidden><h3>¿En qué te ayudamos?</h3><div class="m-txt"><a class="wa-btn" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Escríbenos por WhatsApp</a><a class="m-link" href="#faq">Preguntas frecuentes ›</a><a class="m-link" href="#ayuda">Envíos ›</a><a class="m-link" href="#ayuda">Cambios y devoluciones ›</a><a class="m-link" href="#ayuda">Guía de tallas ›</a><a class="m-link" href="#ayuda">Cuidado de la plata ›</a></div></div></div>
     </div>
   </div>
 </div>
 
 <main>
-  <!-- 3. Portada: video de fondo + anillo 3D encima (el video se cambia por el real) -->
-  <section class="hero" aria-label="Portada">
-    <img class="poster" id="poster" src="img/poster-m.webp" alt="">
-    <video id="vid" muted playsinline loop autoplay preload="metadata" aria-hidden="true"></video>
-    <canvas id="joya" aria-hidden="true"></canvas>
-    <span class="ilus video-tag">Video ilustrativo</span>
+  <!-- 2. Portada: slider de banners con fotos reales (como el banner de Boxroom) -->
+  <section class="hero" aria-label="Portada" aria-roledescription="carrusel">
+    <div class="hs" id="hs"><figure class="hs-s on" data-id="50" data-cap="Cadena barbada 9 mm · 70 cm"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Cadena barbada 9 mm · 70 cm, plata .925"></figure><figure class="hs-s" data-id="48" data-cap="Cadena Cartier 8 mm · 70 cm"><img src="img/prod/48_L-07_cadena-cartier-70cm/3.jpg" alt="Cadena Cartier 8 mm · 70 cm, plata .925" loading="lazy"></figure><figure class="hs-s" data-id="52" data-cap="Cadena torzal 7 mm · 60 cm"><img src="img/prod/52_L-06_torzal-60cm/4.jpg" alt="Cadena torzal 7 mm · 60 cm, plata .925" loading="lazy"></figure></div>
     <div class="hero-in wrap">
-      <span class="chip">Nueva colección</span>
-      <h1>Plata .925 <span>que se pesa.</span></h1>
-      <p>Cada pieza trae su sello 925 y su peso en gramos.</p>
-      <a class="btn w" href="#vendidos">Comprar ahora →</a>
-      <div class="mini" aria-label="Lo más pedido">
-        <a href="#pieza-50"><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="Cadena barbada 9 mm · 70 cm"><div><b>Cadena barbada 9 mm · 70 cm</b><small>57.3 g · Plata .925</small><span class="pc">Precio por confirmar</span></div></a>
-        <a href="#pieza-48"><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="Cadena Cartier 8 mm · 70 cm"><div><b>Cadena Cartier 8 mm · 70 cm</b><small>45.3 g · Plata .925</small><span class="pc">Precio por confirmar</span></div></a>
-        <a href="#pieza-52"><img src="img/prod/52_L-06_torzal-60cm/c.jpg" alt="Cadena torzal 7 mm · 60 cm"><div><b>Cadena torzal 7 mm · 60 cm</b><small>59 g · Plata .925</small><span class="pc">Precio por confirmar</span></div></a>
-      </div>
-      <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+      <span class="chip">Sello .925 en cada pieza</span>
+      <h1>Plata .925 con sello, <span>directo de fábrica.</span></h1>
+      <div class="msi"><img src="pay/mercado_pago.svg" alt="Mercado Pago" width="64" height="24"><b>Hasta 6 MSI</b></div>
+      <p class="hl">Envío gratis desde $950 · Garantía 60 días<br>30 días para cambios · Hecha en Guadalajara</p>
+      <a class="btn w" href="#vendidos" data-col="top">Comprar ahora →</a>
+      <div class="hs-ft"><a class="hs-cap" id="hs-cap" href="#pieza-50">Cadena barbada 9 mm · 70 cm ›</a><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
     </div>
   </section>
+
+  <!-- 3. Top 10 de piezas -->
+  <section class="sec top10" id="top10"><div class="wrap">
+    <div class="ttl"><h2>Lo más pedido</h2><a href="#vendidos" data-col="top">Ver todo ›</a></div>
+    <div class="t10" id="t10"></div>
+  </div></section>
 
   <!-- 4. Mini confianza -->
   <div class="sct">
@@ -546,8 +549,22 @@ button.btn{cursor:pointer;font-family:inherit}
     </div>
   </div>
 
-  <!-- 5 y 6. Cuadritos por eslabón + chips -->
-  <section class="sec" style="padding-bottom:8px"><div class="wrap">
+  <!-- 5. Categorías primero -->
+  <section class="sec" id="cats"><div class="wrap">
+    <div class="ttl"><h2>Categorías</h2><a href="#vendidos" data-col="todo">Ver todo ›</a></div>
+    <div class="cats">
+      <a class="cat" href="#vendidos" data-col="hombre"><img src="img/prod/51_L-07_cadena-barbada-60cm/c.jpg" alt="" loading="lazy"><b>Hombre</b></a>
+      <a class="cat" href="#vendidos" data-col="mujer"><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"><b>Mujer</b></a>
+      <a class="cat" href="#vendidos" data-col="cadenas"><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"><b>Cadenas</b></a>
+      <a class="cat" href="#vendidos" data-col="esclavas"><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"><b>Esclavas</b></a>
+      <a class="cat" href="#vendidos" data-col="pulseras"><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"><b>Pulseras</b></a>
+      <a class="cat" href="#vendidos" data-col="nuevo"><img src="img/prod/45_L-25_torzal-figaro-70cm/c.jpg" alt="" loading="lazy"><b>Novedades</b></a>
+    </div>
+  </div></section>
+
+  <!-- 6. Por tipo de cadena -->
+  <section class="sec" id="tipos"><div class="wrap">
+    <div class="ttl"><h2>Por tipo de cadena</h2></div>
     <div class="cuadros">
       <a class="cuadro" href="#vendidos" data-col="cadenas/cartier"><figure><img src="img/prod/48_L-07_cadena-cartier-70cm/c.jpg" alt="" loading="lazy"></figure><b>Cartier</b></a>
       <a class="cuadro" href="#vendidos" data-col="cadenas/barbada"><figure><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"></figure><b>Barbada</b></a>
@@ -555,30 +572,6 @@ button.btn{cursor:pointer;font-family:inherit}
       <a class="cuadro" href="#vendidos" data-col="cadenas/marinera"><figure><img src="img/prod/46_L-06_cadena-marinera-70cm/c.jpg" alt="" loading="lazy"></figure><b>Marinera</b></a>
       <a class="cuadro" href="#vendidos" data-col="cadenas/planchada"><figure><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"></figure><b>Planchada</b></a>
       <a class="cuadro" href="#vendidos" data-col="cadenas/delgadas"><figure><img src="img/prod/38_L-13_cadena-delgada-25cm/c.jpg" alt="" loading="lazy"></figure><b>Delgadas</b></a>
-      <a class="cuadro" href="#vendidos" data-col="esclavas/placa"><figure><img src="img/prod/01_L-13_esclava-con-placa-1.5cm/c.jpg" alt="" loading="lazy"></figure><b>Con placa</b></a>
-      <a class="cuadro" href="#vendidos" data-col="esclavas/petatillo"><figure><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"></figure><b>Petatillo</b></a>
-      <a class="cuadro" href="#vendidos" data-col="esclavas/rolex"><figure><img src="img/prod/30_L-11_esclava-tipo-rolex-lisa-22cm/c.jpg" alt="" loading="lazy"></figure><b>Tipo Rolex</b></a>
-      <a class="cuadro" href="#vendidos" data-col="esclavas/barbada"><figure><img src="img/prod/35_L-07_esclava-barbada-20cm/c.jpg" alt="" loading="lazy"></figure><b>Esclava barbada</b></a>
-      <a class="cuadro" href="#vendidos" data-col="esclavas/cartier"><figure><img src="img/prod/36_L-07_esclava-cartier-22cm/c.jpg" alt="" loading="lazy"></figure><b>Esclava Cartier</b></a>
-      <a class="cuadro" href="#vendidos" data-col="pulseras/diseno"><figure><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"></figure><b>De diseño</b></a>
-      <a class="cuadro" href="#vendidos" data-col="pulseras/cubana"><figure><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"></figure><b>Cubana zirconias</b></a>
-      <a class="cuadro" href="#vendidos" data-col="pulseras/pulsos"><figure><img src="img/prod/31_L-12_pulso-de-petatillo-21cm/c.jpg" alt="" loading="lazy"></figure><b>Pulsos</b></a>
-    </div>
-    <div class="chips"><a href="#vendidos" data-col="nuevo">Lo nuevo</a><a href="#vendidos" data-col="hombre">Hombre</a><a href="#vendidos" data-col="mujer">Mujer</a><a href="#vendidos" data-col="esclavas/placa">Esclavas con placa</a><a href="#vendidos" data-col="cadenas/delgadas">Cadenas delgadas</a><a href="#b-regalos">Para regalo</a><a href="#mayoreo">Mayoreo</a></div>
-  </div></section>
-
-  <!-- 7. Categorías con foto -->
-  <section class="sec" id="cats" style="padding-bottom:8px"><div class="wrap">
-    <div class="ttl"><h2>Categorías</h2><a href="#vendidos" data-col="todo">Ver todo ›</a></div>
-    <div class="cats">
-      <a class="cat" href="#b-nuevo"><img src="img/prod/45_L-25_torzal-figaro-70cm/c.jpg" alt="" loading="lazy"><b>Novedades</b></a>
-      <a class="cat" href="#vendidos" data-col="hombre"><img src="img/prod/50_L-07_cadena-barbada-70cm/c.jpg" alt="" loading="lazy"><b>Hombre</b></a>
-      <a class="cat" href="#b-ella"><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/c.jpg" alt="" loading="lazy"><b>Mujer</b></a>
-      <a class="cat" href="#b-cadenas"><img src="img/prod/53_L-08_cadena-planchada-70cm/c.jpg" alt="" loading="lazy"><b>Cadenas</b></a>
-      <a class="cat" href="#b-esclavas"><img src="img/prod/27_L-12_esclava-petatillo-23cm/c.jpg" alt="" loading="lazy"><b>Esclavas</b></a>
-      <a class="cat" href="#b-pulseras"><img src="img/prod/33_L-16_pulso-de-diseno-1-19cm/c.jpg" alt="" loading="lazy"><b>Pulseras</b></a>
-      <a class="cat" href="#b-regalos"><img src="img/prod/16_sin-codigo_esclava-con-placa-sin-nombre-19cm/c.jpg" alt="" loading="lazy"><b>Regalos</b></a>
-      <a class="cat" href="#mayoreo"><img src="img/prod/51_L-07_cadena-barbada-60cm/c.jpg" alt="" loading="lazy"><b>Mayoreo</b></a>
     </div>
   </div></section>
 
@@ -596,56 +589,40 @@ button.btn{cursor:pointer;font-family:inherit}
   <section class="sec" id="resenas"><div class="wrap">
     <div class="rev-top"><small>RESEÑAS <span class="ej">de ejemplo</span></small><h2>Lo que dicen nuestros clientes</h2><div class="score">4.9 <span class="stars">★★★★★</span></div><span>Calificación de ejemplo</span></div>
     <div class="resenas">
-      <article class="res"><div class="f"><img src="img/el.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><span class="stars">★★★★★</span><p>Llegó en 3 días, en su estuche. Se siente pesada.</p><span class="who">Carlos M. · Barbada 9 mm</span><span class="ver">✓ Compra verificada</span></article>
-      <article class="res"><div class="f"><img src="img/c-pulh.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><span class="stars">★★★★★</span><p>La esclava está hermosa y trae su sello 925.</p><span class="who">Andrea R. · Esclava</span><span class="ver">✓ Compra verificada</span></article>
-      <article class="res"><div class="f"><img src="img/compas.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><span class="stars">★★★★★</span><p>Pedí dos cadenas para regalo y quedaron muy bien.</p><span class="who">Luis G. · Cartier 2 mm</span><span class="ver">✓ Compra verificada</span></article>
-      <article class="res"><div class="f"><img src="img/c-pulseras.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><span class="stars">★★★★☆</span><p>Muy bonita. Me contestaron rápido por WhatsApp.</p><span class="who">Diana P. · Pulsera</span><span class="ver">✓ Compra verificada</span></article>
+      <article class="res"><div class="f"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>Llegó en 3 días, en su estuche. Se siente pesada.</p><span class="who">Carlos M. · Barbada 9 mm</span><span class="ver">✓ Compra verificada</span></article>
+      <article class="res"><div class="f"><img src="img/prod/14_L-13_esclava-con-placa/1.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>La esclava está hermosa y trae su sello 925.</p><span class="who">Andrea R. · Esclava</span><span class="ver">✓ Compra verificada</span></article>
+      <article class="res"><div class="f"><img src="img/prod/11_L-06_cadena-cartier-60cm/1.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>Pedí dos cadenas para regalo y quedaron muy bien.</p><span class="who">Luis G. · Cartier 2 mm</span><span class="ver">✓ Compra verificada</span></article>
+      <article class="res"><div class="f"><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/1.jpg" alt="" loading="lazy"></div><span class="stars">★★★★☆</span><p>Muy bonita. Me contestaron rápido por WhatsApp.</p><span class="who">Diana P. · Pulsera</span><span class="ver">✓ Compra verificada</span></article>
     </div>
   </div></section>
 
-  <!-- 11. Comparativa -->
+  <!-- 11. ¿Por qué comprar? (misma estructura que Boxroom: tarjeta, tabla con columna de la marca) -->
   <section class="sec" id="comparativa"><div class="wrap">
     <div class="cmp-card">
-      <small class="cmp-eb">COMPARATIVA</small>
+      <svg class="cmp-sello" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg>
+      <p class="cmp-eb">Comparativa</p>
       <h2>¿Por qué comprar en Montaris?</h2>
       <p class="cmp-sub">Plata .925 de verdad, a precio de fábrica. Así nos comparamos.</p>
-      <div class="cmp-tbl">
-        <div class="cmp-hd"><span></span><span class="mm">MONTARIS</span><span>Joyerías</span><span>Tianguis</span></div>
-        <div class="cmp-r"><span>Plata .925 con sello</span><i class="mm"><b>✓</b></i><i class="ok">✓</i><i class="x">✕</i></div>
-        <div class="cmp-r"><span>Peso en gramos en cada pieza</span><i class="mm"><b>✓</b></i><i class="x">✕</i><i class="x">✕</i></div>
-        <div class="cmp-r"><span>Precio directo de fábrica</span><i class="mm"><b>✓</b></i><i class="x">✕</i><i class="ok">✓</i></div>
-        <div class="cmp-r"><span>Hasta 6 meses sin intereses</span><i class="mm"><b>✓</b></i><i class="ok">✓</i><i class="x">✕</i></div>
-        <div class="cmp-r"><span>Garantía de 60 días</span><i class="mm"><b>✓</b></i><i class="ok">✓</i><i class="x">✕</i></div>
-        <div class="cmp-r"><span>Atención por WhatsApp</span><i class="mm"><b>✓</b></i><i class="x">✕</i><i class="ok">✓</i></div>
-      </div>
-      <p class="cmp-ft"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/></svg>Garantía de plata .925 en cada compra</p>
+      <table class="cmp-t"><tbody>
+        <tr><td class="fe"></td><td class="hc hd"><img src="img/logo-mm-blanco.png" alt="" width="44" height="20"><span>MONTARIS</span></td><td class="c h">Joyerías</td><td class="c h">Tianguis</td></tr>
+        <tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Plata .925 con sello</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5.5" r="2.2"/></svg>Peso en gramos en cada pieza</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M3 21V10l6 3V9l6 3V5h6v16z"/></svg>Precio directo de fábrica</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg>Hasta 6 meses sin intereses</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/></svg>Garantía de 60 días</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>Atención por WhatsApp</span></td><td class="hc last"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td></tr>
+      </tbody></table>
+      <p class="cmp-ft"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Garantía de plata .925 en cada compra</p>
     </div>
   </div></section>
 
-  <!-- 12. Quiénes somos -->
+  <!-- 12. Quiénes somos (como Boxroom: sello + etiqueta, título, texto, recuadros encimados con flechas y puntitos) -->
   <section class="sec qs" id="qs"><div class="wrap">
-    <div class="qs-hd"><small>QUIÉNES SOMOS</small><h2>Estamos a tus órdenes</h2><p>Montaris es una joyería creada por cinco compas, dedicada a que traigas plata .925 de verdad, directo de fábrica.</p></div>
-  </div>
-    <div class="qs-sl" id="qsl">
-      <article class="qs-c"><div class="ph"><img src="img/compas.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><div class="tx"><i></i><b>100% plata .925</b><span>Cada pieza trae su sello 925 MX y su peso en gramos.</span></div></article>
-      <article class="qs-c"><div class="ph"><img src="img/macro.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><div class="tx"><i></i><b>Confía en nosotros</b><span>Directo de fábrica de Guadalajara, entrega segura.</span></div></article>
-      <article class="qs-c"><div class="ph"><img src="img/c-unicas.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><div class="tx"><i></i><b>Garantía real</b><span>60 días de garantía y 30 días para cambios.</span></div></article>
-      <article class="qs-c"><div class="ph"><img src="img/ella.webp" alt="" loading="lazy"><span class="ilus">Imagen ilustrativa</span></div><div class="tx"><i></i><b>Para regalar</b><span>Grabado con su nombre y estuche de piel.</span></div></article>
+    <div class="qs-hd">
+      <span class="qs-eb"><svg class="" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Solo plata .925</span></span>
+      <h2>¡Estamos a tus órdenes!</h2>
+      <p>Montaris es una joyería creada por cinco compas, dedicada a que traigas plata .925 de verdad, directo de fábrica.</p>
     </div>
-  </section>
-
-  <!-- 13. Mayoreo -->
-  <section class="sec" id="mayoreo"><div class="wrap">
-    <div class="may">
-      <small>MAYOREO · REVENDEDORES</small>
-      <h2>Gana revendiendo plata .925</h2>
-      <p>Entre más compras, menos pagas. Precios por escalón desde $5,000.</p>
-      <div class="tiers"><div><b>$5k</b><span>Escalón 1</span></div><div><b>$10k</b><span>Escalón 2</span></div><div><b>$15k</b><span>Escalón 3</span></div><div><b>$20k+</b><span>Súper</span></div></div>
-      <div class="may-bt"><a class="wa-btn" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Pedir lista de mayoreo</a><a class="btn-grupo" href="https://wa.me/?text=Quiero%20entrar%20al%20grupo%20de%20revendedores" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 13.8c2.1.8 3.5 3 3.5 5.7"/></svg>Unirme al grupo de revendedores</a></div>
-    </div>
+    <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="100% plata .925" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>100% plata .925</h3><p>Cada pieza trae su sello 925 MX y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Confía en nosotros" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Confía en nosotros</h3><p>Directo de fábrica de Guadalajara, entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía real" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía real</h3><p>60 días de garantía y 30 días para cambios.</p></div></div></div>
+    <div class="nv"><button type="button" class="nb pv" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dt"></div><button type="button" class="nb nx" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
   </div></section>
 
-  <!-- 14. Club -->
+  <!-- 14. Preguntas frecuentes -->
   <section class="sec" id="faq"><div class="wrap">
     <div class="ttl"><h2>Preguntas frecuentes</h2><a href="#ayuda">Más ayuda ›</a></div>
     <div class="faq">
@@ -656,15 +633,25 @@ button.btn{cursor:pointer;font-family:inherit}
     </div>
   </div></section>
 
+<!-- 13. Mayoreo (como Boxroom: franja oscura, sello, etiqueta, título, texto, un botón) -->
+  <section class="may" id="mayoreo"><div class="may-in">
+    <svg class="may-sello" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg>
+    <span class="eb">Mayoreo · Revendedores</span>
+    <h2>Gana revendiendo plata .925</h2>
+    <p>Entre más compras, menos pagas. Precios por escalón desde $5,000. Pide la lista por WhatsApp.</p>
+    <div class="tiers"><div><b>$5k</b><span>Escalón 1</span></div><div><b>$10k</b><span>Escalón 2</span></div><div><b>$15k</b><span>Escalón 3</span></div><div><b>$20k+</b><span>Súper</span></div></div>
+    <a class="cta" href="https://wa.me/?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20mayoreo%20de%20Montaris" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Enviar mensaje</a>
+  </div></section>
+
   <section class="sec club" id="club"><div class="wrap club-in">
-    <div><h2>10% en tu <span>primera pieza.</span></h2><p style="margin-top:10px">Únete al Club Montaris: piezas únicas antes que nadie y precios de temporada.</p></div>
+    <div><h2>$300 de regalo <span>en tu primera pieza.</span></h2><p style="margin-top:10px">Únete al Club Montaris y recibe $300 de regalo en tu primera pieza. Además: piezas únicas antes que nadie y precios de temporada.</p></div>
     <form class="reg" id="reg">
       <input id="r-nom" type="text" autocomplete="name" placeholder="Nombre" aria-label="Nombre" required>
       <input id="r-wa" type="tel" inputmode="tel" autocomplete="tel" placeholder="WhatsApp" aria-label="WhatsApp" required>
       <input id="r-mail" class="full" type="email" autocomplete="email" placeholder="Correo" aria-label="Correo" required>
       <select id="r-para" class="full" aria-label="Para quién buscas"><option>Busco para mí</option><option>Para regalar a él</option><option>Para regalar a ella</option><option>Mayoreo</option></select>
-      <label class="chk full"><input type="checkbox" required> Acepto el aviso de privacidad y recibir mensajes de Montaris.</label>
-      <button class="full" type="submit">Quiero mi 10%</button>
+      <label class="chk full"><input type="checkbox" required> Quiero mis $300 de regalo. Acepto el aviso de privacidad y recibir mensajes de Montaris.</label>
+      <button class="full" type="submit">Quiero mis $300</button>
       <p class="reg-ok full" id="reg-ok" role="status"></p>
     </form>
   </div></section>
@@ -676,10 +663,10 @@ button.btn{cursor:pointer;font-family:inherit}
     <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 hecha en Guadalajara. Envíos a todo México.</p>
       <a class="wa-btn" style="margin-top:16px;max-width:280px" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Ayuda por WhatsApp</a></div>
     <div><h4>Ayuda</h4><ul><li><a href="#faq">Envíos</a></li><li><a href="#faq">Cambios y devoluciones</a></li><li><a href="#faq">Garantía</a></li><li><a href="#faq">Cuidado de la plata</a></li><li><a href="#faq">Guía de tallas</a></li><li><a href="#faq">Factura</a></li></ul></div>
-    <div><h4>Tienda</h4><ul><li><a href="#b-nuevo">Novedades</a></li><li><a href="#b-cadenas">Cadenas</a></li><li><a href="#b-esclavas">Esclavas</a></li><li><a href="#b-pulseras">Pulseras</a></li><li><a href="#b-ella">Mujer</a></li><li><a href="#b-regalos">Regalos</a></li><li><a href="#mayoreo">Mayoreo</a></li></ul></div>
+    <div><h4>Tienda</h4><ul><li><a href="#vendidos" data-col="nuevo">Novedades</a></li><li><a href="#b-cadenas">Cadenas</a></li><li><a href="#b-escpul">Esclavas y pulseras</a></li><li><a href="#b-ella">Para ella</a></li><li><a href="#vendidos" data-col="regalo">Para regalo</a></li><li><a href="#mayoreo">Mayoreo</a></li></ul></div>
     <div><h4>Montaris</h4><ul><li><a href="#qs">Quiénes somos</a></li><li><a href="#club">Club Montaris</a></li><li><a href="#ayuda">Contacto</a></li></ul></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/oxxo.svg" alt="OXXO"></div>
+  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"></div>
   <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="#faq">Aviso de privacidad</a><a href="#faq">Términos y condiciones</a></nav></div>
 </div></footer>
@@ -705,38 +692,53 @@ button.btn{cursor:pointer;font-family:inherit}
   <section class="fx-rel"><h2>También te puede gustar</h2><div class="grid" id="fx-rel"></div></section>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 // Catálogo real Montaris: 55 piezas (fotos reales). precio:null = "Precio por confirmar"; solo llena el número en pesos.
 const CAT=[{"id":1,"nombre":"Esclava con placa 8 mm","tipo":"pulsera","codigo":"L-13","largo":null,"peso":"16.5 g","eslabon":"8 mm","placa":"4.5 × 1.5 cm","broche":null,"carpeta":"01_L-13_esclava-con-placa-1.5cm","fotos":[1],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":2,"nombre":"Esclava con placa ancha 18 mm","tipo":"pulsera","codigo":"L-12","largo":null,"peso":"41.5 g","eslabon":"18 mm","placa":"4.8 × 2.8 cm","broche":null,"carpeta":"02_L-12_esclava-con-placa-ancha-1.8cm","fotos":[1],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":3,"nombre":"Esclava con placa 7 mm","tipo":"pulsera","codigo":"L-14","largo":null,"peso":"11.3 g","eslabon":"7 mm","placa":"4.8 × 1.2 cm","broche":null,"carpeta":"03_L-14_esclava-con-placa-1.2cm","fotos":[1],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":4,"nombre":"Esclava con placa delgada 5 mm","tipo":"pulsera","codigo":"L-15","largo":null,"peso":"8.9 g","eslabon":"5 mm","placa":"4.8 × 1 cm","broche":null,"carpeta":"04_L-15_esclava-con-placa-delgada-1cm","fotos":[1],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":5,"nombre":"Cadena torzal 3 mm · 55 cm","tipo":"cadena","codigo":"L-06","largo":"55 cm","peso":"23.2 g","eslabon":"3 mm","placa":null,"broche":null,"carpeta":"05_L-06_torzal-55cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"torzal","genero":"mujer","grupo":"Cadena torzal 3 mm","etiquetas":["cadenas","torzal","mujer"],"precio":null},{"id":6,"nombre":"Cadena Cartier 1 mm · 45 cm","tipo":"cadena","codigo":"L-06","largo":"45 cm","peso":"2.7 g","eslabon":"1 mm","placa":null,"broche":"Bandola","carpeta":"06_L-06_cadena-cartier-45cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena Cartier 1 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":7,"nombre":"Cadena Cartier 5 mm · 65 cm","tipo":"cadena","codigo":"L-06","largo":"65 cm","peso":"17.6 g","eslabon":"5 mm","placa":null,"broche":"Cangrejo","carpeta":"07_L-06_cadena-cartier-65cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"hombre","grupo":"Cadena Cartier 5 mm","etiquetas":["cadenas","cartier","hombre"],"precio":null},{"id":8,"nombre":"Cadena Cartier 3 mm · 64 cm","tipo":"cadena","codigo":"L-07","largo":"64 cm","peso":"7.8 g","eslabon":"3 mm","placa":null,"broche":"Perico","carpeta":"08_L-07_cadena-cartier-64cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena Cartier 3 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":9,"nombre":"Cadena tipo Cartier 4 mm · 56 cm","tipo":"cadena","codigo":"L-06","largo":"56 cm","peso":"8 g","eslabon":"4 mm","placa":null,"broche":null,"carpeta":"09_L-06_cadena-tipo-cartier-56cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"hombre","grupo":"Cadena tipo Cartier 4 mm","etiquetas":["cadenas","cartier","hombre"],"precio":null},{"id":10,"nombre":"Cadena tipo Cartier 1 mm · 52 cm","tipo":"cadena","codigo":"L-06","largo":"52 cm","peso":"3.3 g","eslabon":"1 mm","placa":null,"broche":"Bandola","carpeta":"10_L-06_cadena-tipo-cartier-52cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena tipo Cartier 1 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":11,"nombre":"Cadena Cartier 2 mm · 60 cm","tipo":"cadena","codigo":"L-06","largo":"60 cm","peso":"4.9 g","eslabon":"2 mm","placa":null,"broche":null,"carpeta":"11_L-06_cadena-cartier-60cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena Cartier 2 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":12,"nombre":"Cadena Cartier 2 mm · 65 cm","tipo":"cadena","codigo":"L-06","largo":"65 cm","peso":"5.1 g","eslabon":"2 mm","placa":null,"broche":null,"carpeta":"12_L-06_cadena-cartier-65cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena Cartier 2 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":13,"nombre":"Cadena Cartier 2 mm · 40 cm","tipo":"cadena","codigo":"L-07","largo":"40 cm","peso":"2.7 g","eslabon":"2 mm","placa":null,"broche":null,"carpeta":"13_L-07_cadena-cartier-40cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"mujer","grupo":"Cadena Cartier 2 mm","etiquetas":["cadenas","cartier","mujer"],"precio":null},{"id":14,"nombre":"Esclava con placa 8 mm · 18 cm","tipo":"pulsera","codigo":"L-13","largo":"18 cm","peso":"14.7 g","eslabon":"8 mm","placa":"4.8 × 1.5 cm","broche":"Cajón","carpeta":"14_L-13_esclava-con-placa","fotos":[1,2,3],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":15,"nombre":"Esclava con placa 8 mm · 18 cm","tipo":"pulsera","codigo":null,"largo":"18 cm","peso":"14.5 g","eslabon":"8 mm","placa":"4.8 × 1.7 cm","broche":null,"carpeta":"15_sin-codigo_esclava-con-placa-sin-nombre-18cm","fotos":[3,1,2],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":16,"nombre":"Esclava con placa 5 mm · 19 cm","tipo":"pulsera","codigo":null,"largo":"19 cm","peso":"8.7 g","eslabon":"5 mm","placa":"5 × 1 cm","broche":null,"carpeta":"16_sin-codigo_esclava-con-placa-sin-nombre-19cm","fotos":[1,2,3],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":17,"nombre":"Esclava con placa 8 mm · 21 cm","tipo":"pulsera","codigo":null,"largo":"21 cm","peso":"16.5 g","eslabon":"8 mm","placa":"4.8 × 1.7 cm","broche":null,"carpeta":"17_sin-codigo_esclava-con-placa-sin-nombre-21cm","fotos":[2,1,3],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":18,"nombre":"Pulsera eslabón doble 8 mm · 15 cm","tipo":"pulsera","codigo":null,"largo":"15 cm","peso":"9.8 g","eslabon":"8 mm","placa":null,"broche":null,"carpeta":"18_sin-codigo_pulsera-sin-nombre-15cm","fotos":[1,2,3],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":19,"nombre":"Esclava con placa 8 mm · 19 cm","tipo":"pulsera","codigo":null,"largo":"19 cm","peso":"9.9 g","eslabon":"8 mm","placa":"4 × 1.2 cm","broche":null,"carpeta":"19_sin-codigo_esclava-con-placa-sin-nombre-19cm","fotos":[3,1,2],"coleccion":"esclavas","sub":"placa","genero":"hombre","grupo":null,"etiquetas":["esclavas","placa","hombre","regalo"],"precio":null},{"id":20,"nombre":"Pulsera barbada 5 mm · 20 cm","tipo":"pulsera","codigo":null,"largo":"20 cm","peso":"19 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"20_sin-codigo_pulsera-barbada-sin-nombre-20cm","fotos":[3,1,2],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":21,"nombre":"Esclava Cartier con placa 8 mm · 20 cm","tipo":"pulsera","codigo":null,"largo":"20 cm","peso":"19.8 g","eslabon":"8 mm","placa":"5 × 1 cm","broche":null,"carpeta":"21_sin-codigo_esclava-cartier-con-placa-sin-nombre-20cm","fotos":[3,1,2],"coleccion":"esclavas","sub":"cartier","genero":"hombre","grupo":null,"etiquetas":["esclavas","cartier","hombre"],"precio":null},{"id":22,"nombre":"Pulsera barbada 10 mm · 23 cm","tipo":"pulsera","codigo":null,"largo":"23 cm","peso":"49.3 g","eslabon":"10 mm","placa":null,"broche":null,"carpeta":"22_sin-codigo_pulsera-barbada-sin-nombre-23cm","fotos":[2,1,3],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":23,"nombre":"Pulsera Cartier 8 mm · 22 cm","tipo":"pulsera","codigo":null,"largo":"22 cm","peso":"10.9 g","eslabon":"8 mm","placa":null,"broche":null,"carpeta":"23_sin-codigo_pulsera-cartier-sin-nombre-22cm","fotos":[1,2,3],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":24,"nombre":"Esclava Cartier con placa 5 mm · 18 cm","tipo":"pulsera","codigo":null,"largo":"18 cm","peso":"9 g","eslabon":"5 mm","placa":"4.7 × 0.7 cm","broche":null,"carpeta":"24_sin-codigo_esclava-cartier-con-placa-sin-nombre-18cm","fotos":[1,2,3],"coleccion":"esclavas","sub":"cartier","genero":"hombre","grupo":null,"etiquetas":["esclavas","cartier","hombre"],"precio":null},{"id":25,"nombre":"Pulsera Cartier 5 mm · 21 cm","tipo":"pulsera","codigo":null,"largo":"21 cm","peso":"8.7 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"25_sin-codigo_pulsera-cartier-sin-nombre-21cm","fotos":[3,1,2],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":26,"nombre":"Pulsera barbada 5 mm · 21 cm","tipo":"pulsera","codigo":null,"largo":"21 cm","peso":"17.3 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"26_sin-codigo_pulsera-barbada-sin-nombre-21cm","fotos":[1,2,3],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":27,"nombre":"Esclava Petatillo · 23 cm","tipo":"pulsera","codigo":"L-12","largo":"23 cm","peso":"43.2 g","eslabon":"17 mm","placa":"5 × 2.7 cm","broche":null,"carpeta":"27_L-12_esclava-petatillo-23cm","fotos":[1,2,3,4],"coleccion":"esclavas","sub":"petatillo","genero":"hombre","grupo":null,"etiquetas":["esclavas","petatillo","hombre"],"precio":null},{"id":28,"nombre":"Pulsera cubana con zirconias · 23 cm","tipo":"pulsera","codigo":"L-15","largo":"23 cm","peso":"41.3 g","eslabon":"15 mm","placa":null,"broche":null,"carpeta":"28_L-15_pulsera-cubana-con-zirconias-23cm","fotos":[1,2,3,4],"coleccion":"pulseras","sub":"cubana","genero":"mujer","grupo":null,"etiquetas":["pulseras","cubana","mujer"],"precio":null},{"id":29,"nombre":"Esclava tipo Rolex con zirconias · 22 cm","tipo":"pulsera","codigo":"L-13","largo":"22 cm","peso":"14.7 g","eslabon":"7 mm","placa":"4.2 × 0.8 cm","broche":null,"carpeta":"29_L-13_esclava-tipo-rolex-con-zirconias-22cm","fotos":[1,2,3],"coleccion":"esclavas","sub":"rolex","genero":"hombre","grupo":null,"etiquetas":["esclavas","rolex","hombre"],"precio":null},{"id":30,"nombre":"Esclava tipo Rolex lisa · 22 cm","tipo":"pulsera","codigo":"L-11","largo":"22 cm","peso":"18.7 g","eslabon":"9 mm","placa":"5 × 1 cm","broche":null,"carpeta":"30_L-11_esclava-tipo-rolex-lisa-22cm","fotos":[1,2,3,4],"coleccion":"esclavas","sub":"rolex","genero":"hombre","grupo":null,"etiquetas":["esclavas","rolex","hombre"],"precio":null},{"id":31,"nombre":"Pulso de petatillo · 21 cm","tipo":"pulsera","codigo":"L-12","largo":"21 cm","peso":"40 g","eslabon":"18 mm","placa":null,"broche":null,"carpeta":"31_L-12_pulso-de-petatillo-21cm","fotos":[1,2,3,4],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":32,"nombre":"Pulso tipo Rolex · 23 cm","tipo":"pulsera","codigo":"L-12","largo":"23 cm","peso":"21.4 g","eslabon":"14 mm","placa":null,"broche":null,"carpeta":"32_L-12_pulso-tipo-rolex-23cm","fotos":[1,2,3],"coleccion":"pulseras","sub":"pulsos","genero":"hombre","grupo":null,"etiquetas":["pulseras","pulsos","hombre"],"precio":null},{"id":33,"nombre":"Pulso con grecas · 19 cm","tipo":"pulsera","codigo":"L-16","largo":"19 cm","peso":"8.8 g","eslabon":"7 mm","placa":null,"broche":null,"carpeta":"33_L-16_pulso-de-diseno-1-19cm","fotos":[1,2,3,4],"coleccion":"pulseras","sub":"diseno","genero":"hombre","grupo":null,"etiquetas":["pulseras","diseno","hombre","regalo"],"precio":null},{"id":34,"nombre":"Pulso de diseño · 19 cm","tipo":"pulsera","codigo":"L-18","largo":"19 cm","peso":"8 g","eslabon":"7 mm","placa":null,"broche":null,"carpeta":"34_L-18_pulso-de-diseno-2-19cm","fotos":[1,2,3],"coleccion":"pulseras","sub":"diseno","genero":"hombre","grupo":null,"etiquetas":["pulseras","diseno","hombre","regalo"],"precio":null},{"id":35,"nombre":"Esclava barbada · 20 cm","tipo":"pulsera","codigo":"L-07","largo":"20 cm","peso":"21.9 g","eslabon":"10 mm","placa":"5.3 × 1.1 cm","broche":null,"carpeta":"35_L-07_esclava-barbada-20cm","fotos":[1,2,3,4],"coleccion":"esclavas","sub":"barbada","genero":"hombre","grupo":null,"etiquetas":["esclavas","barbada","hombre"],"precio":null},{"id":36,"nombre":"Esclava Cartier · 22 cm","tipo":"pulsera","codigo":"L-07","largo":"22 cm","peso":"35.1 g","eslabon":"10 mm","placa":"5.3 × 1 cm","broche":null,"carpeta":"36_L-07_esclava-cartier-22cm","fotos":[1,2,3,4,5],"coleccion":"esclavas","sub":"cartier","genero":"hombre","grupo":null,"etiquetas":["esclavas","cartier","hombre"],"precio":null},{"id":37,"nombre":"Cadena delgada 1 mm · 29 cm","tipo":"cadena","codigo":"L-08","largo":"29 cm","peso":"2.8 g","eslabon":"1 mm","placa":null,"broche":null,"carpeta":"37_L-08_cadena-delgada-29cm","fotos":[2,1,3],"coleccion":"cadenas","sub":"delgadas","genero":"mujer","grupo":null,"etiquetas":["cadenas","delgadas","mujer","regalo"],"precio":null},{"id":38,"nombre":"Cadena delgada 1 mm · 25 cm","tipo":"cadena","codigo":"L-13","largo":"25 cm","peso":"2.3 g","eslabon":"1 mm","placa":null,"broche":null,"carpeta":"38_L-13_cadena-delgada-25cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"delgadas","genero":"mujer","grupo":null,"etiquetas":["cadenas","delgadas","mujer","regalo"],"precio":null},{"id":39,"nombre":"Cadena delgada 1 mm · 28 cm","tipo":"cadena","codigo":"L-07","largo":"28 cm","peso":"2.1 g","eslabon":"1 mm","placa":null,"broche":null,"carpeta":"39_L-07_cadena-delgada-28cm","fotos":[2,1,3],"coleccion":"cadenas","sub":"delgadas","genero":"mujer","grupo":null,"etiquetas":["cadenas","delgadas","mujer","regalo"],"precio":null},{"id":40,"nombre":"Cadena delgada 1 mm · 26 cm","tipo":"cadena","codigo":"L-10","largo":"26 cm","peso":"6.1 g","eslabon":"1 mm","placa":null,"broche":null,"carpeta":"40_L-10_cadena-delgada-26cm","fotos":[3,1,2],"coleccion":"cadenas","sub":"delgadas","genero":"mujer","grupo":null,"etiquetas":["cadenas","delgadas","mujer","regalo"],"precio":null},{"id":41,"nombre":"Cadena delgada 1 mm · 28 cm","tipo":"cadena","codigo":"L-07","largo":"28 cm","peso":"1.2 g","eslabon":"1 mm","placa":null,"broche":null,"carpeta":"41_L-07_cadena-delgada-28cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"delgadas","genero":"mujer","grupo":null,"etiquetas":["cadenas","delgadas","mujer","regalo"],"precio":null},{"id":42,"nombre":"Cadena barbada 4 mm · 28 cm","tipo":"cadena","codigo":"L-07","largo":"28 cm","peso":"17 g","eslabon":"4 mm","placa":null,"broche":null,"carpeta":"42_L-07_cadena-28cm","fotos":[2,1,3],"coleccion":"cadenas","sub":"barbada","genero":"hombre","grupo":"Cadena barbada 4 mm","etiquetas":["cadenas","barbada","hombre"],"precio":null},{"id":43,"nombre":"Cadena torzal fígaro 5 mm · 55 cm","tipo":"cadena","codigo":"L-25","largo":"55 cm","peso":"17.9 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"43_L-25_torzal-figaro-55cm","fotos":[2,1,3,4],"coleccion":"cadenas","sub":"torzal","genero":"hombre","grupo":"Cadena torzal fígaro 5 mm","etiquetas":["cadenas","torzal","hombre","nuevo"],"precio":null},{"id":44,"nombre":"Cadena torzal fígaro 5 mm · 60 cm","tipo":"cadena","codigo":"L-25","largo":"60 cm","peso":"19.4 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"44_L-25_torzal-figaro-60cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"torzal","genero":"hombre","grupo":"Cadena torzal fígaro 5 mm","etiquetas":["cadenas","torzal","hombre","nuevo"],"precio":null},{"id":45,"nombre":"Cadena torzal fígaro 5 mm · 70 cm","tipo":"cadena","codigo":"L-25","largo":"70 cm","peso":"23 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"45_L-25_torzal-figaro-70cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"torzal","genero":"hombre","grupo":"Cadena torzal fígaro 5 mm","etiquetas":["cadenas","torzal","hombre","nuevo"],"precio":null},{"id":46,"nombre":"Cadena marinera 5 mm · 70 cm","tipo":"cadena","codigo":"L-06","largo":"70 cm","peso":"15.6 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"46_L-06_cadena-marinera-70cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"marinera","genero":"hombre","grupo":"Cadena marinera 5 mm","etiquetas":["cadenas","marinera","hombre","nuevo"],"precio":null},{"id":47,"nombre":"Cadena marinera 5 mm · 60 cm","tipo":"cadena","codigo":"L-06","largo":"60 cm","peso":"12.4 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"47_L-06_cadena-marinera-60cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"marinera","genero":"hombre","grupo":"Cadena marinera 5 mm","etiquetas":["cadenas","marinera","hombre","nuevo"],"precio":null},{"id":48,"nombre":"Cadena Cartier 8 mm · 70 cm","tipo":"cadena","codigo":"L-07","largo":"70 cm","peso":"45.3 g","eslabon":"8 mm","placa":null,"broche":null,"carpeta":"48_L-07_cadena-cartier-70cm","fotos":[3,1,2],"coleccion":"cadenas","sub":"cartier","genero":"hombre","grupo":"Cadena Cartier 8 mm","etiquetas":["cadenas","cartier","hombre","nuevo"],"precio":null},{"id":49,"nombre":"Cadena Cartier 8 mm · 55 cm","tipo":"cadena","codigo":"L-07","largo":"55 cm","peso":"35.8 g","eslabon":"8 mm","placa":null,"broche":null,"carpeta":"49_L-07_cadena-cartier-55cm","fotos":[1,2,3],"coleccion":"cadenas","sub":"cartier","genero":"hombre","grupo":"Cadena Cartier 8 mm","etiquetas":["cadenas","cartier","hombre","nuevo"],"precio":null},{"id":50,"nombre":"Cadena barbada 9 mm · 70 cm","tipo":"cadena","codigo":"L-07","largo":"70 cm","peso":"57.3 g","eslabon":"9 mm","placa":null,"broche":null,"carpeta":"50_L-07_cadena-barbada-70cm","fotos":[2,1,3,4],"coleccion":"cadenas","sub":"barbada","genero":"hombre","grupo":"Cadena barbada 9 mm","etiquetas":["cadenas","barbada","hombre","nuevo"],"precio":null},{"id":51,"nombre":"Cadena barbada 9 mm · 60 cm","tipo":"cadena","codigo":"L-07","largo":"60 cm","peso":"49.6 g","eslabon":"9 mm","placa":null,"broche":null,"carpeta":"51_L-07_cadena-barbada-60cm","fotos":[1,2,3,4],"coleccion":"cadenas","sub":"barbada","genero":"hombre","grupo":"Cadena barbada 9 mm","etiquetas":["cadenas","barbada","hombre","nuevo"],"precio":null},{"id":52,"nombre":"Cadena torzal 7 mm · 60 cm","tipo":"cadena","codigo":"L-06","largo":"60 cm","peso":"59 g","eslabon":"7 mm","placa":null,"broche":null,"carpeta":"52_L-06_torzal-60cm","fotos":[4,1,2,3],"coleccion":"cadenas","sub":"torzal","genero":"hombre","grupo":"Cadena torzal 7 mm","etiquetas":["cadenas","torzal","hombre","nuevo"],"precio":null},{"id":53,"nombre":"Cadena planchada 5 mm · 70 cm","tipo":"cadena","codigo":"L-08","largo":"70 cm","peso":"18.3 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"53_L-08_cadena-planchada-70cm","fotos":[1,2,3,4],"coleccion":"cadenas","sub":"planchada","genero":"hombre","grupo":"Cadena planchada 5 mm","etiquetas":["cadenas","planchada","hombre","nuevo"],"precio":null},{"id":54,"nombre":"Cadena planchada 5 mm · 60 cm","tipo":"cadena","codigo":"L-08","largo":"60 cm","peso":"15.3 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"54_L-08_cadena-planchada-60cm","fotos":[1,2,3,4],"coleccion":"cadenas","sub":"planchada","genero":"hombre","grupo":"Cadena planchada 5 mm","etiquetas":["cadenas","planchada","hombre","nuevo"],"precio":null},{"id":55,"nombre":"Cadena planchada 5 mm · 50 cm","tipo":"cadena","codigo":"L-08","largo":"50 cm","peso":"13.3 g","eslabon":"5 mm","placa":null,"broche":null,"carpeta":"55_L-08_cadena-planchada-50cm","fotos":[1,2,3,4],"coleccion":"cadenas","sub":"planchada","genero":"hombre","grupo":"Cadena planchada 5 mm","etiquetas":["cadenas","planchada","hombre","nuevo"],"precio":null}];
 const byId={};CAT.forEach(p=>byId[p.id]=p);
-const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos',todo:'Todas',nuevo:'Novedades',hombre:'Hombre',mujer:'Mujer',regalo:'Regalos',cadenas:'Cadenas',esclavas:'Esclavas',pulseras:'Pulseras'};
+const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos',todo:'Todas',nuevo:'Novedades',hombre:'Hombre',mujer:'Mujer',regalo:'Para regalo',top:'Más vendidos',cubanas:'Cubanas',pulsos:'Pulsos',escpul:'Esclavas y pulseras',cadenas:'Cadenas',esclavas:'Esclavas',pulseras:'Pulseras'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
-const filtra=k=>ORD.filter(p=>k==='todo'||(k.includes('/')?p.coleccion+'/'+p.sub===k:(p.coleccion===k||p.etiquetas.includes(k))));
+const TOP=[50,51,48,49,52,44,46,54,27,36];
+const ESP={top:()=>TOP.map(i=>byId[i]),cubanas:()=>ORD.filter(p=>p.sub==='barbada'||/barbada|cubana/i.test(p.nombre)),pulsos:()=>ORD.filter(p=>p.coleccion==='pulseras'),escpul:()=>ORD.filter(p=>p.coleccion==='esclavas'||p.coleccion==='pulseras')};
+const filtra=k=>ESP[k]?ESP[k]():ORD.filter(p=>k==='todo'||(k.includes('/')?p.coleccion+'/'+p.sub===k:(p.coleccion===k||p.etiquetas.includes(k))));
 const fmt=n=>'$'+n.toLocaleString('es-MX');
 const precio=p=>p.precio?fmt(p.precio):'Precio por confirmar';
 const cov=p=>`img/prod/${p.carpeta}/c.jpg`;
 const card=p=>`<article class="p" data-id="${p.id}"><div class="ph"><img src="${cov(p)}" alt="${p.nombre}" loading="lazy" width="800" height="800">${p.etiquetas.includes('nuevo')?'<span class="badge g">Nuevo</span>':''}<button class="plus" type="button" aria-label="Agregar ${p.nombre}" data-n="${p.nombre}">+</button></div><h3><a href="#pieza-${p.id}">${p.nombre}</a></h3><span class="ley">${p.peso} · Plata .925</span><span class="pr${p.precio?'':' pc'}">${precio(p)}</span></article>`;
 // pestañas de piezas
-const TABS=[['nuevo','Novedades'],['cadenas','Cadenas'],['esclavas','Esclavas'],['pulseras','Pulseras'],['hombre','Hombre'],['mujer','Mujer'],['todo','Todas']];
+const TABS=[['top','Más vendidos'],['cubanas','Cubanas'],['pulsos','Pulsos'],['regalo','Para regalo']];
 const sel=document.getElementById('sel'),pan=document.getElementById('paneles'),masV=document.querySelector('#vendidos [data-mas]');
 pan.innerHTML='<div class="grid" role="tabpanel" id="pgrid"></div>';const pg=document.getElementById('pgrid');
-let cur='nuevo',todoV=false,busca=null;
+let cur='top',todoV=false,busca=null;
 function pinta(){const l=busca||filtra(cur);pg.innerHTML=l.length?(todoV?l:l.slice(0,8)).map(card).join(''):'<p class="vacio">No encontramos piezas con ese nombre.</p>';masV.hidden=todoV||l.length<=8;masV.textContent='Ver más ('+l.length+')'}
 function tabs(){sel.innerHTML=TABS.map(([k,t])=>`<button type="button" role="tab" data-k="${k}" aria-selected="${!busca&&k===cur}">${t}</button>`).join('')+((busca||!TABS.some(x=>x[0]===cur))?`<button type="button" role="tab" class="extra" aria-selected="true" data-k="">${busca?'Búsqueda':SUBT[cur]||cur} ✕</button>`:'')}
 function verCol(k,ir){busca=null;cur=k;todoV=false;tabs();pinta();if(ir)document.getElementById('vendidos').scrollIntoView({block:'start'})}
-sel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;verCol(b.dataset.k||'nuevo')});
+sel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;verCol(b.dataset.k||'top')});
 masV.addEventListener('click',()=>{todoV=true;pinta()});
-verCol('nuevo');
+verCol('top');
+document.getElementById('t10').innerHTML=TOP.map((id,i)=>card(byId[id]).replace('<div class="ph">','<div class="ph"><span class="rk">'+(i+1)+'</span>')).join('');
 document.addEventListener('click',e=>{const a=e.target.closest('[data-col]');if(!a)return;e.preventDefault();verCol(a.dataset.col,true)});
 // bloques por colección
-const BLQ=[['b-nuevo','Novedades','nuevo'],['b-cadenas','Cadenas','cadenas'],['b-esclavas','Esclavas','esclavas'],['b-pulseras','Pulseras','pulseras'],['b-ella','Mujer','mujer'],['b-regalos','Regalos','regalo']];
-const visto=new Set();document.getElementById('bloques').innerHTML=BLQ.map(([id,t,k])=>{const f=filtra(k),l=f.filter(p=>!visto.has(p.id)).concat(f.filter(p=>visto.has(p.id)));l.slice(0,8).forEach(p=>visto.add(p.id));return `<section class="sec" id="${id}"><div class="wrap"><a class="blk-banner" href="#vendidos" data-col="${k}"><img src="img/${id}.jpg" alt="${t}" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a><div class="grid">${l.slice(0,8).map(card).join('')}</div>${l.length>8?`<div class="more"><button class="btn o" type="button" data-mas="${k}">Ver más (${l.length})</button></div>`:''}</div></section>`}).join('');
+const BLQ=[['b-cadenas','Cadenas','cadenas','b-cadenas'],['b-escpul','Esclavas y pulseras','escpul','b-esclavas'],['b-ella','Para ella','mujer','b-ella']];
+const visto=new Set();document.getElementById('bloques').innerHTML=BLQ.map(([id,t,k,im])=>{const f=filtra(k),l=f.filter(p=>!visto.has(p.id)).concat(f.filter(p=>visto.has(p.id)));l.slice(0,8).forEach(p=>visto.add(p.id));return `<section class="sec" id="${id}"><div class="wrap"><a class="blk-banner" href="#vendidos" data-col="${k}"><img src="img/${im}.jpg" alt="${t}" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a><div class="grid">${l.slice(0,8).map(card).join('')}</div>${l.length>8?`<div class="more"><button class="btn o" type="button" data-mas="${k}">Ver más (${l.length})</button></div>`:''}</div></section>`}).join('');
 document.getElementById('bloques').addEventListener('click',e=>{const b=e.target.closest('[data-mas]');if(!b)return;b.closest('.wrap').querySelector('.grid').innerHTML=filtra(b.dataset.mas).map(card).join('');b.parentNode.remove()});
 document.querySelectorAll('[data-rota]').forEach(vp=>{const sl=vp.querySelectorAll('.sct-slot');let i=0;setInterval(()=>{if(document.hidden)return;sl[i].classList.remove('is-on');const nx=(i+1)%sl.length;sl[nx].classList.add('is-on');i=nx},3000)});
-(function(){const sl=document.getElementById('qsl'),cs=[...sl.children];function mark(){const c=sl.getBoundingClientRect().left+sl.clientWidth/2;let b=0,d=1e9;cs.forEach((x,i)=>{const r=x.getBoundingClientRect(),dd=Math.abs(r.left+r.width/2-c);if(dd<d){d=dd;b=i}});cs.forEach((x,i)=>x.classList.toggle('on',i===b));return b}
- let t;sl.addEventListener('scroll',()=>{clearTimeout(t);t=setTimeout(mark,60)},{passive:true});mark();
- setInterval(()=>{if(document.hidden)return;const r=sl.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;const b=mark(),n=(b+1)%cs.length;sl.scrollTo({left:cs[n].offsetLeft-(sl.clientWidth-cs[n].offsetWidth)/2,behavior:'smooth'})},3500)})();
+(function(){const st=document.getElementById('qst'),r=st.parentNode,cs=[...st.children],n=cs.length,dots=r.querySelector('.dt');let act=0,t=null;const sc=.58,gp=.44,fa=.35,rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ cs.forEach((c,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ir al recuadro '+(k+1));b.onclick=()=>{act=k;render();hold()};dots.appendChild(b)});
+ function size(){let h=0;cs.forEach(c=>{c.style.height='auto';h=Math.max(h,c.offsetHeight)});cs.forEach(c=>c.style.height=h+'px');st.style.height=h+'px';render()}
+ function render(){const w=cs[0].offsetWidth;cs.forEach((c,i)=>{let o=i-act;if(o>n/2)o-=n;if(o<-n/2)o+=n;const a=Math.abs(o);let x=-w/2,s=1,op=1,z=3;if(a===1){x=-w/2+o*w*gp;s=sc;op=fa;z=2}else if(a>1){s=sc*.8;op=0;z=1}c.style.transform='translateX('+x+'px) scale('+s+')';c.style.opacity=op;c.style.zIndex=z});[...dots.children].forEach((d,i)=>d.setAttribute('aria-current',i===act?'true':'false'))}
+ function go(k){act=(act+k+n)%n;render()}
+ function hold(){if(t)clearInterval(t);if(!rm&&n>1)t=setInterval(()=>{if(!document.hidden)go(1)},4000)}
+ r.querySelector('.nx').onclick=()=>{go(1);hold()};r.querySelector('.pv').onclick=()=>{go(-1);hold()};
+ let sx=null;st.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});st.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){go(d<0?1:-1);hold()}sx=null},{passive:true});
+ addEventListener('resize',size);addEventListener('load',size);size();hold()})();
+// portada: slider de banners
+(function(){const ss=[...document.querySelectorAll('#hs .hs-s')],ds=[...document.querySelectorAll('#hs-dots button')],cap=document.getElementById('hs-cap'),hero=document.querySelector('.hero');let i=0,t=null;
+ function ver(k){i=(k+ss.length)%ss.length;ss.forEach((x,j)=>x.classList.toggle('on',j===i));ds.forEach((x,j)=>x.classList.toggle('on',j===i));cap.textContent=ss[i].dataset.cap+' ›';cap.href='#pieza-'+ss[i].dataset.id}
+ function corre(){clearInterval(t);if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;t=setInterval(()=>{if(!document.hidden&&scrollY<hero.offsetHeight)ver(i+1)},5000)}
+ ds.forEach((d,j)=>d.addEventListener('click',()=>{ver(j);corre()}));
+ let sx=null;hero.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});hero.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50){ver(i+(d<0?1:-1));corre()}sx=null},{passive:true});
+ corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 // bolsa
 let n=0;const toast=document.getElementById('toast');
@@ -782,57 +784,13 @@ const hdr=document.getElementById('hdr'),waf=document.getElementById('waf');cons
 document.getElementById('buscar').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('q').value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');if(!t)return;const w=t.split(/\s+/);busca=ORD.filter(p=>{const h=(p.nombre+' '+(p.codigo||'')+' '+p.etiquetas.join(' ')+' '+(SUBT[p.coleccion+'/'+p.sub]||'')).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');return w.every(x=>h.includes(x))});todoV=true;tabs();pinta();document.getElementById('vendidos').scrollIntoView({block:'start'})});
 // menú
 const dr=document.getElementById('drawer'),ab=document.getElementById('abrir');
-function abrir(){dr.classList.add('open');dr.setAttribute('aria-hidden','false');ab.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';dr.querySelector('.m-top .ib').focus()}
+function abrir(){dr.classList.add('open');dr.setAttribute('aria-hidden','false');ab.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';dr.querySelector('.m-x').focus()}
 function cerrar(){dr.classList.remove('open');dr.setAttribute('aria-hidden','true');ab.setAttribute('aria-expanded','false');document.body.style.overflow='';ab.focus()}
-dr.querySelectorAll('.m-tabs button').forEach(b=>b.addEventListener('click',()=>{dr.querySelectorAll('.m-tabs button').forEach(x=>x.classList.toggle('on',x===b));dr.querySelectorAll('.m-pan').forEach(p=>p.hidden=p.dataset.p!==b.dataset.t)}));
+dr.querySelectorAll('.m-tabs button').forEach(b=>b.addEventListener('click',()=>{dr.querySelectorAll('.m-tabs button').forEach(x=>x.classList.toggle('on',x===b));dr.querySelectorAll('.m-pan').forEach(p=>p.hidden=p.dataset.p!==b.dataset.t);dr.querySelector('.m-right').scrollTop=0}));
 ab.addEventListener('click',abrir);dr.querySelectorAll('[data-cerrar]').forEach(x=>x.addEventListener('click',cerrar));dr.querySelectorAll('.m-right a').forEach(a=>a.addEventListener('click',cerrar));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&dr.classList.contains('open'))cerrar()});
 // club
-document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();document.getElementById('reg-ok').textContent='Listo. Te mandamos tu 10% por WhatsApp y correo.';e.target.reset()});
-// video de portada (se cambia por el video real)
-(function(){const v=document.getElementById('vid'),d=matchMedia('(min-width:900px)').matches,c=navigator.connection;
- const ps='img/poster-'+(d?'d':'m')+'.webp';document.getElementById('poster').src=ps;v.poster=ps;
- if(c&&(c.saveData||/2g/.test(c.effectiveType||'')))return;
- v.src='img/hero-'+(d?'d':'m')+'.mp4';const p=v.play();if(p&&p.catch)p.catch(()=>{});})();
-// anillo 3D encima del video: gira y al bajar se va
-(async function(){
-  const cv=document.getElementById('joya');if(!window.THREE){cv.remove();return}
-  let r;try{r=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch(e){cv.remove();return}
-  r.setPixelRatio(Math.min(devicePixelRatio,2));r.outputEncoding=THREE.sRGBEncoding;
-  const sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(30,1,.1,100);cam.position.set(0,0,8.6);
-  try{await document.fonts.load('700 220px Cinzel')}catch(e){}
-  const c2=document.createElement('canvas');c2.width=c2.height=512;const x=c2.getContext('2d');
-  x.fillStyle='#9a9a9a';x.fillRect(0,0,512,512);x.strokeStyle='#5a5a5a';x.lineWidth=10;x.beginPath();x.arc(256,256,226,0,7);x.stroke();
-  const lg=new Image();lg.src='img/logo-mm-negro.png';try{await lg.decode()}catch(e){}if(lg.naturalWidth)x.drawImage(lg,66,180,380,173);x.fillStyle='#2a2a2a';x.textAlign='center';x.textBaseline='middle';x.font='700 44px Manrope, sans-serif';x.fillText('.925',256,392);
-  const bump=new THREE.CanvasTexture(c2);
-  const mc=document.createElement('canvas');mc.width=mc.height=512;const m=mc.getContext('2d');
-  m.fillStyle='#000';m.fillRect(0,0,512,512);m.save();m.beginPath();m.arc(256,256,256,0,7);m.clip();
-  let lgr=m.createLinearGradient(0,0,0,512);[[0,'#ffffff'],[.18,'#eef0f3'],[.38,'#7d828a'],[.47,'#141518'],[.52,'#2b2e33'],[.64,'#b8bcc3'],[.82,'#f4f5f7'],[1,'#5f646b']].forEach(([o,c])=>lgr.addColorStop(o,c));
-  m.fillStyle=lgr;m.fillRect(0,0,512,512);
-  let rg=m.createRadialGradient(256,256,150,256,256,256);rg.addColorStop(0,'rgba(0,0,0,0)');rg.addColorStop(1,'rgba(0,0,0,.45)');m.fillStyle=rg;m.fillRect(0,0,512,512);
-  rg=m.createRadialGradient(170,140,0,170,140,70);rg.addColorStop(0,'rgba(255,255,255,1)');rg.addColorStop(1,'rgba(255,255,255,0)');m.fillStyle=rg;m.fillRect(0,0,512,512);
-  m.fillStyle='rgba(255,255,255,.85)';m.fillRect(330,120,14,170);rg=m.createRadialGradient(360,330,0,360,330,55);rg.addColorStop(0,'rgba(255,255,255,.95)');rg.addColorStop(1,'rgba(255,255,255,0)');m.fillStyle=rg;m.fillRect(0,0,512,512);m.restore();
-  const cap=new THREE.CanvasTexture(mc);cap.encoding=THREE.sRGBEncoding;
-  const plata=new THREE.MeshMatcapMaterial({matcap:cap}),cara=new THREE.MeshMatcapMaterial({matcap:cap,color:0xe9ebee,bumpMap:bump,bumpScale:1.4});
-  const g=new THREE.Group();
-  const banda=new THREE.Mesh(new THREE.TorusGeometry(1,.16,48,160),plata);banda.scale.set(1,1.05,1.45);g.add(banda);
-  const hombro=new THREE.Mesh(new THREE.CylinderGeometry(.62,.42,.42,64),plata);hombro.position.y=1.08;g.add(hombro);
-  const sello=new THREE.Mesh(new THREE.CylinderGeometry(.68,.68,.16,96),[plata,cara,plata]);sello.position.y=1.36;g.add(sello);
-  const bisel=new THREE.Mesh(new THREE.TorusGeometry(.68,.045,24,120),plata);bisel.rotation.x=Math.PI/2;bisel.position.y=1.44;g.add(bisel);
-  g.position.y=-.35;const piv=new THREE.Group();piv.add(g);piv.rotation.x=.62;sc.add(piv);
-  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function size(){const w=cv.clientWidth,h=cv.clientHeight;r.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()}
-  size();addEventListener('resize',size);
-  const t0=performance.now(),hero=document.querySelector('.hero');
-  function frame(now){
-    const p=Math.min(1.2,scrollY/(hero.offsetHeight*.75));
-    g.rotation.y=(still?.6:(now-t0)/1000*.22)+p*Math.PI*1.2;piv.rotation.x=.62+p*.7;
-    cv.style.setProperty('--jy',(p*120).toFixed(1)+'px');cv.style.setProperty('--jo',Math.max(0,1-p*1.15).toFixed(3));
-    if(p<1)r.render(sc,cam);
-    if(!still)requestAnimationFrame(frame)
-  }
-  requestAnimationFrame(frame);if(still)addEventListener('scroll',()=>requestAnimationFrame(frame),{passive:true});
-})();
+document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();document.getElementById('reg-ok').textContent='Listo. Te mandamos tus $300 de regalo por WhatsApp y correo.';e.target.reset()});
 </script>
 
 </body></html>
