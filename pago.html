@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Tu pedido · Montaris</title>
 <meta name="description" content="Revisa tu bolsa y deja tus datos para cerrar tu pedido de plata .925.">
 <meta name="robots" content="noindex">
@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="menu.css">
 <style>
+html,body{overflow-x:hidden}body{touch-action:pan-y}
+
 /* ===== base, barra, header y pie (copiados de index.html) ===== */
 :root{
   --bg:#ffffff; --bg-2:#f6f6f4; --bg-3:#efefec; --line:#e4e4e1;
@@ -48,7 +50,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ib .n{position:absolute;top:5px;right:3px;min-width:17px;height:17px;border-radius:9px;background:currentColor;font:800 10px/17px var(--f-txt);text-align:center}
 .ib .n i{font-style:normal;color:#fff}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
-.brand img{height:28px;width:auto;filter:invert(1)}
+.brand img{height:24px;width:auto;filter:invert(1)}
 .brand b{display:none;font:600 18px/1 var(--f-logo);letter-spacing:.28em}
 .buscar{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;background:#f1f1ef;border:1px solid #e3e3e0;color:#111}
 .buscar svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2;flex:none}
@@ -60,7 +62,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 .tabs a.on::after{transform:scaleX(1)}
 @media (hover:hover){.tabs a:hover::after{transform:scaleX(1)}}
-@media (min-width:900px){.brand b{display:block}.brand img{height:34px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
+@media (min-width:900px){.brand b{display:block}.brand img{height:29px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
 
 footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-area-inset-bottom,0px));font-size:13px}
 .ft{display:grid;grid-template-columns:1fr 1fr;gap:26px}
@@ -160,12 +162,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   <div class="wrap">
     <div class="row">
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
-      <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="62" height="28"><b>MONTARIS</b></a>
+      <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
       <button class="ib sop" type="button" id="btn-soporte" aria-label="Soporte"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg><span>Soporte</span></button>
       <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
-    <nav class="tabs" aria-label="Categorías" id="tabs"><a href="index.html">Inicio</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Para regalo</a><a href="index.html#mayoreo">Mayoreo</a><button type="button" data-soporte>Soporte</button></nav>
+    <nav class="tabs" aria-label="Categorías" id="tabs"><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
   </div>
 </header>
 <div id="menu-root"></div>

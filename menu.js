@@ -91,7 +91,7 @@
     '<div class="mn-capa mn-izq" id="mn-menu" aria-hidden="true">' +
       '<div class="mn-velo" data-mn-cerrar></div>' +
       '<div class="mn-panel" role="dialog" aria-modal="true" aria-label="Menú">' +
-        '<div class="mn-top"><a class="mn-logo" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-negro.png" alt="" width="53" height="24"><b>MONTARIS</b></a>' +
+        '<div class="mn-top"><a class="mn-logo" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-negro.png" alt="" width="44" height="20"><b>MONTARIS</b></a>' +
           '<button class="mn-x" type="button" data-mn-cerrar aria-label="Cerrar menú">' + X + '</button></div>' +
         '<div class="mn-cuerpo">' +
           '<div class="mn-tabs" role="tablist" aria-orientation="vertical" aria-label="Colecciones">' +

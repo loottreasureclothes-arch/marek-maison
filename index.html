@@ -1,10 +1,12 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Joyería de plata .925 con sello: cadenas, esclavas y pulseras con envío gratis desde $950 a todo México."><meta name="robots" content="noindex"><meta property="og:title" content="Montaris · Plata .925"><meta property="og:image" content="img/prod/50_L-07_cadena-barbada-70cm/2.jpg"><link rel="icon" href="img/favicon.png">
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="description" content="Joyería de plata .925 con sello: cadenas, esclavas y pulseras con envío gratis desde $950 a todo México."><meta name="robots" content="noindex"><meta property="og:title" content="Montaris · Plata .925"><meta property="og:image" content="img/prod/50_L-07_cadena-barbada-70cm/2.jpg"><link rel="icon" href="img/favicon.png">
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="menu.css">
 <style>
+html,body{overflow-x:hidden}body{touch-action:pan-y}
+
 /* Estructura de Boxroom (barra, header con buscador, banner, confianza, cuadritos, chips, categorías, pestañas de productos, bloques por categoría, reseñas, comparativa, quiénes somos, mayoreo, club, pie) en blanco y con portada de lujo: video + anillo 3D. */
 :root{
   --bg:#ffffff; --bg-2:#f6f6f4; --bg-3:#efefec; --line:#e4e4e1;
@@ -52,7 +54,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .ib .n i{font-style:normal;color:#fff}
 .home .hdr .ib .n i{color:#111}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
-.brand img{height:28px;width:auto}
+.brand img{height:24px;width:auto}
 .brand b{display:none;font:600 18px/1 var(--f-logo);letter-spacing:.28em}
 .buscar{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;background:#f1f1ef;border:1px solid #e3e3e0;color:#111}
 .home .hdr .buscar{background:rgba(255,255,255,.92);border-color:transparent}
@@ -63,7 +65,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{flex:none;padding-bottom:6px;border-bottom:2px solid transparent}
 .tabs a.on{border-color:currentColor}
-@media (min-width:900px){.brand b{display:block}.brand img{height:34px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
+@media (min-width:900px){.brand b{display:block}.brand img{height:29px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
 
 .wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;background:var(--wa);color:var(--wa-ink);font:800 14px var(--f-txt);border-radius:4px}
 .wa-btn svg{width:20px;height:20px;fill:var(--wa-ink);flex:none}
@@ -513,12 +515,12 @@ button.btn{cursor:pointer;font-family:inherit}
   <div class="wrap">
     <div class="row">
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
-      <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="62" height="28"><b>MONTARIS</b></a>
+      <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
       <button class="ib sop" type="button" id="btn-soporte" aria-label="Soporte"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg><span>Soporte</span></button>
       <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
-    <nav class="tabs" aria-label="Categorías" id="tabs"><a class="on" href="index.html">Inicio</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Para regalo</a><a href="#mayoreo">Mayoreo</a><button type="button" data-soporte>Soporte</button></nav>
+    <nav class="tabs" aria-label="Categorías" id="tabs"><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="#mayoreo">Mayoreo</a></nav>
   </div>
 </header>
 
