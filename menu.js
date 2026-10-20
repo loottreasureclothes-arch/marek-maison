@@ -83,6 +83,11 @@
     '<p class="mn-nota">Plata .925 con sello para revender. Te armamos tu pedido por volumen.</p>' +
     '<a class="mn-ver" href="index.html#mayoreo">Ver mayoreo</a></div>');
 
+  /* orden del dueño: Hombre · Mujer · Novedades · Cadenas · Esclavas · Pulseras · Regalos · Mayoreo */
+  (function(){ var orden=["hombre","mujer","novedades","cadenas","esclavas","pulseras","regalos","mayoreo"], par=tabs.map(function(t,i){return [t,pans[i]];});
+    par.sort(function(a,b){ return orden.indexOf(a[0].k) - orden.indexOf(b[0].k); });
+    tabs = par.map(function(x){return x[0];}); pans = par.map(function(x){return x[1];}); })();
+
   var ICO_ENVIO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg>';
   var ICO_MSI = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>';
   var ICO_GAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
@@ -95,6 +100,7 @@
           '<button class="mn-x" type="button" data-mn-cerrar aria-label="Cerrar menú">' + X + '</button></div>' +
         '<div class="mn-cuerpo">' +
           '<div class="mn-tabs" role="tablist" aria-orientation="vertical" aria-label="Colecciones">' +
+            '<a class="mn-tab mn-inicio" href="index.html">Inicio</a>' +
             tabs.map(function(t){ return '<button class="mn-tab" type="button" role="tab" id="mn-t-' + t.k + '" aria-controls="mn-p-' + t.k + '" aria-selected="false" tabindex="-1" data-mn-tab="' + t.k + '">' + esc(t.n) + '</button>'; }).join("") +
             '<div class="mn-tab-sep" aria-hidden="true"></div>' +
             '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">Soporte</button>' +

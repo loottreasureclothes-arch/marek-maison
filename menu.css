@@ -103,3 +103,5 @@ a.mn-acc-b{text-decoration:none}
 .mn-enviar{display:block;width:100%;min-height:48px;margin-top:14px;border:0;border-radius:4px;background:var(--mn-ink);color:#fff!important;font:800 14px var(--mn-txt);cursor:pointer}
 .mn-gracias{margin:12px 0 0;padding:12px;border-radius:8px;background:#fff;border-left:3px solid var(--mn-verde);font:600 14px/1.45 var(--mn-txt)}
 .mn-gracias[hidden]{display:none}
+
+a.mn-tab.mn-inicio{display:block;text-align:center;text-decoration:none}
