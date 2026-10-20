@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css">
+<link rel="stylesheet" href="menu.css?v=1792525435">
 <style>
-html,body{overflow-x:hidden}body{touch-action:pan-y}
+html,body{overflow-x:clip}body{touch-action:pan-y}
 
 /* Estructura de Boxroom (barra, header con buscador, banner, confianza, cuadritos, chips, categorías, pestañas de productos, bloques por categoría, reseñas, comparativa, quiénes somos, mayoreo, club, pie) en blanco y con portada de lujo: video + anillo 3D. */
 :root{
@@ -46,6 +46,10 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#fff;color:var(--ink);transition:background .3s var(--ease),color .3s var(--ease),box-shadow .3s}
 .home .hdr{position:fixed;left:0;right:0;top:0;background:transparent;color:#fff}
 .home .hdr.solid{background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+/* header: se esconde al bajar, aparece al subir (la barra de anuncios va adentro) */
+.hdr{transition:transform .3s ease,background-color .3s ease,color .3s ease,box-shadow .3s ease;will-change:transform}
+.hdr.oculto{transform:translateY(-100%)}
+@media (prefers-reduced-motion:reduce){.hdr{transition:none}}
 .row{display:flex;align-items:center;gap:4px;height:58px}
 @media (max-width:420px){.row .ib{width:40px}}
 .ib{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;cursor:pointer;flex:none;position:relative}
@@ -139,9 +143,9 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .btn.w{background:#fff;color:#111;border-color:#fff}
 .btn.k{background:#111;color:#fff;border-color:#111}
 .btn.o{background:none;color:#111;border-color:#111}
-.hs-ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:18px}
+.hs-ft{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:14px}
 .hs-cap{font:600 12px var(--f-txt);color:#c9cbd0;min-height:32px;display:inline-flex;align-items:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.hs-dots{display:flex;gap:4px;flex:none}
+.hs-dots{display:flex;gap:4px;flex:none;align-self:center;justify-content:center}
 .hs-dots button{width:28px;height:28px;padding:0;border:0;background:none;cursor:pointer;position:relative}
 .hs-dots button::before{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:rgba(255,255,255,.4);transition:background .3s,width .3s,margin .3s;}
 .hs-dots button.on::before{background:#fff;width:20px;margin-left:-10px;border-radius:4px}
@@ -345,9 +349,6 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 .legal nav{display:flex;flex-wrap:wrap;gap:6px 16px}
 @media (min-width:900px){.ft{grid-template-columns:2fr 1fr 1fr 1fr}}
 
-.wa-float{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;width:50px;height:50px;transition:opacity .25s,transform .25s var(--ease);border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.25)}
-.wa-float svg{width:26px;height:26px;fill:var(--wa-ink)}
-.wa-float.off{opacity:0;transform:translateY(20px);pointer-events:none;visibility:hidden}
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:50;transform:translate(-50%,16px);opacity:0;background:#111;color:#fff;padding:12px 16px;border-radius:8px;font:700 13px var(--f-txt);transition:opacity .25s,transform .25s var(--ease);pointer-events:none}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.bar ul{animation:none}*{transition:none!important}}
@@ -478,7 +479,7 @@ button.btn{cursor:pointer;font-family:inherit}
 .fx-rel h2{font:600 18px var(--f-txt);margin-bottom:14px}
 @media (min-width:900px){.fx-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;padding:24px 32px 0}.fx-gal{border-radius:4px;overflow:hidden;align-self:start;max-width:560px}.fx-ar{display:block}.fx-info{padding:12px 0}.fx-info h1{font-size:28px}.fx-rel{padding:40px 32px 64px}}
 /* === Agente A: portada === */
-.ib.sop{width:auto;padding:0 6px;display:flex;align-items:center;gap:5px;color:inherit;font:700 12px var(--f-txt);letter-spacing:.02em}
+
 .ib.sop svg{width:21px;height:21px}
 @media (max-width:420px){.ib.sop span{font-size:11px}.ib.sop{padding:0 2px}}
 .tabs button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
@@ -501,6 +502,7 @@ button.btn{cursor:pointer;font-family:inherit}
 @media (min-width:900px){.cats{margin-inline:0;padding-inline:0;gap:14px}.cats .cat{flex-basis:calc((100% - 70px)/6)}}
 .blk-banner{height:min(40vw,325px);min-height:175px}
 #bloques .blk{padding-block:12px}#bloques .blk:first-child{padding-top:40px}#bloques .blk:last-child{padding-bottom:40px}
+#bloques2 .blk{padding-block:40px}
 @media (min-width:900px){#bloques .blk{padding-block:20px}#bloques .blk:first-child{padding-top:72px}#bloques .blk:last-child{padding-bottom:72px}}
 .carr{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 10px)/2.2);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}
 .carr::-webkit-scrollbar{display:none}.carr>.p{scroll-snap-align:start}
@@ -538,11 +540,10 @@ button.btn{cursor:pointer;font-family:inherit}
     <div class="row">
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
       <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
-      <form class="buscar" role="search" id="buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
-      <button class="ib sop" type="button" id="btn-soporte" aria-label="Soporte"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg><span>Soporte</span></button>
+      <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
       <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
-    <nav class="tabs" aria-label="Categorías" id="tabs"><a class="on" href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="#mayoreo">Mayoreo</a></nav>
+    <nav class="tabs" aria-label="Categorías" id="tabs"><a class="on" href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
   </div>
 </header>
 
@@ -608,12 +609,6 @@ button.btn{cursor:pointer;font-family:inherit}
     </div>
   </div></section>
 
-  <!-- 10b. Otra línea: Esclavas con placa (piezas reales sub=placa) -->
-  <section class="sec lin" id="placa"><div class="wrap">
-    <div class="ttl"><h2>Esclavas con placa</h2><a href="coleccion.html?c=esclavas&amp;t=placa">Ver más ›</a></div>
-    <div class="carr" id="carr-placa"></div>
-    <div class="more"><a class="btn o" href="coleccion.html?c=esclavas&amp;t=placa">Ver más</a></div>
-  </div></section>
 
   <!-- 11. ¿Por qué comprar? (misma estructura que Boxroom: tarjeta, tabla con columna de la marca) -->
   <section class="sec" id="comparativa"><div class="wrap">
@@ -639,6 +634,16 @@ button.btn{cursor:pointer;font-family:inherit}
     </div>
     <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="100% plata .925" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>100% plata .925</h3><p>Cada pieza trae su sello 925 MX y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Confía en nosotros" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Confía en nosotros</h3><p>Directo de fábrica, entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía real" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía real</h3><p>60 días de garantía y 30 días para cambios.</p></div></div></div>
     <div class="nv"><button type="button" class="nb pv" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dt"></div><button type="button" class="nb nx" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
+  </div></section>
+
+  <!-- 12b. Bloque Para ella -->
+  <div id="bloques2"></div>
+
+  <!-- 10b. Otra línea: Esclavas con placa (piezas reales sub=placa) -->
+  <section class="sec lin" id="placa"><div class="wrap">
+    <div class="ttl"><h2>Esclavas con placa</h2><a href="coleccion.html?c=esclavas&amp;t=placa">Ver más ›</a></div>
+    <div class="carr" id="carr-placa"></div>
+    <div class="more"><a class="btn o" href="coleccion.html?c=esclavas&amp;t=placa">Ver más</a></div>
   </div></section>
 
   <!-- 14. Preguntas frecuentes -->
@@ -678,23 +683,23 @@ button.btn{cursor:pointer;font-family:inherit}
 <footer id="ayuda"><div class="wrap">
   <div class="ft">
     <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 con sello. Envíos a todo México.</p></div>
-    <div><h4>Ayuda</h4><ul><li><a href="#faq">Envíos</a></li><li><a href="#faq">Cambios y devoluciones</a></li><li><a href="#faq">Garantía</a></li><li><a href="#faq">Cuidado de la plata</a></li><li><a href="#faq">Guía de tallas</a></li><li><a href="#faq">Factura</a></li></ul></div>
-    <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="#mayoreo">Mayoreo</a></li></ul></div>
-    <div><h4>Montaris</h4><ul><li><a href="#qs">Quiénes somos</a></li><li><a href="#club">Club Montaris</a></li><li><a href="#ayuda">Contacto</a></li></ul></div>
+    <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
+    <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
+    <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
   </div>
   <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>
   <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
-  <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="#faq">Aviso de privacidad</a><a href="#faq">Términos y condiciones</a></nav></div>
+  <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
 </div></footer>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js" charset="utf-8"></script>
-<script src="bolsa.js" charset="utf-8"></script>
-<script src="menu.js" charset="utf-8"></script>
+<script src="catalogo.js?v=1792525435" charset="utf-8"></script>
+<script src="bolsa.js?v=1792525435" charset="utf-8"></script>
+<script src="menu.js?v=1792525435" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792525435 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -708,7 +713,7 @@ const esCad=p=>p.coleccion==='cadenas';
 const fmt=n=>'$'+n.toLocaleString('es-MX');
 const precio=p=>p.precio?fmt(p.precio):'Precio por confirmar';
 const url=p=>'producto.html?id='+p.id;
-const card=p=>`<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="${url(p)}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${p.nombre}" loading="lazy" width="800" height="800"></a>${p.etiquetas.includes('nuevo')?'<span class="badge g">Nuevo</span>':''}<button class="plus" type="button" aria-label="Agregar ${p.nombre} a la bolsa" data-id="${p.id}">+</button></div><h3><a href="${url(p)}">${p.nombre}</a></h3><span class="ley">${p.peso} · Plata .925</span><span class="pr${p.precio?'':' pc'}">${precio(p)}</span></article>`;
+const card=p=>`<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="${url(p)}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${p.nombre}" loading="lazy" width="800" height="800"></a><button class="plus" type="button" aria-label="Agregar ${p.nombre} a la bolsa" data-id="${p.id}">+</button></div><h3><a href="${url(p)}">${p.nombre}</a></h3><span class="ley">${p.peso} · Plata .925</span><span class="pr${p.precio?'':' pc'}">${precio(p)}</span></article>`;
 
 // pestañas (como Boxroom): Más vendidos · Cubanas · Pulsos · Para regalo
 const TABS=[
@@ -728,13 +733,11 @@ tabs();pinta();
 const BLQ=[
  ['b-cadenas','Cadenas','b-cadenas','coleccion.html?c=cadenas',()=>solo(esCad)],
  ['b-esclavas','Esclavas','b-esclavas','coleccion.html?c=esclavas',()=>solo(p=>p.coleccion==='esclavas')],
- ['b-pulseras','Pulseras','b-pulseras','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')],
- ['b-ella','Para ella','b-ella','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')],
- ['b-nuevo','Novedades','b-nuevo','coleccion.html?c=novedades',()=>solo(p=>p.etiquetas.includes('nuevo'))],
- ['b-cartier','Cartier','b-cartier','coleccion.html?c=cadenas&t=cartier',()=>solo(p=>p.sub==='cartier')],
- ['b-cubanas','Cubanas','b-barbada','coleccion.html?c=cadenas&t=barbada',()=>solo(p=>p.sub==='barbada')],
- ['b-torzal','Torzal','b-torzal','coleccion.html?c=cadenas&t=torzal',()=>solo(p=>p.sub==='torzal')]];
-document.getElementById('bloques').innerHTML=BLQ.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div class="wrap"><a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a><div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`).join('');
+ ['b-pulseras','Pulseras','b-pulseras','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
+const BLQ2=[
+ ['b-ella','Para ella','b-ella','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')]];
+const blq=L=>L.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div class="wrap"><a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a><div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`).join('');
+document.getElementById('bloques').innerHTML=blq(BLQ);document.getElementById('bloques2').innerHTML=blq(BLQ2);
 
 // carrusel: Esclavas con placa (solo sub=placa)
 document.getElementById('carr-placa').innerHTML=ORD.filter(p=>p.sub==='placa').map(card).join('');
@@ -761,23 +764,29 @@ document.querySelectorAll('[data-rota]').forEach(vp=>{const sl=vp.querySelectorA
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792525435 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
 let nLocal=0;
-function agrega(id){const p=byId[id];if(!p)return;if(hayB())Bolsa.agregar(p.id,p.largo||null);else{nLocal++;document.getElementById('n').textContent=nLocal}aviso(p.nombre+' va en tu bolsa')}
+function agrega(id){const p=byId[id];if(!p)return;if(hayB()){Bolsa.agregar(p.id,p.largo||null);if(typeof Bolsa.abrir==='function'){Bolsa.abrir();return}}else{nLocal++;document.getElementById('n').textContent=nLocal}aviso(p.nombre+' va en tu bolsa')}
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu bolsa':'Tu bolsa está vacía')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js)
-// (los botones data-soporte los engancha menu.js)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792525435)
+// (los botones data-soporte los engancha menu.js?v=1792525435)
 
 // header oscuro al bajar
-const hdr=document.getElementById('hdr');const onS=()=>hdr.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
-// buscador que cambia de ejemplo, como Boxroom
+(function(){const hdr=document.getElementById('hdr');let y0=scrollY,tk=false;
+ function onS(){const y=Math.max(0,scrollY),d=y-y0;hdr.classList.toggle('solid',y>40);
+  if(document.documentElement.classList.contains('mn-lock')||hdr.contains(document.activeElement)&&document.activeElement.id==='q'){hdr.classList.remove('oculto')}
+  else if(y<=hdr.offsetHeight){hdr.classList.remove('oculto')}
+  else if(Math.abs(d)>6){hdr.classList.toggle('oculto',d>0)}
+  if(Math.abs(d)>6||y<=hdr.offsetHeight)y0=y;tk=false}
+ addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});onS()})();
+// buscador con texto que va cambiando
 (function(){const q=document.getElementById('q'),w=['Cartier','Barbada','Torzal','Esclava con placa','Planchada','Petatillo','Marinera','Tipo Rolex'];let i=0;setInterval(()=>{if(document.activeElement!==q)q.placeholder=w[++i%w.length]},2200)})();
-document.getElementById('buscar').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('q').value.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');if(!t)return;const w=t.split(/\s+/);busca=ORD.filter(p=>{const h=(p.nombre+' '+(p.codigo||'')+' '+p.etiquetas.join(' ')+' '+(SUBT[p.coleccion+'/'+p.sub]||'')).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');return w.every(x=>h.includes(x))});tabs();pinta();document.getElementById('vendidos').scrollIntoView({block:'start'})});
+document.getElementById('buscar').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('q').value.trim();if(!t)return;location.href='coleccion.html?q='+encodeURIComponent(t)});
 // club
 document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();document.getElementById('reg-ok').textContent='Listo. Te mandamos tus $300 de regalo por correo.';e.target.reset()});
 </script>

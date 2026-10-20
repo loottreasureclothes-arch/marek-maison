@@ -81,6 +81,20 @@ function preguntarAPI(texto, historial){
   }
   function piezas(f, n){ return CATA.filter(f).slice(0, n); }
 
+  // cuadritos de una colección (Novedades, Regalos): por tipo si hay varios, si no por subcolección; llevan a coleccion.html?c=..&t=..
+  var NOMS = { cadenas:"Cadenas", esclavas:"Esclavas", pulseras:"Pulseras", cartier:"Cartier", barbada:"Barbada", torzal:"Torzal", marinera:"Marinera", planchada:"Planchada", delgadas:"Delgadas", placa:"Con placa", petatillo:"Petatillo", rolex:"Tipo Rolex", cubana:"Cubana", pulsos:"Pulsos", diseno:"De diseño" };
+  function porTipo(c, f){
+    var l = CATA.filter(f), cols = [];
+    l.forEach(function(p){ if (cols.indexOf(p.coleccion) < 0) cols.push(p.coleccion); });
+    var campo = cols.length > 1 ? "coleccion" : "sub", ks = [];
+    l.forEach(function(p){ if (ks.indexOf(p[campo]) < 0) ks.push(p[campo]); });
+    var orden = ["cadenas","esclavas","pulseras","cartier","barbada","torzal","marinera","planchada","delgadas","placa","petatillo","rolex","cubana","pulsos","diseno"];
+    ks.sort(function(a, b){ return orden.indexOf(a) - orden.indexOf(b); });
+    return ks.slice(0, 6).map(function(k){
+      var id = primera(function(p){ return f(p) && p[campo] === k; });
+      return cuadro(col(c, k), id, NOMS[k] || k);
+    }).join("");
+  }
   /* ---------- MENÚ ---------- */
   var tabs = [], pans = [];
   COLS.forEach(function(c){
@@ -93,12 +107,12 @@ function preguntarAPI(texto, historial){
   tabs.push({ k:"novedades", n:"Novedades" });
   pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-novedades" aria-labelledby="mn-t-novedades" hidden><h3>Novedades</h3>' +
     grande(col("novedades"), nuevos[0] ? nuevos[0].id : 45, "Ver novedades") +
-    '<div class="mn-grid">' + nuevos.map(function(p){ return cuadro("producto.html?id=" + p.id, p.id, p.nombre); }).join("") + '</div></div>');
+    '<div class="mn-grid">' + porTipo("novedades", function(p){ return (p.etiquetas||[]).indexOf("nuevo") > -1; }) + '</div></div>');
   var regalos = piezas(function(p){ return (p.etiquetas||[]).indexOf("regalo") > -1; }, 6);
   tabs.push({ k:"regalos", n:"Regalos" });
   pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-regalos" aria-labelledby="mn-t-regalos" hidden><h3>Regalos</h3>' +
     grande(col("regalos"), elegir(16, function(p){return (p.etiquetas||[]).indexOf("regalo")>-1;}), "Ver regalos") +
-    '<div class="mn-grid">' + regalos.map(function(p){ return cuadro("producto.html?id=" + p.id, p.id, p.nombre); }).join("") + '</div></div>');
+    '<div class="mn-grid">' + porTipo("regalos", function(p){ return (p.etiquetas||[]).indexOf("regalo") > -1; }) + '</div></div>');
   tabs.push({ k:"mayoreo", n:"Mayoreo" });
   pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-mayoreo" aria-labelledby="mn-t-mayoreo" hidden><h3>Mayoreo</h3>' +
     grande("index.html#mayoreo", elegir(51, function(){return true;}), "Mayoreo") +
