@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Montaris</title>
+<meta name="description" content="Joyería de plata .925 con sello. Envío gratis desde $950 a todo México.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="menu.css">
+<style>
+/* ===== base, barra, header y pie (copiados de index.html) ===== */
+:root{
+  --bg:#ffffff; --bg-2:#f6f6f4; --bg-3:#efefec; --line:#e4e4e1;
+  --ink:#111111; --ink-2:#555559; --ink-3:#86868a; --crema:#f5f2ec; --vino:#111;
+  --f-logo:"Cinzel",Georgia,serif; --f-serif:"Cinzel",Georgia,serif;
+  --f-disp:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-txt:"Manrope",system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-txt);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+h1,h2,h3{margin:0;text-wrap:balance}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px}
+@media (min-width:900px){.wrap{padding-inline:32px}}
+.ttl{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
+.ttl h2{font:600 20px/1.1 var(--f-serif);letter-spacing:.08em;text-transform:uppercase}
+.ttl a{font:600 13px var(--f-txt);color:var(--ink-3);white-space:nowrap;padding:10px 0;margin:-10px 0}
+.sec{padding-block:40px}
+@media (min-width:900px){.sec{padding-block:72px}.ttl h2{font-size:24px}.ttl{margin-bottom:28px}}
+
+.bar{background:#111;color:#fff;overflow:hidden}
+.bar ul{display:flex;gap:40px;margin:0;padding:9px 0;list-style:none;white-space:nowrap;width:max-content;font:500 11.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;animation:corre 40s linear infinite}
+.bar li::after{content:"•";margin-left:40px;color:#777}
+@keyframes corre{to{transform:translateX(-50%)}}
+.hdr{position:sticky;top:0;z-index:40;background:#fff;color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.row{display:flex;align-items:center;gap:4px;height:58px}
+@media (max-width:420px){.row .ib{width:40px}}
+.ib{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;cursor:pointer;flex:none;position:relative}
+.ib svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7}
+.ib .n{position:absolute;top:5px;right:3px;min-width:17px;height:17px;border-radius:9px;background:currentColor;font:800 10px/17px var(--f-txt);text-align:center}
+.ib .n i{font-style:normal;color:#fff}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand img{height:28px;width:auto;filter:invert(1)}
+.brand b{display:none;font:600 18px/1 var(--f-logo);letter-spacing:.28em}
+.buscar{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;background:#f1f1ef;border:1px solid #e3e3e0;color:#111}
+.buscar svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2;flex:none}
+.buscar input{flex:1;min-width:0;text-overflow:ellipsis;border:0;background:none;outline:none;font:500 16px var(--f-txt);color:#111}
+.buscar input::placeholder{color:#8a8a8a}
+.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font:700 15px var(--f-txt)}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;position:relative;padding-top:8px;padding-bottom:10px}
+.tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
+.tabs a.on::after{transform:scaleX(1)}
+@media (hover:hover){.tabs a:hover::after{transform:scaleX(1)}}
+@media (min-width:900px){.brand b{display:block}.brand img{height:34px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
+
+footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-area-inset-bottom,0px));font-size:13px}
+.ft{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.ft h4{margin:0 0 10px;font:600 11px var(--f-serif);letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.ft ul a{display:inline-block;padding-block:8px}
+.pagos{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pagos img{height:26px;width:auto;border-radius:3px;background:#fff}
+.redes{display:flex;gap:10px;margin-top:18px}
+.redes a{display:grid;place-items:center;width:42px;height:42px;border:1px solid #333;border-radius:50%}
+.redes svg{width:19px;height:19px;fill:#fff}
+.legal{border-top:1px solid #2a2a2a;margin-top:24px;padding-top:16px;font-size:11.5px;color:#888;display:grid;gap:8px}
+.legal nav{display:flex;flex-wrap:wrap;gap:6px 16px}
+.legal nav a{display:inline-block;padding:8px 0}
+@media (min-width:900px){.ft{grid-template-columns:2fr 1fr 1fr 1fr}}
+
+/* tarjetas (iguales a la portada) */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 10px}
+@media (min-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 18px}}
+.p{display:grid;gap:3px;align-content:start;min-width:0}
+.p .ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:#F2F2F2;border-radius:2px;margin-bottom:10px}
+.p .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+@media (hover:hover) and (pointer:fine){.p:hover .ph img{transform:scale(1.03)}}
+.p .ley{font:600 10.5px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;color:#86868a}
+.p h3{font:500 14px/1.3 var(--f-txt)}
+.p .pr{font:600 13px var(--f-txt);color:#555}
+
+/* club (igual a la portada) */
+.club{background:var(--crema)}
+.club-in{display:grid;gap:18px}
+.club h2{font:600 clamp(24px,6vw,40px)/1.05 var(--f-serif);letter-spacing:.06em;text-transform:uppercase}
+.club p{margin:0;font-size:15px;color:#4a443c}
+.reg{display:grid;gap:10px}
+.reg input{height:50px;padding:0 14px;border:1px solid #d6d2ca;border-radius:4px;background:#fff;color:#111;font:500 16px var(--f-txt)}
+.reg .chk{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#4a443c}
+.reg .chk input{width:20px;height:20px;margin:0;accent-color:#111}
+.reg button{height:52px;border:0;border-radius:999px;background:#111;color:#fff;font:700 13px var(--f-txt);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.reg-ok{margin:0;font:700 13px var(--f-txt);color:#111;min-height:1.3em}
+@media (min-width:900px){.club-in{grid-template-columns:1fr 1fr}.reg{grid-template-columns:1fr 1fr}.reg .full{grid-column:1/-1}}
+
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));z-index:95;transform:translate(-50%,16px);opacity:0;background:#111;color:#fff;padding:12px 16px;border-radius:4px;font:600 13px var(--f-txt);transition:opacity .25s,transform .25s var(--ease);pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){.bar ul{animation:none}*{transition:none!important}}
+
+/* ===== ficha de producto (estructura de la ficha de Boxroom) ===== */
+.migas{display:flex;flex-wrap:wrap;gap:6px;padding:14px 0 10px;font:500 12.5px var(--f-txt);color:var(--ink-3)}
+.migas a{color:var(--ink-2)}
+.migas span[aria-hidden]{color:#bbb}
+.pd{display:grid;gap:22px;padding-bottom:36px}
+@media (min-width:900px){.pd{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px;padding-bottom:64px}}
+
+/* galería: grande 4:5 + miniaturas abajo */
+.gal{min-width:0}
+.gal-m{position:relative;background:#F2F2F2;border-radius:2px;overflow:hidden}
+.gal-sl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gal-sl::-webkit-scrollbar{display:none}
+.gal-sl img{flex:0 0 100%;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;scroll-snap-align:start;background:#F2F2F2}
+.gal-ar{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid #ddd;background:rgba(255,255,255,.92);cursor:pointer;display:none;place-items:center}
+.gal-ar svg{width:18px;height:18px;stroke:#111;stroke-width:2;fill:none}
+.gal-ar.l{left:12px}.gal-ar.r{right:12px}
+.gal-ct{position:absolute;right:12px;bottom:12px;background:rgba(17,17,17,.75);color:#fff;font:600 11.5px var(--f-txt);padding:4px 9px;border-radius:999px}
+.gal-th{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.gal-th::-webkit-scrollbar{display:none}
+.gal-th button{flex:0 0 68px;height:85px;padding:0;border:1px solid transparent;border-radius:2px;background:#F2F2F2;cursor:pointer;overflow:hidden;opacity:.6;transition:opacity .2s,border-color .2s}
+.gal-th button img{width:100%;height:100%;object-fit:cover}
+.gal-th button[aria-current="true"]{border-color:#111;opacity:1}
+@media (hover:hover){.gal-th button:hover{opacity:1}}
+@media (min-width:900px){.gal{position:sticky;top:156px;align-self:start;width:min(100%,calc((100svh - 300px)*.8));min-width:340px;justify-self:end}.gal-ar{display:grid}.gal-th button{flex-basis:84px;height:105px}.gal-ct{display:none}}
+
+/* información */
+.inf{min-width:0}
+.inf .eb{font:600 11px var(--f-txt);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.inf h1{font:600 24px/1.2 var(--f-txt);margin:6px 0 4px}
+@media (min-width:900px){.inf h1{font-size:30px}}
+.inf .cod{font:500 12.5px var(--f-txt);color:var(--ink-3)}
+.precio{margin:14px 0 4px;font:700 20px var(--f-txt)}
+.msi{margin:0;font:500 13px var(--f-txt);color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.chips span{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-radius:999px;background:var(--bg-2);border:1px solid var(--line);font:600 12px var(--f-txt)}
+.chips svg{width:14px;height:14px;stroke:#111;stroke-width:2;fill:none}
+.largos{margin-top:20px}
+.largos>span{display:block;font:600 13px var(--f-txt);margin-bottom:10px}
+.largos>span b{font-weight:700}
+.largos div{display:flex;flex-wrap:wrap;gap:8px}
+.largos a{display:grid;place-items:center;min-width:76px;height:46px;padding:0 14px;border:1px solid #cfcfcc;border-radius:2px;background:#fff;font:600 14px var(--f-txt)}
+.largos a[aria-current="true"]{border:2px solid #111}
+@media (hover:hover){.largos a:hover{border-color:#111}}
+.cta{display:grid;gap:10px;margin-top:22px}
+.b-add,.b-buy{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:54px;border-radius:4px;font:700 14px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .2s,color .2s,transform .12s}
+.b-add{border:0;background:#111;color:#fff}
+.b-add svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none}
+.b-buy{border:1px solid #111;background:#fff;color:#111}
+.b-add:active,.b-buy:active{transform:scale(.99)}
+@media (hover:hover){.b-add:hover{background:#2a2a2a}.b-buy:hover{background:#111;color:#fff}}
+.envio{margin-top:14px;padding:12px 14px;border-radius:4px;background:var(--bg-2);border:1px solid var(--line);font:500 13px/1.45 var(--f-txt);color:#333}
+.envio b{color:#111}
+.conf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+.conf div{display:grid;justify-items:center;gap:6px;padding:14px 8px;border:1px solid var(--line);border-radius:4px;text-align:center;font:600 12px/1.25 var(--f-txt)}
+.conf small{display:block;font:500 11px var(--f-txt);color:var(--ink-3)}
+.conf svg{width:22px;height:22px;stroke:#111;stroke-width:1.6;fill:none}
+@media (min-width:600px){.conf{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.datos{margin:22px 0 0;border-top:1px solid var(--line)}
+.datos h2{font:700 13px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;padding:14px 0 6px}
+.datos dl{margin:0}
+.datos dl div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.datos dt{color:var(--ink-2)}
+.datos dd{margin:0;font-weight:600;text-align:right}
+.desc{margin:14px 0 0;color:var(--ink-2);font-size:14.5px}
+.acc{margin-top:18px}
+.acc details{border-bottom:1px solid var(--line)}
+.acc details:first-child{border-top:1px solid var(--line)}
+.acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:54px;font:700 14.5px var(--f-txt)}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:400 22px/1 var(--f-txt);color:var(--ink-3)}
+.acc details[open] summary::after{content:"−"}
+.acc .cu{padding:0 0 16px;color:var(--ink-2);font-size:14px}
+.acc .cu p{margin:0 0 8px}
+.acc .cu ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* barra fija de compra (celular) */
+.fija{position:fixed;left:0;right:0;bottom:0;z-index:35;display:flex;gap:10px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.97);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .3s var(--ease)}
+.fija.on{transform:none}
+.fija img{width:44px;height:44px;object-fit:cover;border-radius:2px;background:#F2F2F2;flex:none}
+.fija div{flex:1;min-width:0;font:600 12.5px/1.25 var(--f-txt)}
+.fija div b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fija div span{color:var(--ink-3);font-weight:500}
+.fija .b-add{width:auto;height:46px;padding:0 18px;font-size:12.5px;flex:none}
+@media (min-width:900px){.fija{display:none}}
+
+.nohay{padding:80px 0 100px;text-align:center}
+.nohay h1{font:600 24px var(--f-serif);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.nohay p{color:var(--ink-2);margin:0 0 22px}
+.nohay a{display:inline-flex;align-items:center;height:50px;padding:0 28px;background:#111;color:#fff;border-radius:4px;font:700 13px var(--f-txt);letter-spacing:.14em;text-transform:uppercase}
+.ib.sop{width:auto;padding:0 6px;display:flex;align-items:center;gap:5px;color:inherit;font:700 12px var(--f-txt);letter-spacing:.02em}
+.ib.sop svg{width:21px;height:21px}
+@media (max-width:420px){.ib.sop span{font-size:11px}.ib.sop{padding:0 2px}}
+.tabs button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+<div class="bar" aria-label="Avisos"><ul>
+  <li>Plata .925 con sello</li><li>Hasta 6 meses sin intereses</li><li>Envío GRATIS desde $950</li><li>30 días para cambios</li><li>Garantía 60 días</li>
+  <li aria-hidden="true">Plata .925 con sello</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío GRATIS desde $950</li><li aria-hidden="true">30 días para cambios</li><li aria-hidden="true">Garantía 60 días</li>
+</ul></div>
+  <div class="wrap">
+    <div class="row">
+      <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
+      <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="62" height="28"><b>MONTARIS</b></a>
+      <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
+      <button class="ib sop" type="button" id="btn-soporte" aria-label="Soporte"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg><span>Soporte</span></button>
+      <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
+    </div>
+    <nav class="tabs" aria-label="Categorías" id="tabs"><a href="index.html">Inicio</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Para regalo</a><a href="index.html#mayoreo">Mayoreo</a><button type="button" data-soporte>Soporte</button></nav>
+  </div>
+</header>
+<div id="menu-root"></div>
+
+<main id="main">
+  <div class="wrap" id="ficha"></div>
+</main>
+
+<section class="sec" id="rel" hidden><div class="wrap">
+  <div class="ttl"><h2>También te puede gustar</h2><a id="rel-ver" href="coleccion.html">Ver todo</a></div>
+  <div class="grid" id="rel-g"></div>
+</div></section>
+
+<section class="club sec" id="club"><div class="wrap club-in">
+  <div>
+    <h2>$300 de regalo en tu primera pieza</h2>
+    <p style="margin-top:12px">Únete al Club Montaris y recibe $300 para tu primera pieza de plata .925, más avisos de piezas nuevas antes que nadie.</p>
+  </div>
+  <form class="reg" id="reg" novalidate>
+    <input type="email" name="correo" placeholder="Tu correo" aria-label="Correo" autocomplete="email" required>
+    <input type="tel" name="tel" placeholder="Tu celular (10 dígitos)" aria-label="Celular" autocomplete="tel" inputmode="numeric">
+    <label class="chk full"><input type="checkbox" name="ok" required><span>Acepto recibir promociones de Montaris. Puedo darme de baja cuando quiera.</span></label>
+    <button class="full" type="submit">Quiero mis $300</button>
+    <p class="reg-ok full" id="reg-ok" role="status"></p>
+  </form>
+</div></section>
+
+<footer id="ayuda"><div class="wrap">
+  <div class="ft">
+    <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 con sello. Envíos a todo México.</p></div>
+    <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
+    <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
+    <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
+  </div>
+  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>
+  <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
+  <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
+</div></footer>
+
+<div class="fija" id="fija" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="catalogo.js"></script>
+<script src="bolsa.js"></script>
+<script src="menu.js"></script>
+<script>
+(function(){
+  var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
+  var SUB = {placa:'Con placa', torzal:'Torzal', cartier:'Cartier', pulsos:'Pulsos', petatillo:'Petatillo', cubana:'Cubana', rolex:'Rolex', diseno:'Diseño', barbada:'Barbada', delgadas:'Delgadas', marinera:'Marinera', planchada:'Planchada'};
+  var ICO = {
+    caja:'<svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></svg>',
+    ciclo:'<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.6-4.5M4 4v4h4"/><path d="M4 13a8 8 0 0 0 14.6 4.5M20 20v-4h-4"/></svg>',
+    tarjeta:'<svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg>',
+    escudo:'<svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>',
+    sello:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>',
+    bolsa:'<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>'
+  };
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function foto(p, n){ return 'img/prod/' + p.carpeta + '/' + n + '.jpg'; }
+  function cuadrada(p){ return 'img/prod/' + p.carpeta + '/c.jpg'; }
+  function cm(l){ return parseFloat(l) || 0; }
+
+  var id = new URLSearchParams(location.search).get('id');
+  var p = null;
+  for (var i = 0; i < CAT.length; i++) if (String(CAT[i].id) === String(id)) { p = CAT[i]; break; }
+  var ficha = document.getElementById('ficha');
+
+  if (!p) {
+    document.title = 'Pieza no encontrada · Montaris';
+    ficha.innerHTML = '<div class="nohay"><h1>No encontramos esta pieza</h1><p>Puede que el enlace esté incompleto o que la pieza ya no esté disponible.</p><a href="index.html">Ir al inicio</a></div>';
+    return;
+  }
+
+  document.title = p.nombre;
+  var md = document.querySelector('meta[name=description]');
+  if (md) md.content = p.nombre + ' de plata .925 con sello. Envío gratis desde $950, 30 días para cambios y hasta 6 meses sin intereses.';
+  var tab = document.querySelector('.tabs a[data-c="' + p.coleccion + '"]'); if (tab) tab.classList.add('on');
+
+  /* otros largos de la misma cadena */
+  var hermanos = p.grupo ? CAT.filter(function(x){ return x.grupo === p.grupo; }).sort(function(a, b){ return cm(a.largo) - cm(b.largo); }) : [];
+  var largosHtml = '';
+  if (hermanos.length > 1) {
+    largosHtml = '<div class="largos"><span>Largo: <b>' + esc(p.largo) + '</b></span><div role="group" aria-label="Elige el largo">' +
+      hermanos.map(function(h){
+        return '<a href="producto.html?id=' + h.id + '"' + (h.id === p.id ? ' aria-current="true"' : '') + '>' + esc(h.largo) + '</a>';
+      }).join('') + '</div></div>';
+  }
+
+  /* datos de la pieza */
+  var filas = [];
+  if (p.largo) filas.push(['Largo', p.largo]);
+  if (p.eslabon) filas.push([p.tipo === 'cadena' ? 'Ancho del eslabón' : 'Ancho', p.eslabon]);
+  if (p.placa) filas.push(['Placa', p.placa]);
+  if (p.peso) filas.push(['Peso', p.peso]);
+  if (p.broche) filas.push(['Broche', p.broche]);
+  filas.push(['Material', 'Plata .925 con sello']);
+  filas.push(['Código', p.codigo]);
+
+  var desc = esc(p.nombre.split(' · ')[0].replace(/\s+\d+(\.\d+)?\s?mm$/, '')) + ' de plata .925 con sello' +
+    (p.eslabon ? ', ' + (p.tipo === 'cadena' ? 'eslabón de ' : 'de ') + esc(p.eslabon) + ' de ancho' : '') +
+    (p.largo ? ' y ' + esc(p.largo) + ' de largo' : '') +
+    '. Incluye kit de limpieza.';
+
+  var fotos = (p.fotos && p.fotos.length) ? p.fotos : [1];
+  var colNom = COL[p.coleccion] || p.coleccion;
+  var subNom = SUB[p.sub] || p.sub;
+
+  ficha.innerHTML =
+    '<nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><a href="coleccion.html?c=' + esc(p.coleccion) + '">' + esc(colNom) + '</a><span aria-hidden="true">/</span><a href="coleccion.html?c=' + esc(p.coleccion) + '&t=' + esc(p.sub) + '">' + esc(subNom) + '</a></nav>' +
+    '<div class="pd">' +
+      '<div class="gal" aria-label="Fotos de la pieza">' +
+        '<div class="gal-m">' +
+          '<div class="gal-sl" id="gal-sl" tabindex="0">' + fotos.map(function(n, k){
+            return '<img src="' + foto(p, n) + '" alt="' + esc(p.nombre) + (k ? ' · foto ' + (k + 1) : '') + '" width="900" height="1125"' + (k ? ' loading="lazy"' : ' fetchpriority="high"') + '>';
+          }).join('') + '</div>' +
+          (fotos.length > 1 ? '<button class="gal-ar l" type="button" data-d="-1" aria-label="Foto anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><button class="gal-ar r" type="button" data-d="1" aria-label="Foto siguiente"><svg viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button><span class="gal-ct" id="gal-ct">1 / ' + fotos.length + '</span>' : '') +
+        '</div>' +
+        (fotos.length > 1 ? '<div class="gal-th" id="gal-th">' + fotos.map(function(n, k){
+          return '<button type="button" data-k="' + k + '" aria-label="Ver foto ' + (k + 1) + '"' + (k ? '' : ' aria-current="true"') + '><img src="' + foto(p, n) + '" alt="" loading="lazy"></button>';
+        }).join('') + '</div>' : '') +
+      '</div>' +
+      '<div class="inf">' +
+        '<small class="eb">' + esc(colNom) + ' · ' + esc(subNom) + '</small>' +
+        '<h1>' + esc(p.nombre) + '</h1>' +
+        '<div class="cod">Código ' + esc(p.codigo) + '</div>' +
+        '<p class="precio">Precio por confirmar</p>' +
+        '<p class="msi">Hasta 6 meses sin intereses con tarjeta</p>' +
+        '<div class="chips"><span>' + ICO.sello + 'Plata .925 con sello</span><span>' + ICO.bolsa + 'Kit de limpieza incluido</span></div>' +
+        largosHtml +
+        '<div class="cta" id="cta">' +
+          '<button class="b-add" type="button" id="b-add"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Agregar a la bolsa</button>' +
+          '<button class="b-buy" type="button" id="b-buy">Comprar ahora</button>' +
+        '</div>' +
+        '<div class="envio"><b>Envío GRATIS desde $950</b> · a todo México con número de rastreo</div>' +
+        '<div class="conf">' +
+          '<div>' + ICO.caja + '<span>Envío gratis<small>desde $950</small></span></div>' +
+          '<div>' + ICO.ciclo + '<span>30 días<small>para cambios</small></span></div>' +
+          '<div>' + ICO.tarjeta + '<span>Hasta 6 meses<small>sin intereses</small></span></div>' +
+          '<div>' + ICO.escudo + '<span>Garantía<small>60 días</small></span></div>' +
+        '</div>' +
+        '<section class="datos"><h2>Datos de la pieza</h2><dl>' + filas.map(function(f){ return '<div><dt>' + f[0] + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
+        '<p class="desc">' + desc + '</p>' +
+        '<div class="acc">' +
+          '<details><summary>Envío y cambios</summary><div class="cu"><p>Envío gratis a todo México en pedidos desde $950, con número de rastreo.</p><p>Tienes 30 días desde que recibes tu pieza para pedir un cambio de largo o de modelo.</p></div></details>' +
+          '<details><summary>Garantía</summary><div class="cu"><p>Tu pieza tiene garantía de 60 días. Es plata .925 y lleva su sello que lo comprueba.</p></div></details>' +
+          '<details><summary>Cuidado de la plata</summary><div class="cu"><p>Tu pieza llega con kit de limpieza para que conserve su brillo.</p><ul><li>Quítatela para bañarte, nadar o hacer ejercicio.</li><li>Evita perfume, cremas y cloro directo sobre la plata.</li><li>Guárdala seca y por separado, en su bolsita.</li><li>Si se opaca, límpiala con el paño del kit.</li></ul></div></details>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+  /* galería */
+  var sl = document.getElementById('gal-sl'), th = document.getElementById('gal-th'), ct = document.getElementById('gal-ct');
+  function actual(){ return Math.round(sl.scrollLeft / (sl.clientWidth || 1)); }
+  function ir(k){ k = Math.max(0, Math.min(fotos.length - 1, k)); sl.scrollTo({ left: k * sl.clientWidth, behavior: 'smooth' }); marcar(k); }
+  function marcar(k){
+    if (ct) ct.textContent = (k + 1) + ' / ' + fotos.length;
+    if (th) [].forEach.call(th.children, function(b, j){ b.setAttribute('aria-current', j === k ? 'true' : 'false'); if (j === k && b.scrollIntoView && th.scrollWidth > th.clientWidth) th.scrollLeft = b.offsetLeft - 8; });
+  }
+  var tm; sl.addEventListener('scroll', function(){ clearTimeout(tm); tm = setTimeout(function(){ marcar(actual()); }, 60); }, { passive: true });
+  if (th) th.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) ir(+b.dataset.k); });
+  ficha.addEventListener('click', function(e){ var a = e.target.closest('.gal-ar'); if (a) ir(actual() + (+a.dataset.d)); });
+  sl.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') { e.preventDefault(); ir(actual() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); ir(actual() - 1); } });
+
+  /* bolsa */
+  function agregar(){ Bolsa.agregar(p.id, p.largo); Bolsa.abrir(); }
+  document.getElementById('b-add').addEventListener('click', agregar);
+  document.getElementById('b-buy').addEventListener('click', function(){ Bolsa.agregar(p.id, p.largo); location.href = 'pago.html'; });
+
+  /* barra fija en celular cuando los botones salen de vista */
+  var fija = document.getElementById('fija');
+  fija.innerHTML = '<img src="' + cuadrada(p) + '" alt=""><div><b>' + esc(p.nombre) + '</b><span>Precio por confirmar</span></div><button class="b-add" type="button">Agregar</button>';
+  fija.querySelector('button').addEventListener('click', agregar);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(en){
+      var e = en[0], abajo = e.boundingClientRect.top < 0;
+      var on = !e.isIntersecting && abajo;
+      fija.classList.toggle('on', on); fija.setAttribute('aria-hidden', on ? 'false' : 'true');
+    }).observe(document.getElementById('cta'));
+  }
+
+  /* también te puede gustar: 4 de la misma colección (primero mismo tipo, sin repetir la misma cadena) */
+  var vistos = {}; if (p.grupo) vistos[p.grupo] = 1;
+  var cand = CAT.filter(function(x){ return x.coleccion === p.coleccion && x.id !== p.id; });
+  cand.sort(function(a, b){ return (b.sub === p.sub) - (a.sub === p.sub) || a.id - b.id; });
+  var rel = [];
+  cand.forEach(function(x){ if (rel.length >= 4) return; var g = x.grupo || ('#' + x.id); if (vistos[g]) return; vistos[g] = 1; rel.push(x); });
+  if (rel.length < 4) cand.forEach(function(x){ if (rel.length < 4 && rel.indexOf(x) < 0 && x.grupo !== p.grupo) rel.push(x); });
+  if (rel.length) {
+    document.getElementById('rel').hidden = false;
+    document.getElementById('rel-ver').href = 'coleccion.html?c=' + encodeURIComponent(p.coleccion);
+    document.getElementById('rel-g').innerHTML = rel.map(function(x){
+      return '<a class="p" href="producto.html?id=' + x.id + '"><div class="ph"><img src="' + cuadrada(x) + '" alt="' + esc(x.nombre) + '" loading="lazy" width="800" height="800"></div><small class="ley">' + esc(SUB[x.sub] || x.sub) + ' · Plata .925</small><h3>' + esc(x.nombre) + '</h3><span class="pr">Precio por confirmar</span></a>';
+    }).join('');
+  }
+})();
+
+/* club: no envía a ningún lado todavía */
+document.getElementById('reg').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target, ok = document.getElementById('reg-ok');
+  if (!/^\S+@\S+\.\S+$/.test(f.correo.value)) { ok.textContent = 'Escribe un correo válido.'; f.correo.focus(); return; }
+  if (!f.ok.checked) { ok.textContent = 'Marca la casilla para unirte.'; return; }
+  ok.textContent = 'Listo, ya estás en el Club. Tus $300 se aplican en tu primera pieza.';
+  f.reset();
+});
+</script>
+</body>
+</html>
