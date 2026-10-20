@@ -41,19 +41,19 @@ h1,h2,h3{margin:0;text-wrap:balance}
 /* 2. header: transparente sobre el video, blanco al bajar */
 .hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#fff;color:var(--ink);transition:background .3s var(--ease),color .3s var(--ease),box-shadow .3s}
 .home .hdr{position:fixed;left:0;right:0;top:0;background:transparent;color:#fff}
-.home .hdr.solid{background:#fff;color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.home .hdr.solid{background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
 .row{display:flex;align-items:center;gap:4px;height:58px}
 @media (max-width:420px){.row .ib{width:40px}}
 .ib{display:grid;place-items:center;width:44px;height:44px;border:0;background:none;cursor:pointer;flex:none;position:relative}
 .ib svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7}
 .ib .n{position:absolute;top:5px;right:3px;min-width:17px;height:17px;border-radius:9px;background:currentColor;font:800 10px/17px var(--f-txt);text-align:center}
 .ib .n i{font-style:normal;color:#fff}
-.home .hdr:not(.solid) .ib .n i{color:#111}
+.home .hdr .ib .n i{color:#111}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
-.brand svg{width:40px;height:40px}
+.brand img{height:36px;width:auto}
 .brand b{display:none;font:600 18px/1 var(--f-logo);letter-spacing:.28em}
 .buscar{flex:1 1 0;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:999px;background:#f1f1ef;border:1px solid #e3e3e0;color:#111}
-.home .hdr:not(.solid) .buscar{background:rgba(255,255,255,.92);border-color:transparent}
+.home .hdr .buscar{background:rgba(255,255,255,.92);border-color:transparent}
 .buscar svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2;flex:none}
 .buscar input{flex:1;min-width:0;text-overflow:ellipsis;border:0;background:none;outline:none;font:500 16px var(--f-txt);color:#111}
 .buscar input::placeholder{color:#8a8a8a}
@@ -61,7 +61,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{flex:none;padding-bottom:6px;border-bottom:2px solid transparent}
 .tabs a.on{border-color:currentColor}
-@media (min-width:900px){.brand b{display:block}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
+@media (min-width:900px){.brand b{display:block}.brand img{height:44px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
 
 .wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:50px;background:var(--wa);color:var(--wa-ink);font:800 14px var(--f-txt);border-radius:4px}
 .wa-btn svg{width:20px;height:20px;fill:var(--wa-ink);flex:none}
@@ -393,7 +393,7 @@ footer{padding-block:48px calc(96px + env(safe-area-inset-bottom,0px))}.ft ul{ga
 .tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 .tabs a.on::after{transform:scaleX(1)}
 @media (hover:hover){.tabs a:hover::after{transform:scaleX(1)}}
-.home .hdr.solid{box-shadow:0 1px 0 var(--line),0 8px 24px rgba(0,0,0,.04)}
+.home .hdr.solid{box-shadow:0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(0,0,0,.25)}
 .toast{border-radius:4px;font-weight:600}
 @media (scripting:enabled) and (prefers-reduced-motion:no-preference){.rv{opacity:0;transform:translateY(12px);transition:opacity .55s var(--ease),transform .55s var(--ease)}.rv.in{opacity:1;transform:none}}
 .panel{transition:transform .4s var(--ease)}.m-tabs button{border-radius:8px;font-weight:600}
@@ -436,7 +436,7 @@ button.btn{cursor:pointer;font-family:inherit}
   <div class="wrap">
     <div class="row">
       <button class="ib" id="abrir" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
-      <a class="brand" href="#top" aria-label="Montaris, inicio"><svg aria-hidden="true"><use href="#sello"/></svg><b>MONTARIS</b></a>
+      <a class="brand" href="#top" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="79" height="36"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cubana" aria-label="Buscar piezas"></form>
       <a class="ib" href="#ayuda" aria-label="Ayuda"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6"/><path d="M12 17h.01"/></svg></a>
       <button class="ib" type="button" id="cart" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
@@ -652,7 +652,7 @@ button.btn{cursor:pointer;font-family:inherit}
 <!-- 15. Pie con ayuda -->
 <footer id="ayuda"><div class="wrap">
   <div class="ft">
-    <div><svg aria-hidden="true" style="width:44px;height:44px"><use href="#sello"/></svg><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 hecha en Guadalajara. Envíos a todo México.</p>
+    <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 hecha en Guadalajara. Envíos a todo México.</p>
       <a class="wa-btn" style="margin-top:16px;max-width:280px" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Ayuda por WhatsApp</a></div>
     <div><h4>Ayuda</h4><ul><li><a href="#faq">Envíos</a></li><li><a href="#faq">Cambios y devoluciones</a></li><li><a href="#faq">Garantía</a></li><li><a href="#faq">Cuidado de la plata</a></li><li><a href="#faq">Guía de tallas</a></li><li><a href="#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="#b-cadenas">Cadenas</a></li><li><a href="#b-esclavas">Esclavas</a></li><li><a href="#b-pulseras">Pulseras</a></li><li><a href="#b-anillos">Anillos</a></li><li><a href="#b-aretes">Aretes</a></li><li><a href="#b-dijes">Dijes y cruces</a></li><li><a href="#precios">Regalos</a></li><li><a href="#mayoreo">Mayoreo</a></li></ul></div>
@@ -731,7 +731,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)re
 document.addEventListener('click',e=>{const b=e.target.closest('[data-mas]');if(!b)return;abrir();const t={'b-cadenas':'cadenas','b-esclavas':'pulseras','b-pulseras':'pulseras','b-anillos':'anillos','b-aretes':'aretes','b-dijes':'dijes','b-ella':'mujer','b-regalos':'regalos'}[b.dataset.mas]||'todo';dr.querySelector('.m-tabs [data-t="'+t+'"]').click()});
 document.getElementById('cart').addEventListener('click',()=>{toast.textContent=n?n+(n>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío';toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)});
 // header
-const hdr=document.getElementById('hdr'),waf=document.getElementById('waf');const onS=()=>{hdr.classList.toggle('solid',scrollY>30);waf.classList.toggle('off',scrollY<innerHeight*.7)};addEventListener('scroll',onS,{passive:true});onS();
+const hdr=document.getElementById('hdr'),waf=document.getElementById('waf');const onS=()=>{hdr.classList.toggle('solid',scrollY>40);waf.classList.toggle('off',scrollY<innerHeight*.7)};addEventListener('scroll',onS,{passive:true});onS();
 // buscador que cambia de ejemplo, como Boxroom
 (function(){const q=document.getElementById('q'),w=['Cubana','Esclavas','Cruces','Arracadas','Moissanita','Cartier','Medallas','Anillos'];let i=0;setInterval(()=>{if(document.activeElement!==q)q.placeholder=w[++i%w.length]},2200)})();
 document.getElementById('buscar').addEventListener('submit',e=>{e.preventDefault()});
@@ -762,8 +762,8 @@ document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();
   const bump=new THREE.CanvasTexture(c2);
   const mc=document.createElement('canvas');mc.width=mc.height=512;const m=mc.getContext('2d');
   m.fillStyle='#000';m.fillRect(0,0,512,512);m.save();m.beginPath();m.arc(256,256,256,0,7);m.clip();
-  let lg=m.createLinearGradient(0,0,0,512);[[0,'#ffffff'],[.18,'#eef0f3'],[.38,'#7d828a'],[.47,'#141518'],[.52,'#2b2e33'],[.64,'#b8bcc3'],[.82,'#f4f5f7'],[1,'#5f646b']].forEach(([o,c])=>lg.addColorStop(o,c));
-  m.fillStyle=lg;m.fillRect(0,0,512,512);
+  let lgr=m.createLinearGradient(0,0,0,512);[[0,'#ffffff'],[.18,'#eef0f3'],[.38,'#7d828a'],[.47,'#141518'],[.52,'#2b2e33'],[.64,'#b8bcc3'],[.82,'#f4f5f7'],[1,'#5f646b']].forEach(([o,c])=>lgr.addColorStop(o,c));
+  m.fillStyle=lgr;m.fillRect(0,0,512,512);
   let rg=m.createRadialGradient(256,256,150,256,256,256);rg.addColorStop(0,'rgba(0,0,0,0)');rg.addColorStop(1,'rgba(0,0,0,.45)');m.fillStyle=rg;m.fillRect(0,0,512,512);
   rg=m.createRadialGradient(170,140,0,170,140,70);rg.addColorStop(0,'rgba(255,255,255,1)');rg.addColorStop(1,'rgba(255,255,255,0)');m.fillStyle=rg;m.fillRect(0,0,512,512);
   m.fillStyle='rgba(255,255,255,.85)';m.fillRect(330,120,14,170);rg=m.createRadialGradient(360,330,0,360,330,55);rg.addColorStop(0,'rgba(255,255,255,.95)');rg.addColorStop(1,'rgba(255,255,255,0)');m.fillStyle=rg;m.fillRect(0,0,512,512);m.restore();
