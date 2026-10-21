@@ -110,18 +110,15 @@ html.mn-lock,html.mn-lock body{overflow:hidden!important;overscroll-behavior:non
 @media (prefers-reduced-motion:reduce){.mn-cb{transition:none}}
 
 .mn-cb-top{flex:none;display:flex;align-items:center;gap:11px;padding:12px 12px 12px 14px;padding-top:calc(12px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--mn-line);background:#fff}
-.mn-lg-mini{flex:none;width:38px;height:38px;border-radius:9px;border:1px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.18),inset 0 1px 0 #fff,inset 0 -2px 3px rgba(0,0,0,.28)}
-.mn-lg-mini::before{inset:3px;border-radius:6px}
-.mn-lg-mini i{font-size:11.5px}
-.mn-lg-mini em{font-size:5.5px;margin-top:2px}
 .mn-cb-tit{flex:1;min-width:0}
-.mn-cb-tit h2{margin:0;font:800 15px/1.2 var(--mn-txt);letter-spacing:.01em}
+.mn-cb-tit h2{margin:0;font:800 14.5px/1.2 var(--mn-txt);letter-spacing:0}
 .mn-cb-tit p{display:flex;align-items:center;gap:6px;margin:3px 0 0;font:600 12px/1 var(--mn-txt);color:var(--mn-ink3)}
 .mn-cb-tit .mn-punto{width:8px;height:8px;border:0;box-shadow:none}
 
 .mn-cb-msgs{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 14px 8px;background:#faf9f6;display:flex;flex-direction:column;gap:10px}
 .mn-cb-m{display:flex;flex-direction:column;max-width:88%;animation:mnIn .25s ease both}
-.mn-cb-bot{align-self:flex-start;align-items:flex-start}
+.mn-cb-bot{align-self:flex-start;flex-direction:row;align-items:flex-start;gap:7px;max-width:94%}
+.mn-cb-cont{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
 .mn-cb-yo{align-self:flex-end;align-items:flex-end}
 .mn-cb-burbuja{padding:10px 13px;border-radius:16px;font:500 14px/1.5 var(--mn-txt);overflow-wrap:anywhere}
 .mn-cb-bot .mn-cb-burbuja{background:#fff;color:#1d1d1f;border:1px solid #ebe8e1;border-bottom-left-radius:5px}
@@ -158,5 +155,38 @@ html.mn-lock,html.mn-lock body{overflow:hidden!important;overscroll-behavior:non
 .mn-cb-form input:focus{outline:2px solid var(--mn-ink);outline-offset:0;background:#fff;border-color:transparent}
 .mn-cb-enviar{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--mn-ink);cursor:pointer}
 .mn-cb-enviar svg{width:19px;height:19px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== Silvercito (mascota del chat): SVG inline de menu.js; el ritmo copia a Boxito (reposo largo + movimiento corto) ===== */
+.mn-sv-defs{position:absolute;width:0;height:0;overflow:hidden}
+.mn-sv{display:inline-block;flex:none;line-height:0}
+.mn-sv svg{display:block;width:100%;height:100%;overflow:visible}
+.mn-sv-sombra{fill:#000;opacity:.13}
+.mn-sv-cab{width:56px;height:56px;margin:-6px -2px -6px -4px}
+.mn-sv-tab{width:40px;height:40px;margin:0 auto 2px}
+.mn-sv-av{width:28px;height:28px;margin-top:2px}
+.mn-sv-av .mn-sv-sombra,.mn-sv-av .mn-sv-brazo{display:none}
+.mn-sv-flota,.mn-sv-sombra,.mn-sv-cuerpo,.mn-sv-ojos,.mn-sv-brazo,.mn-sv-destello{transform-box:fill-box}
+.mn-sv-flota{animation:mnSvFlota 3s ease-in-out infinite}
+.mn-sv-sombra{transform-origin:center;animation:mnSvSombra 3s ease-in-out infinite}
+.mn-sv-ojos{transform-origin:center;animation:mnSvParpadeo 4s infinite}
+.mn-sv-destello{transform-box:view-box;transform-origin:32px 36px;animation:mnSvDestello 6s ease-in-out infinite 1s}
+.mn-sv-cuerpo{transform-origin:50% 95%}
+.mn-sv-brazo{transform-box:view-box;transform-origin:11.5px 41px}
+.mn-sv-av .mn-sv-flota{animation:none}
+.mn-sv-av .mn-sv-destello{animation:none;opacity:0}
+.mn-sv-tab .mn-sv-ojos{animation-delay:1.3s}
+.mn-sv-hola .mn-sv-brazo{animation:mnSvBrazo 1.5s ease-in-out .15s 1}
+.mn-sv-hola .mn-sv-cuerpo{animation:mnSvHola 1.5s ease-in-out .15s 1}
+@keyframes mnSvFlota{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes mnSvSombra{0%,100%{transform:scaleX(1);opacity:.13}50%{transform:scaleX(.82);opacity:.08}}
+@keyframes mnSvParpadeo{0%,90%,96%,100%{transform:scaleY(1)}93%{transform:scaleY(.1)}}
+@keyframes mnSvDestello{0%{transform:rotate(25deg) translateX(-10px)}22%,100%{transform:rotate(25deg) translateX(80px)}}
+@keyframes mnSvBrazo{0%,100%{transform:rotate(0)}18%{transform:rotate(118deg)}34%{transform:rotate(92deg)}50%{transform:rotate(120deg)}66%{transform:rotate(94deg)}82%{transform:rotate(112deg)}}
+@keyframes mnSvHola{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg)}45%{transform:rotate(5deg)}70%{transform:rotate(-2deg)}}
+.mn-tab.mn-sop{display:flex;flex-direction:column;align-items:center;padding-top:6px}
+@media (prefers-reduced-motion:reduce){
+  .mn-sv-flota,.mn-sv-sombra,.mn-sv-ojos,.mn-sv-destello,.mn-sv-hola .mn-sv-brazo,.mn-sv-hola .mn-sv-cuerpo{animation:none!important}
+  .mn-sv-destello{opacity:0}
+}
 
 a.mn-tab.mn-inicio{display:block;text-align:center;text-decoration:none}

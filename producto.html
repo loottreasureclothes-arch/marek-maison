@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792576507">
+<link rel="stylesheet" href="menu.css?v=1792577877">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -79,18 +79,16 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 @media (prefers-reduced-motion:reduce){.bar ul{animation:none}*{transition:none!important}}
 
 /* ===== ficha (orden y medidas de la ficha de Boxroom) ===== */
-.pd{display:grid;gap:22px;padding:16px 0 28px}
-@media (min-width:1000px){.pd{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;padding:32px 0 56px}}
+.pd{display:grid;gap:18px;padding:14px 0 24px}
+@media (min-width:1000px){.pd{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;padding:28px 0 48px}}
 
-/* galería: foto grande que se desliza + lupa + miniaturas abajo */
+/* galería: foto grande que se desliza (llena su cuadro 4:5) + miniaturas abajo */
 .gal{min-width:0}
 @media (min-width:1000px){.gal{position:sticky;top:150px;align-self:start}}
-.gal-m{position:relative;overflow:hidden;background:#f3f3f1}
-.gal-sl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gal-m{position:relative;overflow:hidden;background:#f3f3f1;aspect-ratio:4/5}
+.gal-sl{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .gal-sl::-webkit-scrollbar{display:none}
-.gal-sl img{flex:0 0 100%;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;scroll-snap-align:start;background:#f3f3f1}
-.gal-zm{position:absolute;right:10px;bottom:10px;width:36px;height:36px;border:0;border-radius:50%;background:none;cursor:zoom-in;display:grid;place-items:center;color:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
-.gal-zm svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;fill:none}
+.gal-sl img{display:block;flex:0 0 100%;width:100%;height:100%;object-fit:cover;object-position:50% 50%;scroll-snap-align:start;background:#f3f3f1}
 .gal-th{display:flex;gap:0;margin-top:8px;overflow-x:auto;scrollbar-width:none}
 .gal-th::-webkit-scrollbar{display:none}
 .gal-th button{flex:0 0 60px;height:80px;padding:2px;border:1px solid transparent;background:#fff;cursor:pointer;opacity:1}
@@ -108,12 +106,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .rate{display:inline-flex;align-items:center;gap:8px;margin-top:4px;font:400 14px var(--f-txt);color:#282828}
 .rate .st{color:#f6a429;letter-spacing:2px;font-size:14px}
 .rate a{text-decoration:underline;text-underline-offset:3px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid #e8e8e8}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #e8e8e8}
 .pills span{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 9px;border-radius:7px;background:#e7f6ec;color:#00733a;font:700 13px var(--f-txt)}
 .pills svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
 .pills small{font:600 11.5px var(--f-txt)}
 /* largo + cantidad en una fila */
-.opc{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-top:16px}
+.opc{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-top:14px}
 .opc .lb{display:block;font:400 13px/22px var(--f-txt);color:#282828;margin-bottom:6px}
 .opc .lb b{font-weight:400;margin-left:6px}
 .sw{display:flex;flex-wrap:wrap;margin:-4px}
@@ -124,37 +122,37 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .qty button{width:34px;height:36px;border:0;background:none;cursor:pointer;font:400 18px/1 var(--f-txt);color:#111;display:grid;place-items:center}
 .qty input{width:56px;height:38px;border:0;background:none;text-align:center;font:600 14px var(--f-txt);color:#111;-moz-appearance:textfield}
 .qty input::-webkit-inner-spin-button,.qty input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-.urg{display:flex;align-items:center;gap:6px;margin-top:14px;font:600 11px/19px var(--f-txt);color:#141414}
+.urg{display:flex;align-items:center;gap:6px;margin-top:12px;font:600 11px/19px var(--f-txt);color:#141414}
 .urg::before{content:"";width:6px;height:6px;border-radius:50%;background:#1fa84f;flex:none}
 /* botones */
-.cta{display:grid;gap:10px;margin:14px 0 6px}
+.cta{display:grid;gap:9px;margin:12px 0 5px}
 .b-add{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:62px;padding:7px 22px;border:0;border-radius:0;background:#282828;color:#fff;font:600 13.5px var(--f-txt);letter-spacing:.02em;text-transform:uppercase;cursor:pointer;transition:background .2s}
 .b-add svg{width:19px;height:18px;flex:none}
 .b-buy{display:flex;align-items:center;justify-content:center;width:100%;height:48px;border:2px solid #32d74b;border-radius:9px;background:#eefbf0;color:#0b2e13;font:600 13.5px var(--f-txt);text-transform:uppercase;cursor:pointer;transition:background .2s}
 .b-add:active,.b-buy:active{transform:scale(.99)}
 @media (hover:hover){.b-add:hover{background:#111}.b-buy:hover{background:#ddf6e1}}
 /* avisos */
-.ship{margin:8px 0 6px;padding:10px 13px;border:1px solid #d3ebda;border-radius:8px;background:#eef7f0;font:400 13px/1.35 var(--f-txt);color:#1a1a1a}
+.ship{margin:7px 0 5px;padding:9px 13px;border:1px solid #d3ebda;border-radius:8px;background:#eef7f0;font:400 13px/1.35 var(--f-txt);color:#1a1a1a}
 .ship b{font-weight:700}
-.dev{margin:8px 0 6px;padding:11px 13px;border:1px solid #e0e0e0;border-radius:8px;background:#f7f7f7;font:400 13px/1.4 var(--f-txt);color:#1a1a1a}
+.dev{margin:7px 0 5px;padding:10px 13px;border:1px solid #e0e0e0;border-radius:8px;background:#f7f7f7;font:400 13px/1.4 var(--f-txt);color:#1a1a1a}
 .dev-t{display:flex;align-items:center;gap:7px;margin:0 0 6px;font:700 14px/1.4 var(--f-txt);color:#111}
 .dev-t svg{width:18px;height:18px;stroke:#111;stroke-width:2;fill:none;flex:none}
 .dev ul{list-style:none;margin:0;padding:0;display:grid;gap:5px}
 .dev b{color:#111}
 .dev-l{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:4px}
 .dev-l a,.dev-l button{display:flex;align-items:center;height:44px;padding:0;border:0;background:none;font:600 13px var(--f-txt);color:#111;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 6px}
+.strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 5px}
 .strip div{display:grid;justify-items:center;gap:6px;padding:10px 4px 9px;border-radius:8px;background:#f7f7f7;text-align:center;font:600 9.5px/1.15 var(--f-txt);color:#414141}
 .strip svg{width:18px;height:18px;stroke:#141414;stroke-width:1.7;fill:none}
 .msi{display:inline-flex;align-items:center;gap:9px;margin:7px 0;padding:7px 11px;border:1px solid #d5eefb;border-radius:9px;background:#f0faff;font:400 12px/1.3 var(--f-txt);color:#141414}
 .msi svg{width:30px;height:22px;flex:none;stroke:#141414;stroke-width:1.5;fill:none}
 .msi b{font-weight:700}
 .msi small{display:block;font-size:10.5px;color:#8a8a8a}
-.metodos{margin-top:10px;padding-top:9px;border-top:1px solid #eee}
+.metodos{margin-top:9px;padding-top:8px;border-top:1px solid #eee}
 .metodos p{margin:0 0 6px;font:500 11px var(--f-txt);color:#8a8a8a}
 .metodos div{display:flex;gap:10px;align-items:center}
 .metodos img{width:32px;height:20px;object-fit:contain;border:1px solid #e6e6e6;border-radius:3px;background:#fff}
-.desc{margin:18px 0 0;font:400 13px/1.45 var(--f-txt);color:#2f2f2f}
+.desc{margin:15px 0 0;font:400 13px/1.45 var(--f-txt);color:#2f2f2f}
 .mas summary{display:inline-flex;align-items:center;gap:4px;margin-top:6px;cursor:pointer;list-style:none;font:600 12.5px var(--f-txt);color:#3483fa}
 .mas summary::-webkit-details-marker{display:none}
 .mas summary svg{width:12px;height:12px;stroke:currentColor;stroke-width:2.4;fill:none;transition:transform .2s}
@@ -163,7 +161,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .mas ul{margin:0;padding-left:18px;display:grid;gap:0;font:400 12.5px/19px var(--f-txt);color:#555}
 .mas p{margin:8px 0 0;font:400 12.5px/1.5 var(--f-txt);color:#555}
 /* acordeones de la pieza */
-.acc{margin-top:16px}
+.acc{margin-top:14px}
 .acc details{border-bottom:1px solid #e8e8e8}
 .acc details:first-child{border-top:1px solid #e8e8e8}
 .acc summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:48px;font:700 13px var(--f-txt);color:#111}
@@ -173,12 +171,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .acc .cu{padding:0 0 14px;font:400 13px/1.5 var(--f-txt);color:#4a4a4a}
 .acc .cu p{margin:0 0 6px}
 .acc .cu ul{margin:0;padding-left:18px;display:grid;gap:3px}
-.dudas{display:flex;align-items:center;gap:6px;margin-top:16px;padding:9px 13px;border:1px dashed #d4d4d4;border-radius:10px;font:400 11.5px var(--f-txt);color:#6f6f6f}
+.dudas{display:flex;align-items:center;gap:6px;margin-top:14px;padding:9px 13px;border:1px dashed #d4d4d4;border-radius:10px;font:400 11.5px var(--f-txt);color:#6f6f6f}
 .dudas svg{width:16px;height:16px;stroke:#25a55d;stroke-width:2;fill:none;flex:none}
 .dudas button{border:0;background:none;padding:6px 0;font:600 11.5px var(--f-txt);color:#141414;cursor:pointer}
 
 /* reseñas (igual a "Reseñas reales" de Boxroom) */
-.rv{padding:16px 0 20px;background:#fff}
+.rv{padding:14px 0 17px;background:#fff}
 .rv .h{text-align:center;margin:0 auto 10px;padding:0 14px}
 .rv .k{margin:0 0 3px;font:800 11px var(--f-txt);letter-spacing:2px;text-transform:uppercase;color:#2e9e7b}
 .rv .t{margin:0;font:600 22px/1.15 var(--f-serif);letter-spacing:.04em;color:#111}
@@ -202,7 +200,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 @media (min-width:700px){.rv .c{flex-basis:230px}.rv .t{font-size:24px}.rv .g{justify-content:center}}
 
 /* también te puede gustar */
-.rel{padding-top:48px}
+.rel{padding-top:41px}
 .rel h2{margin:0 0 22px;text-align:center;font:600 20px/1.1 var(--f-serif);letter-spacing:.08em;text-transform:uppercase;color:#111}
 .rel-g{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;margin-inline:-16px;padding:0 16px 4px;scroll-padding-inline:16px}
 .rel-g::-webkit-scrollbar{display:none}
@@ -221,7 +219,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .p .pr{font:600 13px var(--f-txt);color:#555}
 
 /* preguntas frecuentes (compactas, dos columnas, como Boxroom) */
-.bfq{padding-top:48px}
+.bfq{padding-top:41px}
 .bfq-l{margin:0 0 12px;font:600 9.5px var(--f-txt);letter-spacing:.12em;text-transform:uppercase;color:#aaa}
 .bfq-g{display:grid;grid-template-columns:1fr 1fr;column-gap:32px}
 @media (max-width:420px){.bfq-g{column-gap:18px}}
@@ -237,7 +235,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .bfq p{margin:0;padding:0 14px 10px 0;font:400 11px/1.45 var(--f-txt);color:#666}
 
 /* club $300 (tarjeta del registro de Boxroom) */
-.club{padding-top:20px;padding-bottom:32px}
+.club{padding-top:17px;padding-bottom:28px}
 .club-c{max-width:560px;margin:0 auto;padding:28px 26px 22px;border:1px solid #ececec;border-radius:16px;background:#fff;text-align:center}
 .club-k{margin:0 0 12px;font:500 11px var(--f-txt);letter-spacing:.2em;text-transform:uppercase;color:#8a8a8a}
 .club h2{font:600 clamp(22px,6vw,32px)/1.1 var(--f-serif);letter-spacing:.05em;text-transform:uppercase;color:#111}
@@ -252,7 +250,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .reg-s{margin:-6px 0 0;text-align:center;font:400 11px var(--f-txt);color:#aaa}
 
 /* estamos a tus órdenes (igual a la portada) */
-.qs{background:#f6f6f4;overflow:hidden;padding-block:24px 28px}
+.qs{background:#f6f6f4;overflow:hidden;padding-block:21px 24px}
 .qs-hd{text-align:center;display:grid;gap:6px;justify-items:center}
 .qs-eb{display:inline-flex;align-items:center;gap:10px}
 .qs-eb>svg{width:32px;height:32px}
@@ -283,13 +281,6 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .fija .b-add{min-height:56px}
 @media (min-width:1000px){.fija{display:none}}
 
-/* visor de fotos (lupa) */
-.zm{position:fixed;inset:0;z-index:996;background:#fff;overflow-y:auto;overscroll-behavior:contain;display:none}
-.zm.on{display:block}
-.zm img{width:100%;max-width:900px;margin:0 auto 8px;aspect-ratio:3/4;object-fit:contain;background:#f3f3f1}
-.zm-x{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;display:grid;place-items:center}
-.zm-x svg{width:18px;height:18px;stroke:#111;stroke-width:2;fill:none}
-html.zm-lock{overflow:hidden}
 
 .nohay{padding:80px 0 100px;text-align:center}
 .nohay h1{font:600 24px var(--f-serif);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
@@ -452,11 +443,10 @@ html.zm-lock{overflow:hidden}
 </div></footer>
 
 <div class="fija" id="fija" aria-hidden="true"><button class="b-add" type="button" tabindex="-1"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar al carrito</button></div>
-<div class="zm" id="zm" role="dialog" aria-modal="true" aria-label="Fotos de la pieza"><button class="zm-x" type="button" aria-label="Cerrar fotos"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div id="zm-l"></div></div>
 
-<script src="catalogo.js?v=1792576507" charset="utf-8"></script>
-<script src="bolsa.js?v=1792576507" charset="utf-8"></script>
-<script src="menu.js?v=1792576507" charset="utf-8"></script>
+<script src="catalogo.js?v=1792577877" charset="utf-8"></script>
+<script src="bolsa.js?v=1792577877" charset="utf-8"></script>
+<script src="menu.js?v=1792577877" charset="utf-8"></script>
 <script>
 (function(){
   var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
@@ -469,8 +459,7 @@ html.zm-lock{overflow:hidden}
     vuelta:'<svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
     tarjeta:'<svg viewBox="0 0 30 22"><rect x="1" y="1" width="28" height="20" rx="3"/><path d="M1 7h28M5 15h6"/></svg>',
     flecha:'<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
-    chat:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>',
-    lupa:'<svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.8-4.8"/></svg>'
+    chat:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>'
   };
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function foto(p, n){ return 'img/prod/' + p.carpeta + '/' + n + '.jpg'; }
@@ -524,7 +513,6 @@ html.zm-lock{overflow:hidden}
           '<div class="gal-sl" id="gal-sl" tabindex="0" aria-label="Desliza para ver más fotos">' + fotos.map(function(n, k){
             return '<img src="' + foto(p, n) + '" alt="' + esc(p.nombre) + (k ? ' · foto ' + (k + 1) : '') + '" width="900" height="1200"' + (k ? ' loading="lazy"' : ' fetchpriority="high"') + '>';
           }).join('') + '</div>' +
-          '<button class="gal-zm" type="button" id="gal-zm" aria-label="Ampliar fotos">' + ICO.lupa + '</button>' +
         '</div>' +
         (fotos.length > 1 ? '<div class="gal-th" id="gal-th">' + fotos.map(function(n, k){
           return '<button type="button" data-k="' + k + '" aria-label="Ver foto ' + (k + 1) + '" aria-current="' + (k ? 'false' : 'true') + '"><img src="' + foto(p, n) + '" alt="" loading="lazy" width="56" height="75"></button>';
@@ -535,7 +523,7 @@ html.zm-lock{overflow:hidden}
         '<h1>' + esc(p.nombre) + '</h1>' +
         '<p class="precio">Precio por confirmar</p>' +
         '<div class="rate"><span class="st" aria-hidden="true">★★★★★</span><a href="#resenas">Ver reseñas</a></div>' +
-        '<div class="pills"><span>' + ICO.sello + 'Sello de autenticidad</span><span>' + ICO.kit + 'Kit de limpieza</span></div>' +
+        '<div class="pills"><span>' + ICO.sello + 'Sello de autenticidad</span></div>' +
         '<div class="opc">' + largoHtml +
           '<div><span class="lb">Cantidad:</span><div class="qty"><button type="button" data-q="-1" aria-label="Quitar una">−</button><input id="qty" type="number" inputmode="numeric" min="1" max="20" value="1" aria-label="Cantidad"><button type="button" data-q="1" aria-label="Agregar una">+</button></div></div>' +
         '</div>' +
@@ -544,14 +532,13 @@ html.zm-lock{overflow:hidden}
           '<button class="b-add" type="button" id="b-add"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar al carrito</button>' +
           '<button class="b-buy" type="button" id="b-buy">Comprar ahora</button>' +
         '</div>' +
-        '<div class="ship"><b>Envío gratis</b> a todo México en compras desde $950</div>' +
+        '<div class="ship"><b>Envío gratis</b> · Hasta 6 meses sin intereses</div>' +
         '<div class="dev"><p class="dev-t">' + ICO.vuelta + 'Devoluciones y garantía</p><ul>' +
           '<li><b>Devolución gratis</b> en cada compra.</li>' +
           '<li><b>Garantía de 60 días</b> en cada pieza.</li>' +
-          '<li><b>Sello de autenticidad</b> y peso en gramos.</li>' +
+          '<li><b>Sello de autenticidad</b> en cada pieza.</li>' +
         '</ul><div class="dev-l"><a href="index.html#faq">Ver política completa</a><button type="button" data-soporte>Solicitar una devolución</button></div></div>' +
-        '<div class="strip"><div>' + ICO.escudo + 'Sello .925</div><div>' + ICO.ciclo + 'Devolución gratis</div><div>' + ICO.kit + 'Kit de limpieza</div></div>' +
-        '<div class="msi">' + ICO.tarjeta + '<div><b>Hasta 6 meses</b> sin intereses<small>con tarjeta de crédito</small></div></div>' +
+        '<div class="strip"><div>' + ICO.escudo + 'Sello .925</div><div>' + ICO.ciclo + 'Devolución gratis</div></div>' +
         '<div class="metodos"><p>Métodos de pago</p><div><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div></div>' +
         '<p class="desc">' + desc + '</p>' +
         '<details class="mas"><summary>Ver descripción completa' + ICO.flecha + '</summary>' +
@@ -580,16 +567,6 @@ html.zm-lock{overflow:hidden}
   var tm; sl.addEventListener('scroll', function(){ clearTimeout(tm); tm = setTimeout(function(){ marcar(actual()); }, 60); }, { passive: true });
   if (th) th.addEventListener('click', function(e){ var b = e.target.closest('button'); if (b) ir(+b.dataset.k); });
   sl.addEventListener('keydown', function(e){ if (e.key === 'ArrowRight') { e.preventDefault(); ir(actual() + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); ir(actual() - 1); } });
-
-  /* lupa: visor de fotos a pantalla completa */
-  var zm = document.getElementById('zm'), zx = zm.querySelector('.zm-x');
-  document.getElementById('zm-l').innerHTML = fotos.map(function(n, k){ return '<img src="' + foto(p, n) + '" alt="' + esc(p.nombre) + ' · foto ' + (k + 1) + '" loading="lazy" width="900" height="1200">'; }).join('');
-  function abrirZm(){ zm.classList.add('on'); document.documentElement.classList.add('zm-lock'); var k = actual(), im = zm.querySelectorAll('img')[k]; zm.scrollTop = im ? im.offsetTop : 0; zx.focus(); }
-  function cerrarZm(){ zm.classList.remove('on'); document.documentElement.classList.remove('zm-lock'); document.getElementById('gal-zm').focus(); }
-  document.getElementById('gal-zm').addEventListener('click', abrirZm);
-  sl.addEventListener('click', abrirZm);
-  zx.addEventListener('click', cerrarZm);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && zm.classList.contains('on')) cerrarZm(); });
 
   /* cantidad */
   var qi = document.getElementById('qty');

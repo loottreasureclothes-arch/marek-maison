@@ -141,7 +141,7 @@ function preguntarAPI(texto, historial){
             '<a class="mn-tab mn-inicio" href="index.html">Inicio</a>' +
             tabs.map(function(t){ return '<button class="mn-tab" type="button" role="tab" id="mn-t-' + t.k + '" aria-controls="mn-p-' + t.k + '" aria-selected="false" tabindex="-1" data-mn-tab="' + t.k + '">' + esc(t.n) + '</button>'; }).join("") +
             '<div class="mn-tab-sep" aria-hidden="true"></div>' +
-            '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">Soporte</button>' +
+            '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">' + SV_PESTANA + '<span>Soporte</span></button>' +
           '</div>' +
           '<div class="mn-der-col">' + pans.join("") +
             '<div class="mn-conf"><p>' + ICO_ENVIO + 'Envío gratis desde $950</p><p>' + ICO_MSI + 'Hasta 6 meses sin intereses</p><p>' + ICO_GAR + 'Garantía 60 días · Sello .925</p></div>' +
@@ -153,7 +153,37 @@ function preguntarAPI(texto, historial){
 
   /* ---------- SOPORTE = CHAT ---------- */
   var ENVIAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
-  var LINGOTE_MINI = '<span class="mn-lg mn-lg-mini" aria-hidden="true"><i>MM</i><em>.925</em></span>';
+  /* ---------- Silvercito: la mascota (cubito de plata con MM grabado), todo SVG inline ----------
+     Los degradados/recorte viven UNA vez en SV_DEFS (dentro de #menu-root) y cada Silvercito los usa por id.
+     Animación (CSS): flota, parpadea cada ~4 s, destello diagonal cada ~6 s y saluda al abrir el chat. */
+  var SV_DEFS =
+    '<svg class="mn-sv-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>' +
+      '<linearGradient id="mnsvFrente" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset=".35" stop-color="#e2e4e8"/><stop offset=".75" stop-color="#b8bcc3"/><stop offset="1" stop-color="#9ca1a9"/></linearGradient>' +
+      '<linearGradient id="mnsvTapa" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#eef0f2"/><stop offset="1" stop-color="#ffffff"/></linearGradient>' +
+      '<linearGradient id="mnsvLado" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a6abb3"/><stop offset="1" stop-color="#80858d"/></linearGradient>' +
+      '<linearGradient id="mnsvBrillo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
+      '<clipPath id="mnsvClip"><path d="M10 22l7-9h38l-7 9zM48 22l7-9v33l-7 9z"/><rect x="10" y="21" width="38" height="34" rx="5"/></clipPath>' +
+    '</defs></svg>';
+  function silvercito(clase){
+    return '<span class="mn-sv ' + (clase || "") + '" aria-hidden="true"><svg viewBox="0 0 64 64" focusable="false">' +
+      '<ellipse class="mn-sv-sombra" cx="32" cy="60" rx="19" ry="2.6"/>' +
+      '<g class="mn-sv-flota"><g class="mn-sv-cuerpo">' +
+        '<g class="mn-sv-brazo"><path d="M11.5 41l-5.5 7" fill="none" stroke="#a2a7af" stroke-width="3.6" stroke-linecap="round"/><circle cx="5.4" cy="48.8" r="3.1" fill="#e4e6ea" stroke="#9ba0a8" stroke-width="1"/></g>' +
+        '<path d="M10 22l7-9h38l-7 9z" fill="url(#mnsvTapa)" stroke="#c9ccd1" stroke-width="1" stroke-linejoin="round"/>' +
+        '<path d="M48 22l7-9v33l-7 9z" fill="url(#mnsvLado)" stroke="#8a8f97" stroke-width="1" stroke-linejoin="round"/>' +
+        '<rect x="10" y="21" width="38" height="34" rx="5" fill="url(#mnsvFrente)" stroke="#9ea3ab" stroke-width="1"/>' +
+        '<rect x="12.5" y="23.5" width="33" height="29" rx="3.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1"/>' +
+        '<text x="29" y="32.6" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="7.6" letter-spacing=".6" fill="#fff" fill-opacity=".9">MM</text>' +
+        '<text x="29" y="32" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="7.6" letter-spacing=".6" fill="#868b93">MM</text>' +
+        '<g class="mn-sv-ojos" fill="#24262a"><ellipse cx="22.5" cy="40" rx="2.3" ry="2.9"/><ellipse cx="35.5" cy="40" rx="2.3" ry="2.9"/>' +
+          '<circle cx="23.3" cy="38.9" r=".8" fill="#fff"/><circle cx="36.3" cy="38.9" r=".8" fill="#fff"/></g>' +
+        '<ellipse cx="17.6" cy="45" rx="2.6" ry="1.5" fill="#f2a7a7" fill-opacity=".55"/><ellipse cx="40.4" cy="45" rx="2.6" ry="1.5" fill="#f2a7a7" fill-opacity=".55"/>' +
+        '<path d="M25.4 45.2q3.6 3.4 7.2 0" fill="none" stroke="#24262a" stroke-width="1.6" stroke-linecap="round"/>' +
+        '<g clip-path="url(#mnsvClip)"><rect class="mn-sv-destello" x="-14" y="6" width="9" height="60" fill="url(#mnsvBrillo)" transform="rotate(25 32 36)"/></g>' +
+      '</g></g>' +
+    '</svg></span>';
+  }
+  var SV_CABECERA = silvercito("mn-sv-cab"), SV_PESTANA = silvercito("mn-sv-tab"), SV_AVATAR = silvercito("mn-sv-av");
 
   var CHIPS = [
     { k:"envios",   n:"Envíos" },
@@ -208,8 +238,8 @@ function preguntarAPI(texto, historial){
 
   var chatHTML =
     '<section class="mn-cb" id="mn-cb" role="dialog" aria-modal="false" aria-labelledby="mn-cb-titulo" aria-hidden="true">' +
-      '<header class="mn-cb-top">' + LINGOTE_MINI +
-        '<div class="mn-cb-tit"><h2 id="mn-cb-titulo">Montaris · Soporte</h2><p><span class="mn-punto" aria-hidden="true"></span>Responde al instante</p></div>' +
+      '<header class="mn-cb-top">' + SV_CABECERA +
+        '<div class="mn-cb-tit"><h2 id="mn-cb-titulo">Silvercito · Soporte Montaris</h2><p><span class="mn-punto" aria-hidden="true"></span>Responde al instante</p></div>' +
         '<button class="mn-x" type="button" data-mn-cb-cerrar aria-label="Cerrar chat">' + X + '</button>' +
       '</header>' +
       '<div class="mn-cb-msgs" id="mn-cb-msgs" role="log" aria-live="polite" aria-label="Conversación"></div>' +
@@ -225,7 +255,7 @@ function preguntarAPI(texto, historial){
     var root = document.getElementById("menu-root");
     if (!root){ root = document.createElement("div"); root.id = "menu-root"; document.body.appendChild(root); }
     root.classList.add("mn-root");
-    root.innerHTML = menuHTML + chatHTML;
+    root.innerHTML = SV_DEFS + menuHTML + chatHTML;
 
     var capas = { menu: document.getElementById("mn-menu") };
     var botones = { menu: document.getElementById("btn-menu"), soporte: document.getElementById("btn-soporte") };
@@ -336,11 +366,11 @@ function preguntarAPI(texto, historial){
       var d = document.createElement("div");
       d.className = "mn-cb-m " + (m.de === "yo" ? "mn-cb-yo" : "mn-cb-bot");
       if (m.de === "yo") d.innerHTML = '<div class="mn-cb-burbuja">' + esc(m.txt) + '</div>';
-      else if (m.form) d.innerHTML = '<div class="mn-cb-burbuja">' + formHTML(m.form) + '</div>';
+      else if (m.form) d.innerHTML = SV_AVATAR + '<div class="mn-cb-cont"><div class="mn-cb-burbuja">' + formHTML(m.form) + '</div></div>';
       else {
         var html = m.html || ('<p>' + esc(m.txt || "").replace(/\n+/g, "<br>") + '</p>');
         var bs = m.chips ? chipsHTML() : (m.b || []).map(botonHTML).join("");
-        d.innerHTML = '<div class="mn-cb-burbuja">' + html + '</div>' + (bs ? '<div class="mn-cb-chips">' + bs + '</div>' : '');
+        d.innerHTML = SV_AVATAR + '<div class="mn-cb-cont"><div class="mn-cb-burbuja">' + html + '</div>' + (bs ? '<div class="mn-cb-chips">' + bs + '</div>' : '') + '</div>';
       }
       msgs.appendChild(d);
       return d;
@@ -354,7 +384,7 @@ function preguntarAPI(texto, historial){
       if (on && !escribiendo){
         escribiendo = document.createElement("div");
         escribiendo.className = "mn-cb-m mn-cb-bot";
-        escribiendo.innerHTML = '<div class="mn-cb-burbuja mn-cb-puntos" aria-label="Escribiendo"><i></i><i></i><i></i></div>';
+        escribiendo.innerHTML = SV_AVATAR + '<div class="mn-cb-cont"><div class="mn-cb-burbuja mn-cb-puntos" aria-label="Escribiendo"><i></i><i></i><i></i></div></div>';
         msgs.appendChild(escribiendo); bajar();
       } else if (!on && escribiendo){ escribiendo.remove(); escribiendo = null; }
     }
@@ -433,6 +463,8 @@ function preguntarAPI(texto, historial){
         chatOrigen = quien || document.activeElement;
         chatAbierto = true;
         cb.classList.add("mn-on"); cb.setAttribute("aria-hidden", "false");
+        var sv = cb.querySelector(".mn-sv-cab"); // Silvercito saluda cada vez que se abre el chat
+        if (sv){ sv.classList.remove("mn-sv-hola"); void sv.offsetWidth; sv.classList.add("mn-sv-hola"); }
         if (botones.soporte) botones.soporte.setAttribute("aria-expanded", "true");
         if (celular.matches) document.documentElement.classList.add("mn-lock");
       }
