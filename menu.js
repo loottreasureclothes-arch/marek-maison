@@ -130,71 +130,19 @@ function preguntarAPI(texto, historial){
   var ICO_MSI = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>';
   var ICO_GAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
 
-  /* ---------- Mascota de Soporte Montaris (sin nombre): bloquecito de plata con diadema, todo SVG inline ----------
-     Los degradados/recorte viven UNA vez en SV_DEFS (dentro de #menu-root) y cada mascota los usa por id.
-     Animación (CSS): flota con rebote de patitas, parpadea cada ~4 s, destello diagonal cada ~6 s, saluda al abrir y cada ~8 s. */
-  var SV_DEFS =
-    '<svg class="mn-sv-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>' +
-      '<linearGradient id="mnsvFrente" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#eceef1"/><stop offset=".62" stop-color="#c9cdd3"/><stop offset=".85" stop-color="#aeb3ba"/><stop offset="1" stop-color="#c3c7cd"/></linearGradient>' +
-      '<linearGradient id="mnsvTapa" x1="0" y1="1" x2=".3" y2="0"><stop offset="0" stop-color="#e9ebee"/><stop offset="1" stop-color="#ffffff"/></linearGradient>' +
-      '<linearGradient id="mnsvLado" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b3b8bf"/><stop offset=".6" stop-color="#8f949c"/><stop offset="1" stop-color="#777c84"/></linearGradient>' +
-      '<linearGradient id="mnsvBrillo" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
-      '<radialGradient id="mnsvMano" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#d5d8dd"/><stop offset="1" stop-color="#9a9fa7"/></radialGradient>' +
-      '<linearGradient id="mnsvNegro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a4d53"/><stop offset="1" stop-color="#16171a"/></linearGradient>' +
-      '<clipPath id="mnsvClip"><path d="M16 22l8-8h38l-8 8zM54 22l8-8v38l-8 8z"/><rect x="16" y="22" width="38" height="38" rx="6"/></clipPath>' +
-    '</defs></svg>';
-  function mascota(clase){
-    return '<span class="mn-sv ' + (clase || "") + '" aria-hidden="true"><svg viewBox="0 0 80 80" focusable="false">' +
-      '<ellipse class="mn-sv-sombra" cx="38" cy="76" rx="20" ry="2.8"/>' +
-      '<g class="mn-sv-flota">' +
-        /* patitas con zapatitos */
-        '<g class="mn-sv-patas">' +
-          '<path d="M28 58v8M43 58v8" stroke="#8b9098" stroke-width="5" stroke-linecap="round"/>' +
-          '<path d="M28 58v7.5M43 58v7.5" stroke="#d6d9de" stroke-width="2" stroke-linecap="round"/>' +
-          '<path d="M22.5 70.5q0-4.6 5.5-4.6t5.4 3.2q0 1.4-1.6 1.4z" fill="url(#mnsvNegro)"/><path d="M37.5 70.5q0-4.6 5.5-4.6t5.4 3.2q0 1.4-1.6 1.4z" fill="url(#mnsvNegro)"/>' +
-          '<path d="M25 67.6q1.6-1.1 3.6-.9M40 67.6q1.6-1.1 3.6-.9" stroke="#fff" stroke-opacity=".45" stroke-width="1" fill="none" stroke-linecap="round"/>' +
-        '</g>' +
-        '<g class="mn-sv-cuerpo">' +
-          /* bracito izquierdo (quieto, detrás del cuerpo) */
-          '<g class="mn-sv-brazo-i"><path d="M19 49l-10 7" stroke="#8b9098" stroke-width="4.4" stroke-linecap="round"/><path d="M19 49l-10 7" stroke="#d6d9de" stroke-width="1.8" stroke-linecap="round"/>' +
-            '<circle cx="8.4" cy="56.6" r="3.9" fill="url(#mnsvMano)" stroke="#8b9098" stroke-width=".9"/></g>' +
-          /* cubo: tapa, lado y frente */
-          '<path d="M16 22l8-8h38l-8 8z" fill="url(#mnsvTapa)" stroke="#b9bdc3" stroke-width=".9" stroke-linejoin="round"/>' +
-          '<path d="M54 22l8-8v38l-8 8z" fill="url(#mnsvLado)" stroke="#7c8189" stroke-width=".9" stroke-linejoin="round"/>' +
-          '<rect x="16" y="22" width="38" height="38" rx="6" fill="url(#mnsvFrente)" stroke="#999ea6" stroke-width=".9"/>' +
-          '<rect x="18.4" y="24.4" width="33.2" height="33.2" rx="4.2" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width=".9"/>' +
-          '<path d="M24.6 15.6h20" stroke="#fff" stroke-opacity=".9" stroke-width="1.2" stroke-linecap="round"/>' +
-          /* MM grabado sutil (arriba, sin tapar la cara) */
-          '<text x="35" y="30.9" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="5.6" letter-spacing=".5" fill="#fff" fill-opacity=".85">MM</text>' +
-          '<text x="35" y="30.4" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-weight="700" font-size="5.6" letter-spacing=".5" fill="#8d929a" fill-opacity=".8">MM</text>' +
-          /* cejas */
-          '<path d="M24.6 34.6q3-2.2 6-.6M39.4 34q3-1.6 6 .6" fill="none" stroke="#2b2d31" stroke-width="1.5" stroke-linecap="round"/>' +
-          /* ojos grandes con reflejo */
-          '<g class="mn-sv-ojos"><ellipse cx="28" cy="41" rx="3.7" ry="4.6" fill="#1d1f23"/><ellipse cx="42" cy="41" rx="3.7" ry="4.6" fill="#1d1f23"/>' +
-            '<circle cx="29.3" cy="39.3" r="1.5" fill="#fff"/><circle cx="43.3" cy="39.3" r="1.5" fill="#fff"/>' +
-            '<circle cx="26.9" cy="43.1" r=".7" fill="#fff" fill-opacity=".8"/><circle cx="40.9" cy="43.1" r=".7" fill="#fff" fill-opacity=".8"/></g>' +
-          /* cachetes */
-          '<ellipse cx="22.6" cy="48.2" rx="3" ry="1.8" fill="#f39aa0" fill-opacity=".5"/><ellipse cx="47.4" cy="48.2" rx="3" ry="1.8" fill="#f39aa0" fill-opacity=".5"/>' +
-          /* sonrisa abierta */
-          '<path d="M30.2 47.4h9.6a4.8 4.8 0 0 1-9.6 0z" fill="#2a1e21" stroke="#2a1e21" stroke-width=".8" stroke-linejoin="round"/>' +
-          '<path d="M32.2 51.2q2.8-2 5.6 0a3 2.4 0 0 1-5.6 0z" fill="#ee7f87"/>' +
-          /* destello del metal */
-          '<g clip-path="url(#mnsvClip)"><rect class="mn-sv-destello" x="-20" y="-10" width="9" height="100" fill="url(#mnsvBrillo)"/></g>' +
-          /* diadema con micrófono */
-          '<path d="M14.6 33C13 12 58 4 60.6 26" fill="none" stroke="url(#mnsvNegro)" stroke-width="3" stroke-linecap="round"/>' +
-          '<path d="M16.4 27.5C19 13 54 7 58.6 22" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".8" stroke-linecap="round"/>' +
-          '<rect x="10.6" y="30" width="8" height="12" rx="3.4" fill="url(#mnsvNegro)"/><rect x="12.6" y="32" width="4" height="8" rx="2" fill="url(#mnsvMano)"/>' +
-          '<rect x="58" y="24" width="6.4" height="11" rx="3" fill="url(#mnsvNegro)"/><rect x="59.6" y="26" width="3.2" height="7" rx="1.6" fill="url(#mnsvMano)"/>' +
-          '<path d="M14.6 41.5q-.6 10.6 9.6 11.6" fill="none" stroke="#2b2d31" stroke-width="1.7" stroke-linecap="round"/>' +
-          '<rect x="22.2" y="50.8" width="6" height="4.4" rx="2.2" fill="url(#mnsvNegro)"/><circle cx="24.2" cy="52.2" r=".8" fill="#fff" fill-opacity=".55"/>' +
-          /* bracito derecho que saluda (sale de la cara lateral) */
-          '<g class="mn-sv-brazo"><path d="M58 45l9 9" stroke="#7f848c" stroke-width="4.4" stroke-linecap="round"/><path d="M58 45l9 9" stroke="#c9ccd1" stroke-width="1.8" stroke-linecap="round"/>' +
-            '<circle cx="67.6" cy="54.6" r="3.9" fill="url(#mnsvMano)" stroke="#8b9098" stroke-width=".9"/></g>' +
-        '</g>' +
-      '</g>' +
-    '</svg></span>';
+  /* ---------- Mascota de Soporte Montaris (sin nombre): imagen aprobada img/mascota.png (506x512, fondo transparente) ----------
+     Cabecera del chat (~64 px), pestaña Soporte (~44 px) y avatar del bot (28 px, recortado al cuerpo). Animación en menu.css. */
+  var MASCOTA_SRC = "img/mascota.png";
+  (function(){ try{ // precarga para que aparezca al instante al abrir el menú o el chat
+    if (!document.querySelector('link[rel="preload"][href="' + MASCOTA_SRC + '"]')){
+      var l = document.createElement("link"); l.rel = "preload"; l.as = "image"; l.href = MASCOTA_SRC; document.head.appendChild(l);
+    }
+    var im = new Image(); im.src = MASCOTA_SRC;
+  }catch(e){} })();
+  function mascota(clase, w, h){
+    return '<span class="mn-sv ' + (clase || "") + '" aria-hidden="true"><img src="' + MASCOTA_SRC + '" alt="" width="' + w + '" height="' + h + '" decoding="async" draggable="false"></span>';
   }
-  var SV_CABECERA = mascota("mn-sv-cab"), SV_PESTANA = mascota("mn-sv-tab"), SV_AVATAR = mascota("mn-sv-av");
+  var SV_CABECERA = mascota("mn-sv-cab", 63, 64), SV_PESTANA = mascota("mn-sv-tab", 43, 44), SV_AVATAR = mascota("mn-sv-av", 28, 28);
 
   var menuHTML =
     '<div class="mn-capa mn-izq" id="mn-menu" aria-hidden="true">' +
@@ -290,7 +238,7 @@ function preguntarAPI(texto, historial){
     var root = document.getElementById("menu-root");
     if (!root){ root = document.createElement("div"); root.id = "menu-root"; document.body.appendChild(root); }
     root.classList.add("mn-root");
-    root.innerHTML = SV_DEFS + menuHTML + chatHTML;
+    root.innerHTML = menuHTML + chatHTML;
 
     var capas = { menu: document.getElementById("mn-menu") };
     var botones = { menu: document.getElementById("btn-menu"), soporte: document.getElementById("btn-soporte") };

@@ -156,42 +156,21 @@ html.mn-lock,html.mn-lock body{overflow:hidden!important;overscroll-behavior:non
 .mn-cb-enviar{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;border-radius:50%;background:var(--mn-ink);cursor:pointer}
 .mn-cb-enviar svg{width:19px;height:19px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* ===== Mascota de Soporte Montaris (sin nombre): SVG inline de menu.js; ritmo tipo Boxito (reposo largo + movimiento corto) ===== */
-.mn-sv-defs{position:absolute;width:0;height:0;overflow:hidden}
-.mn-sv{display:inline-block;flex:none;line-height:0}
-.mn-sv svg{display:block;width:100%;height:100%;overflow:visible}
-.mn-sv-sombra{fill:#000;opacity:.14}
-.mn-sv-cab{width:56px;height:56px;margin:-6px -2px -6px -4px}
-.mn-sv-tab{width:40px;height:40px;margin:0 auto 2px}
-.mn-sv-av{width:28px;height:28px;margin-top:2px}
-.mn-sv-av svg{transform:scale(1.22) translateY(1px)}
-.mn-sv-av .mn-sv-sombra{display:none}
-.mn-sv-flota,.mn-sv-sombra,.mn-sv-cuerpo,.mn-sv-ojos,.mn-sv-patas{transform-box:fill-box}
-.mn-sv-flota{animation:mnSvFlota 3s ease-in-out infinite}
-.mn-sv-sombra{transform-origin:center;animation:mnSvSombra 3s ease-in-out infinite}
-.mn-sv-patas{transform-origin:50% 0;animation:mnSvPatas 3s ease-in-out infinite}
-.mn-sv-ojos{transform-origin:center;animation:mnSvParpadeo 4s infinite}
-.mn-sv-destello{transform-box:view-box;transform-origin:40px 40px;animation:mnSvDestello 6s ease-in-out infinite 1s}
-.mn-sv-cuerpo{transform-origin:50% 90%}
-.mn-sv-brazo{transform-box:view-box;transform-origin:58px 45px;animation:mnSvSaludo 8s ease-in-out 2.5s infinite}
-.mn-sv-tab .mn-sv-ojos{animation-delay:1.3s}
-.mn-sv-tab .mn-sv-brazo{animation-delay:5s}
-.mn-sv-av .mn-sv-flota,.mn-sv-av .mn-sv-patas,.mn-sv-av .mn-sv-brazo{animation:none}
-.mn-sv-av .mn-sv-destello{animation:none;opacity:0}
-.mn-sv-hola .mn-sv-brazo{animation:mnSvHolaBrazo 1.5s ease-in-out .15s 1,mnSvSaludo 8s ease-in-out 8s infinite}
-.mn-sv-hola .mn-sv-cuerpo{animation:mnSvHola 1.5s ease-in-out .15s 1}
+/* ===== Mascota de Soporte Montaris (sin nombre): imagen img/mascota.png de menu.js ===== */
+.mn-sv{display:inline-block;flex:none;line-height:0;position:relative}
+.mn-sv img{display:block;width:100%;height:100%;object-fit:contain;-webkit-user-drag:none;user-select:none;pointer-events:none}
+.mn-sv-cab{width:63px;height:64px;margin:-6px -2px -6px -4px}
+.mn-sv-tab{width:43px;height:44px;margin:0 auto 2px}
+.mn-sv-cab img,.mn-sv-tab img{transform-origin:50% 88%;animation:mnSvFlota 3s ease-in-out infinite;will-change:transform}
+.mn-sv-tab img{animation-delay:-1.5s}
+.mn-sv-av{width:28px;height:28px;margin-top:2px;border-radius:50%;overflow:hidden;background:#f1f2f4;box-shadow:inset 0 0 0 1px #e3e5e8}
+.mn-sv-av img{width:28px;height:28px;object-fit:cover;object-position:center 30%;transform:scale(1.7);transform-origin:47% 46%}
+.mn-sv-hola img{animation:mnSvHola .8s ease-in-out 1,mnSvFlota 3s ease-in-out .8s infinite}
 @keyframes mnSvFlota{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes mnSvSombra{0%,100%{transform:scaleX(1);opacity:.14}50%{transform:scaleX(.8);opacity:.08}}
-@keyframes mnSvPatas{0%,100%{transform:translateY(0) scaleY(1)}40%{transform:translateY(-.6px) scaleY(.88)}60%{transform:translateY(.4px) scaleY(1.06)}}
-@keyframes mnSvParpadeo{0%,90%,96%,100%{transform:scaleY(1)}93%{transform:scaleY(.1)}}
-@keyframes mnSvDestello{0%{transform:rotate(25deg) translateX(-10px)}22%,100%{transform:rotate(25deg) translateX(110px)}}
-@keyframes mnSvHolaBrazo{0%,100%{transform:rotate(0)}16%{transform:rotate(-128deg)}32%{transform:rotate(-100deg)}48%{transform:rotate(-130deg)}64%{transform:rotate(-102deg)}80%{transform:rotate(-122deg)}}
-@keyframes mnSvSaludo{0%,20%,100%{transform:rotate(0)}4%{transform:rotate(-126deg)}7.5%{transform:rotate(-100deg)}11%{transform:rotate(-128deg)}14.5%{transform:rotate(-102deg)}17%{transform:rotate(-118deg)}}
-@keyframes mnSvHola{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg)}45%{transform:rotate(5deg)}70%{transform:rotate(-2deg)}}
+@keyframes mnSvHola{0%,100%{transform:rotate(0)}12.5%{transform:rotate(-6deg)}37.5%{transform:rotate(6deg)}62.5%{transform:rotate(-6deg)}87.5%{transform:rotate(6deg)}}
 .mn-tab.mn-sop{display:flex;flex-direction:column;align-items:center;padding-top:6px}
 @media (prefers-reduced-motion:reduce){
-  .mn-sv-flota,.mn-sv-sombra,.mn-sv-patas,.mn-sv-ojos,.mn-sv-destello,.mn-sv-brazo,.mn-sv-hola .mn-sv-brazo,.mn-sv-hola .mn-sv-cuerpo{animation:none!important}
-  .mn-sv-destello{opacity:0}
+  .mn-sv-cab img,.mn-sv-tab img,.mn-sv-hola img{animation:none!important;transform:none}
 }
 
 a.mn-tab.mn-inicio{display:block;text-align:center;text-decoration:none}
