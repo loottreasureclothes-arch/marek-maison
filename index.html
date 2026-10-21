@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792578710">
+<link rel="stylesheet" href="menu.css?v=1792579992">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -716,6 +716,29 @@ button.btn{cursor:pointer;font-family:inherit}
  .hcard .hc-p{font-size:14px;margin-top:3px}
  .hcard .hc-s{font-size:12px;padding:4px 9px;margin-top:8px;border-radius:6px}
 }
+
+/* U: hero sin bloque de texto; mini tarjetas con foto a toda altura */
+.hero-in{display:flex;flex-direction:column;align-items:flex-start;padding-bottom:6px}
+.hero-in>.btn{margin:0 0 12px}
+.hero .hs-ft{width:100%;margin-top:0}
+.hcard{height:84px;align-items:stretch}
+.hcard .hc-pic{flex:0 0 40%;align-self:stretch;display:block;background:#eee}
+.hcard .hc-pic img{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.hcard .hc-in{justify-content:center;padding:6px 8px}
+.hcard .hc-in b{font:700 12px/1.2 var(--f-txt);color:#344054}
+.hcard .hc-g{margin-top:3px;font:600 11px/1.2 var(--f-txt)}
+.hcard .hc-p{margin-top:2px;font:700 11px/1.2 var(--f-txt)}
+@media (min-width:900px){
+ .hero-in{top:auto;justify-content:flex-end;padding-top:0;padding-bottom:26px}
+ .hero-in>.btn{margin-bottom:16px}
+ .hero .hs-ft,.hs-ft{max-width:640px;margin-top:0}
+ .hcard{height:112px}
+ .hcard .hc-pic{flex-basis:38%}
+ .hcard .hc-in{padding:10px 14px}
+ .hcard .hc-in b{font-size:14px}
+ .hcard .hc-g{font-size:12.5px;margin-top:4px}
+ .hcard .hc-p{font-size:13px;margin-top:3px}
+}
 </style>
 </head><body>
 
@@ -754,9 +777,6 @@ button.btn{cursor:pointer;font-family:inherit}
   <section class="hero" aria-label="Portada" aria-roledescription="carrusel">
     <div class="hs" id="hs"><figure class="hs-s on" data-id="50" data-cap="Cadena barbada 9 mm · 70 cm"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Cadena barbada 9 mm · 70 cm, plata .925"></figure><figure class="hs-s" data-id="48" data-cap="Cadena Cartier 8 mm · 70 cm"><img src="img/prod/48_L-07_cadena-cartier-70cm/3.jpg" alt="Cadena Cartier 8 mm · 70 cm, plata .925" loading="lazy"></figure><figure class="hs-s" data-id="52" data-cap="Cadena torzal 7 mm · 60 cm"><img src="img/prod/52_L-06_torzal-60cm/4.jpg" alt="Cadena torzal 7 mm · 60 cm, plata .925" loading="lazy"></figure></div>
     <div class="hero-in wrap">
-      <span class="chip">Certificado de autenticidad</span>
-      <h1>Joyería con certificado de autenticidad.</h1>
-      <p class="sub">Somos fabricantes. Piezas con sello y peso en gramos.</p>
       <a class="btn w" href="coleccion.html?c=cadenas">Descubrir la colección</a>
       <div class="hs-ft"><div class="hcards" id="hcards" aria-label="Piezas de este banner"></div><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
     </div>
@@ -905,11 +925,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792578710" charset="utf-8"></script>
-<script src="bolsa.js?v=1792578710" charset="utf-8"></script>
-<script src="menu.js?v=1792578710" charset="utf-8"></script>
+<script src="catalogo.js?v=1792579992" charset="utf-8"></script>
+<script src="bolsa.js?v=1792579992" charset="utf-8"></script>
+<script src="menu.js?v=1792579992" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792578710 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792579992 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -982,7 +1002,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  const HC={50:[50,51],48:[48,49],52:[52,44]};
  const tipo=p=>(p.nombre.match(/cartier|barbada|torzal|marinera|planchada|figaro|fígaro/i)||[p.tipo||''])[0].toUpperCase();
  const dos=p=>{const [a,b]=p.nombre.replace(/^Cadena\s+/i,'').split(' · ');const m=a.match(/^(.*?)\s+(\d[\d.]*\s*mm)$/);return m?[m[1].charAt(0).toUpperCase()+m[1].slice(1),m[2]+(b?' · '+b:'')]:[a,b||'']};
- const mini=p=>{const [l1,l2]=dos(p);return `<a class="hcard" href="${url(p)}" aria-label="${p.nombre}"><span class="hc-t">${tipo(p)}</span><span class="hc-pic"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="hc-in"><b><span>${l1}</span><span>${l2}</span></b><span class="hc-g">${p.peso}</span><span class="hc-p">${precio(p)}</span><span class="hc-s">SELLO .925</span></span></a>`};
+ const mini=p=>{const [l1,l2]=dos(p);return `<a class="hcard" href="${url(p)}" aria-label="${p.nombre}"><span class="hc-pic"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="hc-in"><b><span>${l1}</span><span>${l2}</span></b><span class="hc-g">${p.peso}</span><span class="hc-p">${precio(p)}</span></span></a>`};
  hc.innerHTML=ss.map((x,j)=>`<div class="hgrp${j?'':' on'}">${(HC[x.dataset.id]||[+x.dataset.id]).map(k=>byId[k]).filter(Boolean).map(mini).join('')}</div>`).join('');
  const gs=[...hc.children];
  function ver(k){i=(k+ss.length)%ss.length;ss.forEach((x,j)=>x.classList.toggle('on',j===i));ds.forEach((x,j)=>x.classList.toggle('on',j===i));gs.forEach((g,j)=>{g.classList.toggle('on',j===i);if(j===i)g.scrollLeft=0})}
@@ -992,7 +1012,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792578710 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792579992 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1003,8 +1023,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792578710)
-// (los botones data-soporte los engancha menu.js?v=1792578710)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792579992)
+// (los botones data-soporte los engancha menu.js?v=1792579992)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
