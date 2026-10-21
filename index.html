@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792545804">
+<link rel="stylesheet" href="menu.css?v=1792545937">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -38,7 +38,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 
 /* 1. barra */
 .bar{background:#fff;color:#111;overflow:hidden;border-bottom:1px solid #e4e4e1}
-.bar ul{display:flex;gap:40px;margin:0;padding:8px 0;list-style:none;white-space:nowrap;width:max-content;font:600 11.5px var(--f-txt);letter-spacing:.04em;animation:corre 32s linear infinite}
+.bar ul{display:flex;gap:40px;margin:0;padding:4px 0;list-style:none;white-space:nowrap;width:max-content;font:600 10.5px var(--f-txt);letter-spacing:.04em;animation:corre 32s linear infinite}
 .bar li::after{content:"•";margin-left:40px;color:#9a9a9a}
 @keyframes corre{to{transform:translateX(-50%)}}
 
@@ -424,7 +424,7 @@ footer{background:#111;color:#cfcfcf;padding-block:36px calc(90px + env(safe-are
 .sel button{border-radius:999px}
 /* 10 franja y barra */
 .sct{border-color:var(--line)}.sct-in{height:36px}.sct-t{font-weight:600}.sct-ico svg{stroke-width:1.6}.sct-sep{background:var(--line)}
-.bar ul{font:500 11.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;padding:9px 0;animation-duration:40s}
+.bar ul{font:500 10.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;padding:4px 0;animation-duration:40s}
 /* 11 reseñas */
 .res{border-radius:4px;padding-bottom:18px}.res .f{aspect-ratio:4/5}.res p{font-size:14.5px;line-height:1.5;color:#222}.res .who{font-weight:600;color:#111}
 .rev-top .score{font:600 28px var(--f-serif)}
@@ -784,11 +784,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792545804" charset="utf-8"></script>
-<script src="bolsa.js?v=1792545804" charset="utf-8"></script>
-<script src="menu.js?v=1792545804" charset="utf-8"></script>
+<script src="catalogo.js?v=1792545937" charset="utf-8"></script>
+<script src="bolsa.js?v=1792545937" charset="utf-8"></script>
+<script src="menu.js?v=1792545937" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792545804 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792545937 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -869,7 +869,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792545804 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792545937 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -880,8 +880,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792545804)
-// (los botones data-soporte los engancha menu.js?v=1792545804)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792545937)
+// (los botones data-soporte los engancha menu.js?v=1792545937)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
