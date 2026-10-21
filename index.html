@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792546129">
+<link rel="stylesheet" href="menu.css?v=1792575578">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -616,6 +616,70 @@ button.btn{cursor:pointer;font-family:inherit}
  .hcard img{width:44px;height:44px}
  .hcard b{font-size:12px}.hcard small{font-size:11px}
 }
+/* P: barra de anuncios pegada (punto en medio, ~18 px entre frases, como Boxroom) */
+.bar ul{gap:0;animation-duration:34s}
+.bar li{display:flex;align-items:center}
+.bar li::after{content:"\00B7";margin:0 9px;color:#9a9a9a;font-weight:800}
+/* P: categorías 3:4, ~30 % más grandes, 2 filas que deslizan (Hombre y Mujer lado a lado) */
+.cats{grid-auto-flow:row;grid-template-rows:none;grid-template-columns:repeat(8,calc((100% - 20px)/2.85));grid-auto-columns:auto;gap:16px 10px}
+.cats .cf{aspect-ratio:3/4;border-radius:4px;border:1px solid #e6e3dc}
+.cats .cat{gap:8px}
+.cats .cat b{font:600 12px/1.2 var(--f-serif);letter-spacing:.14em;text-transform:uppercase;color:#111}
+@media (min-width:900px){.cats{grid-template-columns:repeat(8,minmax(0,1fr));overflow:visible;gap:24px 14px}.cats .cat b{font-size:13px}}
+/* P: bloques de colección calcados de Boxroom (banner 219/300 a todo lo ancho, tarjeta 178, 6 piezas / 10 en escritorio, 16 px entre "Ver más" y el siguiente banner) */
+.blk{overflow-x:clip}
+#bloques .blk,#bloques .blk:first-child,#bloques .blk:last-child,#bloques2 .blk,#placa{padding-block:0 16px}
+#vendidos{padding-bottom:16px}
+.blk>.wrap{padding-inline:13px}
+.blk .blk-banner{height:219px;margin:0 calc(50% - 50vw) 13px;border-radius:0}
+.blk .blk-banner div{left:21px;bottom:22px}
+.blk .blk-banner h2{font-size:28px;margin-bottom:12px}
+.blk .blk-banner .btn{min-height:38px;padding:0 20px;font-size:11px;background:transparent;color:#fff;border-color:#fff}
+.blk .grid{gap:14px 8px}
+.blk .grid>.p:nth-child(n+7){display:none}
+.blk .more{margin-top:12px}
+.blk .more a{min-width:280px;min-height:40px;border-radius:8px;font-size:12px}
+@media (min-width:900px){
+ .blk>.wrap{max-width:1250px;padding-inline:32px}
+ .blk .blk-banner{height:300px;margin-bottom:14px}
+ .blk .blk-banner div{left:max(32px,calc(50vw - 593px));bottom:34px}
+ .blk .blk-banner h2{font-size:44px}
+ .blk .grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 14px}
+ .blk .grid>.p:nth-child(n+7){display:grid}.blk .grid>.p:nth-child(n+11){display:none}
+ #bloques .blk,#bloques .blk:first-child,#bloques .blk:last-child,#bloques2 .blk,#placa{padding-block:0 16px}
+ #vendidos{padding-bottom:16px}
+}
+.blk .p{gap:1px}.blk .p .ph{margin-bottom:7px}.blk .p h3{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#pgrid .p h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(2 * 1.3em)}.blk .p .ley{font-size:10px}.blk .p .pr{font-size:14.5px}
+/* P: reseñas ~15 % más chicas (caben en una pantalla de celular) */
+#resenas{padding-block:26px}
+#resenas .rev-top{margin-bottom:12px;gap:2px}
+#resenas .rev-top h2{font-size:19px}
+#resenas .rev-top .score{font-size:24px}
+.resenas{grid-auto-columns:min(62vw,238px);gap:10px}
+.res{gap:6px;padding-bottom:12px}
+.res p{font-size:13.5px;line-height:1.45}
+@media (min-width:900px){.resenas{grid-auto-columns:255px;gap:14px}#resenas{padding-block:48px}}
+/* P: quiénes somos, logo chico */
+.qs-logo{width:70px;height:auto;margin:0 auto 6px}
+/* P: pie (igual en todas las páginas): logo centrado arriba, Ayuda y Tienda al ras, redes junto a Montaris, pagos abajo a la izquierda */
+.pie .pie-g{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;align-items:start}
+.pie .pie-top{grid-column:1/-1;display:grid;gap:10px;justify-items:center;text-align:center}
+.pie .pie-top img{height:44px;width:auto}
+.pie .pie-top p{margin:0;font-size:13px;color:#cfcfcf}
+.pie h4{margin:0 0 10px;font:600 11px var(--f-serif);letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.pie ul a{display:inline-block;padding-block:7px}
+.pie .pie-m{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-items:start}
+.pie .pie-m h4{grid-column:1/-1}
+.pie .redes{display:flex;gap:10px;margin:0}
+.pie .redes a{display:grid;place-items:center;width:42px;height:42px;border:1px solid #333;border-radius:50%}
+.pie .redes svg{width:19px;height:19px;fill:#fff}
+.pie .legal{border-top:1px solid #2a2a2a;margin-top:28px;padding-top:14px;font-size:11.5px;color:#888;display:grid;gap:6px}
+.pie .pagos{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px;margin-top:14px}
+.pie .pagos span{flex:0 0 100%;font-size:12px;color:#9a9a9a}
+.pie .pagos img{height:26px;width:auto;border-radius:3px;background:#fff}
+@media (min-width:900px){.pie .pie-g{grid-template-columns:2fr 1fr 1fr 1fr}.pie .pie-top{grid-column:auto;justify-items:start;text-align:left}.pie .pie-m{grid-column:auto;display:block}.pie .redes{margin-top:14px}}
 </style>
 </head><body>
 
@@ -633,8 +697,10 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <header class="hdr" id="hdr">
 <div class="bar" aria-label="Avisos"><ul>
-  <li>Plata .925 con sello</li><li>Hasta 6 meses sin intereses</li><li>Envío GRATIS desde $950</li><li>30 días para cambios</li><li>Garantía 60 días</li>
-  <li aria-hidden="true">Plata .925 con sello</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío GRATIS desde $950</li><li aria-hidden="true">30 días para cambios</li><li aria-hidden="true">Garantía 60 días</li>
+  <li>Joyería con sello de autenticidad</li><li>Hasta 6 meses sin intereses</li><li>Envío gratis desde $950</li><li>Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
 </ul></div>
   <div class="wrap">
     <div class="row">
@@ -655,7 +721,7 @@ button.btn{cursor:pointer;font-family:inherit}
       <span class="chip">Certificado de autenticidad</span>
       <h1>Joyería con certificado de autenticidad.</h1>
       <p class="sub">Somos fabricantes. Piezas con sello y peso en gramos.</p>
-      <a class="btn w" href="coleccion.html?c=cadenas">Comprar ahora →</a>
+      <a class="btn w" href="coleccion.html?c=cadenas">Descubrir la colección</a>
       <div class="hs-ft"><div class="hcards" id="hcards" aria-label="Piezas de este banner"></div><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
     </div>
   </section>
@@ -664,14 +730,14 @@ button.btn{cursor:pointer;font-family:inherit}
   <div class="sct">
     <div class="sct-in">
       <div class="sct-side" data-rota="x">
-        <div class="sct-slot is-on"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg></span><div class="sct-txt"><span class="sct-t">Certificado de garantía</span><span class="sct-s">En cada pieza</span></div></div>
+        <div class="sct-slot is-on"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg></span><div class="sct-txt"><span class="sct-t">Certificado de autenticidad</span><span class="sct-s">En cada pieza</span></div></div>
         <div class="sct-slot"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"/><path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"/><path d="M3 9l4 0"/></svg></span><div class="sct-txt"><span class="sct-t">Envío gratis</span><span class="sct-s">Desde $950</span></div></div>
-        <div class="sct-slot"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><div class="sct-txt"><span class="sct-t">Devolución gratis</span><span class="sct-s">Sin complicaciones</span></div></div>
+        <div class="sct-slot"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></span><div class="sct-txt"><span class="sct-t">Devolución gratis</span><span class="sct-s">En todo México</span></div></div>
       </div>
       <div class="sct-sep"></div>
       <div class="sct-side" data-rota="y">
         <div class="sct-slot is-on"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M3 8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -8"/><path d="M3 10l18 0"/><path d="M7 15l.01 0"/><path d="M11 15l2 0"/></svg></span><div class="sct-txt"><span class="sct-t">Hasta 6 meses</span><span class="sct-s">Sin intereses</span></div></div>
-        <a class="sct-slot" href="#club"><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13"/><path d="M12 8c-2-4-6-4-6-1.5S10 8 12 8c2 0 6 1 6-1.5S14 4 12 8z"/></svg></span><div class="sct-txt"><span class="sct-t">$300 gratis</span><span class="sct-s">En tu primera pieza</span></div></a>
+        <a class="sct-slot" href="#club" data-club><span class="sct-ico"><svg viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13"/><path d="M12 8c-2-4-6-4-6-1.5S10 8 12 8c2 0 6 1 6-1.5S14 4 12 8z"/></svg></span><div class="sct-txt"><span class="sct-t">$300 gratis</span><span class="sct-s">En tu primera compra</span></div></a>
       </div>
     </div>
   </div>
@@ -726,24 +792,23 @@ button.btn{cursor:pointer;font-family:inherit}
     <div class="cmp-card">
       <svg class="cmp-sello" viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg>
       <p class="cmp-eb">Comparativa</p>
-      <h2>¿Por qué comprar en Montaris?</h2>
-      <p class="cmp-sub">Somos fabricantes: piezas con sello y peso en gramos.</p>
+      <h2>¿Por qué elegir Montaris?</h2>
+      <p class="cmp-sub">Fabricantes de joyería con sello de autenticidad y peso en gramos.</p>
       <table class="cmp-t"><tbody>
         <tr><td class="fe"></td><td class="hc hd"><img src="img/logo-mm-blanco.png" alt="" width="44" height="20"><span>MONTARIS</span></td><td class="c h">Joyerías</td><td class="c h">Otros</td></tr>
-        <tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Plata .925 con sello</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5.5" r="2.2"/></svg>Peso en gramos en cada pieza</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M3 21V10l6 3V9l6 3V5h6v16z"/></svg>Somos fabricantes</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg>Hasta 6 meses sin intereses</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>30 días para cambios</span></td><td class="hc last"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="half"></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr>
+        <tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Plata .925 con sello</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M6 8h12l2 12H4z"/><circle cx="12" cy="5.5" r="2.2"/></svg>Peso en gramos en cada pieza</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M3 21V10l6 3V9l6 3V5h6v16z"/></svg>Somos fabricantes</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg>Hasta 6 meses sin intereses</span></td><td class="hc"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr><tr><td class="fe"><span><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg>Devolución gratis</span></td><td class="hc last"><span class="yh"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></td><td class="c"><span class="half"></span></td><td class="c"><span class="no"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></span></td></tr>
       </tbody></table>
-      <p class="cmp-ft"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Garantía de 60 días en cada compra</p>
+      <p class="cmp-ft"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Garantía de 60 días en cada pieza</p>
     </div>
   </div></section>
 
   <!-- 12. Quiénes somos (como Boxroom: sello + etiqueta, título, texto, recuadros encimados con flechas y puntitos) -->
   <section class="sec qs" id="qs"><div class="wrap">
     <div class="qs-hd">
-      <img class="qs-logo" src="img/logo-mm-negro.png" alt="Montaris" width="120" height="55">
-      <h2>¡Estamos a tus órdenes!</h2>
-      <p>Montaris es una joyería comercializadora y fabricante de artículos de plata .925 y oro, creada por cinco compas. Nada de bisutería ni baños: metal de verdad, con sello y peso en gramos.</p>
+      <img class="qs-logo" src="img/logo-mm-negro.png" alt="Montaris" width="70" height="32">
+      <p>Montaris es una joyería comercializadora y fabricante de artículos auténticos de plata .925 y oro. Nada de bisutería ni baños: metales preciosos auténticos, con sello y peso en gramos.</p>
     </div>
-    <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="100% plata .925" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>100% plata .925</h3><p>Cada pieza trae su sello 925 MX y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Confía en nosotros" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Confía en nosotros</h3><p>Somos fabricantes, entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía real" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía real</h3><p>60 días de garantía y 30 días para cambios.</p></div></div></div>
+    <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="Plata .925 con sello" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Plata .925 con sello</h3><p>Cada pieza lleva su sello 925 y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Somos fabricantes" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Somos fabricantes</h3><p>Cada pieza sale de nuestro taller, con entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía de 60 días" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía de 60 días</h3><p>Respaldo en cada pieza y devolución gratis.</p></div></div></div>
     <div class="nv"><button type="button" class="nb pv" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dt"></div><button type="button" class="nb nx" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
   </div></section>
 
@@ -751,20 +816,16 @@ button.btn{cursor:pointer;font-family:inherit}
   <div id="bloques2"></div>
 
   <!-- 10b. Otra línea: Esclavas con placa (piezas reales sub=placa) -->
-  <section class="sec lin" id="placa"><div class="wrap">
-    <div class="ttl"><h2>Esclavas con placa</h2><a href="coleccion.html?c=esclavas&amp;t=placa">Ver más ›</a></div>
-    <div class="carr" id="carr-placa"></div>
-    <div class="more"><a class="btn o" href="coleccion.html?c=esclavas&amp;t=placa">Ver más</a></div>
-  </div></section>
+  <section class="sec blk" id="placa"><div class="wrap"><a class="blk-banner" href="coleccion.html?c=esclavas&amp;t=placa"><img src="img/prod/14_L-13_esclava-con-placa/1.jpg" alt="Esclavas con placa, plata .925" loading="lazy"><div><h2>Esclavas con placa</h2><span class="btn">Ver ahora</span></div></a><div class="grid" id="carr-placa"></div><div class="more"><a class="btn o" href="coleccion.html?c=esclavas&amp;t=placa">Ver más</a></div></div></section>
 
   <!-- 14. Preguntas frecuentes -->
   <section class="sec" id="faq"><div class="wrap">
-    <div class="ttl"><h2>Preguntas frecuentes</h2><a href="#ayuda">Más ayuda ›</a></div>
+    <div class="ttl"><h2>Preguntas frecuentes</h2><a href="#ayuda">Ayuda ›</a></div>
     <div class="faq">
-      <details><summary>¿Cuánto tarda en llegar?</summary><p>De 2 a 5 días hábiles a todo México. Te mandamos tu guía de rastreo.</p></details>
-      <details><summary>¿Puedo cambiarla?</summary><p>Sí, tienes 30 días para cambiarla o devolverla.</p></details>
-      <details><summary>¿Se pone negra la plata?</summary><p>Con el tiempo se oscurece y se quita con el kit de limpieza que te mandamos. Si no se quita, entra la garantía de 60 días.</p></details>
-      <details><summary>¿Cómo sé mi talla?</summary><p>Revisa la guía de tallas o escríbenos en Soporte y te ayudamos.</p></details>
+      <details><summary>¿Cuánto tarda mi pedido?</summary><p>De 2 a 5 días hábiles a todo México, con número de guía para su rastreo.</p></details>
+      <details><summary>¿Puedo devolver mi pieza?</summary><p>Sí. La devolución es gratis.</p></details>
+      <details><summary>¿La plata se oscurece?</summary><p>Con el tiempo puede oscurecerse; recupera su brillo con el kit de limpieza incluido. Si no lo recupera, la cubre la garantía de 60 días.</p></details>
+      <details><summary>¿Cómo elijo mi medida?</summary><p>Consulta la guía de tallas o escríbenos en Soporte; con gusto te asesoramos.</p></details>
     </div>
   </div></section>
 
@@ -772,21 +833,21 @@ button.btn{cursor:pointer;font-family:inherit}
   <section class="may imp" id="mayoreo"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="" loading="lazy"><div class="imp-in">
     <span class="eb">Mayoreo · Revendedores</span>
     <h2>Compra desde $5,000 y gana revendiendo</h2>
-    <p class="ben">Entre más compras, menos pagas por pieza.</p>
-    <div class="tiers"><div><b>$5k</b><span>Escalón 1</span></div><div><b>$10k</b><span>Escalón 2</span></div><div><b>$15k</b><span>Escalón 3</span></div><div><b>$20k+</b><span>Súper</span></div></div>
-    <button class="cta" type="button" data-soporte>Pedir la lista de mayoreo</button>
+    <p class="ben">A mayor volumen, mejor precio por pieza.</p>
+    <div class="tiers"><div><b>$5k</b><span>Escalón 1</span></div><div><b>$10k</b><span>Escalón 2</span></div><div><b>$15k</b><span>Escalón 3</span></div><div><b>$20k+</b><span>Escalón 4</span></div></div>
+    <button class="cta" type="button" data-soporte>Solicitar lista de mayoreo</button>
   </div></section>
 
   <section class="club imp" id="club"><img src="img/prod/28_L-15_pulsera-cubana-con-zirconias-23cm/1.jpg" alt="" loading="lazy"><div class="imp-in">
     <span class="eb">Club Montaris</span>
-    <h2><em>$300 de regalo</em> en tu primera pieza</h2>
-    <p class="ben">Regístrate con tu WhatsApp y te mandamos tu cupón.</p>
+    <h2><em>$300 de regalo</em> en tu primera compra</h2>
+    <p class="ben">Regístrate y recibe tu cupón de bienvenida.</p>
     <form class="reg" id="reg" novalidate>
       <!-- aquí va la verificación por WhatsApp -->
       <input id="r-nom" class="full" type="text" autocomplete="name" placeholder="Nombre" aria-label="Nombre" required>
       <input id="r-wa" class="full" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="14" placeholder="WhatsApp (10 dígitos)" aria-label="WhatsApp a 10 dígitos" required>
       <p class="reg-err full" id="reg-err" role="alert"></p>
-      <button class="full" type="submit">Quiero mis $300</button>
+      <button class="full" type="submit">Recibir mis $300</button>
       <p class="chk full">Al registrarte aceptas el <a href="#faq">aviso de privacidad</a> y recibir mensajes de Montaris.</p>
       <p class="reg-ok full" id="reg-ok" role="status"></p>
     </form>
@@ -794,26 +855,25 @@ button.btn{cursor:pointer;font-family:inherit}
 </main>
 
 <!-- 15. Pie con ayuda -->
-<footer id="ayuda"><div class="wrap">
-  <div class="ft">
-    <div class="ft-top"><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
+<footer id="ayuda" class="pie"><div class="wrap">
+  <div class="pie-g">
+    <div class="pie-top"><img src="img/logo-mm-blanco.png" alt="Montaris" width="97" height="44"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
-    <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
+    <div class="pie-m"><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club" data-club>Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul><div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
-  <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
+  <div class="pagos" aria-label="Formas de pago"><span>Aceptamos</span><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
 </div></footer>
 </div>
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792546129" charset="utf-8"></script>
-<script src="bolsa.js?v=1792546129" charset="utf-8"></script>
-<script src="menu.js?v=1792546129" charset="utf-8"></script>
+<script src="catalogo.js?v=1792575578" charset="utf-8"></script>
+<script src="bolsa.js?v=1792575578" charset="utf-8"></script>
+<script src="menu.js?v=1792575578" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792546129 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792575578 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -894,7 +954,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792546129 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792575578 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -905,8 +965,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792546129)
-// (los botones data-soporte los engancha menu.js?v=1792546129)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792575578)
+// (los botones data-soporte los engancha menu.js?v=1792575578)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
@@ -923,7 +983,14 @@ document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();
  if(wa.length!==10){er.textContent='Tu WhatsApp debe tener 10 dígitos.';return}
  // aquí va la verificación por WhatsApp (por ahora solo se guarda en este navegador)
  try{localStorage.setItem('montaris_club',JSON.stringify({nombre:nom,whatsapp:wa,fecha:new Date().toISOString()}))}catch(_){}
- ok.textContent='Listo, te mandamos tu cupón por WhatsApp';e.target.reset()});
+ ok.textContent='Gracias. En breve recibirás tu cupón.';e.target.reset()});
+</script>
+<script>
+// P: "$300 gratis" y "Club Montaris" llevan al formulario del club (scroll suave + foco en Nombre)
+document.addEventListener('click',function(e){var a=e.target.closest('[data-club]');if(!a)return;var c=document.getElementById('club'),n=document.getElementById('r-nom');if(!c||!n)return;e.preventDefault();
+ var hd=document.getElementById('hdr'),h=hd?hd.offsetHeight:0,yc=c.getBoundingClientRect().top+scrollY-h,yn=n.getBoundingClientRect().top+scrollY,y=(yn-yc<innerHeight-h-90)?yc:yn-innerHeight*.45;
+ scrollTo({top:Math.max(0,y),behavior:'smooth'});var t0=Date.now(),last=-1;
+ (function tick(){if(Math.abs(scrollY-last)<1||Date.now()-t0>1600){n.focus({preventScroll:true});return}last=scrollY;setTimeout(tick,120)})()});
 </script>
 
 </body></html>

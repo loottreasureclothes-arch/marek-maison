@@ -6,10 +6,8 @@
 .cuadro{width:390px;height:844px;max-width:calc(100vw - 16px);background:#fff;border:1px solid #c9c9c9;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden;margin-bottom:16px}
 iframe{width:100%;height:100%;border:0;display:block}
 small{color:#777;padding-bottom:14px}</style></head><body>
-<div class="barra" id="barra">
-<button data-u="index.html" class="on">Inicio</button><button data-u="coleccion.html?c=hombre">Hombre</button><button data-u="coleccion.html?c=cadenas">Cadenas</button><button data-u="producto.html?id=50">Producto</button><button data-u="pago.html">Pago</button><a id="abrir" href="index.html" target="_blank">Abrir en pestaña ↗</a>
-</div>
+<div class="barra"><a id="abrir" href="index.html" target="_blank">Abrir en pestaña ↗</a></div>
 <div class="cuadro"><iframe id="f" title="Montaris en celular"></iframe></div>
 <small>Vista de 390 × 844. Navega adentro como en un celular.</small>
-<script>const V=Date.now();const f0=document.getElementById('f');f0.src='index.html?v='+V;document.getElementById('barra').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;document.getElementById('f').src=b.dataset.u+(b.dataset.u.includes('?')?'&':'?')+'v='+Date.now();document.getElementById('abrir').href=b.dataset.u;document.querySelectorAll('#barra button').forEach(x=>x.classList.toggle('on',x===b))});</script>
+<script>const V=Date.now();const f0=document.getElementById('f');f0.src='index.html?v='+V;document.getElementById('abrir').href='index.html?v='+V;</script>
 </body></html>

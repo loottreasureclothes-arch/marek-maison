@@ -169,16 +169,16 @@ function preguntarAPI(texto, historial){
   /* respuestas del cerebro local. b = botones: clave de chip, "persona", "lista" o {n, href} */
   var R = {
     saludo: { t:'<p>Hola, soy el asistente de Montaris. ¿En qué te ayudo?</p>', chips:true },
-    envios: { t:'<p><b>Envío gratis</b> en compras desde $950 a todo México.</p><p>Cada pieza va en su estuche con kit de limpieza y te mandamos la guía para que sigas tu paquete.</p>', b:["cambios","persona"] },
-    cambios: { t:'<p>Tienes <b>30 días</b> desde que recibes tu pieza para cambiarla o devolverla.</p><p>Debe venir sin uso y con su estuche. Escríbenos con tu número de pedido y te decimos cómo mandarla.</p>', b:["largos","persona"] },
+    envios: { t:'<p><b>Envío gratis</b> en compras desde $950 a todo México.</p><p>Cada pieza va en su estuche con kit de limpieza y te enviamos la guía para que sigas tu paquete.</p>', b:["cambios","persona"] },
+    cambios: { t:'<p>Puedes cambiar o devolver tu pieza y la <b>devolución es gratis</b>.</p><p>Debe venir sin uso y con su estuche. Escríbenos con tu número de pedido y te indicamos cómo enviarla.</p>', b:["largos","persona"] },
     garantia: { t:'<p>Todas las piezas tienen <b>garantía de 60 días</b> contra defectos de fabricación (broches, eslabones, soldaduras).</p><p>Cada pieza lleva el <b>sello .925</b> que confirma que es plata ley .925.</p>', b:["cuidado","persona"] },
     mancha: { t:'<p>Que la plata se oscurezca con el tiempo es normal: es el contacto con el aire, el sudor o el perfume, no quiere decir que no sea plata.</p><p>Se limpia con el <b>kit de limpieza</b> que viene con tu pieza. Y si es un defecto de fabricación (broche, eslabón, soldadura), tienes <b>garantía de 60 días</b>.</p>', b:["cuidado","persona"] },
     cuidado: { t:'<p>Para que tu plata dure brillante:</p><ul><li>Quítatela para bañarte, nadar o hacer ejercicio.</li><li>Evita perfume, cremas y cloro directo.</li><li>Guárdala en su estuche, separada de otras piezas.</li><li>Si se opaca, límpiala con el kit de limpieza que viene con tu pieza.</li></ul>', b:["garantia"] },
-    largos: { t:'<p>Así queda cada largo de cadena:</p><ul><li><b>45–50 cm:</b> al cuello.</li><li><b>55 cm:</b> a la altura de la clavícula.</li><li><b>60 cm:</b> unos tres dedos abajo de la clavícula.</li><li><b>70 cm:</b> a la altura del esternón.</li></ul>', b:["cambios","persona"] },
-    mayoreo: { t:'<p>Vendemos plata .925 con sello para revender, por escalones de compra: <b>$5,000 · $10,000 · $15,000 · $20,000</b>. Entre más grande el pedido, mejor precio.</p><p>La lista de precios te la mandamos por mensaje.</p>', b:["lista", { n:"Ver mayoreo", href:"index.html#mayoreo" }] },
+    largos: { t:'<p>Así queda cada largo de cadena:</p><ul><li><b>45–50 cm:</b> al cuello.</li><li><b>55 cm:</b> a la altura de la clavícula.</li><li><b>60 cm:</b> un poco debajo de la clavícula.</li><li><b>70 cm:</b> a la altura del esternón.</li></ul>', b:["cambios","persona"] },
+    mayoreo: { t:'<p>Vendemos plata .925 con sello para revender, por escalones de compra: <b>$5,000 · $10,000 · $15,000 · $20,000</b>. A mayor volumen, mejor precio por pieza.</p><p>Te enviamos la lista de precios por mensaje.</p>', b:["lista", { n:"Ver mayoreo", href:"index.html#mayoreo" }] },
     msi: { t:'<p>Puedes pagar <b>hasta en 6 meses sin intereses</b>.</p>', b:["envios","persona"] },
     precio: { t:'<p>Los precios están por confirmar; déjanos tu correo y te avisamos.</p>', b:["correo"] },
-    nosotros: { t:'<p>Montaris lo hacemos cinco compas: plata .925 con sello, garantía de 60 días y envío gratis desde $950.</p>', chips:true },
+    nosotros: { t:'<p>Montaris es una joyería comercializadora y fabricante de artículos auténticos de plata .925 y oro: piezas con sello, garantía de 60 días y envío gratis desde $950.</p>', chips:true },
     gracias: { t:'<p>¡Con gusto! Si se te ofrece algo más, aquí estoy.</p>', chips:true },
     nose: { t:'<p>No te entendí bien. Elige un tema o escríbelo de otra forma:</p>', chips:true }
   };

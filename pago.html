@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792546129">
+<link rel="stylesheet" href="menu.css?v=1792575578">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -152,14 +152,39 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .buscar .ph i.abajo{transform:translateY(130%);opacity:0;transition:none}
 .buscar.lleno .ph{display:none}
 @media (prefers-reduced-motion:reduce){.buscar .ph i{transition:none}}
+
+/* Q: barra de anuncios pegada (punto en medio, ~18px) */
+.bar ul{gap:0;animation-duration:34s}
+.bar li{display:flex;align-items:center}
+.bar li::after{content:"\00B7";margin:0 9px;color:#9a9a9a;font-weight:800}
+/* Q: pie (igual en todas las páginas) */
+.pie .pie-g{display:grid;grid-template-columns:1fr 1fr;gap:28px 16px;align-items:start}
+.pie .pie-top{grid-column:1/-1;display:grid;gap:10px;justify-items:center;text-align:center}
+.pie .pie-top img{height:44px;width:auto}
+.pie .pie-top p{margin:0;font-size:13px;color:#cfcfcf}
+.pie h4{margin:0 0 10px;font:600 11px var(--f-serif);letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.pie ul a{display:inline-block;padding-block:7px}
+.pie .pie-m{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;column-gap:16px;align-items:start}
+.pie .pie-m h4{grid-column:1/-1}
+.pie .redes{display:flex;gap:10px;margin:0}
+.pie .redes a{display:grid;place-items:center;width:42px;height:42px;border:1px solid #333;border-radius:50%}
+.pie .redes svg{width:19px;height:19px;fill:#fff}
+.pie .legal{border-top:1px solid #2a2a2a;margin-top:28px;padding-top:14px;font-size:11.5px;color:#888;display:grid;gap:6px}
+.pie .pagos{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:8px;margin-top:14px}
+.pie .pagos span{flex:0 0 100%;font-size:12px;color:#9a9a9a}
+.pie .pagos img{height:26px;width:auto;border-radius:3px;background:#fff}
+@media (min-width:900px){.pie .pie-g{grid-template-columns:2fr 1fr 1fr 1fr}.pie .pie-top{grid-column:auto;justify-items:start;text-align:left}.pie .pie-m{grid-column:auto;display:block}.pie .redes{margin-top:14px}}
 </style>
 </head>
 <body>
 
 <header class="hdr" id="hdr">
 <div class="bar" aria-label="Avisos"><ul>
-  <li>Plata .925 con sello</li><li>Hasta 6 meses sin intereses</li><li>Envío GRATIS desde $950</li><li>30 días para cambios</li><li>Garantía 60 días</li>
-  <li aria-hidden="true">Plata .925 con sello</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío GRATIS desde $950</li><li aria-hidden="true">30 días para cambios</li><li aria-hidden="true">Garantía 60 días</li>
+  <li>Joyería con sello de autenticidad</li><li>Hasta 6 meses sin intereses</li><li>Envío gratis desde $950</li><li>Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
+  <li aria-hidden="true">Joyería con sello de autenticidad</li><li aria-hidden="true">Hasta 6 meses sin intereses</li><li aria-hidden="true">Envío gratis desde $950</li><li aria-hidden="true">Devolución gratis</li>
 </ul></div>
   <div class="wrap">
     <div class="row">
@@ -180,7 +205,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
     <div class="ck-f" id="zona">
       <h1>Tu pedido</h1>
       <p class="sub">Plata .925 con sello · Envío gratis desde $950</p>
-      <div class="pronto"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><div><b>Pagos en línea muy pronto.</b> Por ahora déjanos tus datos y te contactamos para confirmar precio, envío y forma de pago de tu pedido.</div></div>
+      <div class="pronto"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19M6 15h4"/></svg><div><b>El pago en línea estará disponible próximamente.</b> Déjanos tus datos y un asesor te contactará para confirmar precio, envío y forma de pago.</div></div>
       <form class="frm" id="frm" novalidate>
         <h2>Contacto</h2>
         <div class="fl-in"><input id="f-nom" name="nombre" autocomplete="name" placeholder=" " required><label for="f-nom">Nombre completo</label></div>
@@ -190,28 +215,27 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
         </div>
         <div class="fl-in"><input id="f-cd" name="ciudad" autocomplete="address-level2" placeholder=" " required><label for="f-cd">Ciudad</label></div>
         <p class="err" id="err" role="alert"></p>
-        <button type="submit" id="enviar">Quiero mi pedido</button>
-        <p class="nota">Hasta 6 meses sin intereses · 30 días para cambios · Garantía 60 días</p>
+        <button type="submit" id="enviar">Solicitar mi pedido</button>
+        <p class="nota">Hasta 6 meses sin intereses · Devolución gratis · Garantía 60 días</p>
       </form>
     </div>
   </div>
 </div></main>
 
-<footer id="ayuda"><div class="wrap">
-  <div class="ft">
-    <div class="ft-m"><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
+<footer id="ayuda" class="pie"><div class="wrap">
+  <div class="pie-g">
+    <div class="pie-top"><img src="img/logo-mm-blanco.png" alt="Montaris" width="97" height="44"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
-    <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
+    <div class="pie-m"><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club" data-club>Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul><div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
-  <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
+  <div class="pagos" aria-label="Formas de pago"><span>Aceptamos</span><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
 </div></footer>
 
-<script src="catalogo.js?v=1792546129" charset="utf-8"></script>
-<script src="bolsa.js?v=1792546129" charset="utf-8"></script>
-<script src="menu.js?v=1792546129" charset="utf-8"></script>
+<script src="catalogo.js?v=1792575578" charset="utf-8"></script>
+<script src="bolsa.js?v=1792575578" charset="utf-8"></script>
+<script src="menu.js?v=1792575578" charset="utf-8"></script>
 <script>
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -221,12 +245,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   function pintar(){
     var its = Bolsa.items(), n = Bolsa.contar();
     btn.disabled = !its.length;
-    if (!its.length) { lista.innerHTML = '<p class="vac">Tu carrito está vacío.<br><a href="coleccion.html?c=cadenas">Ver cadenas</a></p>'; return; }
+    if (!its.length) { lista.innerHTML = '<p class="vac">Tu carrito está vacío.<br><a href="coleccion.html?c=cadenas">Descubrir la colección</a></p>'; return; }
     lista.innerHTML = '<ul class="ck-li">' + its.map(function(it, i){
       return '<li><div class="ck-im"><img src="' + esc(it.foto) + '" alt=""><b>' + it.cantidad + '</b></div><div><a href="producto.html?id=' + encodeURIComponent(it.id) + '">' + esc(it.nombre) + '</a><small>' + (it.largo ? 'Largo: ' + esc(it.largo) : 'Plata .925') + '</small><button class="del" type="button" data-i="' + i + '">Quitar</button></div><span class="pz">Por confirmar</span></li>';
     }).join('') + '</ul>' +
     '<div class="ck-tt"><div><span>Subtotal · ' + n + (n > 1 ? ' piezas' : ' pieza') + '</span><span>Por confirmar</span></div><div><span>Envío</span><span>Gratis desde $950</span></div><div class="gr"><span>Total</span><span><small>MXN</small>Por confirmar</span></div></div>' +
-    '<div class="ck-ok"><div>Hasta 6 meses<small>sin intereses</small></div><div>Garantía<small>60 días</small></div><div>30 días<small>para cambios</small></div><div>Kit de limpieza<small>incluido</small></div></div>';
+    '<div class="ck-ok"><div>Hasta 6 meses<small>sin intereses</small></div><div>Garantía<small>60 días</small></div><div>Devolución<small>gratis</small></div><div>Kit de limpieza<small>incluido</small></div></div>';
   }
   lista.addEventListener('click', function(e){ var b = e.target.closest('.del'); if (b) Bolsa.quitar(+b.dataset.i); });
   document.addEventListener('bolsa:cambio', pintar);
@@ -237,12 +261,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
     e.preventDefault();
     var f = e.target, err = document.getElementById('err');
     if (!Bolsa.contar()) { err.textContent = 'Tu carrito está vacío.'; return; }
-    if (f.nombre.value.trim().length < 3) { err.textContent = 'Escribe tu nombre.'; f.nombre.focus(); return; }
-    if (!/^\S+@\S+\.\S+$/.test(f.correo.value)) { err.textContent = 'Escribe un correo válido.'; f.correo.focus(); return; }
+    if (f.nombre.value.trim().length < 3) { err.textContent = 'Ingresa tu nombre completo.'; f.nombre.focus(); return; }
+    if (!/^\S+@\S+\.\S+$/.test(f.correo.value)) { err.textContent = 'Ingresa un correo válido.'; f.correo.focus(); return; }
     if (f.tel.value.replace(/\D/g, '').length < 10) { err.textContent = 'El teléfono debe tener 10 dígitos.'; f.tel.focus(); return; }
-    if (f.ciudad.value.trim().length < 2) { err.textContent = 'Escribe tu ciudad.'; f.ciudad.focus(); return; }
+    if (f.ciudad.value.trim().length < 2) { err.textContent = 'Ingresa tu ciudad.'; f.ciudad.focus(); return; }
     err.textContent = '';
-    document.getElementById('zona').innerHTML = '<div class="gracias" role="status"><h2>Gracias, te contactamos para cerrar tu pedido</h2><p>Te escribiremos a ' + esc(f.correo.value.trim()) + ' o al ' + esc(f.tel.value.trim()) + '.</p><a href="index.html">Seguir comprando</a></div>';
+    document.getElementById('zona').innerHTML = '<div class="gracias" role="status"><h2>Gracias, recibimos tu solicitud</h2><p>Un asesor te contactará en ' + esc(f.correo.value.trim()) + ' o al ' + esc(f.tel.value.trim()) + ' para confirmar tu pedido.</p><a href="index.html">Seguir comprando</a></div>';
   });
 })();
 
