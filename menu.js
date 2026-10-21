@@ -130,29 +130,6 @@ function preguntarAPI(texto, historial){
   var ICO_MSI = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>';
   var ICO_GAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
 
-  var menuHTML =
-    '<div class="mn-capa mn-izq" id="mn-menu" aria-hidden="true">' +
-      '<div class="mn-velo" data-mn-cerrar></div>' +
-      '<div class="mn-panel" role="dialog" aria-modal="true" aria-label="Menú">' +
-        '<div class="mn-top"><a class="mn-logo" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-negro.png" alt="" width="44" height="20"><b>MONTARIS</b></a>' +
-          '<button class="mn-x" type="button" data-mn-cerrar aria-label="Cerrar menú">' + X + '</button></div>' +
-        '<div class="mn-cuerpo">' +
-          '<div class="mn-tabs" role="tablist" aria-orientation="vertical" aria-label="Colecciones">' +
-            '<a class="mn-tab mn-inicio" href="index.html">Inicio</a>' +
-            tabs.map(function(t){ return '<button class="mn-tab" type="button" role="tab" id="mn-t-' + t.k + '" aria-controls="mn-p-' + t.k + '" aria-selected="false" tabindex="-1" data-mn-tab="' + t.k + '">' + esc(t.n) + '</button>'; }).join("") +
-            '<div class="mn-tab-sep" aria-hidden="true"></div>' +
-            '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">' + SV_PESTANA + '<span>Soporte</span></button>' +
-          '</div>' +
-          '<div class="mn-der-col">' + pans.join("") +
-            '<div class="mn-conf"><p>' + ICO_ENVIO + 'Envío gratis desde $950</p><p>' + ICO_MSI + 'Hasta 6 meses sin intereses</p><p>' + ICO_GAR + 'Garantía 60 días · Sello .925</p></div>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-    '</div>';
-
-
-  /* ---------- SOPORTE = CHAT ---------- */
-  var ENVIAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
   /* ---------- Silvercito: la mascota (cubito de plata con MM grabado), todo SVG inline ----------
      Los degradados/recorte viven UNA vez en SV_DEFS (dentro de #menu-root) y cada Silvercito los usa por id.
      Animación (CSS): flota, parpadea cada ~4 s, destello diagonal cada ~6 s y saluda al abrir el chat. */
@@ -185,6 +162,30 @@ function preguntarAPI(texto, historial){
   }
   var SV_CABECERA = silvercito("mn-sv-cab"), SV_PESTANA = silvercito("mn-sv-tab"), SV_AVATAR = silvercito("mn-sv-av");
 
+  var menuHTML =
+    '<div class="mn-capa mn-izq" id="mn-menu" aria-hidden="true">' +
+      '<div class="mn-velo" data-mn-cerrar></div>' +
+      '<div class="mn-panel" role="dialog" aria-modal="true" aria-label="Menú">' +
+        '<div class="mn-top"><a class="mn-logo" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-negro.png" alt="" width="44" height="20"><b>MONTARIS</b></a>' +
+          '<button class="mn-x" type="button" data-mn-cerrar aria-label="Cerrar menú">' + X + '</button></div>' +
+        '<div class="mn-cuerpo">' +
+          '<div class="mn-tabs" role="tablist" aria-orientation="vertical" aria-label="Colecciones">' +
+            '<a class="mn-tab mn-inicio" href="index.html">Inicio</a>' +
+            tabs.map(function(t){ return '<button class="mn-tab" type="button" role="tab" id="mn-t-' + t.k + '" aria-controls="mn-p-' + t.k + '" aria-selected="false" tabindex="-1" data-mn-tab="' + t.k + '">' + esc(t.n) + '</button>'; }).join("") +
+            '<div class="mn-tab-sep" aria-hidden="true"></div>' +
+            '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">' + SV_PESTANA + '<span>Soporte</span></button>' +
+          '</div>' +
+          '<div class="mn-der-col">' + pans.join("") +
+            '<div class="mn-conf"><p>' + ICO_ENVIO + 'Envío gratis desde $950</p><p>' + ICO_MSI + 'Hasta 6 meses sin intereses</p><p>' + ICO_GAR + 'Garantía 60 días · Sello .925</p></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+
+
+  /* ---------- SOPORTE = CHAT ---------- */
+  var ENVIAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>';
+
   var CHIPS = [
     { k:"envios",   n:"Envíos" },
     { k:"cambios",  n:"Cambios y devoluciones" },
@@ -198,7 +199,7 @@ function preguntarAPI(texto, historial){
 
   /* respuestas del cerebro local. b = botones: clave de chip, "persona", "lista" o {n, href} */
   var R = {
-    saludo: { t:'<p>Hola, soy el asistente de Montaris. ¿En qué te ayudo?</p>', chips:true },
+    saludo: { t:'<p>Hola, soy Silvercito, el asistente de Montaris. ¿En qué te ayudo?</p>', chips:true },
     envios: { t:'<p><b>Envío gratis</b> en compras desde $950 a todo México.</p><p>Cada pieza va en su estuche con kit de limpieza y te enviamos la guía para que sigas tu paquete.</p>', b:["cambios","persona"] },
     cambios: { t:'<p>Puedes cambiar o devolver tu pieza y la <b>devolución es gratis</b>.</p><p>Debe venir sin uso y con su estuche. Escríbenos con tu número de pedido y te indicamos cómo enviarla.</p>', b:["largos","persona"] },
     garantia: { t:'<p>Todas las piezas tienen <b>garantía de 60 días</b> contra defectos de fabricación (broches, eslabones, soldaduras).</p><p>Cada pieza lleva el <b>sello .925</b> que confirma que es plata ley .925.</p>', b:["cuidado","persona"] },
