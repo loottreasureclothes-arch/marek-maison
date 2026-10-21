@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792576181">
+<link rel="stylesheet" href="menu.css?v=1792576507">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -680,6 +680,42 @@ button.btn{cursor:pointer;font-family:inherit}
 .pie .pagos span{flex:0 0 100%;font-size:12px;color:#9a9a9a}
 .pie .pagos img{height:26px;width:auto;border-radius:3px;background:#fff}
 @media (min-width:900px){.pie .pie-g{grid-template-columns:2fr 1fr 1fr 1fr}.pie .pie-top{grid-column:auto;justify-items:start;text-align:left}.pie .pie-m{grid-column:auto;display:block}.pie .redes{margin-top:14px}}
+/* R: mini tarjetas del hero calcadas de Boxroom (2 por vista, 171x128 a 390) */
+.hero{height:424px}
+.hero .chip{font-size:9.5px;padding:4px 7px}
+.hero h1{margin:6px 0 4px;font-size:clamp(17px,4.9vw,23px)}
+.hero p.sub{margin:0 0 8px;font-size:12.5px}
+.hero .btn{min-height:36px}
+.hs-ft{margin-top:10px;gap:0}
+.hgrp{gap:11px;overflow:hidden;scroll-snap-type:none}
+.hcard{flex:1 1 0;min-width:0;position:relative;display:flex;align-items:stretch;gap:0;height:128px;padding:0;border-radius:9px;background:#fff;color:#282828;border:1px solid rgba(0,0,0,.05);box-shadow:0 6px 13px rgba(16,40,80,.16);overflow:hidden;scroll-snap-align:start}
+.hcard .hc-t{position:absolute;top:5px;left:5px;z-index:1;max-width:calc(100% - 12px);padding:2px 6px;border-radius:99px;background:#fff;color:#101828;box-shadow:0 .8px 2.7px rgba(0,0,0,.09);font:800 10.5px/1.1 var(--f-txt);letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hcard .hc-pic{flex:0 0 46%;display:flex;align-items:center;justify-content:center;background:#f6f8fb}
+.hcard .hc-pic img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:0;background:#eee}
+.hcard .hc-in{flex:1 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;padding:8px 7px 8px 8px;line-height:1.15}
+.hcard .hc-in b{display:block;font:700 12px/1.15 var(--f-txt);color:#344054;white-space:normal;overflow:visible;text-overflow:clip}
+.hcard .hc-in b span{display:block;white-space:nowrap}
+.hcard .hc-g{margin-top:3px;font:600 11px/1.2 var(--f-txt);color:#667085}
+.hcard .hc-p{margin-top:2px;font:800 11.5px/1.15 var(--f-txt);color:#101828}
+.hcard .hc-s{align-self:flex-start;margin-top:5px;padding:2px 5px;border-radius:4px;background:#111;color:#fff;font:800 10.5px/1.25 var(--f-txt);letter-spacing:.03em;white-space:nowrap}
+.hs-dots button{height:20px}
+@media (min-width:900px){
+ .hero{height:568px}
+ .hero-in{padding-top:120px;padding-bottom:28px}
+ .hero h1{font-size:clamp(26px,2.5vw,36px);margin:8px 0 6px}
+ .hero p.sub{font-size:15px;margin-bottom:12px}
+ .hero .btn{min-height:44px}
+ .hero .hs-ft,.hs-ft{max-width:640px;margin-top:14px}
+ .hgrp{gap:14px}
+ .hcard{height:150px;border-radius:14px;box-shadow:0 6px 18px rgba(16,40,80,.12)}
+ .hcard .hc-t{top:8px;left:8px;padding:3px 9px;font-size:11px}
+ .hcard .hc-pic{flex-basis:40%}
+ .hcard .hc-in{padding:12px 14px}
+ .hcard .hc-in b{font-size:14px;line-height:1.2}
+ .hcard .hc-g{font-size:12.5px;margin-top:4px}
+ .hcard .hc-p{font-size:14px;margin-top:3px}
+ .hcard .hc-s{font-size:12px;padding:4px 9px;margin-top:8px;border-radius:6px}
+}
 </style>
 </head><body>
 
@@ -869,11 +905,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792576181" charset="utf-8"></script>
-<script src="bolsa.js?v=1792576181" charset="utf-8"></script>
-<script src="menu.js?v=1792576181" charset="utf-8"></script>
+<script src="catalogo.js?v=1792576507" charset="utf-8"></script>
+<script src="bolsa.js?v=1792576507" charset="utf-8"></script>
+<script src="menu.js?v=1792576507" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792576181 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792576507 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -943,8 +979,10 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
 // portada: slider de banners
 (function(){const ss=[...document.querySelectorAll('#hs .hs-s')],ds=[...document.querySelectorAll('#hs-dots button')],hc=document.getElementById('hcards'),hero=document.querySelector('.hero');let i=0,t=null;
  // mini tarjetas de piezas reales sobre cada banner
- const HC={50:[50,51,53],48:[48,49,7],52:[52,44,46]};
- const mini=p=>`<a class="hcard" href="${url(p)}"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="120" height="120" loading="lazy"><span><b>${p.nombre}</b><small>${p.peso} · <i class="pc">${precio(p)}</i></small></span></a>`;
+ const HC={50:[50,51],48:[48,49],52:[52,44]};
+ const tipo=p=>(p.nombre.match(/cartier|barbada|torzal|marinera|planchada|figaro|fígaro/i)||[p.tipo||''])[0].toUpperCase();
+ const dos=p=>{const [a,b]=p.nombre.replace(/^Cadena\s+/i,'').split(' · ');const m=a.match(/^(.*?)\s+(\d[\d.]*\s*mm)$/);return m?[m[1].charAt(0).toUpperCase()+m[1].slice(1),m[2]+(b?' · '+b:'')]:[a,b||'']};
+ const mini=p=>{const [l1,l2]=dos(p);return `<a class="hcard" href="${url(p)}" aria-label="${p.nombre}"><span class="hc-t">${tipo(p)}</span><span class="hc-pic"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="hc-in"><b><span>${l1}</span><span>${l2}</span></b><span class="hc-g">${p.peso}</span><span class="hc-p">${precio(p)}</span><span class="hc-s">SELLO .925</span></span></a>`};
  hc.innerHTML=ss.map((x,j)=>`<div class="hgrp${j?'':' on'}">${(HC[x.dataset.id]||[+x.dataset.id]).map(k=>byId[k]).filter(Boolean).map(mini).join('')}</div>`).join('');
  const gs=[...hc.children];
  function ver(k){i=(k+ss.length)%ss.length;ss.forEach((x,j)=>x.classList.toggle('on',j===i));ds.forEach((x,j)=>x.classList.toggle('on',j===i));gs.forEach((g,j)=>{g.classList.toggle('on',j===i);if(j===i)g.scrollLeft=0})}
@@ -954,7 +992,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792576181 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792576507 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -965,8 +1003,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792576181)
-// (los botones data-soporte los engancha menu.js?v=1792576181)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792576507)
+// (los botones data-soporte los engancha menu.js?v=1792576507)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
