@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792525435">
+<link rel="stylesheet" href="menu.css?v=1792545578">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -33,14 +33,13 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wrap{max-width:1320px;margin:0 auto;padding-inline:16px}
 @media (min-width:900px){.wrap{padding-inline:32px}}
 
-.bar{background:#111;color:#fff;overflow:hidden}
+.bar{background:#fff;color:#111;overflow:hidden;border-bottom:1px solid #e4e4e1}
 .bar ul{display:flex;gap:40px;margin:0;padding:9px 0;list-style:none;white-space:nowrap;width:max-content;font:500 11.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;animation:corre 40s linear infinite}
-.bar li::after{content:"•";margin-left:40px;color:#777}
+.bar li::after{content:"•";margin-left:40px;color:#9a9a9a}
 @keyframes corre{to{transform:translateX(-50%)}}
 /* header oscuro fijo arriba, como la ficha de Boxroom */
-.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
-.hdr{transition:transform .3s ease,background-color .3s ease,color .3s ease,box-shadow .3s ease;will-change:transform}
-.hdr.oculto{transform:translateY(-100%)}
+.hdr{position:sticky;top:0;z-index:40;background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.hdr{transition:background-color .3s ease,color .3s ease,box-shadow .3s ease}
 @media (prefers-reduced-motion:reduce){.hdr{transition:none}}
 .row{display:flex;align-items:center;gap:4px;height:58px}
 @media (max-width:420px){.row .ib{width:40px}}
@@ -57,7 +56,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .buscar input::placeholder{color:#8a8a8a}
 .tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font:700 15px var(--f-txt);padding-bottom:10px}
 .tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:none;position:relative;padding-bottom:6px}
+.tabs a{flex:none;position:relative;padding:8px 0 10px}
 .tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 .tabs a.on::after{transform:scaleX(1)}
 @media (hover:hover){.tabs a:hover::after{transform:scaleX(1)}}
@@ -205,9 +204,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 /* también te puede gustar */
 .rel{padding-top:48px}
 .rel h2{margin:0 0 22px;text-align:center;font:600 20px/1.1 var(--f-serif);letter-spacing:.08em;text-transform:uppercase;color:#111}
-.rel-g{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 10px)/2.2);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:-16px;padding:0 16px 4px;scroll-padding-inline:16px}
+.rel-g{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:none;margin-inline:-16px;padding:0 16px 4px;scroll-padding-inline:16px}
 .rel-g::-webkit-scrollbar{display:none}
-@media (min-width:900px){.rel-g{grid-auto-flow:row;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;padding:0;overflow:visible}}
+
+.rel-g>.p{flex:0 0 calc((100% - 10px)/2.2);will-change:transform;transform:translateZ(0)}
+.rel-g .p .ph img{transition:none}
+@media (min-width:900px){.rel-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin:0;padding:0;overflow:visible}.rel-g>.p{will-change:auto;transform:none}}
 .p{scroll-snap-align:start;display:grid;gap:3px;align-content:start;min-width:0;text-align:left;color:inherit;text-decoration:none}
 .p .ph{position:relative;aspect-ratio:1/1;overflow:hidden;background:#F2F2F2;border-radius:2px;margin-bottom:10px}
 .p .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
@@ -292,6 +294,41 @@ html.zm-lock{overflow:hidden}
 .nohay h1{font:600 24px var(--f-serif);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 .nohay p{color:var(--ink-2);margin:0 0 22px}
 .nohay a{display:inline-flex;align-items:center;height:50px;padding:0 28px;background:#111;color:#fff;border-radius:4px;font:700 13px var(--f-txt);letter-spacing:.14em;text-transform:uppercase}
+
+/* pie (M): marca centrada en celular, columnas al ras, logos de pago */
+.ft{align-items:start}
+.ft .ft-m{grid-column:1/-1;text-align:center;display:grid;justify-items:center;gap:12px}
+.ft .ft-m p{margin:0;max-width:34ch}
+.ft h4{margin-top:0}
+.pagos{justify-content:center;align-items:center}
+.pagos img{height:26px;width:auto}
+@media (min-width:900px){.ft .ft-m{grid-column:auto;text-align:left;justify-items:start}.pagos{justify-content:flex-start}}
+
+/* club $300 por WhatsApp (M) */
+.cw{background:#0b0b0b;color:#fff;padding-block:44px}
+.cw-c{max-width:560px;margin:0 auto;text-align:center}
+.cw-k{margin:0 0 10px;font:600 11px var(--f-txt);letter-spacing:.24em;text-transform:uppercase;color:#bdbdbd}
+.cw h2{margin:0;font:700 clamp(34px,10vw,56px)/1 var(--f-serif);letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.cw h2 span{display:block;margin-top:8px;font-size:.42em;letter-spacing:.12em;color:#e9e4da}
+.cw-p{margin:14px auto 22px;max-width:38ch;font:400 14px/1.5 var(--f-txt);color:#cfcfcf}
+.cw form{display:grid;gap:10px;text-align:left}
+.cw input{width:100%;height:52px;padding:0 16px;border:1px solid #3a3a3a;border-radius:10px;background:#fff;color:#111;font:500 16px var(--f-txt)}
+.cw button{height:56px;border:0;border-radius:999px;background:#1fa84f;color:#fff;font:800 15px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 18px rgba(31,168,79,.35)}
+.cw button:hover{background:#178a40}
+.cw-ok{margin:4px 0 0;min-height:1.3em;text-align:center;font:600 14px var(--f-txt);color:#fff}
+.cw-ok.bien{color:#5be08a}
+.cw-s{margin:10px 0 0;font:400 11.5px var(--f-txt);color:#8f8f8f}
+@media (min-width:900px){.cw{padding-block:72px}.cw form{grid-template-columns:1fr 1fr}.cw form button,.cw-ok{grid-column:1/-1}}
+.qs-logo{display:block;width:110px;height:auto;margin:0 auto 4px}
+
+/* buscador: palabra que rota (M) */
+.buscar{position:relative}
+.buscar .ph{position:absolute;left:41px;right:16px;top:0;bottom:0;overflow:hidden;pointer-events:none;color:#8a8a8a;font:500 16px var(--f-txt)}
+.buscar .ph i{position:absolute;left:0;right:0;top:50%;font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:22px;margin-top:-11px;transform:translateY(0);opacity:1;transition:transform .45s ease,opacity .45s ease}
+.buscar .ph i.sube{transform:translateY(-130%);opacity:0}
+.buscar .ph i.abajo{transform:translateY(130%);opacity:0;transition:none}
+.buscar.lleno .ph{display:none}
+@media (prefers-reduced-motion:reduce){.buscar .ph i{transition:none}}
 </style>
 </head>
 <body>
@@ -311,7 +348,7 @@ html.zm-lock{overflow:hidden}
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
       <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
-      <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
+      <button class="ib" type="button" id="btn-bolsa" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
     <nav class="tabs" aria-label="Categorías" id="tabs"><a href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
   </div>
@@ -352,52 +389,50 @@ html.zm-lock{overflow:hidden}
     </div>
   </section>
 
-  <section class="club wrap" id="club" aria-labelledby="club-t">
-    <div class="club-c">
-      <p class="club-k">Club Montaris</p>
-      <h2 id="club-t"><span>$300 de regalo</span>en tu primera pieza</h2>
-      <p class="club-p">Únete al Club Montaris: $300 en tu primera pieza y piezas nuevas antes que nadie.</p>
-      <form class="reg" id="reg" novalidate>
-        <label>Correo<input type="email" name="correo" placeholder="tucorreo@ejemplo.com" autocomplete="email" required></label>
-        <label>Celular<input type="tel" name="tel" placeholder="10 dígitos" autocomplete="tel" inputmode="numeric"></label>
-        <label>Cumpleaños<span class="cum"><select name="dia" aria-label="Día"></select><select name="mes" aria-label="Mes"></select><select name="anio" aria-label="Año"></select></span></label>
-        <button type="submit">Quiero mis $300</button>
-        <p class="reg-ok" id="reg-ok" role="status"></p>
-      </form>
-      <p class="reg-s">Te das de baja cuando quieras.</p>
-    </div>
-  </section>
+  <section class="cw" id="club" aria-labelledby="club-t"><div class="wrap"><div class="cw-c">
+    <p class="cw-k">Club Montaris</p>
+    <h2 id="club-t">$300 de regalo<span>en tu primera pieza</span></h2>
+    <p class="cw-p">Déjanos tu nombre y tu WhatsApp y te mandamos tu cupón. Además, piezas nuevas antes que nadie.</p>
+    <!-- aquí va la verificación por WhatsApp -->
+    <form id="reg" novalidate>
+      <input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" aria-label="Nombre" required>
+      <input name="wa" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="14" placeholder="WhatsApp (10 dígitos)" aria-label="WhatsApp de 10 dígitos" required>
+      <button type="submit">Quiero mis $300</button>
+      <p class="cw-ok" id="reg-ok" role="status"></p>
+    </form>
+    <p class="cw-s">Te das de baja cuando quieras.</p>
+  </div></div></section>
   </div>
 </main>
 
 <section class="sec qs" id="qs"><div class="wrap">
   <div class="qs-hd">
-    <span class="qs-eb"><svg viewBox="0 0 160 160" aria-hidden="true"><use href="#sello" width="160" height="160"/></svg><span><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9.5-4.5-1-8-4.5-8-9.5V7z"/><path d="M9 12l2 2 4-4"/></svg>Solo plata .925</span></span>
+    <img class="qs-logo" src="img/logo-mm-negro.png" alt="Montaris" width="110" height="50">
     <h2>¡Estamos a tus órdenes!</h2>
-    <p>Montaris es una joyería creada por cinco compas, dedicada a que traigas plata .925 de verdad, directo de fábrica.</p>
+    <p>Montaris es una joyería comercializadora y fabricante de artículos de plata .925 y oro. Nada de bisutería ni baños: metal de verdad, con sello y peso en gramos.</p>
   </div>
-  <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="100% plata .925" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>100% plata .925</h3><p>Cada pieza trae su sello 925 MX y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Confía en nosotros" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Confía en nosotros</h3><p>Directo de fábrica, entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía real" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía real</h3><p>60 días de garantía y 30 días para cambios.</p></div></div></div>
+  <div class="st" id="qst"><div class="cd"><div class="im"><img src="img/prod/36_L-07_esclava-cartier-22cm/1.jpg" alt="100% plata .925" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>100% plata .925</h3><p>Cada pieza trae su sello 925 MX y su peso en gramos.</p></div></div><div class="cd"><div class="im"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="Confía en nosotros" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Confía en nosotros</h3><p>Somos fabricantes, entrega segura.</p></div></div><div class="cd"><div class="im"><img src="img/prod/27_L-12_esclava-petatillo-23cm/1.jpg" alt="Garantía real" loading="lazy" width="900" height="1200"></div><div class="bd"><div class="ln"></div><h3>Garantía real</h3><p>60 días de garantía y 30 días para cambios.</p></div></div></div>
   <div class="nv"><button type="button" class="nb pv" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><div class="dt"></div><button type="button" class="nb nx" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>
 </div></section>
 
 <footer id="ayuda"><div class="wrap">
   <div class="ft">
-    <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 con sello. Envíos a todo México.</p></div>
+    <div class="ft-m"><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
     <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>
+  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
   <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
 </div></footer>
 
-<div class="fija" id="fija" aria-hidden="true"><button class="b-add" type="button" tabindex="-1"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar a la bolsa</button></div>
+<div class="fija" id="fija" aria-hidden="true"><button class="b-add" type="button" tabindex="-1"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar al carrito</button></div>
 <div class="zm" id="zm" role="dialog" aria-modal="true" aria-label="Fotos de la pieza"><button class="zm-x" type="button" aria-label="Cerrar fotos"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button><div id="zm-l"></div></div>
 
-<script src="catalogo.js?v=1792525435" charset="utf-8"></script>
-<script src="bolsa.js?v=1792525435" charset="utf-8"></script>
-<script src="menu.js?v=1792525435" charset="utf-8"></script>
+<script src="catalogo.js?v=1792545578" charset="utf-8"></script>
+<script src="bolsa.js?v=1792545578" charset="utf-8"></script>
+<script src="menu.js?v=1792545578" charset="utf-8"></script>
 <script>
 (function(){
   var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
@@ -484,7 +519,7 @@ html.zm-lock{overflow:hidden}
         '</div>' +
         urg +
         '<div class="cta">' +
-          '<button class="b-add" type="button" id="b-add"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar a la bolsa</button>' +
+          '<button class="b-add" type="button" id="b-add"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar al carrito</button>' +
           '<button class="b-buy" type="button" id="b-buy">Comprar ahora</button>' +
         '</div>' +
         '<div class="ship"><b>Envío GRATIS</b> desde $950 · a todo México · con guía de rastreo</div>' +
@@ -559,23 +594,23 @@ html.zm-lock{overflow:hidden}
     }).observe(document.getElementById('b-add'));
   }
 
-  /* también te puede gustar: 8 de la misma colección (primero mismo tipo, sin repetir la misma cadena) */
+  /* también te puede gustar: 12 piezas — misma colección (primero mismo tipo), luego del mismo género; sin repetir la misma cadena */
   var vistos = {}; if (p.grupo) vistos[p.grupo] = 1;
-  var cand = CAT.filter(function(x){ return x.coleccion === p.coleccion && x.id !== p.id; });
-  cand.sort(function(a, b){ return (b.sub === p.sub) - (a.sub === p.sub) || a.id - b.id; });
+  var cand = CAT.filter(function(x){ return x.id !== p.id && (x.coleccion === p.coleccion || x.genero === p.genero); });
+  cand.sort(function(a, b){ return (b.coleccion === p.coleccion) - (a.coleccion === p.coleccion) || (b.sub === p.sub) - (a.sub === p.sub) || a.id - b.id; });
   var rel = [];
-  cand.forEach(function(x){ if (rel.length >= 8) return; var g = x.grupo || ('#' + x.id); if (vistos[g]) return; vistos[g] = 1; rel.push(x); });
+  cand.forEach(function(x){ if (rel.length >= 12) return; var g = x.grupo || ('#' + x.id); if (vistos[g]) return; vistos[g] = 1; rel.push(x); });
   if (rel.length) {
     document.getElementById('rel').hidden = false;
     var rg = document.getElementById('rel-g');
-    rg.innerHTML = rel.map(function(x){
-      return '<a class="p" href="producto.html?id=' + x.id + '"><div class="ph"><img src="img/prod/' + x.carpeta + '/c.jpg" alt="' + esc(x.nombre) + '" loading="lazy" width="800" height="800" onerror="this.onerror=null;this.src=\'' + foto(x, x.fotos[0] || 1) + '\'"><button class="add" type="button" data-id="' + x.id + '" aria-label="Agregar ' + esc(x.nombre) + ' a la bolsa">+</button></div><h3>' + esc(x.nombre) + '</h3>' + (x.peso ? '<span class="ley">' + esc(x.peso) + ' · Plata .925</span>' : '') + '<span class="pr">Precio por confirmar</span></a>';
+    rg.innerHTML = rel.map(function(x, k){
+      return '<a class="p" href="producto.html?id=' + x.id + '"><div class="ph"><img src="img/prod/' + x.carpeta + '/c.jpg" alt="' + esc(x.nombre) + '"' + (k > 2 ? ' loading="lazy"' : '') + ' decoding="async" width="800" height="800" onerror="this.onerror=null;this.src=\'' + foto(x, x.fotos[0] || 1) + '\'"><button class="add" type="button" data-id="' + x.id + '" aria-label="Agregar ' + esc(x.nombre) + ' al carrito">+</button></div><h3>' + esc(x.nombre) + '</h3>' + (x.peso ? '<span class="ley">' + esc(x.peso) + ' · Plata .925</span>' : '') + '<span class="pr">Precio por confirmar</span></a>';
     }).join('');
     rg.addEventListener('click', function(e){
       var b = e.target.closest('.add'); if (!b) return;
       e.preventDefault(); e.stopPropagation();
       var x = CAT.filter(function(c){ return String(c.id) === b.dataset.id; })[0];
-      if (x) { Bolsa.agregar(x.id, x.largo); Bolsa.abrir(); }
+      if (x) { if (Bolsa.rapido) Bolsa.rapido(x.id); else { Bolsa.agregar(x.id, x.largo); Bolsa.abrir(); } }
     });
   }
 })();
@@ -588,20 +623,19 @@ html.zm-lock{overflow:hidden}
   g.addEventListener('scroll', pinta, { passive: true }); pinta();
 })();
 
-/* club: cumpleaños y aviso (no envía a ningún lado todavía) */
+/* club $300: nombre + WhatsApp (todavía no envía a ningún lado) */
 (function(){
-  var f = document.getElementById('reg');
-  var MES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-  var o = function(v, t){ return '<option value="' + v + '">' + t + '</option>'; };
-  var dias = o('', 'Día'); for (var i = 1; i <= 31; i++) dias += o(i, i);
-  var anios = o('', 'Año'); for (var y = 2010; y >= 1950; y--) anios += o(y, y);
-  f.dia.innerHTML = dias; f.mes.innerHTML = o('', 'Mes') + MES.map(function(m, k){ return o(k + 1, m); }).join(''); f.anio.innerHTML = anios;
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    var ok = document.getElementById('reg-ok');
-    if (!/^\S+@\S+\.\S+$/.test(f.correo.value)) { ok.textContent = 'Escribe un correo válido.'; f.correo.focus(); return; }
-    ok.textContent = 'Listo, ya estás en el Club. Tus $300 se aplican en tu primera pieza.';
-    f.reset();
+  var f=document.getElementById('reg'); if(!f) return;
+  var ok=document.getElementById('reg-ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); ok.classList.remove('bien');
+    var n=f.nombre.value.trim(), w=f.wa.value.replace(/\D/g,'');
+    if(w.length===12&&w.indexOf('52')===0) w=w.slice(2);
+    if(n.length<2){ok.textContent='Escribe tu nombre.';f.nombre.focus();return}
+    if(w.length!==10){ok.textContent='Tu WhatsApp debe tener 10 dígitos.';f.wa.focus();return}
+    /* aquí va la verificación por WhatsApp */
+    try{localStorage.setItem('montaris_club',JSON.stringify({nombre:n,whatsapp:w,fecha:new Date().toISOString()}))}catch(_){}
+    ok.textContent='Listo, te mandamos tu cupón por WhatsApp'; ok.classList.add('bien'); f.reset();
   });
 })();
 
@@ -616,13 +650,20 @@ html.zm-lock{overflow:hidden}
  let sx=null;st.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});st.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){go(d<0?1:-1);hold()}sx=null},{passive:true});
  addEventListener('resize',size);addEventListener('load',size);size();hold()})();
 
-/* header: se esconde al bajar, aparece al subir */
-(function(){const hdr=document.getElementById('hdr');let y0=scrollY,tk=false;
- function onS(){const y=Math.max(0,scrollY),d=y-y0;hdr.classList.toggle('solid',y>40);
-  if(document.documentElement.classList.contains('mn-lock')||hdr.contains(document.activeElement)&&document.activeElement.id==='q'){hdr.classList.remove('oculto')}
-  else if(y<=hdr.offsetHeight){hdr.classList.remove('oculto')}
-  else if(Math.abs(d)>6){hdr.classList.toggle('oculto',d>0)}
-  if(Math.abs(d)>6||y<=hdr.offsetHeight)y0=y;tk=false}
+/* buscador: la palabra del placeholder rota (sube y entra la siguiente desde abajo) */
+(function(){var f=document.getElementById('buscar'),q=document.getElementById('q');if(!f||!q)return;
+ var W=['Cartier','Cubanas','Esclavas con placa','Torzal','Marinera','Planchada','Pulseras','Tipo Rolex','Para ella','Regalos'],k=0;
+ q.setAttribute('placeholder','');var ph=document.createElement('span');ph.className='ph';ph.setAttribute('aria-hidden','true');
+ var a=document.createElement('i');a.textContent=W[0];ph.appendChild(a);f.appendChild(ph);
+ function est(){f.classList.toggle('lleno',document.activeElement===q||!!q.value)}
+ q.addEventListener('focus',est);q.addEventListener('blur',est);q.addEventListener('input',est);est();
+ setInterval(function(){if(document.hidden||f.classList.contains('lleno'))return;k=(k+1)%W.length;
+  var b=document.createElement('i');b.className='abajo';b.textContent=W[k];ph.appendChild(b);
+  a.classList.add('sube');var v=a;setTimeout(function(){v.remove()},500);
+  b.offsetWidth;b.className='';a=b},2500)})();
+/* header: siempre visible; translúcido arriba y oscuro al bajar */
+(function(){const hdr=document.getElementById('hdr');let tk=false;
+ function onS(){hdr.classList.toggle('solid',scrollY>40);tk=false}
  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});onS()})();
 </script>
 </body>

@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792525435">
+<link rel="stylesheet" href="menu.css?v=1792545578">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -33,14 +33,13 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .wrap{max-width:1320px;margin:0 auto;padding-inline:16px}
 @media (min-width:900px){.wrap{padding-inline:32px}}
 
-.bar{background:#111;color:#fff;overflow:hidden}
+.bar{background:#fff;color:#111;overflow:hidden;border-bottom:1px solid #e4e4e1}
 .bar ul{display:flex;gap:40px;margin:0;padding:9px 0;list-style:none;white-space:nowrap;width:max-content;font:500 11.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;animation:corre 40s linear infinite}
-.bar li::after{content:"•";margin-left:40px;color:#777}
+.bar li::after{content:"•";margin-left:40px;color:#9a9a9a}
 @keyframes corre{to{transform:translateX(-50%)}}
 /* header oscuro fijo arriba, como la ficha de Boxroom */
-.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
-.hdr{transition:transform .3s ease,background-color .3s ease,color .3s ease,box-shadow .3s ease;will-change:transform}
-.hdr.oculto{transform:translateY(-100%)}
+.hdr{position:sticky;top:0;z-index:40;background:#0b0b0b;color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.hdr{transition:background-color .3s ease,color .3s ease,box-shadow .3s ease}
 @media (prefers-reduced-motion:reduce){.hdr{transition:none}}
 .row{display:flex;align-items:center;gap:4px;height:58px}
 @media (max-width:420px){.row .ib{width:40px}}
@@ -57,7 +56,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .buscar input::placeholder{color:#8a8a8a}
 .tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font:700 15px var(--f-txt);padding-bottom:10px}
 .tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:none;position:relative;padding-bottom:6px}
+.tabs a{flex:none;position:relative;padding:8px 0 10px}
 .tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 .tabs a.on::after{transform:scaleX(1)}
 @media (hover:hover){.tabs a:hover::after{transform:scaleX(1)}}
@@ -135,6 +134,24 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 .gracias h2{font:700 19px/1.25 var(--f-txt);margin-bottom:8px}
 .gracias p{margin:0;color:#555}
 .gracias a{display:inline-flex;align-items:center;margin-top:16px;height:48px;padding:0 24px;background:#111;color:#fff;border-radius:5px;font:600 14px var(--f-txt)}
+
+/* pie (M): marca centrada en celular, columnas al ras, logos de pago */
+.ft{align-items:start}
+.ft .ft-m{grid-column:1/-1;text-align:center;display:grid;justify-items:center;gap:12px}
+.ft .ft-m p{margin:0;max-width:34ch}
+.ft h4{margin-top:0}
+.pagos{justify-content:center;align-items:center}
+.pagos img{height:26px;width:auto}
+@media (min-width:900px){.ft .ft-m{grid-column:auto;text-align:left;justify-items:start}.pagos{justify-content:flex-start}}
+
+/* buscador: palabra que rota (M) */
+.buscar{position:relative}
+.buscar .ph{position:absolute;left:41px;right:16px;top:0;bottom:0;overflow:hidden;pointer-events:none;color:#8a8a8a;font:500 16px var(--f-txt)}
+.buscar .ph i{position:absolute;left:0;right:0;top:50%;font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:22px;margin-top:-11px;transform:translateY(0);opacity:1;transition:transform .45s ease,opacity .45s ease}
+.buscar .ph i.sube{transform:translateY(-130%);opacity:0}
+.buscar .ph i.abajo{transform:translateY(130%);opacity:0;transition:none}
+.buscar.lleno .ph{display:none}
+@media (prefers-reduced-motion:reduce){.buscar .ph i{transition:none}}
 </style>
 </head>
 <body>
@@ -149,7 +166,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
       <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
-      <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
+      <button class="ib" type="button" id="btn-bolsa" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
     <nav class="tabs" aria-label="Categorías" id="tabs"><a href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
   </div>
@@ -182,19 +199,19 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 
 <footer id="ayuda"><div class="wrap">
   <div class="ft">
-    <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 con sello. Envíos a todo México.</p></div>
+    <div class="ft-m"><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
     <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>
+  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
   <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
 </div></footer>
 
-<script src="catalogo.js?v=1792525435" charset="utf-8"></script>
-<script src="bolsa.js?v=1792525435" charset="utf-8"></script>
-<script src="menu.js?v=1792525435" charset="utf-8"></script>
+<script src="catalogo.js?v=1792545578" charset="utf-8"></script>
+<script src="bolsa.js?v=1792545578" charset="utf-8"></script>
+<script src="menu.js?v=1792545578" charset="utf-8"></script>
 <script>
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -204,7 +221,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   function pintar(){
     var its = Bolsa.items(), n = Bolsa.contar();
     btn.disabled = !its.length;
-    if (!its.length) { lista.innerHTML = '<p class="vac">Tu bolsa está vacía.<br><a href="coleccion.html?c=cadenas">Ver cadenas</a></p>'; return; }
+    if (!its.length) { lista.innerHTML = '<p class="vac">Tu carrito está vacío.<br><a href="coleccion.html?c=cadenas">Ver cadenas</a></p>'; return; }
     lista.innerHTML = '<ul class="ck-li">' + its.map(function(it, i){
       return '<li><div class="ck-im"><img src="' + esc(it.foto) + '" alt=""><b>' + it.cantidad + '</b></div><div><a href="producto.html?id=' + encodeURIComponent(it.id) + '">' + esc(it.nombre) + '</a><small>' + (it.largo ? 'Largo: ' + esc(it.largo) : 'Plata .925') + '</small><button class="del" type="button" data-i="' + i + '">Quitar</button></div><span class="pz">Por confirmar</span></li>';
     }).join('') + '</ul>' +
@@ -219,7 +236,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   document.getElementById('frm').addEventListener('submit', function(e){
     e.preventDefault();
     var f = e.target, err = document.getElementById('err');
-    if (!Bolsa.contar()) { err.textContent = 'Tu bolsa está vacía.'; return; }
+    if (!Bolsa.contar()) { err.textContent = 'Tu carrito está vacío.'; return; }
     if (f.nombre.value.trim().length < 3) { err.textContent = 'Escribe tu nombre.'; f.nombre.focus(); return; }
     if (!/^\S+@\S+\.\S+$/.test(f.correo.value)) { err.textContent = 'Escribe un correo válido.'; f.correo.focus(); return; }
     if (f.tel.value.replace(/\D/g, '').length < 10) { err.textContent = 'El teléfono debe tener 10 dígitos.'; f.tel.focus(); return; }
@@ -229,13 +246,20 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   });
 })();
 
-/* header: se esconde al bajar, aparece al subir */
-(function(){const hdr=document.getElementById('hdr');let y0=scrollY,tk=false;
- function onS(){const y=Math.max(0,scrollY),d=y-y0;hdr.classList.toggle('solid',y>40);
-  if(document.documentElement.classList.contains('mn-lock')||hdr.contains(document.activeElement)&&document.activeElement.id==='q'){hdr.classList.remove('oculto')}
-  else if(y<=hdr.offsetHeight){hdr.classList.remove('oculto')}
-  else if(Math.abs(d)>6){hdr.classList.toggle('oculto',d>0)}
-  if(Math.abs(d)>6||y<=hdr.offsetHeight)y0=y;tk=false}
+/* buscador: la palabra del placeholder rota (sube y entra la siguiente desde abajo) */
+(function(){var f=document.getElementById('buscar'),q=document.getElementById('q');if(!f||!q)return;
+ var W=['Cartier','Cubanas','Esclavas con placa','Torzal','Marinera','Planchada','Pulseras','Tipo Rolex','Para ella','Regalos'],k=0;
+ q.setAttribute('placeholder','');var ph=document.createElement('span');ph.className='ph';ph.setAttribute('aria-hidden','true');
+ var a=document.createElement('i');a.textContent=W[0];ph.appendChild(a);f.appendChild(ph);
+ function est(){f.classList.toggle('lleno',document.activeElement===q||!!q.value)}
+ q.addEventListener('focus',est);q.addEventListener('blur',est);q.addEventListener('input',est);est();
+ setInterval(function(){if(document.hidden||f.classList.contains('lleno'))return;k=(k+1)%W.length;
+  var b=document.createElement('i');b.className='abajo';b.textContent=W[k];ph.appendChild(b);
+  a.classList.add('sube');var v=a;setTimeout(function(){v.remove()},500);
+  b.offsetWidth;b.className='';a=b},2500)})();
+/* header: siempre visible; translúcido arriba y oscuro al bajar */
+(function(){const hdr=document.getElementById('hdr');let tk=false;
+ function onS(){hdr.classList.toggle('solid',scrollY>40);tk=false}
  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});onS()})();
 </script>
 </body>

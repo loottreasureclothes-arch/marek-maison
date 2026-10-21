@@ -1,6 +1,6 @@
-/* bolsa.js — bolsa de compras de Montaris (sin precios por ahora).
+/* bolsa.js — carrito de compras de Montaris (API sigue llamándose Bolsa) (sin precios por ahora).
    El panel copia el carrito de boxroomshop.com (UpCart): entra por la derecha, pantalla completa en celular
-   y 420 px en escritorio; encabezado "Bolsa • n" con X; aviso de envío gratis con barra; filas con foto,
+   y 420 px en escritorio; encabezado "Carrito • n" con X; aviso de envío gratis con barra; filas con foto,
    nombre, largo, precio, cantidad − n + y bote para quitar; "También te puede gustar" con Agregar;
    pie gris con subtotal, botón negro y formas de pago.
    API global:
@@ -11,6 +11,7 @@
      Bolsa.items()              -> [{id, largo, nombre, foto, cantidad, codigo}]
      Bolsa.contar()             -> total de piezas
      Bolsa.abrir() / Bolsa.cerrar()  -> panel deslizable
+     Bolsa.rapido(id)           -> hoja rápida: foto, largo y "Agregar al carrito" / "Comprar ahora"
    Guarda en localStorage "montaris_bolsa". En cada cambio actualiza #n y dispara
    el evento "bolsa:cambio" (en document, burbujea a window) con detail {items, total}.
    El panel se engancha al clic en #btn-bolsa (o, si no existe, al botón/enlace que contiene #n). */
@@ -164,11 +165,12 @@
     var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
     raiz = document.createElement('div');
     raiz.className = 'bz'; raiz.id = 'bolsa-panel';
+    raiz.setAttribute('aria-label', 'Carrito');
     raiz.setAttribute('aria-hidden', 'true');
     raiz.innerHTML =
       '<div class="bz-v" data-bz-cerrar></div>' +
       '<aside class="bz-p" role="dialog" aria-modal="true" aria-labelledby="bz-tt">' +
-        '<div class="bz-h"><h3 id="bz-tt">Bolsa</h3><button class="bz-x" type="button" data-bz-cerrar aria-label="Cerrar bolsa">' + I.x + '</button></div>' +
+        '<div class="bz-h"><h3 id="bz-tt">Carrito</h3><button class="bz-x" type="button" data-bz-cerrar aria-label="Cerrar carrito">' + I.x + '</button></div>' +
         '<div class="bz-c"></div>' +
         '<div class="bz-f"></div>' +
       '</aside>';
@@ -223,9 +225,9 @@
   function pintar(){
     if (!raiz) return;
     var arr = leer(), its = items(), n = contar();
-    titulo.textContent = n ? 'Bolsa • ' + n : 'Bolsa';
+    titulo.textContent = n ? 'Carrito • ' + n : 'Carrito';
     if (!its.length){
-      cuerpo.innerHTML = '<div class="bz-vacio">Tu bolsa está vacía.<br><button type="button" data-bz-cerrar>Seguir comprando</button></div>';
+      cuerpo.innerHTML = '<div class="bz-vacio">Tu carrito está vacío.<br><button type="button" data-bz-cerrar>Seguir explorando</button></div>';
       pie.style.display = 'none';
       return;
     }
@@ -263,7 +265,7 @@
     pie.innerHTML =
       '<div class="bz-t"><span>Subtotal</span><span>' + (sub == null ? 'Por confirmar' : pesos(sub)) + '</span></div>' +
       '<a class="bz-go" href="pago.html">Comprar ahora</a>' +
-      '<button class="bz-seg" type="button" data-bz-cerrar>Seguir comprando</button>' +
+      '<button class="bz-seg" type="button" data-bz-cerrar>Seguir explorando</button>' +
       '<div class="bz-pay" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>';
     flechas();
   }
@@ -283,6 +285,77 @@
     if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
   }
 
+  /* ---------- hoja rápida (Bolsa.rapido): abajo en celular, modal chico en escritorio ---------- */
+  var cssR = '' +
+  '.rq{position:fixed;inset:0;z-index:994;visibility:hidden;transition:visibility 0s .25s;font-family:' + F + '}' +
+  '.rq.on{visibility:visible;transition:none}' +
+  '.rq-v{position:absolute;inset:0;background:#000;opacity:0;transition:opacity .25s ease}' +
+  '.rq.on .rq-v{opacity:.5}' +
+  '.rq-p{position:absolute;left:0;right:0;bottom:0;background:#fff;color:#000;border-radius:16px 16px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));transform:translateY(100%);transition:transform .28s ease;box-shadow:0 -6px 24px rgba(0,0,0,.18);max-height:90vh;overflow-y:auto}' +
+  '.rq.on .rq-p{transform:none}' +
+  '.rq-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;background:none;cursor:pointer;display:grid;place-items:center;color:#000}' +
+  '.rq-x svg{width:15px;height:15px;stroke:currentColor;stroke-width:2;fill:none}' +
+  '.rq-t{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;padding-right:30px}' +
+  '.rq-t img{width:96px;height:96px;object-fit:cover;border-radius:8px;background:#f3f3f1}' +
+  '.rq-t b{display:block;font:700 15px/1.35 ' + F + '}' +
+  '.rq-t span{display:block;margin-top:4px;font:400 13px/1.4 ' + F + ';color:#666}' +
+  '.rq-lb{margin:16px 0 8px;font:700 12px ' + F + ';letter-spacing:.08em;text-transform:uppercase}' +
+  '.rq-lg{display:flex;flex-wrap:wrap;gap:8px}' +
+  '.rq-lg button{min-width:72px;height:42px;padding:0 14px;border:1px solid #ccc;border-radius:999px;background:#fff;color:#111;font:600 13.5px ' + F + ';cursor:pointer}' +
+  '.rq-lg button[aria-pressed=true]{border-color:#111;background:#111;color:#fff}' +
+  '.rq-bt{display:grid;gap:10px;margin-top:18px}' +
+  '.rq-bt button{height:52px;border-radius:14px;font:700 15px ' + F + ';cursor:pointer}' +
+  '.rq-ag{border:1.5px solid #111;background:#fff;color:#111}' +
+  '.rq-ya{border:0;background:#111;color:#fff}' +
+  'html.rq-lock{overflow:hidden}' +
+  '@media (min-width:768px){.rq-p{left:50%;right:auto;bottom:auto;top:50%;width:420px;border-radius:16px;transform:translate(-50%,-40%);opacity:0;transition:transform .25s ease,opacity .25s ease}.rq.on .rq-p{transform:translate(-50%,-50%);opacity:1}}' +
+  '@media (prefers-reduced-motion:reduce){.rq-p,.rq-v{transition:none}}';
+  var rq = null, rqSel = null, rqFoco = null;
+  function variantes(p){
+    if (!p.grupo || typeof CAT === 'undefined') return [p];
+    return CAT.filter(function(x){ return x.grupo === p.grupo; });
+  }
+  function rqPintar(){
+    var p = pieza(rqSel); if (!p) return;
+    var vs = variantes(p);
+    rq.querySelector('.rq-c').innerHTML =
+      '<div class="rq-t"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="96" height="96"><div><b id="rq-tt">' + esc(p.grupo || p.nombre) + '</b><span>Plata .925 con sello' + (p.peso ? ' · ' + esc(p.peso) : '') + '</span><span>Precio por confirmar</span></div></div>' +
+      (vs.length > 1 ? '<p class="rq-lb">Largo</p><div class="rq-lg" role="group" aria-label="Largo">' + vs.map(function(v){
+        return '<button type="button" data-rq-v="' + v.id + '" aria-pressed="' + (String(v.id) === String(p.id)) + '">' + esc(v.largo || v.nombre) + '</button>'; }).join('') + '</div>'
+        : (p.largo ? '<p class="rq-lb">Largo: ' + esc(p.largo) + '</p>' : ''));
+  }
+  function rqMontar(){
+    if (rq || !document.body) return;
+    var st = document.createElement('style'); st.textContent = cssR; document.head.appendChild(st);
+    rq = document.createElement('div'); rq.className = 'rq'; rq.setAttribute('aria-hidden', 'true');
+    rq.innerHTML = '<div class="rq-v" data-rq-cerrar></div><div class="rq-p" role="dialog" aria-modal="true" aria-labelledby="rq-tt">' +
+      '<button class="rq-x" type="button" data-rq-cerrar aria-label="Cerrar">' + I.x + '</button><div class="rq-c"></div>' +
+      '<div class="rq-bt"><button class="rq-ag" type="button" data-rq="ag">Agregar al carrito</button><button class="rq-ya" type="button" data-rq="ya">Comprar ahora</button></div></div>';
+    document.body.appendChild(rq);
+    rq.addEventListener('click', function(e){
+      var t = e.target;
+      if (t.closest('[data-rq-cerrar]')) { rqCerrar(); return; }
+      var v = t.closest('[data-rq-v]'); if (v) { rqSel = v.getAttribute('data-rq-v'); rqPintar(); return; }
+      var b = t.closest('[data-rq]'); if (!b) return;
+      var p = pieza(rqSel); if (!p) return;
+      agregar(p.id, p.largo);
+      rqCerrar(true);
+      if (b.getAttribute('data-rq') === 'ya') location.href = 'pago.html'; else abrir();
+    });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && rq.classList.contains('on')) rqCerrar(); });
+  }
+  function rapido(id){
+    rqMontar(); if (!rq || !pieza(id)) return;
+    rqSel = id; rqFoco = document.activeElement; rqPintar();
+    rq.classList.add('on'); rq.setAttribute('aria-hidden', 'false'); document.documentElement.classList.add('rq-lock');
+    setTimeout(function(){ var a = rq.querySelector('.rq-ag'); if (a) a.focus(); }, 60);
+  }
+  function rqCerrar(sinFoco){
+    if (!rq || !rq.classList.contains('on')) return;
+    rq.classList.remove('on'); rq.setAttribute('aria-hidden', 'true'); document.documentElement.classList.remove('rq-lock');
+    if (!sinFoco && rqFoco && rqFoco.focus) rqFoco.focus();
+  }
+
   /* clic en el ícono de bolsa: #btn-bolsa o el botón/enlace que contiene #n */
   document.addEventListener('click', function(e){
     var t = e.target.closest ? e.target : e.target.parentElement;
@@ -299,7 +372,7 @@
   /* otra pestaña cambió la bolsa */
   window.addEventListener('storage', function(e){ if (e.key === KEY) avisar(); });
 
-  window.Bolsa = { agregar: agregar, quitar: quitar, cantidad: cantidad, vaciar: vaciar, items: items, contar: contar, abrir: abrir, cerrar: cerrar };
+  window.Bolsa = { agregar: agregar, quitar: quitar, cantidad: cantidad, vaciar: vaciar, items: items, contar: contar, abrir: abrir, cerrar: cerrar, rapido: rapido };
 
   function iniciar(){ montar(); avisar(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar); else iniciar();

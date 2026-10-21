@@ -1,4 +1,4 @@
-/* Menú de hamburguesa + chat de Soporte de Montaris (bloquecito de plata flotante).
+/* Menú de hamburguesa + chat de Soporte de Montaris (sin botón flotante: se abre desde la pestaña Soporte del menú o cualquier [data-mn-abrir="soporte"]).
    Requiere catalogo.js (const CAT) cargado antes. Engancha #btn-menu y #btn-soporte.
    Construye todo dentro de <div id="menu-root"></div> (si no existe, lo crea al final del body).
    API: window.MontarisMenu.abrirMenu(tab?) / abrirSoporte(tema?) / abrirChat(tema?) / cerrar() */
@@ -38,16 +38,18 @@ function preguntarAPI(texto, historial){
   function elegir(id, f){ return porId[id] ? id : primera(f); }
   function col(c, t){ return "coleccion.html?c=" + c + (t ? "&t=" + t : ""); }
 
+  /* cuadritos por tipo dentro de Hombre/Mujer: solo los tipos que tienen piezas de ese género (?c=hombre&t=<sub>) */
+  function porGenero(g, lista){
+    return lista.filter(function(x){ return CATA.some(function(p){ return p.genero === g && p.sub === x[1]; }); })
+      .map(function(x){ return { n:x[0], t:x[1], id: elegir(x[2], function(p){ return p.genero === g && p.sub === x[1]; }) }; });
+  }
   // Colecciones: foto grande + cuadritos (fotos reales del catálogo)
   var COLS = [
-    { k:"hombre", nombre:"Hombre", grande: elegir(51, function(p){return p.genero==="hombre";}), subs:[
-      { n:"Cadenas",  t:"cadenas",  id: elegir(48, function(p){return p.genero==="hombre"&&p.coleccion==="cadenas";}) },
-      { n:"Esclavas", t:"esclavas", id: elegir(36, function(p){return p.genero==="hombre"&&p.coleccion==="esclavas";}) },
-      { n:"Pulseras", t:"pulseras", id: elegir(31, function(p){return p.genero==="hombre"&&p.coleccion==="pulseras";}) } ] },
-    { k:"mujer", nombre:"Mujer", grande: elegir(28, function(p){return p.genero==="mujer";}), subs:[
-      { n:"Cadenas delgadas",     t:"delgadas", id: elegir(38, function(p){return p.sub==="delgadas";}) },
-      { n:"Cubana con zirconias", t:"cubana",   id: elegir(28, function(p){return p.sub==="cubana";}) },
-      { n:"Cartier",              t:"cartier",  id: elegir(8, function(p){return p.genero==="mujer"&&p.sub==="cartier";}) } ] },
+    { k:"hombre", nombre:"Hombre", grande: elegir(51, function(p){return p.genero==="hombre";}), subs: porGenero("hombre", [
+      ["Cartier","cartier",48], ["Cubanas (barbada)","barbada",50], ["Torzal","torzal",52], ["Marinera","marinera",46], ["Planchada","planchada",53],
+      ["Esclavas con placa","placa",1], ["Tipo Rolex","rolex",30], ["Petatillo","petatillo",27], ["Pulsos","pulsos",31] ]) },
+    { k:"mujer", nombre:"Mujer", grande: elegir(28, function(p){return p.genero==="mujer";}), subs: porGenero("mujer", [
+      ["Delgadas","delgadas",38], ["Cartier","cartier",8], ["Zirconias (cubana)","cubana",28], ["Pulsos","pulsos",0], ["Planchada","planchada",0] ]) },
     { k:"cadenas", nombre:"Cadenas", grande: elegir(53, function(p){return p.coleccion==="cadenas";}), subs:[
       { n:"Cartier",   t:"cartier",   id: elegir(48, function(p){return p.coleccion==="cadenas"&&p.sub==="cartier";}) },
       { n:"Barbada",   t:"barbada",   id: elegir(50, function(p){return p.coleccion==="cadenas"&&p.sub==="barbada";}) },
@@ -205,9 +207,6 @@ function preguntarAPI(texto, historial){
   }
 
   var chatHTML =
-    '<button class="mn-lingote" id="mn-lingote" type="button" aria-label="Abrir chat de soporte" aria-haspopup="dialog" aria-expanded="false" aria-controls="mn-cb">' +
-      '<span class="mn-lg" aria-hidden="true"><i>MM</i><em>.925</em></span><span class="mn-punto" aria-hidden="true"></span>' +
-    '</button>' +
     '<section class="mn-cb" id="mn-cb" role="dialog" aria-modal="false" aria-labelledby="mn-cb-titulo" aria-hidden="true">' +
       '<header class="mn-cb-top">' + LINGOTE_MINI +
         '<div class="mn-cb-tit"><h2 id="mn-cb-titulo">Montaris · Soporte</h2><p><span class="mn-punto" aria-hidden="true"></span>Responde al instante</p></div>' +
@@ -307,7 +306,6 @@ function preguntarAPI(texto, historial){
     /* ===================== CHAT ===================== */
     var cb = document.getElementById("mn-cb"), msgs = document.getElementById("mn-cb-msgs");
     var cbForm = document.getElementById("mn-cb-form"), cbInput = document.getElementById("mn-cb-input");
-    var lingote = document.getElementById("mn-lingote");
     var chatAbierto = false, chatOrigen = null, ocupado = false;
     var KEY_HIST = "montaris_chat", KEY_FORM = "montaris_soporte";
     var hist = [];
@@ -435,7 +433,6 @@ function preguntarAPI(texto, historial){
         chatOrigen = quien || document.activeElement;
         chatAbierto = true;
         cb.classList.add("mn-on"); cb.setAttribute("aria-hidden", "false");
-        lingote.classList.add("mn-oculto"); lingote.setAttribute("aria-expanded", "true");
         if (botones.soporte) botones.soporte.setAttribute("aria-expanded", "true");
         if (celular.matches) document.documentElement.classList.add("mn-lock");
       }
@@ -447,31 +444,10 @@ function preguntarAPI(texto, historial){
       if (!chatAbierto) return;
       chatAbierto = false;
       cb.classList.remove("mn-on"); cb.setAttribute("aria-hidden", "true");
-      lingote.classList.remove("mn-oculto"); lingote.setAttribute("aria-expanded", "false");
       if (botones.soporte) botones.soporte.setAttribute("aria-expanded", "false");
       if (!abierta) document.documentElement.classList.remove("mn-lock");
-      if (!sinFoco){ var o = chatOrigen && document.contains(chatOrigen) && chatOrigen.offsetParent !== null ? chatOrigen : lingote; if (o && o.focus) o.focus(); }
+      if (!sinFoco){ var o = chatOrigen && document.contains(chatOrigen) && chatOrigen.offsetParent !== null ? chatOrigen : botones.menu; if (o && o.focus) o.focus(); }
     }
-    lingote.addEventListener("click", function(){ chatAbierto ? cerrarChat() : abrirChat(null, lingote); });
-
-    /* si la página tiene una barra fija abajo (ej. "Agregar a la bolsa" en producto), el bloquecito se sube */
-    var barras = document.querySelectorAll(".fija,[data-mn-barra]");
-    function acomodar(){
-      var extra = 0;
-      for (var i = 0; i < barras.length; i++){
-        var r = barras[i].getBoundingClientRect();
-        if (r.height && r.top < window.innerHeight - 4 && r.bottom > window.innerHeight - 4) extra = Math.max(extra, window.innerHeight - r.top);
-      }
-      lingote.style.setProperty("--mn-alza", extra + "px");
-    }
-    if (barras.length){
-      var pend = false;
-      var tick = function(){ if (!pend){ pend = true; requestAnimationFrame(function(){ pend = false; acomodar(); }); } };
-      window.addEventListener("scroll", tick, { passive:true }); window.addEventListener("resize", tick);
-      barras.forEach(function(b){ b.addEventListener("transitionend", acomodar); });
-      acomodar();
-    }
-
     // comunes: cerrar, abrir desde otros botones, enlaces que salen
     document.addEventListener("click", function(e){
       var c = e.target.closest("[data-mn-cerrar]");
@@ -496,7 +472,7 @@ function preguntarAPI(texto, historial){
     window.MontarisMenu = {
       abrirMenu: function(tab){ abrir("menu", tab, botones.menu); },
       abrirSoporte: function(tema){ abrir("soporte", tema, botones.soporte); },
-      abrirChat: function(tema){ abrir("soporte", tema, lingote); },
+      abrirChat: function(tema){ abrir("soporte", tema, botones.menu); },
       cerrar: function(){ cerrar(); cerrarChat(); }
     };
   }

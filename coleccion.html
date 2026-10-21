@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792525435">
+<link rel="stylesheet" href="menu.css?v=1792545578">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -33,16 +33,15 @@ h1,h2,h3{margin:0;text-wrap:balance}
 @media (min-width:900px){.wrap{padding-inline:32px}}
 
 /* barra de anuncios (igual que index) */
-.bar{background:#111;color:#fff;overflow:hidden}
+.bar{background:#fff;color:#111;overflow:hidden;border-bottom:1px solid #e4e4e1}
 .bar ul{display:flex;gap:40px;margin:0;padding:9px 0;list-style:none;white-space:nowrap;width:max-content;font:500 11.5px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;animation:corre 40s linear infinite}
-.bar li::after{content:"•";margin-left:40px;color:#777}
+.bar li::after{content:"•";margin-left:40px;color:#9a9a9a}
 @keyframes corre{to{transform:translateX(-50%)}}
 
 /* header: transparente sobre el banner, oscuro al bajar (igual que index) */
 .hdr{position:fixed;left:0;right:0;top:0;z-index:40;background:transparent;color:#fff}
 .hdr.solid{background:#0b0b0b;box-shadow:0 1px 0 rgba(255,255,255,.08),0 8px 24px rgba(0,0,0,.25)}
-.hdr{transition:transform .3s ease,background-color .3s ease,color .3s ease,box-shadow .3s ease;will-change:transform}
-.hdr.oculto{transform:translateY(-100%)}
+.hdr{transition:background-color .3s ease,color .3s ease,box-shadow .3s ease}
 @media (prefers-reduced-motion:reduce){.hdr{transition:none}}
 .row{display:flex;align-items:center;gap:4px;height:58px}
 @media (max-width:420px){.row .ib{width:40px}}
@@ -57,7 +56,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .buscar svg{width:17px;height:17px;stroke:#111;fill:none;stroke-width:2;flex:none}
 .buscar input{flex:1;min-width:0;text-overflow:ellipsis;border:0;background:none;outline:none;font:500 16px var(--f-txt);color:#111}
 .buscar input::placeholder{color:#8a8a8a}
-.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font:700 15px var(--f-txt)}
+.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;font:700 15px var(--f-txt);padding-bottom:10px}
 .tabs::-webkit-scrollbar{display:none}
 .tabs a{flex:none;position:relative;padding:8px 0 10px}
 .tabs a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
@@ -170,15 +169,21 @@ html.fs-lock,html.fs-lock body{overflow:hidden}
 .vacio button{height:44px;padding:0 20px;border:0;border-radius:999px;background:#111;color:#fff;font:700 13px var(--f-txt);cursor:pointer}
 .vacio nav a{height:40px;display:inline-flex;align-items:center;padding:0 16px;border:1px solid #d8d8d5;border-radius:999px;font:700 13px var(--f-txt)}
 
-/* franja de confianza */
-.conf{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
-.conf ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
-.conf li{display:flex;gap:10px;align-items:flex-start}
+/* franja de confianza: 2 lados que rotan (izq. se desliza a la izquierda, der. hacia arriba) */
+.conf{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cf-in{display:flex;align-items:stretch;height:64px}
+.cf-l{flex:1;min-width:0;position:relative;overflow:hidden}
+.cf-sep{width:1px;flex:0 0 1px;background:var(--line);margin:14px 0}
+.cf-s{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 8px;opacity:0;transform:translateX(100%);transition:transform .6s ease,opacity .6s ease}
+.cf-l[data-dir=y] .cf-s{transform:translateY(100%)}
+.cf-l .cf-s.on{opacity:1;transform:none}
+.cf-l[data-dir=x] .cf-s.fuera{opacity:0;transform:translateX(-100%)}
+.cf-l[data-dir=y] .cf-s.fuera{opacity:0;transform:translateY(-100%)}
+.cf-s.sin{transition:none}
 .conf svg{width:24px;height:24px;flex:none;fill:none;stroke:#111;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.conf b{display:block;font:700 13.5px/1.25 var(--f-txt)}
-.conf span{font:500 12px/1.3 var(--f-txt);color:#666}
-.conf li:last-child{grid-column:1/-1;justify-content:center}
-@media (min-width:900px){.conf ul{grid-template-columns:repeat(5,1fr)}.conf li:last-child{grid-column:auto;justify-content:flex-start}}
+.conf b{display:block;font:700 13.5px/1.25 var(--f-txt);white-space:nowrap}
+.conf span{font:500 12px/1.3 var(--f-txt);color:#666;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){.cf-s{transition:none}}
 
 /* club (igual que index) */
 .club{background:var(--crema);padding-block:40px}
@@ -216,6 +221,40 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (prefers-reduced-motion:reduce){.bar ul{animation:none}*{transition:none!important}}
 .tabs button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;padding:0}
+
+/* pie (M): marca centrada en celular, columnas al ras, logos de pago */
+.ft{align-items:start}
+.ft .ft-m{grid-column:1/-1;text-align:center;display:grid;justify-items:center;gap:12px}
+.ft .ft-m p{margin:0;max-width:34ch}
+.ft h4{margin-top:0}
+.pagos{justify-content:center;align-items:center}
+.pagos img{height:26px;width:auto}
+@media (min-width:900px){.ft .ft-m{grid-column:auto;text-align:left;justify-items:start}.pagos{justify-content:flex-start}}
+
+/* club $300 por WhatsApp (M) */
+.cw{background:#0b0b0b;color:#fff;padding-block:44px}
+.cw-c{max-width:560px;margin:0 auto;text-align:center}
+.cw-k{margin:0 0 10px;font:600 11px var(--f-txt);letter-spacing:.24em;text-transform:uppercase;color:#bdbdbd}
+.cw h2{margin:0;font:700 clamp(34px,10vw,56px)/1 var(--f-serif);letter-spacing:.04em;text-transform:uppercase;color:#fff}
+.cw h2 span{display:block;margin-top:8px;font-size:.42em;letter-spacing:.12em;color:#e9e4da}
+.cw-p{margin:14px auto 22px;max-width:38ch;font:400 14px/1.5 var(--f-txt);color:#cfcfcf}
+.cw form{display:grid;gap:10px;text-align:left}
+.cw input{width:100%;height:52px;padding:0 16px;border:1px solid #3a3a3a;border-radius:10px;background:#fff;color:#111;font:500 16px var(--f-txt)}
+.cw button{height:56px;border:0;border-radius:999px;background:#1fa84f;color:#fff;font:800 15px var(--f-txt);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 18px rgba(31,168,79,.35)}
+.cw button:hover{background:#178a40}
+.cw-ok{margin:4px 0 0;min-height:1.3em;text-align:center;font:600 14px var(--f-txt);color:#fff}
+.cw-ok.bien{color:#5be08a}
+.cw-s{margin:10px 0 0;font:400 11.5px var(--f-txt);color:#8f8f8f}
+@media (min-width:900px){.cw{padding-block:72px}.cw form{grid-template-columns:1fr 1fr}.cw form button,.cw-ok{grid-column:1/-1}}
+
+/* buscador: palabra que rota (M) */
+.buscar{position:relative}
+.buscar .ph{position:absolute;left:41px;right:16px;top:0;bottom:0;overflow:hidden;pointer-events:none;color:#8a8a8a;font:500 16px var(--f-txt)}
+.buscar .ph i{position:absolute;left:0;right:0;top:50%;font-style:normal;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:22px;margin-top:-11px;transform:translateY(0);opacity:1;transition:transform .45s ease,opacity .45s ease}
+.buscar .ph i.sube{transform:translateY(-130%);opacity:0}
+.buscar .ph i.abajo{transform:translateY(130%);opacity:0;transition:none}
+.buscar.lleno .ph{display:none}
+@media (prefers-reduced-motion:reduce){.buscar .ph i{transition:none}}
 </style>
 </head>
 <body>
@@ -230,7 +269,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
       <button class="ib" type="button" id="btn-menu" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M3 6.5h18M3 12h18M3 17.5h18"/></svg></button>
       <a class="brand" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-blanco.png" alt="" width="53" height="24"><b>MONTARIS</b></a>
       <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="Cartier" aria-label="Buscar piezas"></form>
-      <button class="ib" type="button" id="btn-bolsa" aria-label="Bolsa"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
+      <button class="ib" type="button" id="btn-bolsa" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
     <nav class="tabs" aria-label="Categorías" id="tabs"><a href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
   </div>
@@ -261,36 +300,35 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
   <section class="lista"><div class="wrap"><div class="grid" id="grid"></div></div></section>
 
-  <section class="conf" aria-label="Por qué comprar aquí"><div class="wrap"><ul>
-    <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg><div><b>Envío gratis</b><span>desde $950</span></div></li>
-    <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg><div><b>30 días</b><span>para cambios</span></div></li>
-    <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><div><b>Hasta 6 meses</b><span>sin intereses</span></div></li>
-    <li><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Garantía 60 días</b><span>en cada pieza</span></div></li>
-    <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12h7M12 8.5v7"/></svg><div><b>Sello .925</b><span>plata auténtica</span></div></li>
-  </ul></div></section>
+  <section class="conf" aria-label="Por qué comprar aquí"><div class="wrap"><div class="cf-in">
+    <div class="cf-l" data-dir="x"><div class="cf-s on"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg><div><b>Envío gratis</b><span>desde $950</span></div></div><div class="cf-s"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h4"/></svg><div><b>Hasta 6 meses</b><span>sin intereses</span></div></div><div class="cf-s"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12h7M12 8.5v7"/></svg><div><b>Sello .925</b><span>plata auténtica</span></div></div></div>
+    <div class="cf-sep"></div>
+    <div class="cf-l" data-dir="y"><div class="cf-s on"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.6"/><path d="M4 4v4h4"/></svg><div><b>30 días</b><span>para cambios</span></div></div><div class="cf-s"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Garantía 60 días</b><span>en cada pieza</span></div></div></div>
+  </div></div></section>
 
-  <section class="club" id="club"><div class="wrap club-in">
-    <div><h2>$300 de regalo <span>en tu primera pieza.</span></h2><p style="margin-top:10px">Únete al Club Montaris y recibe $300 de regalo en tu primera pieza. Además: piezas nuevas antes que nadie y precios de temporada.</p></div>
-    <form class="reg" id="reg" novalidate>
-      <input id="r-nom" type="text" autocomplete="name" placeholder="Nombre" aria-label="Nombre" required>
-      <input id="r-cel" type="tel" inputmode="tel" autocomplete="tel" placeholder="Celular" aria-label="Celular">
-      <input id="r-mail" class="full" type="email" autocomplete="email" placeholder="Correo" aria-label="Correo" required>
-      <select id="r-para" class="full" aria-label="Para quién buscas"><option>Busco para mí</option><option>Para regalar a él</option><option>Para regalar a ella</option><option>Mayoreo</option></select>
-      <label class="chk full"><input type="checkbox" id="r-ok" required> Quiero mis $300 de regalo. Acepto el aviso de privacidad y recibir mensajes de Montaris.</label>
-      <button class="full" type="submit">Quiero mis $300</button>
-      <p class="reg-ok full" id="reg-ok" role="status"></p>
+  <section class="cw" id="club" aria-labelledby="club-t"><div class="wrap"><div class="cw-c">
+    <p class="cw-k">Club Montaris</p>
+    <h2 id="club-t">$300 de regalo<span>en tu primera pieza</span></h2>
+    <p class="cw-p">Déjanos tu nombre y tu WhatsApp y te mandamos tu cupón. Además, piezas nuevas antes que nadie.</p>
+    <!-- aquí va la verificación por WhatsApp -->
+    <form id="reg" novalidate>
+      <input name="nombre" type="text" autocomplete="name" placeholder="Tu nombre" aria-label="Nombre" required>
+      <input name="wa" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="14" placeholder="WhatsApp (10 dígitos)" aria-label="WhatsApp de 10 dígitos" required>
+      <button type="submit">Quiero mis $300</button>
+      <p class="cw-ok" id="reg-ok" role="status"></p>
     </form>
-  </div></section>
+    <p class="cw-s">Te das de baja cuando quieras.</p>
+  </div></div></section>
 </main>
 
 <footer id="ayuda"><div class="wrap">
   <div class="ft">
-    <div><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p style="margin:12px 0 0;max-width:34ch">Joyería de plata .925 con sello. Envíos a todo México.</p></div>
+    <div class="ft-m"><img src="img/logo-mm-blanco.png" alt="Montaris" width="106" height="48" style="height:48px;width:auto"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
     <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
     <div><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club">Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul></div>
   </div>
-  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>
+  <div class="pagos" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
   <div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
 </div></footer>
@@ -306,9 +344,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792525435"></script>
-<script src="bolsa.js?v=1792525435"></script>
-<script src="menu.js?v=1792525435"></script>
+<script src="catalogo.js?v=1792545578"></script>
+<script src="bolsa.js?v=1792545578"></script>
+<script src="menu.js?v=1792545578"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -422,7 +460,7 @@ function card(p){
   <h3><a href="producto.html?id=${p.id}">${esc(p.nombre)}</a></h3>
   <span class="ley">${esc(p.peso||'')}${p.peso?' · ':''}Plata .925</span>
   <span class="pr">Precio por confirmar</span>
-  <button class="add" type="button" data-add="${p.id}" aria-label="Agregar ${esc(p.nombre)} a la bolsa"><svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>Agregar</button></article>`;
+  <button class="add" type="button" data-add="${p.id}" aria-label="Agregar ${esc(p.nombre)} al carrito"><svg viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>Agregar</button></article>`;
 }
 function vacio(){
   if(nActivos())return `<div class="vacio"><h2>Ninguna pieza con estos filtros</h2><p>Quita alguno para ver más piezas.</p><button type="button" data-limpiar>Limpiar filtros</button></div>`;
@@ -520,31 +558,53 @@ fs.addEventListener('click',e=>{
 $('#fs-lim').addEventListener('click',()=>{limpiar();panel()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarF()});
 
-// agregar: guarda en la bolsa y la abre
+// agregar: abre la hoja rápida (Agregar al carrito / Comprar ahora)
 const toast=(m)=>{const el=$('#toast');el.textContent=m;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),1800)};
 function badge(){try{if(window.Bolsa&&Bolsa.contar)$('#n').textContent=Bolsa.contar()}catch(e){}}
 $('#grid').addEventListener('click',e=>{
   const b=e.target.closest('[data-add]');if(!b)return;
   const p=CAT.find(x=>x.id===+b.dataset.add);if(!p)return;
-  if(window.Bolsa&&typeof Bolsa.agregar==='function'){Bolsa.agregar(p.id,p.largo||null);badge();if(typeof Bolsa.abrir==='function')Bolsa.abrir();else toast('Agregada a tu bolsa')}
-  else toast('La bolsa no está disponible');
+  if(window.Bolsa&&typeof Bolsa.rapido==='function'){Bolsa.rapido(p.id)}
+  else if(window.Bolsa&&typeof Bolsa.agregar==='function'){Bolsa.agregar(p.id,p.largo||null);badge();Bolsa.abrir()}
+  else toast('El carrito no está disponible');
 });
 
-// club: sin envío
-$('#reg').addEventListener('submit',e=>{
-  e.preventDefault();
-  const ok=$('#r-nom').value.trim()&&/\S+@\S+\.\S+/.test($('#r-mail').value)&&$('#r-ok').checked;
-  $('#reg-ok').textContent=ok?'¡Listo! Te avisaremos cuando abra el Club Montaris.':'Escribe tu nombre, un correo válido y marca la casilla.';
-});
+/* club $300: nombre + WhatsApp (todavía no envía a ningún lado) */
+(function(){
+  var f=document.getElementById('reg'); if(!f) return;
+  var ok=document.getElementById('reg-ok');
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); ok.classList.remove('bien');
+    var n=f.nombre.value.trim(), w=f.wa.value.replace(/\D/g,'');
+    if(w.length===12&&w.indexOf('52')===0) w=w.slice(2);
+    if(n.length<2){ok.textContent='Escribe tu nombre.';f.nombre.focus();return}
+    if(w.length!==10){ok.textContent='Tu WhatsApp debe tener 10 dígitos.';f.wa.focus();return}
+    /* aquí va la verificación por WhatsApp */
+    try{localStorage.setItem('montaris_club',JSON.stringify({nombre:n,whatsapp:w,fecha:new Date().toISOString()}))}catch(_){}
+    ok.textContent='Listo, te mandamos tu cupón por WhatsApp'; ok.classList.add('bien'); f.reset();
+  });
+})();
 
-// header (igual que index): oscuro al bajar; se esconde al bajar y reaparece al subir
-(function(){const hdr=document.getElementById('hdr');let y0=scrollY,tk=false;
- function onS(){const y=Math.max(0,scrollY),d=y-y0;hdr.classList.toggle('solid',y>40);
-  const h=document.documentElement.classList;
-  if(h.contains('mn-lock')||h.contains('fs-lock')||h.contains('bz-lock')||hdr.contains(document.activeElement)&&document.activeElement.id==='q'){hdr.classList.remove('oculto')}
-  else if(y<=hdr.offsetHeight){hdr.classList.remove('oculto')}
-  else if(Math.abs(d)>6){hdr.classList.toggle('oculto',d>0)}
-  if(Math.abs(d)>6||y<=hdr.offsetHeight)y0=y;tk=false}
+/* franja de confianza: rota cada 3 s, lados desfasados */
+(function(){[].forEach.call(document.querySelectorAll('.cf-l'),function(l,j){var ss=l.children,k=0;if(ss.length<2)return;
+ function go(){if(document.hidden)return;var a=ss[k];k=(k+1)%ss.length;var b=ss[k];
+  b.classList.add('sin');b.classList.remove('fuera');b.offsetWidth;b.classList.remove('sin');
+  a.classList.remove('on');a.classList.add('fuera');b.classList.add('on')}
+ setTimeout(function(){go();setInterval(go,3000)},3000+j*1500)})})();
+/* buscador: la palabra del placeholder rota (sube y entra la siguiente desde abajo) */
+(function(){var f=document.getElementById('buscar'),q=document.getElementById('q');if(!f||!q)return;
+ var W=['Cartier','Cubanas','Esclavas con placa','Torzal','Marinera','Planchada','Pulseras','Tipo Rolex','Para ella','Regalos'],k=0;
+ q.setAttribute('placeholder','');var ph=document.createElement('span');ph.className='ph';ph.setAttribute('aria-hidden','true');
+ var a=document.createElement('i');a.textContent=W[0];ph.appendChild(a);f.appendChild(ph);
+ function est(){f.classList.toggle('lleno',document.activeElement===q||!!q.value)}
+ q.addEventListener('focus',est);q.addEventListener('blur',est);q.addEventListener('input',est);est();
+ setInterval(function(){if(document.hidden||f.classList.contains('lleno'))return;k=(k+1)%W.length;
+  var b=document.createElement('i');b.className='abajo';b.textContent=W[k];ph.appendChild(b);
+  a.classList.add('sube');var v=a;setTimeout(function(){v.remove()},500);
+  b.offsetWidth;b.className='';a=b},2500)})();
+/* header: siempre visible; translúcido arriba y oscuro al bajar */
+(function(){const hdr=document.getElementById('hdr');let tk=false;
+ function onS(){hdr.classList.toggle('solid',scrollY>40);tk=false}
  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(onS)}},{passive:true});onS()})();
 
 render();badge();
