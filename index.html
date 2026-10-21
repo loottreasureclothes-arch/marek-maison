@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792545578">
+<link rel="stylesheet" href="menu.css?v=1792545804">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -784,19 +784,21 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792545578" charset="utf-8"></script>
-<script src="bolsa.js?v=1792545578" charset="utf-8"></script>
-<script src="menu.js?v=1792545578" charset="utf-8"></script>
+<script src="catalogo.js?v=1792545804" charset="utf-8"></script>
+<script src="bolsa.js?v=1792545804" charset="utf-8"></script>
+<script src="menu.js?v=1792545804" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792545578 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792545804 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
 const TOP=[50,51,48,49,52,44,46,54,27,36];
 const N=12;
 // junta hasta 12 piezas sin repetir: primero las de la lista, luego el relleno
-const solo=f=>ORD.filter(f).slice(0,N);
-const doce=(...ls)=>{const v=new Set(),o=[];ls.flat().forEach(p=>{if(p&&!v.has(p.id)&&o.length<N){v.add(p.id);o.push(p)}});return o};
+// siempre en pares (2 columnas en celular): si es impar se quita la última
+const par=l=>l.length>1&&l.length%2?l.slice(0,-1):l;
+const solo=f=>par(ORD.filter(f).slice(0,N));
+const doce=(...ls)=>{const v=new Set(),o=[];ls.flat().forEach(p=>{if(p&&!v.has(p.id)&&o.length<N){v.add(p.id);o.push(p)}});return par(o)};
 const de=f=>ORD.filter(f);
 const esCad=p=>p.coleccion==='cadenas';
 const fmt=n=>'$'+n.toLocaleString('es-MX');
@@ -819,7 +821,7 @@ const TABS=[
 const sel=document.getElementById('sel'),pan=document.getElementById('paneles'),masV=document.getElementById('masV');
 pan.innerHTML='<div class="grid" role="tabpanel" id="pgrid"></div>';const pg=document.getElementById('pgrid');
 let cur='top',busca=null;
-function pinta(){const t=TABS.find(x=>x[0]===cur);const l=busca||t[3]();pg.innerHTML=l.length?l.map(card).join(''):'<p class="vacio">No encontramos piezas con ese nombre.</p>';masV.hidden=!!busca;masV.href=t[2]}
+function pinta(){const t=TABS.find(x=>x[0]===cur);const l=par(busca||t[3]());pg.innerHTML=l.length?l.map(card).join(''):'<p class="vacio">No encontramos piezas con ese nombre.</p>';masV.hidden=!!busca;masV.href=t[2]}
 function tabs(){sel.innerHTML=TABS.map(([k,t])=>`<button type="button" role="tab" data-k="${k}" aria-selected="${!busca&&k===cur}">${t}</button>`).join('')+(busca?'<button type="button" role="tab" class="extra" aria-selected="true" data-k="">Búsqueda ✕</button>':'')}
 sel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;busca=null;cur=b.dataset.k||cur;tabs();pinta()});
 tabs();pinta();
@@ -835,7 +837,7 @@ const blq=L=>L.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div cl
 document.getElementById('bloques').innerHTML=blq(BLQ);document.getElementById('bloques2').innerHTML=blq(BLQ2);
 
 // carrusel: Esclavas con placa (solo sub=placa)
-document.getElementById('carr-placa').innerHTML=ORD.filter(p=>p.sub==='placa').map(card).join('');
+document.getElementById('carr-placa').innerHTML=par(ORD.filter(p=>p.sub==='placa')).map(card).join('');
 
 // tarjeta completa abre la ficha
 document.addEventListener('click',e=>{const c=e.target.closest('.p[data-id]');if(!c||e.target.closest('.plus,a'))return;location.href='producto.html?id='+c.dataset.id});
@@ -867,7 +869,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792545578 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792545804 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -878,8 +880,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792545578)
-// (los botones data-soporte los engancha menu.js?v=1792545578)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792545804)
+// (los botones data-soporte los engancha menu.js?v=1792545804)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
