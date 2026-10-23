@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792749488">
+<link rel="stylesheet" href="menu.css?v=1792749990">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -84,7 +84,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 
 /* galería: foto grande que se desliza (llena su cuadro 4:5) + miniaturas abajo */
 .gal{min-width:0}
-@media (min-width:1000px){.gal{position:sticky;top:150px;align-self:start}}
+@media (min-width:1000px){.gal{position:sticky;top:calc(var(--hdr-h,130px) + 20px);align-self:start}}
 .gal-m{position:relative;overflow:hidden;background:#f3f3f1;aspect-ratio:4/5}
 .gal-sl{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .gal-sl::-webkit-scrollbar{display:none}
@@ -449,9 +449,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
 
 <div class="fija" id="fija" aria-hidden="true"><button class="b-add" type="button" tabindex="-1"><svg aria-hidden="true"><use href="#carrito"/></svg>Agregar al carrito</button></div>
 
-<script src="catalogo.js?v=1792749488" charset="utf-8"></script>
-<script src="bolsa.js?v=1792749488" charset="utf-8"></script>
-<script src="menu.js?v=1792749488" charset="utf-8"></script>
+<script src="catalogo.js?v=1792749990" charset="utf-8"></script>
+<script src="bolsa.js?v=1792749990" charset="utf-8"></script>
+<script src="menu.js?v=1792749990" charset="utf-8"></script>
 <script>
 (function(){
   var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
@@ -668,6 +668,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   var b=document.createElement('i');b.className='abajo';b.textContent=W[k];ph.appendChild(b);
   a.classList.add('sube');var v=a;setTimeout(function(){v.remove()},500);
   b.offsetWidth;b.className='';a=b},2500)})();
+/* alto real del header -> --hdr-h (la galería pegajosa queda debajo) */
+(function(){const h=document.getElementById('hdr');if(!h)return;const f=()=>document.documentElement.style.setProperty('--hdr-h',h.offsetHeight+'px');f();
+ if('ResizeObserver' in window)new ResizeObserver(f).observe(h);addEventListener('resize',f);addEventListener('load',f)})();
 /* header: siempre visible; translúcido arriba y oscuro al bajar */
 (function(){const hdr=document.getElementById('hdr');let tk=false;
  function onS(){hdr.classList.toggle('solid',scrollY>40);tk=false}

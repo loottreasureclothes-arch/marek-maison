@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792749853">
+<link rel="stylesheet" href="menu.css?v=1792749990">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -94,7 +94,7 @@ h1,h2,h3{margin:0;text-wrap:balance}
 @media (min-width:900px){.ci{flex-basis:128px}.ci span{width:128px}.ci b{font-size:13.5px}}
 
 /* barra de filtros y orden (pegajosa, como la barra móvil de Boxroom) */
-.tool{position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--line)}
+.tool{position:sticky;top:var(--hdr-h,0px);z-index:30;background:#fff;border-bottom:1px solid var(--line)}
 .tool-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;height:58px}
 .fbtn,.ord{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 14px;border:1px solid #d8d8d5;border-radius:999px;background:#fff;font:700 13px var(--f-txt);cursor:pointer;white-space:nowrap}
 .fbtn{justify-self:start}
@@ -460,9 +460,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792749853"></script>
-<script src="bolsa.js?v=1792749853"></script>
-<script src="menu.js?v=1792749853"></script>
+<script src="catalogo.js?v=1792749990"></script>
+<script src="bolsa.js?v=1792749990"></script>
+<script src="menu.js?v=1792749990"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -646,7 +646,7 @@ function cambio(){pinta();escribeURL()}
 $('#circ').addEventListener('click',e=>{
   const a=e.target.closest('.ci');if(!a||e.metaKey||e.ctrlKey)return;
   e.preventDefault();t=a.dataset.t;F.tipo.clear();limpiaInvalidos();render();
-  window.scrollTo({top:Math.max(0,$('.circ').offsetTop-60),behavior:'smooth'});
+  window.scrollTo({top:Math.max(0,$('.circ').offsetTop-(document.getElementById('hdr').offsetHeight+8)),behavior:'smooth'});
 });
 $('#ord').addEventListener('change',()=>{orden=$('#ord').value;cambio()});
 
@@ -663,7 +663,7 @@ function abrirF(){panel();fs.classList.add('on');fs.setAttribute('aria-hidden','
 function cerrarF(){if(!fs.classList.contains('on'))return;fs.classList.remove('on');fs.setAttribute('aria-hidden','true');$('#fbtn').setAttribute('aria-expanded','false');document.documentElement.classList.remove('fs-lock');$('#fbtn').focus({preventScroll:true})}
 $('#fbtn').addEventListener('click',abrirF);
 fs.addEventListener('click',e=>{
-  if(e.target.closest('[data-fs-cerrar]')){cerrarF();if(e.target.closest('#fs-ver'))window.scrollTo({top:Math.max(0,$('.lista').offsetTop-70),behavior:'smooth'});return}
+  if(e.target.closest('[data-fs-cerrar]')){cerrarF();if(e.target.closest('#fs-ver'))window.scrollTo({top:Math.max(0,$('.lista').offsetTop-(document.getElementById('hdr').offsetHeight+$('#tool').offsetHeight+8)),behavior:'smooth'});return}
   const o=e.target.closest('.op');if(!o||o.disabled)return;
   if(o.dataset.orden){orden=o.dataset.orden;$('#ord').value=orden;cambio();panel();return}
   const s=F[o.dataset.g];s.has(o.dataset.o)?s.delete(o.dataset.o):s.add(o.dataset.o);cambio();
@@ -720,6 +720,9 @@ document.addEventListener('click',function(e){var a=e.target.closest('[data-club
   var b=document.createElement('i');b.className='abajo';b.textContent=W[k];ph.appendChild(b);
   a.classList.add('sube');var v=a;setTimeout(function(){v.remove()},500);
   b.offsetWidth;b.className='';a=b},2500)})();
+/* alto real del header -> --hdr-h (la barra de filtros se pega justo debajo) */
+(function(){const h=document.getElementById('hdr');if(!h)return;const f=()=>document.documentElement.style.setProperty('--hdr-h',h.offsetHeight+'px');f();
+ if('ResizeObserver' in window)new ResizeObserver(f).observe(h);addEventListener('resize',f);addEventListener('load',f)})();
 /* header: siempre visible; translúcido arriba y oscuro al bajar */
 (function(){const hdr=document.getElementById('hdr');let tk=false;
  function onS(){hdr.classList.toggle('solid',scrollY>40);tk=false}
