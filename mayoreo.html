@@ -9,7 +9,7 @@
 <meta property="og:title" content="Mayoreo · Montaris"><meta property="og:image" content="img/ban/mayoreo-v7-escritorio.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792751296">
+<link rel="stylesheet" href="menu.css?v=1792751330">
 <style>
 /* ===== base, header y pie copiados de coleccion.html (23 oct 2026) ===== */
 
@@ -347,7 +347,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 .rev-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:16px}
 .rev-top .my-t{margin:0}
 .score{font:600 22px var(--f-serif);white-space:nowrap}
-.score .cnt{font:600 13px var(--f-txt);color:#555}
+.score .rcnt{font:600 13px var(--f-txt);color:#555}
+.rcnt i{font-style:normal}
+@media (max-width:599px){.score{text-align:right}.rcnt{display:block;margin-top:2px}.rcnt i{display:none}}
 .stars{color:#b9b9b9;letter-spacing:2px;font-size:14px}
 .resenas{display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,260px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .resenas::-webkit-scrollbar{display:none}
@@ -467,7 +469,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
   <!-- 4. Reseñas (de muestra: cambiar por reales) -->
   <section class="my-sec" aria-labelledby="res-t"><div class="wrap">
-    <div class="rev-top"><h2 class="my-t" id="res-t">Reseñas</h2><div class="score">4.9 <span class="stars">★★★★★</span> <small class="cnt">· +500 reseñas</small></div></div>
+    <div class="rev-top"><h2 class="my-t" id="res-t">Reseñas</h2><div class="score">4.9 <span class="stars">★★★★★</span> <small class="rcnt"><i>· </i>+500 reseñas</small></div></div>
     <div class="resenas">
       <article class="res"><div class="f"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>Llegó en 3 días, en su estuche. Se siente pesada.</p><span class="who">Carlos M. · Barbada 9 mm</span><span class="ver"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#e6f4ec" stroke="#007a3d" stroke-width="1.5"/><path d="M4.8 8.3l2.1 2.1 4.3-4.5" fill="none" stroke="#007a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Compra verificada</span></article>
       <article class="res"><div class="f"><img src="img/prod/14_L-13_esclava-con-placa/1.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>La esclava está hermosa y trae su sello 925.</p><span class="who">Andrea R. · Esclava</span><span class="ver"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#e6f4ec" stroke="#007a3d" stroke-width="1.5"/><path d="M4.8 8.3l2.1 2.1 4.3-4.5" fill="none" stroke="#007a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Compra verificada</span></article>
@@ -504,9 +506,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792751296"></script>
-<script src="bolsa.js?v=1792751296"></script>
-<script src="menu.js?v=1792751296"></script>
+<script src="catalogo.js?v=1792751330"></script>
+<script src="bolsa.js?v=1792751330"></script>
+<script src="menu.js?v=1792751330"></script>
 <script>
 /* Número de WhatsApp de Montaris: la web todavía no tiene uno. Ponlo aquí (52 + 10 dígitos, ej. "524491234567").
    Mientras esté vacío, WhatsApp abre con el mensaje listo y el cliente elige a quién mandarlo. */

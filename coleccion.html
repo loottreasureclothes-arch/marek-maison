@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792751296">
+<link rel="stylesheet" href="menu.css?v=1792751330">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -285,7 +285,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 .cx h2{margin:0;font:600 20px/1.15 var(--f-serif);letter-spacing:.04em;text-transform:uppercase}
 .cx-rt{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:14px}
 .cx-sc{font:600 22px var(--f-serif);white-space:nowrap}
-.cx-sc .cnt,.score .cnt{font:600 13px var(--f-txt);color:#555}
+.cx-sc .rcnt,.score .rcnt{font:600 13px var(--f-txt);color:#555}
+.rcnt i{font-style:normal}
+@media (max-width:599px){.cx-sc,.score{text-align:right}.rcnt{display:block;margin-top:2px}.rcnt i{display:none}}
 .cx .stars{color:#c9a24d;letter-spacing:2px;font-size:13px}
 .cx-rs{display:grid;grid-auto-flow:column;grid-auto-columns:min(64vw,240px);gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .cx-rs::-webkit-scrollbar{display:none}
@@ -392,7 +394,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
   <section class="cx wrap" aria-label="Por qué comprar en Montaris">
     <div>
       <!-- reseñas de muestra (las mismas del inicio): cambiar por reales -->
-      <div class="cx-rt"><h2>Lo que dicen nuestros clientes</h2><div class="cx-sc">4.9 <span class="stars">★★★★★</span> <small class="cnt">· +500 reseñas</small></div></div>
+      <div class="cx-rt"><h2>Lo que dicen nuestros clientes</h2><div class="cx-sc">4.9 <span class="stars">★★★★★</span> <small class="rcnt"><i>· </i>+500 reseñas</small></div></div>
       <div class="cx-rs">
         <article class="cx-r"><div class="f"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>Llegó en 3 días, en su estuche. Se siente pesada.</p><span class="who">Carlos M. · Barbada 9 mm</span><span class="ver"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#e6f4ec" stroke="#007a3d" stroke-width="1.5"/><path d="M4.8 8.3l2.1 2.1 4.3-4.5" fill="none" stroke="#007a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Compra verificada</span></article>
         <article class="cx-r"><div class="f"><img src="img/prod/14_L-13_esclava-con-placa/1.jpg" alt="" loading="lazy"></div><span class="stars">★★★★★</span><p>La esclava está hermosa y trae su sello 925.</p><span class="who">Andrea R. · Esclava</span><span class="ver"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="#e6f4ec" stroke="#007a3d" stroke-width="1.5"/><path d="M4.8 8.3l2.1 2.1 4.3-4.5" fill="none" stroke="#007a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Compra verificada</span></article>
@@ -464,9 +466,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792751296"></script>
-<script src="bolsa.js?v=1792751296"></script>
-<script src="menu.js?v=1792751296"></script>
+<script src="catalogo.js?v=1792751330"></script>
+<script src="bolsa.js?v=1792751330"></script>
+<script src="menu.js?v=1792751330"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
