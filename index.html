@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792743780">
+<link rel="stylesheet" href="menu.css?v=1792745527">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -777,6 +777,29 @@ button.btn{cursor:pointer;font-family:inherit}
 .imp>picture{position:absolute;inset:0}
 .imp>picture img{width:100%;height:100%;object-fit:cover;opacity:.5}
 .hs-s picture{display:block;width:100%;height:100%}
+/* 23 oct v3: mayoreo con escalones seleccionables y botones cuadrados */
+.may.imp>picture img{opacity:.62}
+.may.imp .ben{max-width:30ch}
+.tiers.esc{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:4px}
+.tiers.esc button{display:grid;gap:3px;justify-items:center;padding:12px 6px;min-height:64px;border:1px solid rgba(255,255,255,.34);border-radius:2px;background:rgba(0,0,0,.5);color:#fff;font-family:inherit;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.tiers.esc button b{font:600 15.5px/1.15 var(--f-serif);letter-spacing:.02em;white-space:nowrap}
+.tiers.esc button span{font:600 10.5px var(--f-txt);letter-spacing:.14em;text-transform:uppercase;color:#cfcfcf}
+.tiers.esc button[aria-checked="true"]{background:#fff;color:#111;border-color:#fff}
+.tiers.esc button[aria-checked="true"] span{color:#555}
+.tiers.esc button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.may.imp .cta{border-radius:2px;min-height:54px;letter-spacing:.12em;text-transform:uppercase;font-size:13.5px}
+@media (min-width:900px){.tiers.esc{grid-template-columns:repeat(4,minmax(0,1fr))}.may .imp-in{max-width:760px}}
+/* 23 oct v3: 6 piezas por fila en escritorio (una sola fila, sin huérfanas) */
+@media (min-width:900px){#vendidos .grid,.blk .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 14px}}
+/* 23 oct v3: club con la foto del pulso arriba, campos chicos y cuadrados */
+.club.imp .reg input{height:46px;border-radius:2px;padding:0 14px;font-size:15px}
+.club.imp .reg button{height:50px;border-radius:2px;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+@media (max-width:899px){
+ .club.imp{padding-top:0}
+ .club.imp>picture{position:relative;display:block;height:min(78vw,340px);margin-bottom:-36px}
+ .club.imp>picture img{object-position:50% 58%;opacity:.95;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
+ .club.imp .imp-in{gap:10px}
+}
 </style>
 </head><body>
 
@@ -806,7 +829,7 @@ button.btn{cursor:pointer;font-family:inherit}
       <form class="buscar" role="search" id="buscar" action="coleccion.html"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="q" name="q" type="search" placeholder="" aria-label="Buscar piezas"><span class="ph-rot" aria-hidden="true"><span>Cartier</span></span></form>
       <button class="ib" type="button" id="btn-bolsa" aria-label="Carrito"><svg viewBox="0 0 21 20" style="width:22px;height:21px"><path d="M0 1H4L5 11H17L19 4H8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="n"><i id="n">0</i></span></button>
     </div>
-    <nav class="tabs" aria-label="Categorías" id="tabs"><a class="on" href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="index.html#mayoreo">Mayoreo</a></nav>
+    <nav class="tabs" aria-label="Categorías" id="tabs"><a class="on" href="index.html">Inicio</a><a href="coleccion.html?c=hombre" data-c="hombre">Hombre</a><a href="coleccion.html?c=mujer" data-c="mujer">Mujer</a><a href="coleccion.html?c=novedades" data-c="novedades">Novedades</a><a href="coleccion.html?c=cadenas" data-c="cadenas">Cadenas</a><a href="coleccion.html?c=esclavas" data-c="esclavas">Esclavas</a><a href="coleccion.html?c=pulseras" data-c="pulseras">Pulseras</a><a href="coleccion.html?c=regalos" data-c="regalos">Regalos</a><a href="mayoreo.html">Mayoreo</a></nav>
   </div>
 </header>
 
@@ -924,12 +947,12 @@ button.btn{cursor:pointer;font-family:inherit}
   </div></section>
 
 <!-- 13. Mayoreo (como Boxroom: franja oscura, sello, etiqueta, título, texto, un botón) -->
-  <section class="may imp" id="mayoreo"><img src="img/prod/50_L-07_cadena-barbada-70cm/2.jpg" alt="" loading="lazy"><div class="imp-in">
+  <section class="may imp" id="mayoreo"><picture><source media="(min-width:900px)" srcset="img/ban/mayoreo-escritorio.jpg"><img src="img/ban/mayoreo-cel.jpg" alt="" loading="lazy"></picture><div class="imp-in">
     <span class="eb">Mayoreo · Revendedores</span>
     <h2>Compra desde $5,000 y gana revendiendo</h2>
-    <p class="ben">A mayor volumen, mejor precio por pieza.</p>
-    <div class="tiers"><div><b>$5k</b><span>Escalón 1</span></div><div><b>$10k</b><span>Escalón 2</span></div><div><b>$15k</b><span>Escalón 3</span></div><div><b>$20k+</b><span>Escalón 4</span></div></div>
-    <button class="cta" type="button" data-soporte>Solicitar lista de mayoreo</button>
+    <p class="ben">Mayor volumen, mejor precio. Selecciona cuánto quieres invertir:</p>
+    <div class="tiers esc" role="radiogroup" aria-label="Cuánto quieres invertir" id="may-esc"><button type="button" role="radio" aria-checked="false" data-e="1"><b>$5,000 – $9,999</b><span>Escalón 1</span></button><button type="button" role="radio" aria-checked="false" data-e="2"><b>$10,000 – $14,999</b><span>Escalón 2</span></button><button type="button" role="radio" aria-checked="false" data-e="3"><b>$15,000 – $20,000</b><span>Escalón 3</span></button><button type="button" role="radio" aria-checked="false" data-e="4"><b>Más de $20,000</b><span>Escalón 4</span></button></div>
+    <a class="cta" id="may-cta" href="mayoreo.html">Pedir información</a>
   </div></section>
 
   <section class="club imp" id="club"><picture><source media="(min-width:900px)" srcset="img/ban/club-escritorio.jpg"><img src="img/ban/club-cel.jpg" alt="" loading="lazy"></picture><div class="imp-in">
@@ -953,7 +976,7 @@ button.btn{cursor:pointer;font-family:inherit}
   <div class="pie-g">
     <div class="pie-top"><img src="img/logo-mm-blanco.png" alt="Montaris" width="97" height="44"><p>Joyería con sello de autenticidad · Envíos a todo México</p></div>
     <div><h4>Ayuda</h4><ul><li><a href="index.html#faq">Envíos</a></li><li><a href="index.html#faq">Cambios y devoluciones</a></li><li><a href="index.html#faq">Garantía</a></li><li><a href="index.html#faq">Cuidado de la plata</a></li><li><a href="index.html#faq">Guía de tallas</a></li><li><a href="index.html#faq">Factura</a></li></ul></div>
-    <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="index.html#mayoreo">Mayoreo</a></li></ul></div>
+    <div><h4>Tienda</h4><ul><li><a href="coleccion.html?c=novedades">Novedades</a></li><li><a href="coleccion.html?c=cadenas">Cadenas</a></li><li><a href="coleccion.html?c=esclavas">Esclavas</a></li><li><a href="coleccion.html?c=pulseras">Pulseras</a></li><li><a href="coleccion.html?c=mujer">Para ella</a></li><li><a href="coleccion.html?c=regalos">Para regalo</a></li><li><a href="mayoreo.html">Mayoreo</a></li></ul></div>
     <div class="pie-m"><h4>Montaris</h4><ul><li><a href="index.html#qs">Quiénes somos</a></li><li><a href="index.html#club" data-club>Club Montaris</a></li><li><a href="index.html#ayuda">Contacto</a></li></ul><div class="redes"><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1C4.7 2.2 2.2 4.7 2.1 7.9 2 9 2 9.3 2 12s0 3 .1 4.1c.1 3.2 2.6 5.7 5.8 5.8 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c3.2-.1 5.7-2.6 5.8-5.8.1-1.1.1-1.4.1-4.1s0-3-.1-4.1c-.1-3.2-2.6-5.7-5.8-5.8C15 2 14.7 2 12 2zm0 1.8c2.7 0 3 0 4 .1 2.4.1 3.9 1.6 4 4 .1 1 .1 1.3.1 4s0 3-.1 4c-.1 2.4-1.6 3.9-4 4-1 .1-1.3.1-4 .1s-3 0-4-.1c-2.4-.1-3.9-1.6-4-4-.1-1-.1-1.3-.1-4s0-3 .1-4c.1-2.4 1.6-3.9 4-4 1-.1 1.3-.1 4-.1z"/></svg></a><a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.3v13.1a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V8.9a6.2 6.2 0 1 0 5.3 6.2V8.4a7.8 7.8 0 0 0 4.4 1.4V6.5a4.5 4.5 0 0 1-4.4-4.5z"/></svg></a><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8V6.3c0-.8.2-1.3 1.4-1.3H17V2h-2.6C11.3 2 10.5 3.6 10.5 6v2H8v3h2.5v11H14V11h2.7l.4-3z"/></svg></a></div></div>
   </div>
   <div class="legal"><span>© 2026 Montaris · Razón social y RFC por definir</span><nav><a href="index.html#faq">Aviso de privacidad</a><a href="index.html#faq">Términos y condiciones</a></nav></div>
@@ -963,17 +986,17 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792743780" charset="utf-8"></script>
-<script src="bolsa.js?v=1792743780" charset="utf-8"></script>
-<script src="menu.js?v=1792743780" charset="utf-8"></script>
+<script src="catalogo.js?v=1792745527" charset="utf-8"></script>
+<script src="bolsa.js?v=1792745527" charset="utf-8"></script>
+<script src="menu.js?v=1792745527" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792743780 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792745527 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
 const TOP=[50,51,48,49,52,44,46,54,27,36];
-const N=12;
-// junta hasta 12 piezas sin repetir: primero las de la lista, luego el relleno
+const N=6;
+// junta hasta 6 piezas (pedido de Emanuel 23 oct: 6 en vez de 12 para llegar rápido a los banners) sin repetir: primero las de la lista, luego el relleno
 // siempre en pares (2 columnas en celular): si es impar se quita la última
 const par=l=>l.length>1&&l.length%2?l.slice(0,-1):l;
 const solo=f=>par(ORD.filter(f).slice(0,N));
@@ -1005,18 +1028,18 @@ function tabs(){sel.innerHTML=TABS.map(([k,t])=>`<button type="button" role="tab
 sel.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;busca=null;cur=b.dataset.k||cur;tabs();pinta()});
 tabs();pinta();
 
-// bloques: banner corto con foto real + 12 piezas + Ver más
+// bloques: banner corto con foto real + 6 piezas + Ver más
 const BLQ=[
  ['b-cadenas','Cadenas','ban/cadenas','coleccion.html?c=cadenas',()=>solo(esCad)],
- ['b-esclavas','Para él','ban/esclavas','coleccion.html?c=esclavas',()=>solo(p=>p.coleccion==='esclavas')],
- ['b-pulseras','Pulseras','b-pulseras','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
+ ['b-esclavas','Hombre','ban/hombre','coleccion.html?c=hombre',()=>solo(p=>p.coleccion==='esclavas')],
+ ['b-pulseras','Pulseras','ban/pulseras','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
 const BLQ2=[
  ['b-ella','Para ella','ban/para-ella','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')]];
 const blq=L=>L.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div class="wrap">${im.startsWith('ban/')?`<a class="blk-banner bq" href="${h}" aria-label="${t}: ver la colección"><picture><source media="(min-width:900px)" srcset="img/${im}-escritorio.jpg"><img src="img/${im}-cel.jpg" alt="${t}, plata .925" loading="lazy"></picture><div><h2>${t}</h2></div></a>`:`<a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a>`}<div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`).join('');
 document.getElementById('bloques').innerHTML=blq(BLQ);document.getElementById('bloques2').innerHTML=blq(BLQ2);
 
 // carrusel: Esclavas con placa (solo sub=placa)
-document.getElementById('carr-placa').innerHTML=par(ORD.filter(p=>p.sub==='placa')).map(card).join('');
+document.getElementById('carr-placa').innerHTML=par(ORD.filter(p=>p.sub==='placa').slice(0,N)).map(card).join('');
 
 // tarjeta completa abre la ficha
 document.addEventListener('click',e=>{const c=e.target.closest('.p[data-id]');if(!c||e.target.closest('.plus,a'))return;location.href='producto.html?id='+c.dataset.id});
@@ -1050,7 +1073,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792743780 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792745527 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1061,8 +1084,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792743780)
-// (los botones data-soporte los engancha menu.js?v=1792743780)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792745527)
+// (los botones data-soporte los engancha menu.js?v=1792745527)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
@@ -1073,6 +1096,9 @@ document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())av
  const sync=()=>f.classList.toggle('lleno',!!q.value);q.addEventListener('input',sync);sync();
  setInterval(()=>{if(document.hidden||document.activeElement===q||q.value)return;i=(i+1)%W.length;const b=document.createElement('span');b.className='dn';b.textContent=W[i];r.appendChild(b);b.getBoundingClientRect();b.className='';const o=a;o.className='up';setTimeout(()=>o.remove(),600);a=b},2500)})();
 document.getElementById('buscar').addEventListener('submit',e=>{e.preventDefault();const t=document.getElementById('q').value.trim();if(!t)return;location.href='coleccion.html?q='+encodeURIComponent(t)});
+// mayoreo: escalón seleccionable; "Pedir información" lleva a mayoreo.html?escalon=N
+(function(){const g=document.getElementById('may-esc'),cta=document.getElementById('may-cta');if(!g)return;
+ g.addEventListener('click',e=>{const b=e.target.closest('button[data-e]');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-checked',x===b?'true':'false'));cta.href='mayoreo.html?escalon='+b.dataset.e})})();
 // club
 document.getElementById('reg').addEventListener('submit',e=>{e.preventDefault();const nom=document.getElementById('r-nom').value.trim(),wa=document.getElementById('r-wa').value.replace(/\D/g,''),er=document.getElementById('reg-err'),ok=document.getElementById('reg-ok');er.textContent='';ok.textContent='';
  if(!nom){er.textContent='Escribe tu nombre.';return}

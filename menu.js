@@ -116,10 +116,19 @@ function preguntarAPI(texto, historial){
     grande(col("regalos"), elegir(16, function(p){return (p.etiquetas||[]).indexOf("regalo")>-1;}), "Ver regalos") +
     '<div class="mn-grid">' + porTipo("regalos", function(p){ return (p.etiquetas||[]).indexOf("regalo") > -1; }) + '</div></div>');
   tabs.push({ k:"mayoreo", n:"Mayoreo" });
-  pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-mayoreo" aria-labelledby="mn-t-mayoreo" hidden><h3>Mayoreo</h3>' +
-    grande("index.html#mayoreo", elegir(51, function(){return true;}), "Mayoreo") +
-    '<p class="mn-nota">Plata .925 con sello para revender. Te armamos tu pedido por volumen.</p>' +
-    '<a class="mn-ver" href="index.html#mayoreo">Ver mayoreo</a></div>');
+  /* Mayoreo (23 oct v3): resumen completo y todo lleva a la landing mayoreo.html (?escalon=N) */
+  var ESC = [["$5,000 – $9,999",1],["$10,000 – $14,999",2],["$15,000 – $20,000",3],["Más de $20,000",4]];
+  pans.push('<div class="mn-pan mn-may" role="tabpanel" id="mn-p-mayoreo" aria-labelledby="mn-t-mayoreo" hidden><h3>Mayoreo</h3>' +
+    '<a class="mn-grande mn-may-ban" href="mayoreo.html"><img src="img/ban/mayoreo-hero-cel.jpg" alt="" loading="lazy"><span>Compra desde $5,000 y gana revendiendo ›</span></a>' +
+    '<p class="mn-nota">Plata .925 con sello para tu tienda o para revender. Mayor volumen, mejor precio por pieza.</p>' +
+    '<h4 class="mn-may-t">Elige cuánto quieres invertir</h4>' +
+    '<div class="mn-may-esc">' + ESC.map(function(e){ return '<a href="mayoreo.html?escalon=' + e[1] + '"><b>' + e[0] + '</b><span>Escalón ' + e[1] + '</span></a>'; }).join("") + '</div>' +
+    '<h4 class="mn-may-t">Cómo funciona</h4>' +
+    '<ol class="mn-may-pasos"><li><b>Elige tu escalón</b> y déjanos tus datos.</li><li><b>Te mandamos la lista</b> de precios de mayoreo por WhatsApp.</li><li><b>Armas tu pedido</b> y te lo enviamos con guía de rastreo.</li></ol>' +
+    '<h4 class="mn-may-t">Beneficios</h4>' +
+    '<ul class="mn-may-ben"><li>Plata .925 con sello y peso en gramos</li><li>Somos fabricantes: precio directo de taller</li><li>Certificado de autenticidad en cada pieza</li><li>Garantía de 60 días</li><li>Envío gratis a todo México</li></ul>' +
+    '<a class="mn-may-cta" href="mayoreo.html">Pedir información</a>' +
+    '<button class="mn-may-chat" type="button">Preguntar en el chat</button></div>');
 
   /* orden del dueño: Hombre · Mujer · Novedades · Cadenas · Esclavas · Pulseras · Regalos · Mayoreo */
   (function(){ var orden=["hombre","mujer","novedades","cadenas","esclavas","pulseras","regalos","mayoreo"], par=tabs.map(function(t,i){return [t,pans[i]];});
@@ -188,7 +197,7 @@ function preguntarAPI(texto, historial){
     mancha: { t:'<p>Que la plata se oscurezca con el tiempo es normal: es el contacto con el aire, el sudor o el perfume, no quiere decir que no sea plata.</p><p>Se limpia con el <b>kit de limpieza</b> que viene con tu pieza. Y si es un defecto de fabricación (broche, eslabón, soldadura), tienes <b>garantía de 60 días</b>.</p>', b:["cuidado","persona"] },
     cuidado: { t:'<p>Para que tu plata dure brillante:</p><ul><li>Quítatela para bañarte, nadar o hacer ejercicio.</li><li>Evita perfume, cremas y cloro directo.</li><li>Guárdala en su estuche, separada de otras piezas.</li><li>Si se opaca, límpiala con el kit de limpieza que viene con tu pieza.</li></ul>', b:["garantia"] },
     largos: { t:'<p>Así queda cada largo de cadena:</p><ul><li><b>45–50 cm:</b> al cuello.</li><li><b>55 cm:</b> a la altura de la clavícula.</li><li><b>60 cm:</b> un poco debajo de la clavícula.</li><li><b>70 cm:</b> a la altura del esternón.</li></ul>', b:["cambios","persona"] },
-    mayoreo: { t:'<p>Vendemos plata .925 con sello para revender, por escalones de compra: <b>$5,000 · $10,000 · $15,000 · $20,000</b>. A mayor volumen, mejor precio por pieza.</p><p>Te enviamos la lista de precios por mensaje.</p>', b:["lista", { n:"Ver mayoreo", href:"index.html#mayoreo" }] },
+    mayoreo: { t:'<p>Vendemos plata .925 con sello para revender, por escalones de compra: <b>$5,000 · $10,000 · $15,000 · $20,000</b>. A mayor volumen, mejor precio por pieza.</p><p>Te enviamos la lista de precios por mensaje.</p>', b:["lista", { n:"Ver mayoreo", href:"mayoreo.html" }] },
     msi: { t:'<p>Puedes pagar <b>hasta en 6 meses sin intereses</b>.</p>', b:["envios","persona"] },
     precio: { t:'<p>Los precios están por confirmar; déjanos tu correo y te avisamos.</p>', b:["correo"] },
     nosotros: { t:'<p>Montaris es una joyería comercializadora y fabricante de artículos auténticos de plata .925 y oro: piezas con sello, garantía de 60 días y envío gratis desde $950.</p>', chips:true },
@@ -493,4 +502,14 @@ function preguntarAPI(texto, historial){
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", montar); else montar();
+})();
+
+/* 23 oct v3: los links viejos a "index.html#mayoreo" (de cualquier página) llevan a la landing mayoreo.html */
+(function(){
+  function fija(){ var l = document.querySelectorAll('a[href="index.html#mayoreo"],a[href="#mayoreo"]');
+    for (var i = 0; i < l.length; i++){ if (!l[i].closest("#mayoreo")) l[i].setAttribute("href", "mayoreo.html"); } }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fija); else fija();
+  setTimeout(fija, 1500);
+  document.addEventListener("click", function(e){ var b = e.target.closest && e.target.closest(".mn-may-chat");
+    if (b && window.MontarisMenu && MontarisMenu.abrirSoporte) MontarisMenu.abrirSoporte("mayoreo"); });
 })();

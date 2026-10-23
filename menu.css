@@ -174,3 +174,21 @@ html.mn-lock,html.mn-lock body{overflow:hidden!important;overscroll-behavior:non
 }
 
 a.mn-tab.mn-inicio{display:block;text-align:center;text-decoration:none}
+/* 23 oct v3: panel Mayoreo del menú con más información; botones cuadrados */
+.mn-may .mn-may-ban{aspect-ratio:16/10;border-radius:4px}
+.mn-may .mn-may-ban span{font-size:16px;line-height:1.2;right:12px}
+.mn-may .mn-nota{margin:0 2px 14px;font:500 14px/1.5 var(--mn-txt);color:var(--mn-ink2)}
+.mn-may-t{margin:16px 2px 8px;font:800 12px var(--mn-txt);letter-spacing:.12em;text-transform:uppercase;color:var(--mn-ink)}
+.mn-may-esc{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+.mn-pan .mn-may-esc a{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;padding:0 12px;border:1px solid #d9d5cd;border-radius:2px;background:#fff;color:var(--mn-ink)}
+.mn-may-esc a b{font:800 13px/1.2 var(--mn-txt);white-space:nowrap}
+.mn-may-esc a span{white-space:nowrap;font:600 10.5px var(--mn-txt);letter-spacing:.1em;text-transform:uppercase;color:var(--mn-ink3)}
+.mn-may-esc a:hover{border-color:var(--mn-ink)}
+.mn-may-pasos{margin:0;padding:0 0 0 20px;display:grid;gap:7px;font:500 13.5px/1.45 var(--mn-txt);color:var(--mn-ink2)}
+.mn-may-pasos b{color:var(--mn-ink)}
+.mn-may-ben{margin:0;padding:0;list-style:none;display:grid;gap:7px;font:500 13.5px/1.4 var(--mn-txt);color:var(--mn-ink2)}
+.mn-may-ben li{position:relative;padding-left:20px}
+.mn-may-ben li::before{content:"";position:absolute;left:2px;top:5px;width:9px;height:5px;border-left:2px solid var(--mn-ink);border-bottom:2px solid var(--mn-ink);transform:rotate(-45deg)}
+.mn-pan a.mn-may-cta{display:flex;align-items:center;justify-content:center;min-height:50px;margin-top:18px;border-radius:2px;background:var(--mn-ink);color:#fff;font:800 13px var(--mn-txt);letter-spacing:.12em;text-transform:uppercase}
+.mn-may-chat{display:flex;align-items:center;justify-content:center;width:100%;min-height:46px;margin-top:8px;border:1px solid var(--mn-ink);border-radius:2px;background:#fff;color:var(--mn-ink);font:800 12.5px var(--mn-txt);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+
