@@ -72,6 +72,24 @@ function preguntarAPI(texto, historial){
   var X = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M13 13L1 1M13 1L1 13"/></svg>';
   var FLECHA = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M5 2l5 5-5 5"/></svg>';
 
+  /* v9 (23 oct): la foto grande de cada pestaña = la MISMA cabecera de su colección (coleccion.html BANCOL / mayoreo.html).
+     [archivo en img/ban sin "-cel.jpg", encuadre para la miniatura 4:3]. Esclavas y Pulseras no tienen cabecera propia:
+     coleccion.html usa la foto de la pieza cfg.ban (36 y 33), igual aquí. */
+  var BANMENU = {
+    hombre:    ["col-hombre-v2",   "center 30%"],
+    mujer:     ["col-mujer-v4",    "center 42%"],
+    novedades: ["col-novedades",   "center 46%"],
+    cadenas:   ["col-cadenas-v2",  "center 38%"],
+    regalos:   ["col-regalos-v2",  "center 62%"],
+    mayoreo:   ["mayoreo-v7",      "center 72%"]
+  };
+  var BANPIEZA = { esclavas: 36, pulseras: 33 };
+  function grandeBan(k, href, nombre, idRespaldo){
+    var b = BANMENU[k];
+    if (!b) return grande(href, BANPIEZA[k] || idRespaldo, nombre);
+    return '<a class="mn-grande" href="' + href + '"><img src="img/ban/' + b[0] + '-cel.jpg" alt="" loading="lazy" style="object-position:' + b[1] + '">' +
+      '<span>' + esc(nombre) + ' ›</span></a>';
+  }
   function grande(href, id, nombre){
     var src = fotoGrande(id);
     return '<a class="mn-grande" href="' + href + '">' + (src ? '<img src="' + src + '" alt="" loading="lazy">' : '') +
@@ -102,24 +120,24 @@ function preguntarAPI(texto, historial){
   COLS.forEach(function(c){
     tabs.push({ k:c.k, n:c.nombre });
     pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-' + c.k + '" aria-labelledby="mn-t-' + c.k + '" hidden><h3>' + esc(c.nombre) + '</h3>' +
-      grande(col(c.k), c.grande, "Ver " + c.nombre.toLowerCase()) +
+      grandeBan(c.k, col(c.k), "Ver " + c.nombre.toLowerCase(), c.grande) +
       '<div class="mn-grid">' + c.subs.map(function(s){ return cuadro(col(c.k, s.t), s.id, s.n); }).join("") + '</div></div>');
   });
   var nuevos = piezas(function(p){ return (p.etiquetas||[]).indexOf("nuevo") > -1; }, 6);
   tabs.push({ k:"novedades", n:"Novedades" });
   pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-novedades" aria-labelledby="mn-t-novedades" hidden><h3>Novedades</h3>' +
-    grande(col("novedades"), nuevos[0] ? nuevos[0].id : 45, "Ver novedades") +
+    grandeBan("novedades", col("novedades"), "Ver novedades", nuevos[0] ? nuevos[0].id : 45) +
     '<div class="mn-grid">' + porTipo("novedades", function(p){ return (p.etiquetas||[]).indexOf("nuevo") > -1; }) + '</div></div>');
   var regalos = piezas(function(p){ return (p.etiquetas||[]).indexOf("regalo") > -1; }, 6);
   tabs.push({ k:"regalos", n:"Regalos" });
   pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-regalos" aria-labelledby="mn-t-regalos" hidden><h3>Regalos</h3>' +
-    grande(col("regalos"), elegir(16, function(p){return (p.etiquetas||[]).indexOf("regalo")>-1;}), "Ver regalos") +
+    grandeBan("regalos", col("regalos"), "Ver regalos", elegir(16, function(p){return (p.etiquetas||[]).indexOf("regalo")>-1;})) +
     '<div class="mn-grid">' + porTipo("regalos", function(p){ return (p.etiquetas||[]).indexOf("regalo") > -1; }) + '</div></div>');
   tabs.push({ k:"mayoreo", n:"Mayoreo" });
   /* Mayoreo (23 oct v3): resumen completo y todo lleva a la landing mayoreo.html (?escalon=N) */
   var ESC = [["$5,000 – $9,999",1],["$10,000 – $14,999",2],["$15,000 – $20,000",3],["Más de $20,000",4]];
   pans.push('<div class="mn-pan mn-may" role="tabpanel" id="mn-p-mayoreo" aria-labelledby="mn-t-mayoreo" hidden><h3>Mayoreo</h3>' +
-    '<a class="mn-grande mn-may-ban" href="mayoreo.html"><img src="img/ban/mayoreo-hero-cel.jpg" alt="" loading="lazy"><span>Compra desde $5,000 y gana revendiendo ›</span></a>' +
+    '<a class="mn-grande mn-may-ban" href="mayoreo.html"><img src="img/ban/' + BANMENU.mayoreo[0] + '-cel.jpg" alt="" loading="lazy" style="object-position:' + BANMENU.mayoreo[1] + '"><span>Compra desde $5,000 y gana revendiendo ›</span></a>' +
     '<p class="mn-nota">Plata .925 con sello para tu tienda o para revender. Mayor volumen, mejor precio por pieza.</p>' +
     '<h4 class="mn-may-t">Elige cuánto quieres invertir</h4>' +
     '<div class="mn-may-esc">' + ESC.map(function(e){ return '<a href="mayoreo.html?escalon=' + e[1] + '"><b>' + e[0] + '</b><span>Escalón ' + e[1] + '</span></a>'; }).join("") + '</div>' +
