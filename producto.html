@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792750533">
+<link rel="stylesheet" href="menu.css?v=1792750685">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -468,9 +468,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
 
 <div class="fija" id="fija" aria-hidden="true"><div class="fija-in"><div class="fija-p"><img id="fija-img" src="data:," alt="" width="52" height="52"><div><b id="fija-n"></b><span id="fija-pr">Precio por confirmar</span></div></div><div class="fija-b"><button class="b-add" type="button" tabindex="-1" id="fija-add">Agregar al carrito</button><button class="b-buy" type="button" tabindex="-1" id="fija-buy">Comprar ahora</button></div></div></div>
 
-<script src="catalogo.js?v=1792750533" charset="utf-8"></script>
-<script src="bolsa.js?v=1792750533" charset="utf-8"></script>
-<script src="menu.js?v=1792750533" charset="utf-8"></script>
+<script src="catalogo.js?v=1792750685" charset="utf-8"></script>
+<script src="bolsa.js?v=1792750685" charset="utf-8"></script>
+<script src="menu.js?v=1792750685" charset="utf-8"></script>
 <script>
 (function(){
   var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
@@ -614,14 +614,16 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
   document.getElementById('fija-add').addEventListener('click', agregar);
   document.getElementById('fija-buy').addEventListener('click', function(){ meter(); location.href = 'pago.html'; });
   var ctaBox = ficha.querySelector('.cta');
-  if ('IntersectionObserver' in window && ctaBox) {
-    var vista = true;
+  if (ctaBox) {
     function pinta(){
-      var on = !vista;
+      var r = ctaBox.getBoundingClientRect(), hh = innerWidth >= 1000 ? (document.getElementById('hdr').offsetHeight || 0) : 0;
+      var on = r.bottom <= hh || r.top >= innerHeight; /* los botones de la ficha no se ven */
+      if (fija.classList.contains('on') === on) return;
       fija.classList.toggle('on', on); fija.setAttribute('aria-hidden', on ? 'false' : 'true');
       [].forEach.call(fbs, function(b){ b.tabIndex = on ? 0 : -1; });
     }
-    new IntersectionObserver(function(en){ vista = en[0].isIntersecting; pinta(); }).observe(ctaBox);
+    if ('IntersectionObserver' in window) new IntersectionObserver(pinta, { threshold: [0, 1] }).observe(ctaBox);
+    addEventListener('scroll', pinta, { passive: true }); addEventListener('resize', pinta); pinta();
   }
 
   /* también te puede gustar: 12 piezas — misma colección (primero mismo tipo), luego del mismo género; sin repetir la misma cadena */
