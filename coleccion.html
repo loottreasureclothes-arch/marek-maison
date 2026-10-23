@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792581722">
+<link rel="stylesheet" href="menu.css?v=1792743780">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -307,7 +307,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <main>
   <section class="cb" aria-labelledby="c-t">
-    <img id="c-img" src="img/prod/48_L-07_cadena-cartier-70cm/1.jpg" alt="">
+    <picture><source id="c-src" media="(min-width:900px)"><img id="c-img" src="img/prod/48_L-07_cadena-cartier-70cm/1.jpg" alt=""></picture>
     <div class="cb-in wrap">
       <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span id="c-miga">Colección</span></nav>
       <div><span class="eb" id="c-eb">Plata .925</span></div>
@@ -372,9 +372,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792581722"></script>
-<script src="bolsa.js?v=1792581722"></script>
-<script src="menu.js?v=1792581722"></script>
+<script src="catalogo.js?v=1792743780"></script>
+<script src="bolsa.js?v=1792743780"></script>
+<script src="menu.js?v=1792743780"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -394,6 +394,7 @@ const COL={
   regalos:{t:'Para regalo',eb:'Para obsequiar',sub:'Piezas seleccionadas para regalar',f:p=>(p.etiquetas||[]).includes('regalo'),ban:16}
 };
 // foto de banner por subcolección (pieza más representativa)
+const BANCOL={hombre:'col-hombre',mujer:'col-mujer',novedades:'col-novedades',cadenas:'col-cadenas',regalos:'col-regalos'};
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -535,7 +536,9 @@ function encabezado(){
   $('#c-sub').textContent=`${l.length} ${l.length===1?'pieza':'piezas'} · ${modoQ||t?'Plata .925 con sello de autenticidad':cfg.sub}`;
   const pref=BANSUB[c+'/'+t]||(!t?cfg.ban:null);
   const pb=l.find(p=>p.id===pref)||l.slice().sort((a,b)=>peso(b)-peso(a))[0]||CAT.find(p=>p.id===cfg.ban);
-  if(pb){$('#c-img').src=fotoGrande(pb);$('#c-img').alt=pb.nombre}
+  const bn=!modoQ&&!t&&BANCOL[c];
+  if(bn){$('#c-src').srcset=`img/ban/${bn}-escritorio.jpg`;$('#c-img').src=`img/ban/${bn}-cel.jpg`;$('#c-img').alt=cfg.t}
+  else{$('#c-src').removeAttribute('srcset');if(pb){$('#c-img').src=fotoGrande(pb);$('#c-img').alt=pb.nombre}}
   document.querySelectorAll('#tabs a[data-c]').forEach(a=>{a.classList.toggle('on',a.dataset.c===c&&!modoQ)});
 }
 function cuadros(){
