@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792743780">
+<link rel="stylesheet" href="menu.css?v=1792744569">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -67,19 +67,15 @@ h1,h2,h3{margin:0;text-wrap:balance}
 /* banner de la colección (foto real de la pieza) */
 .cb{position:relative;height:min(62svh,560px);min-height:420px;background:#0b0b0b;color:#fff;overflow:hidden}
 .cb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.cb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.1) 30%,rgba(0,0,0,.2) 48%,rgba(0,0,0,.85) 78%,#0b0b0b 100%)}
-.cb-in{position:absolute;z-index:2;left:0;right:0;bottom:0;padding-bottom:22px}
-.cb .eb{display:inline-block;font:800 11px var(--f-txt);letter-spacing:.14em;text-transform:uppercase;background:#fff;color:#111;padding:6px 10px;border-radius:4px}
-.cb h1{margin:12px 0 8px;font:600 clamp(30px,8.5vw,64px)/1.02 var(--f-serif);letter-spacing:.06em;text-transform:uppercase}
-.cb p{margin:0;font:700 11.5px/1.75 var(--f-txt);letter-spacing:.14em;text-transform:uppercase;color:#e4e2dd}
-.cb .migas{display:flex;gap:6px;font:600 12px var(--f-txt);color:#c9cbd0;margin-bottom:10px}
+.cb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 18%,transparent 84%,rgba(0,0,0,.5) 100%)}
+.cb-in{position:absolute;z-index:2;left:0;right:0;bottom:0;padding-bottom:12px}
+.cb .migas{display:flex;gap:6px;font:600 12px var(--f-txt);color:#e4e2dd;margin-bottom:0;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .cb .migas a{text-decoration:underline;text-underline-offset:3px}
 @media (min-width:900px){
  .cb{height:min(70vh,560px)}
  .cb img{left:auto;width:56%}
- .cb::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.55) 56%,rgba(11,11,11,0) 72%),linear-gradient(180deg,rgba(0,0,0,.6) 0%,transparent 30%,transparent 80%,rgba(0,0,0,.5) 100%)}
- .cb-in{top:0;display:flex;flex-direction:column;justify-content:center;padding-top:120px}
- .cb h1{max-width:14ch}
+ .cb::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.5) 52%,rgba(11,11,11,0) 64%)}
+ .cb-in{padding-bottom:22px}
 }
 
 /* subcolecciones en cuadros 1:1 con el nombre debajo (como Boxroom) */
@@ -105,7 +101,8 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .fbtn svg{width:16px;height:16px;fill:none;stroke:#111;stroke-width:1.8;stroke-linecap:round}
 .fbtn em{font-style:normal;display:none;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#111;color:#fff;font:800 11px/20px var(--f-txt);text-align:center}
 .fbtn em.on{display:inline-block}
-.cnt{font:600 13px var(--f-txt);color:#333;text-align:center;white-space:nowrap}
+.cnt{margin:0;display:flex;flex-direction:column;align-items:center;min-width:0;max-width:44vw;font:600 12px/1.25 var(--f-txt);color:#666;text-align:center;white-space:nowrap}
+.cnt b{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;font:700 14px/1.25 var(--f-txt);color:#111}
 .ord{position:relative;justify-self:end;padding:0 30px 0 14px}
 .ord select{appearance:none;-webkit-appearance:none;border:0;background:none;font:700 13px var(--f-txt);cursor:pointer;outline:none;max-width:118px;text-overflow:ellipsis}
 .ord svg{position:absolute;right:13px;width:10px;height:10px;fill:none;stroke:#111;stroke-width:2;pointer-events:none}
@@ -306,13 +303,10 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 <div id="menu-root"></div>
 
 <main>
-  <section class="cb" aria-labelledby="c-t">
+  <section class="cb" aria-label="Banner de la colección">
     <picture><source id="c-src" media="(min-width:900px)"><img id="c-img" src="img/prod/48_L-07_cadena-cartier-70cm/1.jpg" alt=""></picture>
     <div class="cb-in wrap">
       <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span id="c-miga">Colección</span></nav>
-      <div><span class="eb" id="c-eb">Plata .925</span></div>
-      <h1 id="c-t">Colección</h1>
-      <p id="c-sub">Plata .925 con sello de autenticidad</p>
     </div>
   </section>
 
@@ -321,7 +315,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
   <div class="tool" id="tool"><div class="wrap">
     <div class="tool-in">
       <button class="fbtn" type="button" id="fbtn" aria-haspopup="dialog" aria-controls="fs" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Filtrar<em id="fn">0</em></button>
-      <span class="cnt" id="cnt" role="status" aria-live="polite">0 piezas</span>
+      <h1 class="cnt"><b id="c-t">Colección</b><span id="cnt" role="status" aria-live="polite">0 piezas</span></h1>
       <div class="ord"><select id="ord" aria-label="Ordenar"><option value="nuevo">Más nuevo</option><option value="ligera">Más ligera</option><option value="pesada">Más pesada</option><option value="larga">Más larga</option><option value="az">Nombre A–Z</option></select><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></div>
     </div>
     <div class="chips" id="chips" hidden></div>
@@ -372,9 +366,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792743780"></script>
-<script src="bolsa.js?v=1792743780"></script>
-<script src="menu.js?v=1792743780"></script>
+<script src="catalogo.js?v=1792744569"></script>
+<script src="bolsa.js?v=1792744569"></script>
+<script src="menu.js?v=1792744569"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -394,7 +388,7 @@ const COL={
   regalos:{t:'Para regalo',eb:'Para obsequiar',sub:'Piezas seleccionadas para regalar',f:p=>(p.etiquetas||[]).includes('regalo'),ban:16}
 };
 // foto de banner por subcolección (pieza más representativa)
-const BANCOL={hombre:'col-hombre',mujer:'col-mujer',novedades:'col-novedades',cadenas:'col-cadenas',regalos:'col-regalos'};
+const BANCOL={hombre:'col-hombre-v2',mujer:'col-mujer-v2',novedades:'col-novedades',cadenas:'col-cadenas-v2',regalos:'col-regalos'};
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -531,9 +525,7 @@ function encabezado(){
   const titulo=modoQ?`Resultados: ${q}`:(nomT?`${cfg.t} · ${nomT}`:cfg.t);
   document.title=`${titulo} · Montaris`;
   $('#c-t').textContent=modoQ?`“${q}”`:(nomT&&esTipo?`${cfg.t} ${nomT}`:(nomT?`${nomT} ${({hombre:'para él',mujer:'para ella',regalos:'para regalo',novedades:'nuevas'})[c]||''}`.trim():cfg.t));
-  $('#c-eb').textContent=cfg.eb;
   $('#c-miga').textContent=modoQ?'Búsqueda':cfg.t;
-  $('#c-sub').textContent=`${l.length} ${l.length===1?'pieza':'piezas'} · ${modoQ||t?'Plata .925 con sello de autenticidad':cfg.sub}`;
   const pref=BANSUB[c+'/'+t]||(!t?cfg.ban:null);
   const pb=l.find(p=>p.id===pref)||l.slice().sort((a,b)=>peso(b)-peso(a))[0]||CAT.find(p=>p.id===cfg.ban);
   const bn=!modoQ&&!t&&BANCOL[c];
