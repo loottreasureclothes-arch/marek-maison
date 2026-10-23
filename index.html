@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792745630">
+<link rel="stylesheet" href="menu.css?v=1792749488">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -800,6 +800,16 @@ button.btn{cursor:pointer;font-family:inherit}
  .club.imp>picture img{object-position:50% 58%;opacity:.95;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
  .club.imp .imp-in{gap:10px}
 }
+
+/* v6: hero v5 (X de cadenas) — degradado suave en celular y MONTARIS lejos de las pestañas en pantallas grandes */
+@media (max-width:899px){.hero::after{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 60%,rgba(0,0,0,.72) 80%,#0b0b0b 100%)}}
+@media (min-width:2200px){.hero{height:clamp(600px,27vw,760px)}.hs-s:first-child img{object-position:50% 18%}}
+/* v6: fuera el verde — botones en blanco sólido con texto negro (línea de lujo), cuadrados */
+.club.imp .reg button{background:#fff;color:#0b0b0b;border:1px solid #fff;border-radius:2px;font-weight:600;transition:background .25s,color .25s}
+.club.imp .reg button:hover,.club.imp .reg button:focus-visible{background:#e9e4da;border-color:#e9e4da}
+.p .plus.ok{background:#0b0b0b;color:#fff}
+.wa-btn{background:#fff;color:#0b0b0b;border:1px solid #0b0b0b;border-radius:2px}
+.res .ver{color:#7a7368}
 </style>
 </head><body>
 
@@ -836,7 +846,7 @@ button.btn{cursor:pointer;font-family:inherit}
 <main>
   <!-- 2. Portada: slider de banners con fotos reales (como el banner de Boxroom) -->
   <section class="hero" aria-label="Portada" aria-roledescription="carrusel">
-    <div class="hs" id="hs"><figure class="hs-s on" data-id="50" data-cap="Cadena barbada 9 mm · 70 cm"><picture><source media="(min-width:900px)" srcset="img/ban/hero-escritorio.jpg"><img src="img/ban/hero-cel.jpg" alt="Cadena barbada 9 mm · 70 cm, plata .925" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="48" data-cap="Cadena Cartier 8 mm · 70 cm"><img src="img/prod/48_L-07_cadena-cartier-70cm/3.jpg" alt="Cadena Cartier 8 mm · 70 cm, plata .925" loading="lazy"></figure><figure class="hs-s" data-id="52" data-cap="Cadena torzal 7 mm · 60 cm"><img src="img/prod/52_L-06_torzal-60cm/4.jpg" alt="Cadena torzal 7 mm · 60 cm, plata .925" loading="lazy"></figure></div>
+    <div class="hs" id="hs"><figure class="hs-s on" data-id="28" data-cap="Cubana con zirconias y torzal 7 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero-v5-escritorio.jpg"><img src="img/ban/hero-v5-cel.jpg" alt="Cadena cubana con zirconias y cadena torzal de plata .925 cruzadas en X" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="48" data-cap="Cadena Cartier 8 mm · 70 cm"><img src="img/prod/48_L-07_cadena-cartier-70cm/3.jpg" alt="Cadena Cartier 8 mm · 70 cm, plata .925" loading="lazy"></figure><figure class="hs-s" data-id="52" data-cap="Cadena torzal 7 mm · 60 cm"><img src="img/prod/52_L-06_torzal-60cm/4.jpg" alt="Cadena torzal 7 mm · 60 cm, plata .925" loading="lazy"></figure></div>
     <div class="hero-in wrap">
       <a class="btn w" href="coleccion.html?c=cadenas">Descubrir la colección</a>
       <div class="hs-ft"><div class="hcards" id="hcards" aria-label="Piezas de este banner"></div><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
@@ -986,11 +996,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792745630" charset="utf-8"></script>
-<script src="bolsa.js?v=1792745630" charset="utf-8"></script>
-<script src="menu.js?v=1792745630" charset="utf-8"></script>
+<script src="catalogo.js?v=1792749488" charset="utf-8"></script>
+<script src="bolsa.js?v=1792749488" charset="utf-8"></script>
+<script src="menu.js?v=1792749488" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792745630 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792749488 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -1031,8 +1041,8 @@ tabs();pinta();
 // bloques: banner corto con foto real + 6 piezas + Ver más
 const BLQ=[
  ['b-cadenas','Cadenas','ban/cadenas','coleccion.html?c=cadenas',()=>solo(esCad)],
- ['b-esclavas','Hombre','ban/hombre','coleccion.html?c=hombre',()=>solo(p=>p.coleccion==='esclavas')],
- ['b-pulseras','Pulseras','ban/pulseras','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
+ ['b-esclavas','Hombre','ban/hombre-v6','coleccion.html?c=hombre',()=>solo(p=>p.coleccion==='esclavas')],
+ ['b-pulseras','Pulseras','ban/pulseras-v6','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
 const BLQ2=[
  ['b-ella','Para ella','ban/para-ella','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')]];
 const blq=L=>L.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div class="wrap">${im.startsWith('ban/')?`<a class="blk-banner bq" href="${h}" aria-label="${t}: ver la colección"><picture><source media="(min-width:900px)" srcset="img/${im}-escritorio.jpg"><img src="img/${im}-cel.jpg" alt="${t}, plata .925" loading="lazy"></picture><div><h2>${t}</h2></div></a>`:`<a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a>`}<div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`).join('');
@@ -1060,7 +1070,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
 // portada: slider de banners
 (function(){const ss=[...document.querySelectorAll('#hs .hs-s')],ds=[...document.querySelectorAll('#hs-dots button')],hc=document.getElementById('hcards'),hero=document.querySelector('.hero');let i=0,t=null;
  // mini tarjetas de piezas reales sobre cada banner
- const HC={50:[50,51],48:[48,49],52:[52,44]};
+ const HC={28:[28,52],50:[50,51],48:[48,49],52:[52,44]};
  const tipo=p=>(p.nombre.match(/cartier|barbada|torzal|marinera|planchada|figaro|fígaro/i)||[p.tipo||''])[0].toUpperCase();
  const dos=p=>{const [a,b]=p.nombre.replace(/^Cadena\s+/i,'').split(' · ');const m=a.match(/^(.*?)\s+(\d[\d.]*\s*mm)$/);return m?[m[1].charAt(0).toUpperCase()+m[1].slice(1),m[2]+(b?' · '+b:'')]:[a,b||'']};
  const mini=p=>{const [l1,l2]=dos(p);return `<a class="hcard" href="${url(p)}" aria-label="${p.nombre}"><span class="hc-pic"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="hc-in"><b><span>${l1}</span><span>${l2}</span></b><span class="hc-g">${p.peso}</span><span class="hc-p">${precio(p)}</span></span></a>`};
@@ -1073,7 +1083,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792745630 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792749488 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1084,8 +1094,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792745630)
-// (los botones data-soporte los engancha menu.js?v=1792745630)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792749488)
+// (los botones data-soporte los engancha menu.js?v=1792749488)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
