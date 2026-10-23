@@ -81,6 +81,8 @@ function preguntarAPI(texto, historial){
     novedades: ["col-novedades",   "center 46%"],
     cadenas:   ["col-cadenas-v2",  "center 38%"],
     regalos:   ["col-regalos-v2",  "center 62%"],
+    esclavas:  ["col-esclavas",    "center 50%"],
+    pulseras:  ["col-pulseras",    "center 32%"],
     mayoreo:   ["mayoreo-v7",      "center 72%"]
   };
   var BANPIEZA = { esclavas: 36, pulseras: 33 };

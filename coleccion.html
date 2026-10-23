@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792758444">
+<link rel="stylesheet" href="menu.css?v=1792762884">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -471,9 +471,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792758444"></script>
-<script src="bolsa.js?v=1792758444"></script>
-<script src="menu.js?v=1792758444"></script>
+<script src="catalogo.js?v=1792762884"></script>
+<script src="bolsa.js?v=1792762884"></script>
+<script src="menu.js?v=1792762884"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -503,6 +503,9 @@ const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v10',novedades:'col-noved
 // encuadre especial de la foto de escritorio (object-position)
 const POSCOL={'col-pulseras-pulsos':'100% 50%','col-regalos-v10':'50% 95%'};
 const LISTOS=new Set(['col-cadenas-barbada','col-cadenas-cartier','col-cadenas-delgadas','col-cadenas-marinera','col-cadenas-planchada','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-barbada','col-esclavas-cartier','col-esclavas-petatillo','col-esclavas-placa','col-esclavas-rolex','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
+// v11: miniaturas cuadradas 600x600 (img/cat/) recortadas de las cabeceras aprobadas, para los cuadros de subcolección
+const MINI=new Set(['hombre','mujer','cadenas','esclavas','pulseras','novedades','regalos','cadenas-cartier','cadenas-barbada','cadenas-torzal','cadenas-marinera','cadenas-planchada','cadenas-delgadas','esclavas-placa','esclavas-petatillo','esclavas-rolex','esclavas-barbada','esclavas-cartier','pulseras-cubana','pulseras-pulsos','pulseras-diseno']);
+const mini=k=>{const n=esTipo?c+'-'+k:k;return MINI.has(n)?`img/cat/${n}.jpg`:''};
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -652,11 +655,12 @@ function cuadros(){
   if(modoQ||chipKeys.length<2&&!t){$('.circ').hidden=true;return}
   const ico='<span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span>';
   const url=k=>`coleccion.html?c=${c}${k?'&t='+k:''}`;
-  let h=`<a class="ci" href="${url('')}" data-t="" ${!t?'aria-current="true"':''}>${ico}<b>Todas <small>${base.length}</small></b></a>`;
+  const todo=MINI.has(c)?`<span><img src="img/cat/${c}.jpg" alt="" loading="lazy" width="96" height="96"></span>`:ico;
+  let h=`<a class="ci" href="${url('')}" data-t="" ${!t?'aria-current="true"':''}>${todo}<b>Todas <small>${base.length}</small></b></a>`;
   chipKeys.forEach(k=>{
     const ps=base.filter(p=>claveDe(p)===k);
     const rep=CAT.find(p=>p.id===BANSUB[(esTipo?c:k)+'/'+(esTipo?k:'')])||ps.find(p=>p.id===(COL[k]&&COL[k].ban))||ps.slice().sort((a,b)=>peso(b)-peso(a))[0];
-    h+=`<a class="ci" href="${url(k)}" data-t="${k}" ${t===k?'aria-current="true"':''}><span><img src="${foto(rep)}" alt="" loading="lazy" width="96" height="96" onerror="this.onerror=null;this.src='${fotoGrande(rep)}'"></span><b>${SUBN[k]||k} <small>${ps.length}</small></b></a>`;
+    h+=`<a class="ci" href="${url(k)}" data-t="${k}" ${t===k?'aria-current="true"':''}><span><img src="${mini(k)||foto(rep)}" alt="" loading="lazy" width="96" height="96" onerror="this.onerror=null;this.src='${fotoGrande(rep)}'"></span><b>${SUBN[k]||k} <small>${ps.length}</small></b></a>`;
   });
   $('#circ').innerHTML=h;
 }
