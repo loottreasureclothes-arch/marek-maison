@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792752992">
+<link rel="stylesheet" href="menu.css?v=1792755302">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -822,6 +822,10 @@ button.btn{cursor:pointer;font-family:inherit}
 .res .ver svg{width:15px;height:15px;flex:none}
 .sct-ico svg:has(path[d^="M12 3l8 4"]){stroke:#1f8a4c}
 .rev-top .score .cnt{font:600 14px var(--f-txt);color:#17643a;letter-spacing:0}
+/* v10: hero de esquina a esquina — escritorio con altura proporcional a la foto 2732x1200 (sin cortar a la persona), tableta con su propia foto anclada a la izquierda (el título queda a la vista) */
+@media (min-width:600px) and (max-width:899px){.hs-s img{object-position:50% 45%}.hs-s:not(:first-child) img{object-position:0% 45%}}
+@media (min-width:900px){.hero{height:clamp(600px,43.92vw,760px)}.hs-s img{object-position:50% 40%}}
+@media (min-width:2200px){.hs-s:not(:first-child) img{object-position:50% 40%}}
 </style>
 </head><body>
 
@@ -858,7 +862,7 @@ button.btn{cursor:pointer;font-family:inherit}
 <main>
   <!-- 2. Portada: slider de banners con fotos reales (como el banner de Boxroom) -->
   <section class="hero" aria-label="Portada" aria-roledescription="carrusel">
-    <div class="hs" id="hs"><figure class="hs-s on" data-id="28" data-cap="Cubana con zirconias y torzal 7 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero-v5-escritorio.jpg"><img src="img/ban/hero-v5-cel.jpg" alt="Cadena cubana con zirconias y cadena torzal de plata .925 cruzadas en X" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="51" data-cap="Cadena barbada 9 mm · 60 cm"><picture><source media="(min-width:900px)" srcset="img/ban/hero2-v8c-escritorio.jpg"><img src="img/ban/hero2-v8c-cel.jpg" alt="Hombre con cadena barbada 9 mm de plata .925. Plata .925 con certificado de autenticidad, envío gratis desde $950" loading="lazy"></picture></figure><figure class="hs-s" data-id="41" data-cap="Cadena delgada 1 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero3-v9a-escritorio.jpg"><img src="img/ban/hero3-v9a-cel.jpg" alt="Mujer con cadena delgada forzatina de plata .925. Hasta 6 meses sin intereses, envío gratis desde $950" loading="lazy"></picture></figure></div>
+    <div class="hs" id="hs"><figure class="hs-s on" data-id="28" data-cap="Cubana con zirconias y torzal 7 mm"><picture><source media="(min-width:600px)" srcset="img/ban/hero-v5-escritorio.jpg"><img src="img/ban/hero-v5-cel.jpg" alt="Cadena cubana con zirconias y cadena torzal de plata .925 cruzadas en X" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="51" data-cap="Cadena barbada 9 mm · 60 cm"><picture><source media="(min-width:900px)" srcset="img/ban/hero2-v10-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero2-v10-tab.jpg"><img src="img/ban/hero2-v10-cel.jpg" alt="Metales preciosos: hombre con cadena barbada 9 mm" loading="lazy"></picture></figure><figure class="hs-s" data-id="41" data-cap="Cadena delgada 1 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero3-v10-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero3-v10-tab.jpg"><img src="img/ban/hero3-v10-cel.jpg" alt="Delicadeza: mujer con cadena delgada forzatina 1 mm" loading="lazy"></picture></figure></div>
     <div class="hero-in wrap">
       <a class="btn w" href="coleccion.html?c=cadenas">Descubrir la colección</a>
       <div class="hs-ft"><div class="hcards" id="hcards" aria-label="Piezas de este banner"></div><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
@@ -1008,11 +1012,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792752992" charset="utf-8"></script>
-<script src="bolsa.js?v=1792752992" charset="utf-8"></script>
-<script src="menu.js?v=1792752992" charset="utf-8"></script>
+<script src="catalogo.js?v=1792755302" charset="utf-8"></script>
+<script src="bolsa.js?v=1792755302" charset="utf-8"></script>
+<script src="menu.js?v=1792755302" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792752992 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792755302 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -1052,12 +1056,12 @@ tabs();pinta();
 
 // bloques: banner corto con foto real + 6 piezas + Ver más
 const BLQ=[
- ['b-cadenas','Cadenas','ban/cadenas-v8e','coleccion.html?c=cadenas',()=>solo(esCad)],
+ ['b-cadenas','Cadenas','ban/cadenas-v9','coleccion.html?c=cadenas',()=>solo(esCad)],
  ['b-esclavas','Hombre','ban/hombre-v8','coleccion.html?c=hombre',()=>solo(p=>p.coleccion==='esclavas')],
- ['b-pulseras','Pulseras','ban/pulseras-v8','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
+ ['b-pulseras','Pulseras','ban/pulseras-v9|ban/pulseras-v10','coleccion.html?c=pulseras',()=>solo(p=>p.coleccion==='pulseras')]];
 const BLQ2=[
- ['b-ella','Para ella','ban/para-ella-v8','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')]];
-const blq=L=>L.map(([id,t,im,h,f])=>`<section class="sec blk" id="${id}"><div class="wrap">${im.startsWith('ban/')?`<a class="blk-banner bq" href="${h}" aria-label="${t}: ver la colección"><picture><source media="(min-width:900px)" srcset="img/${im}-escritorio.jpg"><img src="img/${im}-cel.jpg" alt="${t}, plata .925" loading="lazy"></picture><div><h2>${t}</h2></div></a>`:`<a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a>`}<div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`).join('');
+ ['b-ella','Para ella','ban/para-ella-v9','coleccion.html?c=mujer',()=>solo(p=>p.genero==='mujer')]];
+const blq=L=>L.map(([id,t,im,h,f])=>{const [ic,ie]=(im+'|'+im).split('|');return `<section class="sec blk" id="${id}"><div class="wrap">${im.startsWith('ban/')?`<a class="blk-banner bq" href="${h}" aria-label="${t}: ver la colección"><picture><source media="(min-width:900px)" srcset="img/${ie}-escritorio.jpg"><img src="img/${ic}-cel.jpg" alt="${t}, plata .925" loading="lazy"></picture><div><h2>${t}</h2></div></a>`:`<a class="blk-banner" href="${h}"><img src="img/${im}.jpg" alt="${t}, plata .925" loading="lazy"><div><h2>${t}</h2><span class="btn">Ver ahora</span></div></a>`}<div class="grid">${f().map(card).join('')}</div><div class="more"><a class="btn o" href="${h}">Ver más</a></div></div></section>`}).join('');
 document.getElementById('bloques').innerHTML=blq(BLQ);document.getElementById('bloques2').innerHTML=blq(BLQ2);
 
 // carrusel: Esclavas con placa (solo sub=placa)
@@ -1095,7 +1099,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792752992 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792755302 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1106,8 +1110,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792752992)
-// (los botones data-soporte los engancha menu.js?v=1792752992)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792755302)
+// (los botones data-soporte los engancha menu.js?v=1792755302)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;

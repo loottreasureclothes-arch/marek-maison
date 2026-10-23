@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792752992">
+<link rel="stylesheet" href="menu.css?v=1792755302">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -72,9 +72,14 @@ h1,h2,h3{margin:0;text-wrap:balance}
 .cb .migas{display:flex;gap:6px;font:600 12px var(--f-txt);color:#e4e2dd;margin-bottom:0;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .cb .migas a{text-decoration:underline;text-underline-offset:3px}
 @media (min-width:900px){
- .cb{height:min(70vh,560px)}
- .cb img{left:auto;width:56%}
- .cb::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.5) 52%,rgba(11,11,11,0) 64%)}
+ /* v10: cabecera de esquina a esquina. Estándar de imagen: escritorio 2732x1100, celular 780x1120 */
+ .cb{height:clamp(420px,40.26vw,680px)}
+ .cb img{object-position:var(--pos-esc,50% 35%)}
+ .cb::after{background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,transparent 22%,transparent 72%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,.35) 0%,transparent 30%)}
+ /* sin banner propio (foto de la pieza, cuadrada): se queda a la derecha para no deformarla */
+ .cb.foto{height:min(70vh,560px)}
+ .cb.foto img{left:auto;width:56%;object-position:50% 40%}
+ .cb.foto::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.5) 52%,rgba(11,11,11,0) 64%)}
  .cb-in{padding-bottom:22px}
 }
 
@@ -466,9 +471,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792752992"></script>
-<script src="bolsa.js?v=1792752992"></script>
-<script src="menu.js?v=1792752992"></script>
+<script src="catalogo.js?v=1792755302"></script>
+<script src="bolsa.js?v=1792755302"></script>
+<script src="menu.js?v=1792755302"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -488,7 +493,16 @@ const COL={
   regalos:{t:'Para regalo',eb:'Para obsequiar',sub:'Piezas seleccionadas para regalar',f:p=>(p.etiquetas||[]).includes('regalo'),ban:16}
 };
 // foto de banner por subcolección (pieza más representativa)
-const BANCOL={hombre:'col-hombre-v2',mujer:'col-mujer-v4',novedades:'col-novedades',cadenas:'col-cadenas-v2',regalos:'col-regalos-v2'};
+// v10: cabecera por colección ('c') y por subcolección ('c/t'): img/ban/<nombre>-cel.jpg (780x1120) y -escritorio.jpg (2732x1100).
+// Solo se usan las que están en LISTOS (archivos que ya existen); las demás caen a la foto de la pieza (BANSUB / COL.ban).
+const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v10',novedades:'col-novedades-v10',cadenas:'col-cadenas-v10',regalos:'col-regalos-v10',
+  esclavas:'col-esclavas',pulseras:'col-pulseras',
+  'cadenas/cartier':'col-cadenas-cartier','cadenas/barbada':'col-cadenas-barbada','cadenas/torzal':'col-cadenas-torzal','cadenas/marinera':'col-cadenas-marinera','cadenas/planchada':'col-cadenas-planchada','cadenas/delgadas':'col-cadenas-delgadas',
+  'esclavas/placa':'col-esclavas-placa','esclavas/petatillo':'col-esclavas-petatillo','esclavas/rolex':'col-esclavas-rolex','esclavas/barbada':'col-esclavas-barbada','esclavas/cartier':'col-esclavas-cartier',
+  'pulseras/cubana':'col-pulseras-cubana','pulseras/pulsos':'col-pulseras-pulsos','pulseras/diseno':'col-pulseras-diseno'};
+// encuadre especial de la foto de escritorio (object-position)
+const POSCOL={'col-pulseras-pulsos':'100% 50%','col-regalos-v10':'50% 95%'};
+const LISTOS=new Set(['col-cadenas-barbada','col-cadenas-delgadas','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-petatillo','col-esclavas-placa','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -628,8 +642,9 @@ function encabezado(){
   $('#c-miga').textContent=modoQ?'Búsqueda':cfg.t;
   const pref=BANSUB[c+'/'+t]||(!t?cfg.ban:null);
   const pb=l.find(p=>p.id===pref)||l.slice().sort((a,b)=>peso(b)-peso(a))[0]||CAT.find(p=>p.id===cfg.ban);
-  const bn=!modoQ&&!t&&BANCOL[c];
-  if(bn){$('#c-src').srcset=`img/ban/${bn}-escritorio.jpg`;$('#c-img').src=`img/ban/${bn}-cel.jpg`;$('#c-img').alt=cfg.t}
+  const bn=!modoQ&&BANCOL[t?c+'/'+t:c];
+  const ok=bn&&LISTOS.has(bn);$('.cb').classList.toggle('foto',!ok);if(ok&&POSCOL[bn])$('.cb').style.setProperty('--pos-esc',POSCOL[bn]);else $('.cb').style.removeProperty('--pos-esc');
+  if(ok){$('#c-src').srcset=`img/ban/${bn}-escritorio.jpg`;$('#c-img').src=`img/ban/${bn}-cel.jpg`;$('#c-img').alt=nomT?`${cfg.t} · ${nomT}`:cfg.t}
   else{$('#c-src').removeAttribute('srcset');if(pb){$('#c-img').src=fotoGrande(pb);$('#c-img').alt=pb.nombre}}
   document.querySelectorAll('#tabs a[data-c]').forEach(a=>{a.classList.toggle('on',a.dataset.c===c&&!modoQ)});
 }
