@@ -305,8 +305,8 @@
   '.rq-lg button[aria-pressed=true]{border-color:#111;background:#111;color:#fff}' +
   '.rq-bt{display:grid;gap:10px;margin-top:18px}' +
   '.rq-bt button{height:52px;border:2px solid #282828;border-radius:0;font:600 13px ' + F + ';letter-spacing:.14em;text-transform:uppercase;cursor:pointer}' +
-  '.rq-ag{background:#282828;color:#fff}' +
-  '.rq-ya{background:#eefbf0;border-color:#32d74b;color:#0b2e13}' +
+  '.rq-bt .rq-ag{background:#282828;color:#fff}' +
+  '.rq-bt .rq-ya{background:#eefbf0;border-color:#32d74b;color:#0b2e13}' +
   'html.rq-lock{overflow:hidden}' +
   '@media (min-width:768px){.rq-p{left:50%;right:auto;bottom:auto;top:50%;width:420px;border-radius:16px;transform:translate(-50%,-40%);opacity:0;transition:transform .25s ease,opacity .25s ease}.rq.on .rq-p{transform:translate(-50%,-50%);opacity:1}}' +
   '@media (prefers-reduced-motion:reduce){.rq-p,.rq-v{transition:none}}';
