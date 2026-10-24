@@ -320,7 +320,7 @@
     var p = pieza(rqSel); if (!p) return;
     var vs = variantes(p);
     rq.querySelector('.rq-c').innerHTML =
-      '<div class="rq-t"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="96" height="96"><div><b id="rq-tt">' + esc(p.grupo || p.nombre) + '</b><span>Plata .925 con sello' + (p.peso ? ' · ' + esc(p.peso) : '') + '</span><span>Precio por confirmar</span></div></div>' +
+      '<div class="rq-t"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="96" height="96"><div><b id="rq-tt">' + esc(p.grupo || p.nombre) + '</b><span>Plata .925 con sello</span><span>Precio por confirmar</span></div></div>' +
       (vs.length > 1 ? '<p class="rq-lb">Largo</p><div class="rq-lg" role="group" aria-label="Largo">' + vs.map(function(v){
         return '<button type="button" data-rq-v="' + v.id + '" aria-pressed="' + (String(v.id) === String(p.id)) + '">' + esc(v.largo || v.nombre) + '</button>'; }).join('') + '</div>'
         : (p.largo ? '<p class="rq-lb">Largo: ' + esc(p.largo) + '</p>' : ''));

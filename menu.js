@@ -156,7 +156,7 @@ function preguntarAPI(texto, historial){
     '<h4 class="mn-may-t">Cómo funciona</h4>' +
     '<ol class="mn-may-pasos"><li><b>Elige tu escalón</b> y déjanos tus datos.</li><li><b>Te mandamos la lista</b> de precios de mayoreo por WhatsApp.</li><li><b>Armas tu pedido</b> y te lo enviamos con guía de rastreo.</li></ol>' +
     '<h4 class="mn-may-t">Beneficios</h4>' +
-    '<ul class="mn-may-ben"><li>Plata .925 con sello y peso en gramos</li><li>Somos fabricantes: precio directo de taller</li><li>Certificado de autenticidad en cada pieza</li><li>Garantía de 60 días</li><li>Envío gratis a todo México</li></ul>' +
+    '<ul class="mn-may-ben"><li>Plata .925 con sello</li><li>Somos fabricantes: precio directo de taller</li><li>Certificado de autenticidad en cada pieza</li><li>Garantía de 60 días</li><li>Envío gratis a todo México</li></ul>' +
     '<a class="mn-may-cta" href="mayoreo.html">Pedir información</a>' +
     '<button class="mn-may-chat" type="button">Preguntar en el chat</button></div>');
 
