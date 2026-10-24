@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792809692">
+<link rel="stylesheet" href="menu.css?v=1792836899">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -381,7 +381,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
     <div class="tool-in">
       <button class="fbtn" type="button" id="fbtn" aria-haspopup="dialog" aria-controls="fs" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Filtrar<em id="fn">0</em></button>
       <h1 class="cnt"><b id="c-t">Colección</b><span id="cnt" role="status" aria-live="polite">0 piezas</span></h1>
-      <div class="ord"><select id="ord" aria-label="Ordenar"><option value="nuevo">Más nuevo</option><option value="larga">Más larga</option><option value="az">Nombre A–Z</option></select><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></div>
+      <div class="ord"><select id="ord" aria-label="Ordenar"><option value="nuevo">Más nuevo</option><option value="larga">Más larga</option><option value="mayor">Precio: mayor a menor</option><option value="menor">Precio: menor a mayor</option><option value="az">Nombre A–Z</option></select><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></div>
     </div>
     <div class="chips" id="chips" hidden></div>
   </div></div>
@@ -471,9 +471,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792809692"></script>
-<script src="bolsa.js?v=1792809692"></script>
-<script src="menu.js?v=1792809692"></script>
+<script src="catalogo.js?v=1792836899"></script>
+<script src="bolsa.js?v=1792836899"></script>
+<script src="menu.js?v=1792836899"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -533,7 +533,8 @@ if(t&&!chipKeys.includes(t)&&!SUBS.includes(t))t='';
 
 /* ---------- filtros ---------- */
 const num=v=>{const n=parseFloat(v);return isNaN(n)?null:n};
-const L=p=>num(p.largo), E=p=>num(p.eslabon);
+const L=p=>num(p.largo), E=p=>num(p.eslabon), PR=p=>typeof p.precio==='number'?p.precio:null;
+const fmt=n=>'$'+Math.round(n).toLocaleString('es-MX');
 const SING={cadenas:'Cadena',esclavas:'Esclava',pulseras:'Pulsera'};
 const G=[
   {k:'tipo',n:'Tipo',ops:null},
@@ -546,10 +547,15 @@ const G=[
     {k:'h2',n:'Hasta 2 mm',f:p=>E(p)!==null&&E(p)<=2},
     {k:'3-5',n:'3–5 mm',f:p=>E(p)>2&&E(p)<=5},
     {k:'6-9',n:'6–9 mm',f:p=>E(p)>5&&E(p)<10},
-    {k:'10',n:'10 mm o más',f:p=>E(p)>=10}]}
+    {k:'10',n:'10 mm o más',f:p=>E(p)>=10}]},
+  {k:'precio',n:'Precio',ops:[
+    {k:'h2000',n:'Hasta $2,000',f:p=>PR(p)!==null&&PR(p)<=2000},
+    {k:'2-4',n:'$2,001–$4,000',f:p=>PR(p)>2000&&PR(p)<=4000},
+    {k:'4-6',n:'$4,001–$6,000',f:p=>PR(p)>4000&&PR(p)<=6000},
+    {k:'6',n:'Más de $6,000',f:p=>PR(p)>6000}]}
 ];
-const ORDS=[['nuevo','Más nuevo'],['larga','Más larga'],['az','Nombre A–Z']];
-const F={tipo:new Set,largo:new Set,ancho:new Set,peso:new Set};
+const ORDS=[['nuevo','Más nuevo'],['larga','Más larga'],['mayor','Precio: mayor a menor'],['menor','Precio: menor a mayor'],['az','Nombre A–Z']];
+const F={tipo:new Set,largo:new Set,ancho:new Set,precio:new Set,peso:new Set};
 let orden=ORDS.some(o=>o[0]===P.get('orden'))?P.get('orden'):'nuevo';
 $('#ord').value=orden;
 
@@ -574,6 +580,8 @@ function ordena(l,o){
   if(o==='pesada')a.sort((x,y)=>peso(y)-peso(x));
   else if(o==='ligera')a.sort((x,y)=>peso(x)-peso(y));
   else if(o==='larga')a.sort((x,y)=>(L(y)??-1)-(L(x)??-1)||peso(y)-peso(x));
+  else if(o==='mayor')a.sort((x,y)=>(PR(y)??-1)-(PR(x)??-1));
+  else if(o==='menor')a.sort((x,y)=>(PR(x)??1e9)-(PR(y)??1e9));
   else if(o==='az')a.sort((x,y)=>x.nombre.localeCompare(y.nombre,'es',{numeric:true}));
   else a.sort((x,y)=>((y.etiquetas||[]).includes('nuevo')-(x.etiquetas||[]).includes('nuevo'))||y.id-x.id);
   return a;
@@ -592,7 +600,7 @@ function escribeURL(){
 
 const esc=s=>(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function card(p){
-  return `<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="producto.html?id=${p.id}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${esc(p.nombre)}" loading="lazy" width="800" height="800"></a><button class="plus" type="button" aria-label="Agregar ${esc(p.nombre)} al carrito" data-id="${p.id}">+</button></div><h3><a href="producto.html?id=${p.id}">${esc(p.nombre)}</a></h3><span class="ley">Plata .925 con sello</span><span class="pr pc">Precio por confirmar</span></article>`;
+  return `<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="producto.html?id=${p.id}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${esc(p.nombre)}" loading="lazy" width="800" height="800"></a><button class="plus" type="button" aria-label="Agregar ${esc(p.nombre)} al carrito" data-id="${p.id}">+</button></div><h3><a href="producto.html?id=${p.id}">${esc(p.nombre)}</a></h3><span class="ley">Plata .925 con sello</span>${PR(p)!==null?`<span class="pr">${fmt(PR(p))}</span>`:''}</article>`;
 }
 function vacio(){
   if(nActivos())return `<div class="vacio"><h2>Sin piezas con estos filtros</h2><p>Ajusta la selección para ver más piezas.</p><button type="button" data-limpiar>Limpiar filtros</button></div>`;
@@ -619,7 +627,6 @@ function panel(){
     h+=`<details class="fg" data-g="${g.k}" ${abiertos.has(g.k)?'':'open'}><summary><span>${g.n}${F[g.k].size?`<i>(${F[g.k].size})</i>`:''}</span><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></summary><div class="ops">`+
       ops.map(o=>{const n=sub.filter(o.f).length,on=F[g.k].has(o.k);return `<button class="op" type="button" data-g="${g.k}" data-o="${o.k}" aria-pressed="${on}" ${!n&&!on?'disabled':''}>${esc(o.n)} <small>${n}</small></button>`}).join('')+'</div></details>';
   });
-  h+=`<details class="fg" data-g="precio" ${abiertos.has('precio')?'':'open'}><summary>Precio<svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></summary><div class="ops"><button class="op" type="button" disabled>Por rango de precio</button></div><p class="nota">Disponible cuando haya precios.</p></details>`;
   $('#fs-b').innerHTML=h;
 }
 function pinta(){

@@ -229,7 +229,7 @@ function preguntarAPI(texto, historial){
     largos: { t:'<p>Así queda cada largo de cadena:</p><ul><li><b>45–50 cm:</b> al cuello.</li><li><b>55 cm:</b> a la altura de la clavícula.</li><li><b>60 cm:</b> un poco debajo de la clavícula.</li><li><b>70 cm:</b> a la altura del esternón.</li></ul>', b:["cambios","persona"] },
     mayoreo: { t:'<p>Vendemos plata .925 con sello para revender, por escalones de compra: <b>$5,000 · $10,000 · $15,000 · $20,000</b>. A mayor volumen, mejor precio por pieza.</p><p>Te enviamos la lista de precios por mensaje.</p>', b:["lista", { n:"Ver mayoreo", href:"mayoreo.html" }] },
     msi: { t:'<p>Puedes pagar <b>hasta en 6 meses sin intereses</b>.</p>', b:["envios","persona"] },
-    precio: { t:'<p>Los precios están por confirmar; déjanos tu correo y te avisamos.</p>', b:["correo"] },
+    precio: { t:'<p>Cada pieza tiene su precio en la tienda, con IVA incluido. Envío gratis desde $950 y hasta 6 meses sin intereses.</p>', b:["msi","persona"] },
     nosotros: { t:'<p>Montaris es una joyería comercializadora y fabricante de artículos auténticos de plata .925 y oro: piezas con sello, garantía de 60 días y envío gratis desde $950.</p>', chips:true },
     gracias: { t:'<p>¡Con gusto! Si se te ofrece algo más, aquí estoy.</p>', chips:true },
     nose: { t:'<p>No te entendí bien. Elige un tema o escríbelo de otra forma:</p>', chips:true }

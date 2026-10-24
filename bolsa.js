@@ -1,4 +1,4 @@
-/* bolsa.js — carrito de compras de Montaris (API sigue llamándose Bolsa) (sin precios por ahora).
+/* bolsa.js — carrito de compras de Montaris (API sigue llamándose Bolsa) (con precios del catálogo).
    El panel copia el carrito de boxroomshop.com (UpCart): entra por la derecha, pantalla completa en celular
    y 420 px en escritorio; encabezado "Carrito • n" con X; aviso de envío gratis con barra; filas con foto,
    nombre, largo, precio, cantidad − n + y bote para quitar; "También te puede gustar" con Agregar;
@@ -43,6 +43,7 @@
         nombre: p ? p.nombre : 'Pieza ' + r.id,
         codigo: p ? p.codigo : '',
         foto: p ? 'img/prod/' + p.carpeta + '/c.jpg' : '',
+        precio: p && typeof p.precio === 'number' ? p.precio : null,
         cantidad: r.cantidad || 1
       };
     });
@@ -54,7 +55,7 @@
     for (var i = 0; i < arr.length; i++){ var p = pieza(arr[i].id); if (!p || typeof p.precio !== 'number') return null; s += p.precio * (arr[i].cantidad || 1); }
     return arr.length ? s : null;
   }
-  function pesos(n){ return '$ ' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function pesos(n){ return '$' + Math.round(n).toLocaleString('es-MX'); }
 
   function agregar(id, largo){
     var arr = leer(), p = pieza(id);
@@ -246,7 +247,7 @@
           '<a href="' + url + '" tabindex="-1" aria-hidden="true"><img src="' + esc(it.foto) + '" alt="" width="88" height="88" loading="lazy"></a>' +
           '<div><a class="nm" href="' + url + '">' + esc(it.nombre) + '</a>' +
             (it.largo ? '<span class="lg">Largo: ' + esc(it.largo) + '</span>' : '<span class="lg">Plata .925</span>') +
-            '<span class="pc">Precio por confirmar</span>' +
+            (it.precio != null ? '<span class="pc">' + pesos(it.precio * it.cantidad) + '</span>' : '') +
             '<div class="bz-q" role="group" aria-label="Cantidad"><button type="button" data-bz-q="' + i + '" data-d="-1" aria-label="Quitar una">−</button><span aria-live="polite">' + it.cantidad + '</span><button type="button" data-bz-q="' + i + '" data-d="1" aria-label="Agregar una">+</button></div>' +
           '</div>' +
           '<button class="bz-del" type="button" data-bz-del="' + i + '" aria-label="Quitar ' + esc(it.nombre) + '">' + I.bote + '</button>' +
@@ -257,13 +258,13 @@
         '<div class="bz-us">' + sug.map(function(p){
           var url = 'producto.html?id=' + p.id;
           return '<div class="bz-u"><a href="' + url + '" tabindex="-1" aria-hidden="true"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="90" height="90" loading="lazy"></a>' +
-            '<div><a href="' + url + '">' + esc(p.nombre) + '</a><span class="pc">Precio por confirmar</span>' + (p.largo ? '<span class="lg">Largo: ' + esc(p.largo) + '</span>' : '') +
+            '<div><a href="' + url + '">' + esc(p.nombre) + '</a>' + (typeof p.precio === 'number' ? '<span class="pc">' + pesos(p.precio) + '</span>' : '') + (p.largo ? '<span class="lg">Largo: ' + esc(p.largo) + '</span>' : '') +
             '<button type="button" data-bz-up="' + p.id + '">Agregar</button></div></div>';
         }).join('') + '</div>' +
         '<button class="bz-ar r" type="button" aria-label="Siguiente">' + I.der + '</button>' +
       '</div></div>' : '');
     pie.innerHTML =
-      '<div class="bz-t"><span>Subtotal</span><span>' + (sub == null ? 'Por confirmar' : pesos(sub)) + '</span></div>' +
+      '<div class="bz-t"><span>Subtotal</span><span>' + (sub == null ? '' : pesos(sub)) + '</span></div>' +
       '<a class="bz-go" href="pago.html">Comprar ahora</a>' +
       '<button class="bz-seg" type="button" data-bz-cerrar>Seguir explorando</button>' +
       '<div class="bz-pay" aria-label="Formas de pago"><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"></div>';
@@ -299,6 +300,7 @@
   '.rq-t img{width:96px;height:96px;object-fit:cover;border-radius:8px;background:#f3f3f1}' +
   '.rq-t b{display:block;font:700 15px/1.35 ' + F + '}' +
   '.rq-t span{display:block;margin-top:4px;font:400 13px/1.4 ' + F + ';color:#666}' +
+  '.rq-t .rq-pr{font:700 15px/1.4 ' + F + ';color:#111}' +
   '.rq-lb{margin:16px 0 8px;font:700 12px ' + F + ';letter-spacing:.08em;text-transform:uppercase}' +
   '.rq-lg{display:flex;flex-wrap:wrap;gap:8px}' +
   '.rq-lg button{min-width:72px;height:42px;padding:0 14px;border:1px solid #ccc;border-radius:999px;background:#fff;color:#111;font:600 13.5px ' + F + ';cursor:pointer}' +
@@ -320,7 +322,7 @@
     var p = pieza(rqSel); if (!p) return;
     var vs = variantes(p);
     rq.querySelector('.rq-c').innerHTML =
-      '<div class="rq-t"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="96" height="96"><div><b id="rq-tt">' + esc(p.grupo || p.nombre) + '</b><span>Plata .925 con sello</span><span>Precio por confirmar</span></div></div>' +
+      '<div class="rq-t"><img src="img/prod/' + esc(p.carpeta) + '/c.jpg" alt="" width="96" height="96"><div><b id="rq-tt">' + esc(p.grupo || p.nombre) + '</b><span>Plata .925 con sello</span>' + (typeof p.precio === 'number' ? '<span class="rq-pr">' + pesos(p.precio) + '</span>' : '') + '</div></div>' +
       (vs.length > 1 ? '<p class="rq-lb">Largo</p><div class="rq-lg" role="group" aria-label="Largo">' + vs.map(function(v){
         return '<button type="button" data-rq-v="' + v.id + '" aria-pressed="' + (String(v.id) === String(p.id)) + '">' + esc(v.largo || v.nombre) + '</button>'; }).join('') + '</div>'
         : (p.largo ? '<p class="rq-lb">Largo: ' + esc(p.largo) + '</p>' : ''));

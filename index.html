@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Montaris</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Bodoni+Moda:opsz,wght@6..96,400&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792809692">
+<link rel="stylesheet" href="menu.css?v=1792836899">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -1036,11 +1036,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792809692" charset="utf-8"></script>
-<script src="bolsa.js?v=1792809692" charset="utf-8"></script>
-<script src="menu.js?v=1792809692" charset="utf-8"></script>
+<script src="catalogo.js?v=1792836899" charset="utf-8"></script>
+<script src="bolsa.js?v=1792836899" charset="utf-8"></script>
+<script src="menu.js?v=1792836899" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792809692 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792836899 (const CAT), con precio con IVA por pieza.
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -1054,9 +1054,9 @@ const doce=(...ls)=>{const v=new Set(),o=[];ls.flat().forEach(p=>{if(p&&!v.has(p
 const de=f=>ORD.filter(f);
 const esCad=p=>p.coleccion==='cadenas';
 const fmt=n=>'$'+n.toLocaleString('es-MX');
-const precio=p=>p.precio?fmt(p.precio):'Precio por confirmar';
+const precio=p=>p.precio?fmt(p.precio):'';
 const url=p=>'producto.html?id='+p.id;
-const card=p=>`<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="${url(p)}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${p.nombre}" loading="lazy" width="800" height="800"></a><button class="plus" type="button" aria-label="Agregar ${p.nombre} al carrito" data-id="${p.id}">+</button></div><h3><a href="${url(p)}">${p.nombre}</a></h3><span class="ley">Plata .925 con sello</span><span class="pr${p.precio?'':' pc'}">${precio(p)}</span></article>`;
+const card=p=>`<article class="p" data-id="${p.id}"><div class="ph"><a class="pl" href="${url(p)}" tabindex="-1" aria-hidden="true"><img src="img/prod/${p.carpeta}/c.jpg" alt="${p.nombre}" loading="lazy" width="800" height="800"></a><button class="plus" type="button" aria-label="Agregar ${p.nombre} al carrito" data-id="${p.id}">+</button></div><h3><a href="${url(p)}">${p.nombre}</a></h3><span class="ley">Plata .925 con sello</span>${p.precio?`<span class="pr">${precio(p)}</span>`:''}</article>`;
 
 // pestañas (como Boxroom): Más vendidos · Cubanas · Pulsos · Para regalo
 const TABS=[
@@ -1124,7 +1124,7 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792809692 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792836899 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1135,8 +1135,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792809692)
-// (los botones data-soporte los engancha menu.js?v=1792809692)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792836899)
+// (los botones data-soporte los engancha menu.js?v=1792836899)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
