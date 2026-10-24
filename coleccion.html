@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792836899">
+<link rel="stylesheet" href="menu.css?v=1792836996">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -381,7 +381,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
     <div class="tool-in">
       <button class="fbtn" type="button" id="fbtn" aria-haspopup="dialog" aria-controls="fs" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>Filtrar<em id="fn">0</em></button>
       <h1 class="cnt"><b id="c-t">Colección</b><span id="cnt" role="status" aria-live="polite">0 piezas</span></h1>
-      <div class="ord"><select id="ord" aria-label="Ordenar"><option value="nuevo">Más nuevo</option><option value="larga">Más larga</option><option value="mayor">Precio: mayor a menor</option><option value="menor">Precio: menor a mayor</option><option value="az">Nombre A–Z</option></select><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></div>
+      <div class="ord"><select id="ord" aria-label="Ordenar"><option value="nuevo">Más nuevo</option><option value="larga">Más larga</option><option value="mayor">Mayor precio</option><option value="menor">Menor precio</option><option value="az">Nombre A–Z</option></select><svg viewBox="0 0 10 10"><path d="M1 3l4 4 4-4"/></svg></div>
     </div>
     <div class="chips" id="chips" hidden></div>
   </div></div>
@@ -471,9 +471,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792836899"></script>
-<script src="bolsa.js?v=1792836899"></script>
-<script src="menu.js?v=1792836899"></script>
+<script src="catalogo.js?v=1792836996"></script>
+<script src="bolsa.js?v=1792836996"></script>
+<script src="menu.js?v=1792836996"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -554,7 +554,7 @@ const G=[
     {k:'4-6',n:'$4,001–$6,000',f:p=>PR(p)>4000&&PR(p)<=6000},
     {k:'6',n:'Más de $6,000',f:p=>PR(p)>6000}]}
 ];
-const ORDS=[['nuevo','Más nuevo'],['larga','Más larga'],['mayor','Precio: mayor a menor'],['menor','Precio: menor a mayor'],['az','Nombre A–Z']];
+const ORDS=[['nuevo','Más nuevo'],['larga','Más larga'],['mayor','Mayor precio'],['menor','Menor precio'],['az','Nombre A–Z']];
 const F={tipo:new Set,largo:new Set,ancho:new Set,precio:new Set,peso:new Set};
 let orden=ORDS.some(o=>o[0]===P.get('orden'))?P.get('orden'):'nuevo';
 $('#ord').value=orden;
