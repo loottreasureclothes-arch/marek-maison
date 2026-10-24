@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792762884">
+<link rel="stylesheet" href="menu.css?v=1792804321">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -126,14 +126,21 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
 .urg::before{content:"";width:6px;height:6px;border-radius:50%;background:#1fa84f;flex:none}
 /* botones */
 .cta{display:grid;gap:9px;margin:12px 0 5px}
-.b-add,.b-buy{display:flex;align-items:center;justify-content:center;width:100%;height:54px;padding:0 18px;border:2px solid #282828;border-radius:0;font:600 13px/1 var(--f-txt);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .2s,color .2s}
-.b-add{background:#282828;color:#fff}
-.b-buy{background:#eefbf0;border-color:#32d74b;color:#0b2e13}
+.b-add,.b-buy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:54px;padding:0 18px;border:2px solid #1c1c1c;border-radius:3px;font:500 15px/1 var(--f-txt);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .2s,color .2s}
+.b-add{height:58px;background:#1c1c1c;color:#fff}
+.b-add svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.8;flex:none}
+.b-buy{height:52px;background:#fff;border-color:#5cb85c;color:#1c1c1c;border-radius:6px}
 .b-add:active,.b-buy:active{transform:scale(.99)}
-@media (hover:hover){.b-add:hover{background:#111;border-color:#111}.b-buy:hover{background:#ddf6e1}}
+@media (hover:hover){.b-add:hover{background:#000;border-color:#000}.b-buy:hover{background:#f1faf1}}
 /* avisos */
-.ship{margin:7px 0 5px;padding:9px 13px;border:1px solid #d3ebda;border-radius:0;background:#eef7f0;font:400 13px/1.35 var(--f-txt);color:#1a1a1a}
+.ship{margin:12px 0 5px;padding:11px 14px;border:1px solid #e6e6e6;border-radius:6px;background:#f7f7f7;font:400 13.5px/1.4 var(--f-txt);color:#1a1a1a}
 .ship b{font-weight:700}
+.prom{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:18px 0 8px;text-align:center}
+.prom div{display:grid;justify-items:center;gap:8px;font:500 11.5px/1.2 var(--f-txt);color:#1a1a1a}
+.prom svg{width:22px;height:22px;fill:none;stroke:#1a1a1a;stroke-width:1.6}
+.mp{display:inline-flex;align-items:center;gap:10px;margin:10px 0 6px;padding:8px 14px 8px 10px;border:1px solid #e6e6e6;border-radius:6px;background:#fafafa;font:400 13.5px/1.2 var(--f-txt);color:#1a1a1a}
+.mp img{height:18px;width:auto}
+.mp b{font-weight:700}
 .dev{margin:7px 0 5px;padding:10px 13px;border:1px solid #e0e0e0;border-radius:8px;background:#f7f7f7;font:400 13px/1.4 var(--f-txt);color:#1a1a1a}
 .dev-t{display:flex;align-items:center;gap:7px;margin:0 0 6px;font:700 14px/1.4 var(--f-txt);color:#111}
 .dev-t svg{width:18px;height:18px;stroke:#111;stroke-width:2;fill:none;flex:none}
@@ -281,28 +288,22 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
 .qs .dt button[aria-current="true"]::before{background:#111;width:20px;margin-left:-10px;border-radius:4px}
 @media (min-width:900px){.qs{padding-block:56px}.qs-hd h2{font-size:26px}.qs .cd{width:min(72vw,340px)}}
 
-/* barra fija de compra en celular (como la de Boxroom) */
-/* barra flotante de compra (como Boxroom): abajo en celular, debajo del header en escritorio; se oculta cuando se ven los botones de la ficha */
-.fija{position:fixed;left:0;right:0;bottom:0;z-index:35;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #e4e4e1;box-shadow:0 -4px 18px rgba(0,0,0,.10);transform:translateY(calc(100% + 16px));visibility:hidden;transition:transform .3s var(--ease),visibility 0s .3s}
-.fija.on{transform:none;visibility:visible;transition:transform .3s var(--ease)}
-.fija-in{display:grid;gap:10px}
-.fija-p{display:flex;align-items:center;gap:10px;min-width:0}
-.fija-p img{width:44px;height:44px;flex:none;object-fit:cover;background:#f3f3f1}
-.fija-p div{min-width:0;display:grid;gap:2px}
-.fija-p b{font:600 13px/1.25 var(--f-txt);color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fija-p span{font:400 12px/1.2 var(--f-txt);color:#555}
-.fija-b{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.fija .b-add,.fija .b-buy{height:48px;padding:0 8px;font-size:11.5px;letter-spacing:.1em}
-@media (min-width:1000px){
-  footer{padding-bottom:48px}
-  .fija{top:var(--hdr-h,130px);bottom:auto;padding:10px 0;border-top:0;border-bottom:1px solid #e4e4e1;box-shadow:0 6px 18px rgba(0,0,0,.08);transform:translateY(-110%);z-index:39}
-  .fija-in{max-width:1320px;margin:0 auto;padding-inline:32px;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}
-  .fija-p img{width:52px;height:52px}
-  .fija-p b{font-size:14px}
-  .fija-b{grid-template-columns:220px 220px;gap:10px}
-  .fija .b-add,.fija .b-buy{height:50px;font-size:12.5px;letter-spacing:.14em}
-}
-
+/* v12: barra fija de compra (igual a Boxroom): SIEMPRE visible en celular; regalo $300 arriba y dos botones del mismo tamaño */
+:root{--bx-ng:#1c1c1c;--bx-vd:#2e7d32;--bx-vd2:#43a047}
+.fija{position:fixed;left:0;right:0;bottom:0;z-index:35;padding:8px 16px calc(10px + env(safe-area-inset-bottom,0px));background:#fff;border-top:1px solid #ececec;box-shadow:0 -2px 14px rgba(0,0,0,.14)}
+.fija-in{display:grid;gap:7px;max-width:640px;margin:0 auto}
+.fija-g{display:flex;align-items:center;justify-content:center;gap:6px;margin:0;padding:0;border:0;background:none;font:500 12.5px/1.2 var(--f-txt);color:#1a1a1a;cursor:pointer;width:100%}
+.fija-g svg{width:16px;height:16px;fill:none;stroke:#1a1a1a;stroke-width:1.7;flex:none}
+.fija-g b{font-weight:700}
+.fija-b{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fija .f-add,.fija .f-buy{display:flex;align-items:center;justify-content:center;height:48px;padding:0 6px;border:0;border-radius:8px;font:600 12px/1 var(--f-txt);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;color:#fff;cursor:pointer}
+.fija .f-add{background:var(--bx-ng)}
+.fija .f-buy{background:var(--bx-vd)}
+.fija .f-add:active,.fija .f-buy:active{transform:scale(.98)}
+@media (hover:hover){.fija .f-add:hover{background:#000}.fija .f-buy:hover{background:#256b29}}
+body{padding-bottom:calc(98px + env(safe-area-inset-bottom,0px))}
+/* escritorio: como Boxroom, sin barra (los botones de la ficha quedan a la vista junto a la galería) */
+@media (min-width:1000px){.fija{display:none}body{padding-bottom:0}}
 
 .nohay{padding:80px 0 100px;text-align:center}
 .nohay h1{font:600 24px var(--f-serif);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
@@ -467,11 +468,11 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
   <div class="pagos" aria-label="Formas de pago"><span>Aceptamos</span><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
 </div></footer>
 
-<div class="fija" id="fija" aria-hidden="true"><div class="fija-in"><div class="fija-p"><img id="fija-img" src="data:," alt="" width="52" height="52"><div><b id="fija-n"></b><span id="fija-pr">Precio por confirmar</span></div></div><div class="fija-b"><button class="b-add" type="button" tabindex="-1" id="fija-add">Agregar al carrito</button><button class="b-buy" type="button" tabindex="-1" id="fija-buy">Comprar ahora</button></div></div></div>
+<div class="fija" id="fija"><div class="fija-in"><button class="fija-g" type="button" id="fija-g"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M5 12v9h14v-9M12 8v13M12 8S10.5 3.5 8 4.2C6 4.8 7 8 12 8zM12 8s1.5-4.5 4-3.8C18 4.8 17 8 12 8z"/></svg><span><b>$300</b> en tu primera compra</span></button><div class="fija-b"><button class="f-add" type="button" id="fija-add">Añadir al carrito</button><button class="f-buy" type="button" id="fija-buy">Comprar ahora</button></div></div></div>
 
-<script src="catalogo.js?v=1792762884" charset="utf-8"></script>
-<script src="bolsa.js?v=1792762884" charset="utf-8"></script>
-<script src="menu.js?v=1792762884" charset="utf-8"></script>
+<script src="catalogo.js?v=1792804321" charset="utf-8"></script>
+<script src="bolsa.js?v=1792804321" charset="utf-8"></script>
+<script src="menu.js?v=1792804321" charset="utf-8"></script>
 <script>
 (function(){
   var COL = {cadenas:'Cadenas', esclavas:'Esclavas', pulseras:'Pulseras'};
@@ -484,6 +485,8 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
     vuelta:'<svg viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>',
     tarjeta:'<svg viewBox="0 0 30 22"><rect x="1" y="1" width="28" height="20" rx="3"/><path d="M1 7h28M5 15h6"/></svg>',
     flecha:'<svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
+    carrito:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1 1 0 0 0 1 .8h9.2a1 1 0 0 0 1-.8L21 7H6"/><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>',
+    etiqueta:'<svg viewBox="0 0 24 24"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="8" cy="8" r="1.5"/></svg>',
     chat:'<svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>'
   };
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -514,6 +517,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
       hermanos.map(function(h){ return '<a href="producto.html?id=' + h.id + '"' + (h.id === p.id ? ' aria-current="true"' : '') + '>' + esc(h.largo) + '</a>'; }).join('') +
     '</div></div>' : '<div></div>';
   var urg = hermanos.length > 1 ? '<div class="urg">Largos disponibles: ' + hermanos.map(function(h){ return esc(h.largo); }).join(' · ') + '</div>' : '';
+
+  /* llega entre hoy+2 y hoy+7 (como Boxroom) */
+  var MES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  function dia(n){ var d = new Date(); d.setDate(d.getDate() + n); return d; }
+  var d1 = dia(2), d2 = dia(7);
+  var llega = '<b>' + d1.getDate() + '</b>' + (d1.getMonth() !== d2.getMonth() ? ' de ' + MES[d1.getMonth()] : '') + ' y el <b>' + d2.getDate() + ' de ' + MES[d2.getMonth()] + '</b>';
 
   /* especificaciones */
   var filas = [];
@@ -554,10 +563,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
         '</div>' +
         urg +
         '<div class="cta">' +
-          '<button class="b-add" type="button" id="b-add">Agregar al carrito</button>' +
+          '<button class="b-add" type="button" id="b-add">' + ICO.carrito + 'Añadir al carrito</button>' +
           '<button class="b-buy" type="button" id="b-buy">Comprar ahora</button>' +
         '</div>' +
-        '<div class="ship"><b>Envío gratis</b> · Hasta 6 meses sin intereses</div>' +
+        '<div class="ship"><b>Envío GRATIS</b> · llega entre el ' + llega + ' · rastreo incluido</div>' +
+        '<div class="prom"><div>' + ICO.escudo + 'Compra protegida</div><div>' + ICO.ciclo + 'Devolución gratis</div><div>' + ICO.etiqueta + 'Pieza única</div></div>' +
+        '<div class="mp"><img src="pay/mercado_pago.svg" alt="Mercado Pago" width="60" height="18"><span>' + (p.precio ? '6 meses de <b>$' + (p.precio / 6).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '</b> sin intereses' : 'Hasta <b>6 meses</b> sin intereses') + '</span></div>' +
         '<div class="dev"><p class="dev-t">' + ICO.vuelta + 'Devoluciones y garantía</p><ul>' +
           '<li><b>Devolución gratis</b> en cada compra.</li>' +
           '<li><b>Garantía de 60 días</b> en cada pieza.</li>' +
@@ -608,24 +619,14 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(140px + env(safe-ar
   document.getElementById('b-add').addEventListener('click', agregar);
   document.getElementById('b-buy').addEventListener('click', function(){ meter(); location.href = 'pago.html'; });
 
-  /* barra flotante: siempre visible al bajar, excepto cuando los botones de la ficha están en pantalla (como Boxroom) */
-  var fija = document.getElementById('fija'), fbs = fija.querySelectorAll('button');
-  document.getElementById('fija-img').src = 'img/prod/' + p.carpeta + '/c.jpg';
-  document.getElementById('fija-n').textContent = p.nombre;
+  /* barra fija: siempre visible (como Boxroom); mismos botones que la ficha */
   document.getElementById('fija-add').addEventListener('click', agregar);
   document.getElementById('fija-buy').addEventListener('click', function(){ meter(); location.href = 'pago.html'; });
-  var ctaBox = ficha.querySelector('.cta');
-  if (ctaBox) {
-    function pinta(){
-      var r = ctaBox.getBoundingClientRect(), hh = innerWidth >= 1000 ? (document.getElementById('hdr').offsetHeight || 0) : 0;
-      var on = r.bottom <= hh || r.top >= innerHeight; /* los botones de la ficha no se ven */
-      if (fija.classList.contains('on') === on) return;
-      fija.classList.toggle('on', on); fija.setAttribute('aria-hidden', on ? 'false' : 'true');
-      [].forEach.call(fbs, function(b){ b.tabIndex = on ? 0 : -1; });
-    }
-    if ('IntersectionObserver' in window) new IntersectionObserver(pinta, { threshold: [0, 1] }).observe(ctaBox);
-    addEventListener('scroll', pinta, { passive: true }); addEventListener('resize', pinta); pinta();
-  }
+  document.getElementById('fija-g').addEventListener('click', function(){
+    var c = document.getElementById('club'); if (!c) { location.href = 'index.html#club'; return; }
+    c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var inp = c.querySelector('input'); if (inp) setTimeout(function(){ inp.focus({ preventScroll: true }); }, 600);
+  });
 
   /* también te puede gustar: 12 piezas — misma colección (primero mismo tipo), luego del mismo género; sin repetir la misma cadena */
   var vistos = {}; if (p.grupo) vistos[p.grupo] = 1;

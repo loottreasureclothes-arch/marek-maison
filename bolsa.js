@@ -303,10 +303,11 @@
   '.rq-lg{display:flex;flex-wrap:wrap;gap:8px}' +
   '.rq-lg button{min-width:72px;height:42px;padding:0 14px;border:1px solid #ccc;border-radius:999px;background:#fff;color:#111;font:600 13.5px ' + F + ';cursor:pointer}' +
   '.rq-lg button[aria-pressed=true]{border-color:#111;background:#111;color:#fff}' +
-  '.rq-bt{display:grid;gap:10px;margin-top:18px}' +
-  '.rq-bt button{height:52px;border:2px solid #282828;border-radius:0;font:600 13px ' + F + ';letter-spacing:.14em;text-transform:uppercase;cursor:pointer}' +
-  '.rq-bt .rq-ag{background:#282828;color:#fff}' +
-  '.rq-bt .rq-ya{background:#eefbf0;border-color:#32d74b;color:#0b2e13}' +
+  '.rq-bt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}' +
+  '.rq-bt button{height:50px;padding:0 6px;border:0;border-radius:8px;color:#fff;font:600 12px/1 ' + F + ';letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;cursor:pointer}' +
+  '.rq-bt .rq-ag{background:#1c1c1c}' +
+  '.rq-bt .rq-ya{background:#2e7d32}' +
+  '@media (hover:hover){.rq-bt .rq-ag:hover{background:#000}.rq-bt .rq-ya:hover{background:#256b29}}' +
   'html.rq-lock{overflow:hidden}' +
   '@media (min-width:768px){.rq-p{left:50%;right:auto;bottom:auto;top:50%;width:420px;border-radius:16px;transform:translate(-50%,-40%);opacity:0;transition:transform .25s ease,opacity .25s ease}.rq.on .rq-p{transform:translate(-50%,-50%);opacity:1}}' +
   '@media (prefers-reduced-motion:reduce){.rq-p,.rq-v{transition:none}}';
@@ -330,7 +331,7 @@
     rq = document.createElement('div'); rq.className = 'rq'; rq.setAttribute('aria-hidden', 'true');
     rq.innerHTML = '<div class="rq-v" data-rq-cerrar></div><div class="rq-p" role="dialog" aria-modal="true" aria-labelledby="rq-tt">' +
       '<button class="rq-x" type="button" data-rq-cerrar aria-label="Cerrar">' + I.x + '</button><div class="rq-c"></div>' +
-      '<div class="rq-bt"><button class="rq-ag" type="button" data-rq="ag">Agregar al carrito</button><button class="rq-ya" type="button" data-rq="ya">Comprar ahora</button></div></div>';
+      '<div class="rq-bt"><button class="rq-ag" type="button" data-rq="ag">Añadir al carrito</button><button class="rq-ya" type="button" data-rq="ya">Comprar ahora</button></div></div>';
     document.body.appendChild(rq);
     rq.addEventListener('click', function(e){
       var t = e.target;
