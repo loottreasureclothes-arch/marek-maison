@@ -79,7 +79,7 @@ function preguntarAPI(texto, historial){
     hombre:    ["col-hombre-v2",   "center 30%"],
     mujer:     ["col-mujer-v4",    "center 42%"],
     novedades: ["col-novedades",   "center 46%"],
-    cadenas:   ["col-cadenas-v2",  "center 38%"],
+    cadenas:   ["col-cadenas-v12", "center 30%"],
     regalos:   ["col-regalos-v2",  "center 62%"],
     esclavas:  ["col-esclavas",    "center 50%"],
     pulseras:  ["col-pulseras",    "center 32%"],
@@ -97,9 +97,19 @@ function preguntarAPI(texto, historial){
     return '<a class="mn-grande" href="' + href + '">' + (src ? '<img src="' + src + '" alt="" loading="lazy">' : '') +
       '<span>' + esc(nombre) + ' ›</span></a>';
   }
-  function cuadro(href, id, nombre){
-    var src = fotoCuadro(id);
-    return '<a class="mn-cu" href="' + href + '"><span>' + (src ? '<img src="' + src + '" alt="" loading="lazy">' : '') + '</span><b>' + esc(nombre) + '</b></a>';
+  /* v12 (24 oct): cada cuadrito usa la MISMA foto de la subcolección a la que lleva (img/cat/<coleccion>-<sub>.jpg,
+     recortada de su cabecera aprobada). Hombre/Mujer/Novedades/Regalos ?t=X usan la de su tipo (coleccion.html hace igual). */
+  var MINIS = ["cadenas","esclavas","pulseras","cadenas-cartier","cadenas-barbada","cadenas-torzal","cadenas-marinera","cadenas-planchada","cadenas-delgadas",
+    "esclavas-placa","esclavas-petatillo","esclavas-rolex","esclavas-barbada","esclavas-cartier","pulseras-cubana","pulseras-pulsos","pulseras-diseno"];
+  function miniDe(c, t, id){
+    if (!t) return "";
+    var k = ["cadenas","esclavas","pulseras"].indexOf(t) > -1 ? t
+      : (["cadenas","esclavas","pulseras"].indexOf(c) > -1 ? c : (porId[id] && porId[id].coleccion)) + "-" + t;
+    return MINIS.indexOf(k) > -1 ? "img/cat/" + k + ".jpg?v=12" : "";
+  }
+  function cuadro(href, id, nombre, c, t){
+    var mi = miniDe(c, t, id), src = mi || fotoCuadro(id), resp = fotoCuadro(id);
+    return '<a class="mn-cu" href="' + href + '"><span>' + (src ? '<img src="' + src + '" alt="" loading="lazy"' + (mi && resp ? ' onerror="this.onerror=null;this.src=\'' + resp + '\'"' : '') + '>' : '') + '</span><b>' + esc(nombre) + '</b></a>';
   }
   function piezas(f, n){ return CATA.filter(f).slice(0, n); }
 
@@ -114,7 +124,7 @@ function preguntarAPI(texto, historial){
     ks.sort(function(a, b){ return orden.indexOf(a) - orden.indexOf(b); });
     return ks.slice(0, 6).map(function(k){
       var id = primera(function(p){ return f(p) && p[campo] === k; });
-      return cuadro(col(c, k), id, NOMS[k] || k);
+      return cuadro(col(c, k), id, NOMS[k] || k, c, k);
     }).join("");
   }
   /* ---------- MENÚ ---------- */
@@ -123,7 +133,7 @@ function preguntarAPI(texto, historial){
     tabs.push({ k:c.k, n:c.nombre });
     pans.push('<div class="mn-pan" role="tabpanel" id="mn-p-' + c.k + '" aria-labelledby="mn-t-' + c.k + '" hidden><h3>' + esc(c.nombre) + '</h3>' +
       grandeBan(c.k, col(c.k), "Ver " + c.nombre.toLowerCase(), c.grande) +
-      '<div class="mn-grid">' + c.subs.map(function(s){ return cuadro(col(c.k, s.t), s.id, s.n); }).join("") + '</div></div>');
+      '<div class="mn-grid">' + c.subs.map(function(s){ return cuadro(col(c.k, s.t), s.id, s.n, c.k, s.t); }).join("") + '</div></div>');
   });
   var nuevos = piezas(function(p){ return (p.etiquetas||[]).indexOf("nuevo") > -1; }, 6);
   tabs.push({ k:"novedades", n:"Novedades" });

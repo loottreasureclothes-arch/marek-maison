@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792762884">
+<link rel="stylesheet" href="menu.css?v=1792805124">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -471,9 +471,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792762884"></script>
-<script src="bolsa.js?v=1792762884"></script>
-<script src="menu.js?v=1792762884"></script>
+<script src="catalogo.js?v=1792805124"></script>
+<script src="bolsa.js?v=1792805124"></script>
+<script src="menu.js?v=1792805124"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -495,17 +495,17 @@ const COL={
 // foto de banner por subcolección (pieza más representativa)
 // v10: cabecera por colección ('c') y por subcolección ('c/t'): img/ban/<nombre>-cel.jpg (780x1120) y -escritorio.jpg (2732x1100).
 // Solo se usan las que están en LISTOS (archivos que ya existen); las demás caen a la foto de la pieza (BANSUB / COL.ban).
-const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v10',novedades:'col-novedades-v10',cadenas:'col-cadenas-v10',regalos:'col-regalos-v10',
+const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v10',novedades:'col-novedades-v10',cadenas:'col-cadenas-v12',regalos:'col-regalos-v10',
   esclavas:'col-esclavas',pulseras:'col-pulseras',
-  'cadenas/cartier':'col-cadenas-cartier','cadenas/barbada':'col-cadenas-barbada','cadenas/torzal':'col-cadenas-torzal','cadenas/marinera':'col-cadenas-marinera','cadenas/planchada':'col-cadenas-planchada','cadenas/delgadas':'col-cadenas-delgadas',
+  'cadenas/cartier':'col-cadenas-cartier-v12','cadenas/barbada':'col-cadenas-barbada','cadenas/torzal':'col-cadenas-torzal','cadenas/marinera':'col-cadenas-marinera','cadenas/planchada':'col-cadenas-planchada-v12','cadenas/delgadas':'col-cadenas-delgadas',
   'esclavas/placa':'col-esclavas-placa','esclavas/petatillo':'col-esclavas-petatillo','esclavas/rolex':'col-esclavas-rolex','esclavas/barbada':'col-esclavas-barbada','esclavas/cartier':'col-esclavas-cartier',
-  'pulseras/cubana':'col-pulseras-cubana','pulseras/pulsos':'col-pulseras-pulsos','pulseras/diseno':'col-pulseras-diseno'};
+  'pulseras/cubana':'col-pulseras-cubana-v12','pulseras/pulsos':'col-pulseras-pulsos','pulseras/diseno':'col-pulseras-diseno'};
 // encuadre especial de la foto de escritorio (object-position)
 const POSCOL={'col-pulseras-pulsos':'100% 50%','col-regalos-v10':'50% 95%'};
-const LISTOS=new Set(['col-cadenas-barbada','col-cadenas-cartier','col-cadenas-delgadas','col-cadenas-marinera','col-cadenas-planchada','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-barbada','col-esclavas-cartier','col-esclavas-petatillo','col-esclavas-placa','col-esclavas-rolex','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
+const LISTOS=new Set(['col-cadenas-v12','col-cadenas-cartier-v12','col-cadenas-planchada-v12','col-pulseras-cubana-v12','col-cadenas-barbada','col-cadenas-cartier','col-cadenas-delgadas','col-cadenas-marinera','col-cadenas-planchada','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-barbada','col-esclavas-cartier','col-esclavas-petatillo','col-esclavas-placa','col-esclavas-rolex','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
 // v11: miniaturas cuadradas 600x600 (img/cat/) recortadas de las cabeceras aprobadas, para los cuadros de subcolección
 const MINI=new Set(['hombre','mujer','cadenas','esclavas','pulseras','novedades','regalos','cadenas-cartier','cadenas-barbada','cadenas-torzal','cadenas-marinera','cadenas-planchada','cadenas-delgadas','esclavas-placa','esclavas-petatillo','esclavas-rolex','esclavas-barbada','esclavas-cartier','pulseras-cubana','pulseras-pulsos','pulseras-diseno']);
-const mini=k=>{const n=esTipo?c+'-'+k:k;return MINI.has(n)?`img/cat/${n}.jpg`:''};
+const mini=k=>{const n=esTipo?c+'-'+k:k;return MINI.has(n)?`img/cat/${n}.jpg?v=12`:''};
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -645,7 +645,9 @@ function encabezado(){
   $('#c-miga').textContent=modoQ?'Búsqueda':cfg.t;
   const pref=BANSUB[c+'/'+t]||(!t?cfg.ban:null);
   const pb=l.find(p=>p.id===pref)||l.slice().sort((a,b)=>peso(b)-peso(a))[0]||CAT.find(p=>p.id===cfg.ban);
-  const bn=!modoQ&&BANCOL[t?c+'/'+t:c];
+  // v12: Hombre/Mujer/Novedades/Regalos con tipo (?t=) usan la cabecera de esa subcolección (la misma foto que su cuadro del menú)
+  const alias=()=>{if(esTipo||!t)return null;if(['cadenas','esclavas','pulseras'].includes(t))return BANCOL[t];const cn={};l.forEach(p=>cn[p.coleccion]=(cn[p.coleccion]||0)+1);const col=Object.keys(cn).sort((a,b)=>cn[b]-cn[a])[0];return col?BANCOL[col+'/'+t]:null};
+  const bn=!modoQ&&(BANCOL[t?c+'/'+t:c]||alias());
   const ok=bn&&LISTOS.has(bn);$('.cb').classList.toggle('foto',!ok);if(ok&&POSCOL[bn])$('.cb').style.setProperty('--pos-esc',POSCOL[bn]);else $('.cb').style.removeProperty('--pos-esc');
   if(ok){$('#c-src').srcset=`img/ban/${bn}-escritorio.jpg`;$('#c-img').src=`img/ban/${bn}-cel.jpg`;$('#c-img').alt=nomT?`${cfg.t} · ${nomT}`:cfg.t}
   else{$('#c-src').removeAttribute('srcset');if(pb){$('#c-img').src=fotoGrande(pb);$('#c-img').alt=pb.nombre}}
@@ -655,7 +657,7 @@ function cuadros(){
   if(modoQ||chipKeys.length<2&&!t){$('.circ').hidden=true;return}
   const ico='<span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span>';
   const url=k=>`coleccion.html?c=${c}${k?'&t='+k:''}`;
-  const todo=MINI.has(c)?`<span><img src="img/cat/${c}.jpg" alt="" loading="lazy" width="96" height="96"></span>`:ico;
+  const todo=MINI.has(c)?`<span><img src="img/cat/${c}.jpg?v=12" alt="" loading="lazy" width="96" height="96"></span>`:ico;
   let h=`<a class="ci" href="${url('')}" data-t="" ${!t?'aria-current="true"':''}>${todo}<b>Todas <small>${base.length}</small></b></a>`;
   chipKeys.forEach(k=>{
     const ps=base.filter(p=>claveDe(p)===k);

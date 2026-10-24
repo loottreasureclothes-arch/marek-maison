@@ -2,8 +2,8 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"><meta name="description" content="Joyería de plata .925 con sello: cadenas, esclavas y pulseras con envío gratis desde $950 a todo México."><meta name="robots" content="noindex"><meta property="og:title" content="Montaris · Plata .925"><meta property="og:image" content="img/prod/50_L-07_cadena-barbada-70cm/2.jpg"><link rel="icon" href="img/favicon.png">
 <meta charset="utf-8">
 <title>Montaris</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792762884">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Bodoni+Moda:opsz,wght@6..96,400&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="menu.css?v=1792805124">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -826,6 +826,29 @@ button.btn{cursor:pointer;font-family:inherit}
 @media (min-width:600px) and (max-width:899px){.hs-s img{object-position:50% 45%}.hs-s:not(:first-child) img{object-position:0% 45%}}
 @media (min-width:900px){.hero{height:clamp(600px,43.92vw,760px)}.hs-s img{object-position:50% 40%}}
 @media (min-width:2200px){.hs-s:not(:first-child) img{object-position:50% 40%}}
+/* v12 (24 oct): títulos de las diapositivas 2 y 3 en HTML (ya no quemados en la foto) para que ninguna letra quede cortada
+   en ningún ancho. Se colocan con la misma geometría de object-fit:cover de cada foto (ancho --iw, desfase --ix/--iy)
+   y nunca a menos de la orilla segura. Bodoni 72 (Apple) / Bodoni Moda (resto). */
+.hs-tl{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hs-t{position:absolute;margin:0;font:400 var(--fs,26px)/1.04 "Bodoni 72","Bodoni Moda",Didot,"Bodoni MT",serif;letter-spacing:.02em;color:#f5f5f5;white-space:nowrap;opacity:0;transition:opacity 1.1s var(--ease);text-shadow:0 1px 16px rgba(0,0,0,.45)}
+.hs-t.on{opacity:1}
+.hs-t:first-child{display:none}
+.hs-t span{display:block}
+.hs-t.t2{left:16px;top:150px;--fs:27px}
+.hs-t.t3{left:12px;top:160px;--fs:min(24px,calc((143px + (100vw - max(100vw,390px)) / 2) / 5.2))}
+@media (min-width:600px) and (max-width:899px){
+ .hs-tl{--iw:max(100vw,755px);--ih:calc(var(--iw) / 1.6);--iy:calc((472px - var(--ih)) * .45)}
+ .hs-t span{display:inline}
+ .hs-t.t2{--fs:calc(var(--ih) * .058);left:max(24px,calc(var(--iw) * .065));top:calc(var(--iy) + var(--ih) * .33)}
+ .hs-t.t3{--fs:calc(var(--ih) * .07);left:max(calc(24px + 5.4em),calc(var(--iw) * .335));top:calc(var(--iy) + var(--ih) * .32);transform:translateX(-100%)}
+}
+@media (min-width:900px){
+ .hs-tl{--hh:clamp(600px,43.92vw,760px);--iw:max(100vw,calc(var(--hh) * 2.2767));--ix:calc((100vw - var(--iw)) / 2);--ih:calc(var(--iw) / 2.2767);--iy:calc((var(--hh) - var(--ih)) * .4)}
+ .hs-t span{display:inline}
+ .hs-t.t2{--fs:min(calc(var(--ih) * .082),3.6vw);left:max(32px,calc(var(--ix) + var(--iw) * .065));top:calc(var(--iy) + var(--ih) * .36)}
+ .hs-t.t3{--fs:min(calc(var(--ih) * .1),4.4vw);left:max(calc(32px + 5.4em),calc(var(--ix) + var(--iw) * .38));top:calc(var(--iy) + var(--ih) * .33);transform:translateX(-100%)}
+}
+@media (min-width:2200px){.hs-tl{--hh:clamp(600px,27vw,760px)}}
 </style>
 </head><body>
 
@@ -862,7 +885,8 @@ button.btn{cursor:pointer;font-family:inherit}
 <main>
   <!-- 2. Portada: slider de banners con fotos reales (como el banner de Boxroom) -->
   <section class="hero" aria-label="Portada" aria-roledescription="carrusel">
-    <div class="hs" id="hs"><figure class="hs-s on" data-id="28" data-cap="Cubana con zirconias y torzal 7 mm"><picture><source media="(min-width:600px)" srcset="img/ban/hero-v5-escritorio.jpg"><img src="img/ban/hero-v5-cel.jpg" alt="Cadena cubana con zirconias y cadena torzal de plata .925 cruzadas en X" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="51" data-cap="Cadena barbada 9 mm · 60 cm"><picture><source media="(min-width:900px)" srcset="img/ban/hero2-v10-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero2-v10-tab.jpg"><img src="img/ban/hero2-v10-cel.jpg" alt="Metales preciosos: hombre con cadena barbada 9 mm" loading="lazy"></picture></figure><figure class="hs-s" data-id="41" data-cap="Cadena delgada 1 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero3-v11-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero3-v11-tab.jpg"><img src="img/ban/hero3-v11-cel.jpg" alt="Delicadeza: mujer con cadena delgada forzatina 1 mm" loading="lazy"></picture></figure></div>
+    <div class="hs" id="hs"><figure class="hs-s on" data-id="28" data-cap="Cubana con zirconias y torzal 7 mm"><picture><source media="(min-width:600px)" srcset="img/ban/hero-v5-escritorio.jpg"><img src="img/ban/hero-v5-cel.jpg" alt="Cadena cubana con zirconias y cadena torzal de plata .925 cruzadas en X" fetchpriority="high"></picture></figure><figure class="hs-s" data-id="51" data-cap="Cadena barbada 9 mm · 60 cm"><picture><source media="(min-width:900px)" srcset="img/ban/hero2-v12-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero2-v12-tab.jpg"><img src="img/ban/hero2-v12-cel.jpg" alt="Metales preciosos: hombre con cadena barbada 9 mm" loading="lazy"></picture></figure><figure class="hs-s" data-id="41" data-cap="Cadena delgada 1 mm"><picture><source media="(min-width:900px)" srcset="img/ban/hero3-v12-escritorio.jpg"><source media="(min-width:600px)" srcset="img/ban/hero3-v12-tab.jpg"><img src="img/ban/hero3-v12-cel.jpg" alt="Delicadeza: mujer con cadena delgada forzatina 1 mm" loading="lazy"></picture></figure></div>
+    <div class="hs-tl" id="hs-tl" aria-hidden="true"><p class="hs-t"></p><p class="hs-t t2"><span>Metales</span> <span>preciosos</span></p><p class="hs-t t3">Delicadeza</p></div>
     <div class="hero-in wrap">
       <a class="btn w" href="coleccion.html?c=cadenas">Descubrir la colección</a>
       <div class="hs-ft"><div class="hcards" id="hcards" aria-label="Piezas de este banner"></div><div class="hs-dots" id="hs-dots"><button type="button" aria-label="Banner 1" class="on"></button><button type="button" aria-label="Banner 2"></button><button type="button" aria-label="Banner 3"></button></div></div>
@@ -888,22 +912,22 @@ button.btn{cursor:pointer;font-family:inherit}
   <!-- 5. Categorías primero -->
   <section class="sec" id="cats"><div class="wrap">
     <div class="cats" aria-label="Categorías">
-      <a class="cat" href="coleccion.html?c=hombre"><span class="cf"><img src="img/cat/hombre.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Hombre</b></a>
-      <a class="cat" href="coleccion.html?c=mujer"><span class="cf"><img src="img/cat/mujer.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Mujer</b></a>
-      <a class="cat" href="coleccion.html?c=cadenas"><span class="cf"><img src="img/cat/cadenas.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Cadenas</b></a>
-      <a class="cat" href="coleccion.html?c=esclavas"><span class="cf"><img src="img/cat/esclavas.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Esclavas</b></a>
-      <a class="cat" href="coleccion.html?c=pulseras"><span class="cf"><img src="img/cat/pulseras.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Pulseras</b></a>
-      <a class="cat" href="coleccion.html?c=novedades"><span class="cf"><img src="img/cat/novedades.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Novedades</b></a>
-      <a class="cat" href="coleccion.html?c=cartier"><span class="cf"><img src="img/cat/cadenas-cartier.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Cartier</b></a>
-      <a class="cat" href="coleccion.html?c=barbada"><span class="cf"><img src="img/cat/cadenas-barbada.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Cubanas</b></a>
-      <a class="cat" href="coleccion.html?c=torzal"><span class="cf"><img src="img/cat/cadenas-torzal.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Torzal</b></a>
-      <a class="cat" href="coleccion.html?c=marinera"><span class="cf"><img src="img/cat/cadenas-marinera.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Marinera</b></a>
-      <a class="cat" href="coleccion.html?c=planchada"><span class="cf"><img src="img/cat/cadenas-planchada.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Planchada</b></a>
-      <a class="cat" href="coleccion.html?c=delgadas"><span class="cf"><img src="img/cat/cadenas-delgadas.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Delgadas</b></a>
-      <a class="cat" href="coleccion.html?c=esclavas&amp;t=placa"><span class="cf"><img src="img/cat/esclavas-placa.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Con placa</b></a>
-      <a class="cat" href="coleccion.html?c=esclavas&amp;t=rolex"><span class="cf"><img src="img/cat/esclavas-rolex.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Tipo Rolex</b></a>
-      <a class="cat" href="coleccion.html?c=pulseras&amp;t=cubana"><span class="cf"><img src="img/cat/pulseras-cubana.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Zirconias</b></a>
-      <a class="cat" href="coleccion.html?c=regalos"><span class="cf"><img src="img/cat/regalos.jpg" alt="" loading="lazy" width="600" height="600"></span><b>Para regalo</b></a>
+      <a class="cat" href="coleccion.html?c=hombre"><span class="cf"><img src="img/cat/hombre.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Hombre</b></a>
+      <a class="cat" href="coleccion.html?c=mujer"><span class="cf"><img src="img/cat/mujer.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Mujer</b></a>
+      <a class="cat" href="coleccion.html?c=cadenas"><span class="cf"><img src="img/cat/cadenas.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Cadenas</b></a>
+      <a class="cat" href="coleccion.html?c=esclavas"><span class="cf"><img src="img/cat/esclavas.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Esclavas</b></a>
+      <a class="cat" href="coleccion.html?c=pulseras"><span class="cf"><img src="img/cat/pulseras.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Pulseras</b></a>
+      <a class="cat" href="coleccion.html?c=novedades"><span class="cf"><img src="img/cat/novedades.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Novedades</b></a>
+      <a class="cat" href="coleccion.html?c=cartier"><span class="cf"><img src="img/cat/cadenas-cartier.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Cartier</b></a>
+      <a class="cat" href="coleccion.html?c=barbada"><span class="cf"><img src="img/cat/cadenas-barbada.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Cubanas</b></a>
+      <a class="cat" href="coleccion.html?c=torzal"><span class="cf"><img src="img/cat/cadenas-torzal.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Torzal</b></a>
+      <a class="cat" href="coleccion.html?c=marinera"><span class="cf"><img src="img/cat/cadenas-marinera.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Marinera</b></a>
+      <a class="cat" href="coleccion.html?c=planchada"><span class="cf"><img src="img/cat/cadenas-planchada.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Planchada</b></a>
+      <a class="cat" href="coleccion.html?c=delgadas"><span class="cf"><img src="img/cat/cadenas-delgadas.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Delgadas</b></a>
+      <a class="cat" href="coleccion.html?c=esclavas&amp;t=placa"><span class="cf"><img src="img/cat/esclavas-placa.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Con placa</b></a>
+      <a class="cat" href="coleccion.html?c=esclavas&amp;t=rolex"><span class="cf"><img src="img/cat/esclavas-rolex.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Tipo Rolex</b></a>
+      <a class="cat" href="coleccion.html?c=pulseras&amp;t=cubana"><span class="cf"><img src="img/cat/pulseras-cubana.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Zirconias</b></a>
+      <a class="cat" href="coleccion.html?c=regalos"><span class="cf"><img src="img/cat/regalos.jpg?v=12" alt="" loading="lazy" width="600" height="600"></span><b>Para regalo</b></a>
     </div>
   </div></section>
 
@@ -1012,11 +1036,11 @@ button.btn{cursor:pointer;font-family:inherit}
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792762884" charset="utf-8"></script>
-<script src="bolsa.js?v=1792762884" charset="utf-8"></script>
-<script src="menu.js?v=1792762884" charset="utf-8"></script>
+<script src="catalogo.js?v=1792805124" charset="utf-8"></script>
+<script src="bolsa.js?v=1792805124" charset="utf-8"></script>
+<script src="menu.js?v=1792805124" charset="utf-8"></script>
 <script>
-// Portada Montaris. El catálogo viene de catalogo.js?v=1792762884 (const CAT). precio:null = "Precio por confirmar".
+// Portada Montaris. El catálogo viene de catalogo.js?v=1792805124 (const CAT). precio:null = "Precio por confirmar".
 const byId={};CAT.forEach(p=>byId[p.id]=p);
 const SUBT={'cadenas/cartier':'Cadenas Cartier','cadenas/barbada':'Cadenas barbadas','cadenas/torzal':'Cadenas torzal','cadenas/marinera':'Cadenas marineras','cadenas/planchada':'Cadenas planchadas','cadenas/delgadas':'Cadenas delgadas','esclavas/placa':'Esclavas con placa','esclavas/petatillo':'Esclava Petatillo','esclavas/rolex':'Esclavas tipo Rolex','esclavas/barbada':'Esclava barbada','esclavas/cartier':'Esclavas Cartier','pulseras/diseno':'Pulsos de diseño','pulseras/cubana':'Cubana con zirconias','pulseras/pulsos':'Pulsos'};
 const ORD=[...CAT].sort((a,b)=>(b.etiquetas.includes('nuevo')-a.etiquetas.includes('nuevo'))||(b.id-a.id));
@@ -1092,14 +1116,15 @@ document.querySelectorAll('[data-rota]').forEach((vp,k)=>{const sl=[...vp.queryS
  const mini=p=>{const [l1,l2]=dos(p);return `<a class="hcard" href="${url(p)}" aria-label="${p.nombre}"><span class="hc-pic"><img src="img/prod/${p.carpeta}/c.jpg" alt="" width="160" height="160" loading="lazy"></span><span class="hc-in"><b><span>${l1}</span><span>${l2}</span></b><span class="hc-g">${p.peso}</span><span class="hc-p">${precio(p)}</span></span></a>`};
  hc.innerHTML=ss.map((x,j)=>`<div class="hgrp${j?'':' on'}">${(HC[x.dataset.id]||[+x.dataset.id]).map(k=>byId[k]).filter(Boolean).map(mini).join('')}</div>`).join('');
  const gs=[...hc.children];
- function ver(k){i=(k+ss.length)%ss.length;ss.forEach((x,j)=>x.classList.toggle('on',j===i));ds.forEach((x,j)=>x.classList.toggle('on',j===i));gs.forEach((g,j)=>{g.classList.toggle('on',j===i);if(j===i)g.scrollLeft=0})}
+ const tl=[...document.querySelectorAll('#hs-tl .hs-t')];
+ function ver(k){i=(k+ss.length)%ss.length;ss.forEach((x,j)=>x.classList.toggle('on',j===i));tl.forEach((x,j)=>x.classList.toggle('on',j===i));ds.forEach((x,j)=>x.classList.toggle('on',j===i));gs.forEach((g,j)=>{g.classList.toggle('on',j===i);if(j===i)g.scrollLeft=0})}
  function corre(){clearInterval(t);if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;t=setInterval(()=>{if(!document.hidden&&scrollY<hero.offsetHeight)ver(i+1)},5000)}
  ds.forEach((d,j)=>d.addEventListener('click',()=>{ver(j);corre()}));
  let sx=null;hero.addEventListener('touchstart',e=>{sx=e.target.closest('.hcards')?null:e.touches[0].clientX},{passive:true});hero.addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50){ver(i+(d<0?1:-1));corre()}sx=null},{passive:true});
  corre()})();
 (function(){const els=[...document.querySelectorAll('main .sec > .wrap, #bloques .sec > .wrap')];els.forEach(e=>e.classList.add('rv'));if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));setTimeout(()=>els.forEach(e=>e.classList.add('in')),4000)})();
 
-// bolsa: bolsa.js?v=1792762884 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
+// bolsa: bolsa.js?v=1792805124 guarda, cuenta (#n) y trae su panel (se abre con el ícono de bolsa, "Comprar" va a pago.html)
 const toast=document.getElementById('toast');
 function aviso(t){toast.textContent=t;toast.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('on'),1800)}
 const hayB=()=>window.Bolsa&&typeof Bolsa.agregar==='function';
@@ -1110,8 +1135,8 @@ function agrega(id){const p=byId[id];if(!p)return;
 document.addEventListener('click',e=>{const a=e.target.closest('.plus');if(!a)return;e.preventDefault();e.stopPropagation();agrega(+a.dataset.id);a.classList.add('ok');a.textContent='✓'});
 document.getElementById('btn-bolsa').addEventListener('click',()=>{if(!hayB())aviso(nLocal?nLocal+(nLocal>1?' piezas':' pieza')+' en tu carrito':'Tu carrito está vacío')});
 
-// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792762884)
-// (los botones data-soporte los engancha menu.js?v=1792762884)
+// soporte: los demás botones de soporte abren el mismo panel que #btn-soporte (lo arma menu.js?v=1792805124)
+// (los botones data-soporte los engancha menu.js?v=1792805124)
 
 // header siempre visible: negro al bajar
 (function(){const hdr=document.getElementById('hdr');let tk=false;
