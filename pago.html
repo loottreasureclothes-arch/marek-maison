@@ -8,7 +8,7 @@
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792836996">
+<link rel="stylesheet" href="menu.css?v=1792885309">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -216,7 +216,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
         <div class="fl-in"><input id="f-cd" name="ciudad" autocomplete="address-level2" placeholder=" " required><label for="f-cd">Ciudad</label></div>
         <p class="err" id="err" role="alert"></p>
         <button type="submit" id="enviar">Solicitar mi pedido</button>
-        <p class="nota">Hasta 6 meses sin intereses · Devolución gratis · Garantía 60 días</p>
+        <p class="nota">Hasta 6 meses sin intereses desde $3,500 · Devolución gratis · Garantía 60 días</p>
       </form>
     </div>
   </div>
@@ -233,11 +233,12 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(96px + env(safe-are
   <div class="pagos" aria-label="Formas de pago"><span>Aceptamos</span><img src="pay/visa.svg" alt="Visa"><img src="pay/master.svg" alt="Mastercard"><img src="pay/american_express.svg" alt="American Express"><img src="pay/mercado_pago.svg" alt="Mercado Pago"><img src="pay/kueski.svg" alt="Kueski Pay"></div>
 </div></footer>
 
-<script src="catalogo.js?v=1792836996" charset="utf-8"></script>
-<script src="bolsa.js?v=1792836996" charset="utf-8"></script>
-<script src="menu.js?v=1792836996" charset="utf-8"></script>
+<script src="catalogo.js?v=1792885309" charset="utf-8"></script>
+<script src="bolsa.js?v=1792885309" charset="utf-8"></script>
+<script src="menu.js?v=1792885309" charset="utf-8"></script>
 <script>
 function MXN(n){ return '$' + Math.round(n).toLocaleString('es-MX'); }
+function MSI(n){ return '$' + (Math.round(n * 100) / 100).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 (function(){
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   var lista = document.getElementById('lista'), btn = document.getElementById('enviar');
@@ -253,7 +254,7 @@ function MXN(n){ return '$' + Math.round(n).toLocaleString('es-MX'); }
       return '<li><div class="ck-im"><img src="' + esc(it.foto) + '" alt=""><b>' + it.cantidad + '</b></div><div><a href="producto.html?id=' + encodeURIComponent(it.id) + '">' + esc(it.nombre) + '</a><small>' + (it.largo ? 'Largo: ' + esc(it.largo) : 'Plata .925') + '</small><button class="del" type="button" data-i="' + i + '">Quitar</button></div><span class="pz">' + (it.precio != null ? MXN(it.precio * it.cantidad) : '') + '</span></li>';
     }).join('') + '</ul>' +
     '<div class="ck-tt"><div><span>Subtotal · ' + n + (n > 1 ? ' piezas' : ' pieza') + '</span><span>' + MXN(sub) + '</span></div><div><span>Envío</span><span>' + (sub >= 950 ? 'Gratis' : 'Gratis desde $950') + '</span></div><div class="gr"><span>Total</span><span><small>MXN</small>' + MXN(sub) + '</span></div></div>' +
-    '<div class="ck-ok"><div>Hasta 6 meses<small>sin intereses</small></div><div>Garantía<small>60 días</small></div><div>Devolución<small>gratis</small></div><div>Kit de limpieza<small>incluido</small></div></div>';
+    '<div class="ck-ok"><div>' + (sub >= 3500 ? '6 meses de ' + MSI(sub / 6) + '<small>sin intereses</small>' : sub >= 1500 ? '3 meses de ' + MSI(sub / 3) + '<small>sin intereses</small>' : 'Mercado Pago<small>o Kueski Pay</small>') + '</div><div>Garantía<small>60 días</small></div><div>Devolución<small>gratis</small></div><div>Kit de limpieza<small>incluido</small></div></div>';
   }
   lista.addEventListener('click', function(e){ var b = e.target.closest('.del'); if (b) Bolsa.quitar(+b.dataset.i); });
   document.addEventListener('bolsa:cambio', pintar);
