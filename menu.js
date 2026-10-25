@@ -89,7 +89,9 @@ function preguntarAPI(texto, historial){
   function grandeBan(k, href, nombre, idRespaldo){
     var b = BANMENU[k];
     if (!b) return grande(href, BANPIEZA[k] || idRespaldo, nombre);
-    return '<a class="mn-grande" href="' + href + '"><img src="img/ban/' + b[0] + '-cel.jpg" alt="" loading="lazy" style="object-position:' + b[1] + '">' +
+    /* v13: foto propia 4:3 (img/cat/g-<k>.jpg) con la pieza ENTERA y centrada */
+    var g = ["hombre","mujer","novedades","cadenas","esclavas","pulseras","regalos"].indexOf(k) > -1;
+    return '<a class="mn-grande" href="' + href + '"><img src="' + (g ? "img/cat/g-" + k + ".jpg?v=13" : "img/ban/" + b[0] + "-cel.jpg") + '" alt="" loading="lazy" style="object-position:' + (g ? "center" : b[1]) + '">' +
       '<span>' + esc(nombre) + ' ›</span></a>';
   }
   function grande(href, id, nombre){
@@ -105,7 +107,7 @@ function preguntarAPI(texto, historial){
     if (!t) return "";
     var k = ["cadenas","esclavas","pulseras"].indexOf(t) > -1 ? t
       : (["cadenas","esclavas","pulseras"].indexOf(c) > -1 ? c : (porId[id] && porId[id].coleccion)) + "-" + t;
-    return MINIS.indexOf(k) > -1 ? "img/cat/" + k + ".jpg?v=12" : "";
+    return MINIS.indexOf(k) > -1 ? "img/cat/" + k + ".jpg?v=13" : "";
   }
   function cuadro(href, id, nombre, c, t){
     var mi = miniDe(c, t, id), src = mi || fotoCuadro(id), resp = fotoCuadro(id);
@@ -167,6 +169,7 @@ function preguntarAPI(texto, historial){
 
   var ICO_ENVIO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17.5" cy="17.5" r="1.6"/></svg>';
   var ICO_MSI = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>';
+  var ICO_CERT = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="13" rx="1.5"/><path d="M8 7h8M8 10.5h5"/><circle cx="15" cy="16" r="3"/><path d="M13.2 18.4L12.5 22l2.5-1.3 2.5 1.3-.7-3.6"/></svg>';
   var ICO_GAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>';
 
   /* ---------- Mascota de Soporte Montaris (sin nombre): imagen aprobada img/mascota.png (506x512, fondo transparente) ----------
@@ -189,6 +192,7 @@ function preguntarAPI(texto, historial){
       '<div class="mn-panel" role="dialog" aria-modal="true" aria-label="Menú">' +
         '<div class="mn-top"><a class="mn-logo" href="index.html" aria-label="Montaris, inicio"><img src="img/logo-mm-negro.png" alt="" width="44" height="20"><b>MONTARIS</b></a>' +
           '<button class="mn-x" type="button" data-mn-cerrar aria-label="Cerrar menú">' + X + '</button></div>' +
+        '<div class="mn-conf"><p>' + ICO_ENVIO + 'Envío gratis desde $950</p><p>' + ICO_MSI + 'Hasta 6 meses sin intereses</p><p>' + ICO_CERT + 'Certificado de autenticidad · Garantía 60 días</p></div>' +
         '<div class="mn-cuerpo">' +
           '<div class="mn-tabs" role="tablist" aria-orientation="vertical" aria-label="Colecciones">' +
             '<a class="mn-tab mn-inicio" href="index.html">Inicio</a>' +
@@ -197,7 +201,6 @@ function preguntarAPI(texto, historial){
             '<button class="mn-tab mn-sop" type="button" data-mn-abrir="soporte" aria-haspopup="dialog">' + SV_PESTANA + '<span>Soporte</span></button>' +
           '</div>' +
           '<div class="mn-der-col">' + pans.join("") +
-            '<div class="mn-conf"><p>' + ICO_ENVIO + 'Envío gratis desde $950</p><p>' + ICO_MSI + 'Hasta 6 meses sin intereses</p><p>' + ICO_GAR + 'Garantía 60 días · Sello .925</p></div>' +
           '</div>' +
         '</div>' +
       '</div>' +

@@ -7,7 +7,7 @@
 <meta name="description" content="Joyería de plata .925 con sello. Cadenas, esclavas y pulseras con fotos reales de cada pieza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,700;125,800&family=Cinzel:wght@600;700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="menu.css?v=1792885309">
+<link rel="stylesheet" href="menu.css?v=1792945811">
 <style>
 html,body{overflow-x:clip}body{touch-action:pan-y}
 
@@ -65,19 +65,23 @@ h1,h2,h3{margin:0;text-wrap:balance}
 @media (min-width:900px){.brand b{display:block}.brand img{height:29px}.row{height:68px;gap:14px}.buscar{max-width:440px;margin-left:auto}}
 
 /* banner de la colección (foto real de la pieza) */
-.cb{position:relative;height:min(62svh,560px);min-height:420px;background:#0b0b0b;color:#fff;overflow:hidden}
-.cb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.cb{--hh:130px;position:relative;height:calc(var(--hh) + 100vw*1120/780);background:#0b0b0b;color:#fff;overflow:hidden}
+/* v13: la foto empieza DEBAJO del encabezado fijo (--hh = alto real del #hdr, lo pone el JS) y su caja tiene la MISMA proporción que la foto
+   (cel 780x1120, escritorio 2732x1100): object-fit ya no corta la pieza en ningún ancho ni la tapa el encabezado */
+.cb.foto{height:calc(var(--hh) + min(62svh,560px) - 130px);min-height:420px}
+.cb img{position:absolute;left:0;right:0;top:var(--hh);width:100%;height:calc(100% - var(--hh));object-fit:cover;object-position:50% 40%}
 .cb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,transparent 18%,transparent 84%,rgba(0,0,0,.5) 100%)}
 .cb-in{position:absolute;z-index:2;left:0;right:0;bottom:0;padding-bottom:12px}
 .cb .migas{display:flex;gap:6px;font:600 12px var(--f-txt);color:#e4e2dd;margin-bottom:0;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .cb .migas a{text-decoration:underline;text-underline-offset:3px}
+@media (min-width:600px) and (max-width:899px){.cb{height:calc(var(--hh) + 100vw*1100/2732)}}
 @media (min-width:900px){
  /* v10: cabecera de esquina a esquina. Estándar de imagen: escritorio 2732x1100, celular 780x1120 */
- .cb{height:clamp(420px,40.26vw,680px)}
- .cb img{object-position:var(--pos-esc,50% 35%)}
+ .cb{height:calc(var(--hh) + min(40.26vw,760px))}
+ .cb img{object-position:var(--pos-esc,50% 50%)}
  .cb::after{background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,transparent 22%,transparent 72%,rgba(0,0,0,.55) 100%),linear-gradient(90deg,rgba(0,0,0,.35) 0%,transparent 30%)}
  /* sin banner propio (foto de la pieza, cuadrada): se queda a la derecha para no deformarla */
- .cb.foto{height:min(70vh,560px)}
+ .cb.foto{height:calc(var(--hh) + min(70vh,560px) - 130px)}
  .cb.foto img{left:auto;width:56%;object-position:50% 40%}
  .cb.foto::after{background:linear-gradient(90deg,#0b0b0b 0%,#0b0b0b 44%,rgba(11,11,11,.5) 52%,rgba(11,11,11,0) 64%)}
  .cb-in{padding-bottom:22px}
@@ -369,7 +373,7 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <main>
   <section class="cb" aria-label="Banner de la colección">
-    <picture><source id="c-src" media="(min-width:900px)"><img id="c-img" src="img/prod/48_L-07_cadena-cartier-70cm/1.jpg" alt=""></picture>
+    <picture><source id="c-src" media="(min-width:600px)"><img id="c-img" src="img/prod/48_L-07_cadena-cartier-70cm/1.jpg" alt=""></picture>
     <div class="cb-in wrap">
       <nav class="migas" aria-label="Ruta"><a href="index.html">Inicio</a><span aria-hidden="true">/</span><span id="c-miga">Colección</span></nav>
     </div>
@@ -471,9 +475,9 @@ footer{background:#111;color:#cfcfcf;padding-block:48px calc(36px + env(safe-are
 
 <div class="toast" id="toast" role="status"></div>
 
-<script src="catalogo.js?v=1792885309"></script>
-<script src="bolsa.js?v=1792885309"></script>
-<script src="menu.js?v=1792885309"></script>
+<script src="catalogo.js?v=1792945811"></script>
+<script src="bolsa.js?v=1792945811"></script>
+<script src="menu.js?v=1792945811"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s);
@@ -495,17 +499,17 @@ const COL={
 // foto de banner por subcolección (pieza más representativa)
 // v10: cabecera por colección ('c') y por subcolección ('c/t'): img/ban/<nombre>-cel.jpg (780x1120) y -escritorio.jpg (2732x1100).
 // Solo se usan las que están en LISTOS (archivos que ya existen); las demás caen a la foto de la pieza (BANSUB / COL.ban).
-const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v10',novedades:'col-novedades-v10',cadenas:'col-cadenas-v12',regalos:'col-regalos-v10',
-  esclavas:'col-esclavas',pulseras:'col-pulseras',
-  'cadenas/cartier':'col-cadenas-cartier-v12','cadenas/barbada':'col-cadenas-barbada','cadenas/torzal':'col-cadenas-torzal','cadenas/marinera':'col-cadenas-marinera','cadenas/planchada':'col-cadenas-planchada-v12','cadenas/delgadas':'col-cadenas-delgadas',
-  'esclavas/placa':'col-esclavas-placa','esclavas/petatillo':'col-esclavas-petatillo','esclavas/rolex':'col-esclavas-rolex','esclavas/barbada':'col-esclavas-barbada','esclavas/cartier':'col-esclavas-cartier',
-  'pulseras/cubana':'col-pulseras-cubana-v12','pulseras/pulsos':'col-pulseras-pulsos','pulseras/diseno':'col-pulseras-diseno'};
+const BANCOL={hombre:'col-hombre-v10',mujer:'col-mujer-v13',novedades:'col-novedades-v10',cadenas:'col-cadenas-v13',regalos:'col-regalos-v10',
+  esclavas:'col-esclavas-v13',pulseras:'col-pulseras',
+  'cadenas/cartier':'col-cadenas-cartier-v13','cadenas/barbada':'col-cadenas-barbada-v13','cadenas/torzal':'col-cadenas-torzal','cadenas/marinera':'col-cadenas-marinera-v13','cadenas/planchada':'col-cadenas-planchada-v13','cadenas/delgadas':'col-cadenas-delgadas',
+  'esclavas/placa':'col-esclavas-placa','esclavas/petatillo':'col-esclavas-petatillo-v13','esclavas/rolex':'col-esclavas-rolex-v13','esclavas/barbada':'col-esclavas-barbada','esclavas/cartier':'col-esclavas-cartier-v13',
+  'pulseras/cubana':'col-pulseras-cubana-v13','pulseras/pulsos':'col-pulseras-pulsos','pulseras/diseno':'col-pulseras-diseno-v13'};
 // encuadre especial de la foto de escritorio (object-position)
-const POSCOL={'col-pulseras-pulsos':'100% 50%','col-regalos-v10':'50% 95%'};
-const LISTOS=new Set(['col-cadenas-v12','col-cadenas-cartier-v12','col-cadenas-planchada-v12','col-pulseras-cubana-v12','col-cadenas-barbada','col-cadenas-cartier','col-cadenas-delgadas','col-cadenas-marinera','col-cadenas-planchada','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-barbada','col-esclavas-cartier','col-esclavas-petatillo','col-esclavas-placa','col-esclavas-rolex','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
+const POSCOL={'col-cadenas-planchada-v13':'50% 0%'};
+const LISTOS=new Set(['col-mujer-v13','col-cadenas-v13','col-cadenas-cartier-v13','col-cadenas-barbada-v13','col-cadenas-marinera-v13','col-cadenas-planchada-v13','col-esclavas-v13','col-esclavas-rolex-v13','col-pulseras-cubana-v13','col-esclavas-petatillo-v13','col-pulseras-diseno-v13','col-esclavas-cartier-v13','col-cadenas-v12','col-cadenas-cartier-v12','col-cadenas-planchada-v12','col-pulseras-cubana-v12','col-cadenas-barbada','col-cadenas-cartier','col-cadenas-delgadas','col-cadenas-marinera','col-cadenas-planchada','col-cadenas-torzal','col-cadenas-v10','col-esclavas','col-esclavas-barbada','col-esclavas-cartier','col-esclavas-petatillo','col-esclavas-placa','col-esclavas-rolex','col-hombre-v10','col-mujer-v10','col-novedades-v10','col-pulseras','col-pulseras-cubana','col-pulseras-diseno','col-pulseras-pulsos','col-regalos-v10']);
 // v11: miniaturas cuadradas 600x600 (img/cat/) recortadas de las cabeceras aprobadas, para los cuadros de subcolección
 const MINI=new Set(['hombre','mujer','cadenas','esclavas','pulseras','novedades','regalos','cadenas-cartier','cadenas-barbada','cadenas-torzal','cadenas-marinera','cadenas-planchada','cadenas-delgadas','esclavas-placa','esclavas-petatillo','esclavas-rolex','esclavas-barbada','esclavas-cartier','pulseras-cubana','pulseras-pulsos','pulseras-diseno']);
-const mini=k=>{const n=esTipo?c+'-'+k:k;return MINI.has(n)?`img/cat/${n}.jpg?v=12`:''};
+const mini=k=>{const n=esTipo?c+'-'+k:k;return MINI.has(n)?`img/cat/${n}.jpg?v=13`:''};
 const BANSUB={'cadenas/cartier':48,'cadenas/barbada':50,'cadenas/torzal':52,'cadenas/marinera':46,'cadenas/planchada':53,'cadenas/delgadas':38,'esclavas/placa':1,'esclavas/petatillo':27,'esclavas/rolex':30,'esclavas/barbada':35,'esclavas/cartier':36,'pulseras/cubana':28,'pulseras/pulsos':31,'pulseras/diseno':33};
 
 const P=new URLSearchParams(location.search);
@@ -660,7 +664,7 @@ function cuadros(){
   if(modoQ||chipKeys.length<2&&!t){$('.circ').hidden=true;return}
   const ico='<span class="k"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span>';
   const url=k=>`coleccion.html?c=${c}${k?'&t='+k:''}`;
-  const todo=MINI.has(c)?`<span><img src="img/cat/${c}.jpg?v=12" alt="" loading="lazy" width="96" height="96"></span>`:ico;
+  const todo=MINI.has(c)?`<span><img src="img/cat/${c}.jpg?v=13" alt="" loading="lazy" width="96" height="96"></span>`:ico;
   let h=`<a class="ci" href="${url('')}" data-t="" ${!t?'aria-current="true"':''}>${todo}<b>Todas <small>${base.length}</small></b></a>`;
   chipKeys.forEach(k=>{
     const ps=base.filter(p=>claveDe(p)===k);
@@ -670,6 +674,8 @@ function cuadros(){
   $('#circ').innerHTML=h;
 }
 function render(){pinta();encabezado();cuadros();escribeURL()}
+// v13: alto real del encabezado fijo -> la foto de la cabecera empieza debajo (solo cambia con el ancho)
+(function(){let w=0;const f=()=>{if(innerWidth===w)return;w=innerWidth;const h=document.getElementById('hdr');if(h)$('.cb').style.setProperty('--hh',Math.round(h.getBoundingClientRect().height)+'px')};f();addEventListener('resize',f);addEventListener('load',()=>{w=0;f()})})();
 function cambio(){pinta();escribeURL()}
 
 // cambiar subcolección sin recargar (los filtros de tipo se reinician)
